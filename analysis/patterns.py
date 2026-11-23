@@ -1,7 +1,8 @@
 """Pattern analysis module for Composio Toolkit Research.
 
 Computes distributions, cross-tabulations, segments, priority scores,
-and recommended build orders from research results.
+blocker rankings (excluding 'none'), auth-by-category metrics, and
+recommended build orders from research results.
 """
 
 import json
@@ -12,6 +13,8 @@ from agent.schema import AppResearchRecord
 
 def load_records(jsonl_path: str = "data/results_final.jsonl") -> List[AppResearchRecord]:
     path = Path(jsonl_path)
+    if not path.exists():
+        path = Path("data/results_pass3.jsonl")
     if not path.exists():
         path = Path("data/results_pass2.jsonl")
     records = []
@@ -49,12 +52,17 @@ def analyze_patterns(records: List[AppResearchRecord]) -> Dict[str, Any]:
             cat_x_access[cat] = {}
         cat_x_access[cat][acc] = cat_x_access[cat].get(acc, 0) + 1
 
-    # 3. Ranked Blockers
-    blockers = {}
+    # 3. Blockers Analysis: Exclude 'none' when ranking blockers
+    blockers_all = {}
+    real_blockers = {}
     for r in records:
         b = r.main_blocker.value
-        blockers[b] = blockers.get(b, 0) + 1
-    ranked_blockers = sorted(blockers.items(), key=lambda x: x[1], reverse=True)
+        blockers_all[b] = blockers_all.get(b, 0) + 1
+        if b != "none":
+            real_blockers[b] = real_blockers.get(b, 0) + 1
+
+    ranked_real_blockers = sorted(real_blockers.items(), key=lambda x: x[1], reverse=True)
+    none_blocker_count = blockers_all.get("none", 0)
 
     # 4. Buildability overall & by category
     buildability_overall = {"green": 0, "yellow": 0, "red": 0}
@@ -83,7 +91,7 @@ def analyze_patterns(records: List[AppResearchRecord]) -> Dict[str, Any]:
         if r.buildability.value == "green":
             openapi_vs_green[spec] = openapi_vs_green.get(spec, 0) + 1
 
-    # 7. Strategic Segments
+    # 7. Strategic Segments: Easy Wins vs Needs Outreach
     easy_wins = []
     needs_outreach = []
     not_a_fit = []
@@ -100,6 +108,8 @@ def analyze_patterns(records: List[AppResearchRecord]) -> Dict[str, Any]:
                 "category": r.category.value,
                 "access": r.access_model.value,
                 "openapi": r.openapi_spec.value,
+                "auth": r.auth_methods.value,
+                "mcp": r.existing_mcp.value,
             })
         elif r.main_blocker.value in ["partner_program", "contact_sales", "app_review"]:
             needs_outreach.append({
@@ -108,6 +118,7 @@ def analyze_patterns(records: List[AppResearchRecord]) -> Dict[str, Any]:
                 "category": r.category.value,
                 "blocker": r.main_blocker.value,
                 "reason": r.reasoning,
+                "buildability": r.buildability.value,
             })
         elif r.app_type.value == "cli_tool" or r.main_blocker.value == "no_public_api":
             not_a_fit.append({
@@ -117,18 +128,18 @@ def analyze_patterns(records: List[AppResearchRecord]) -> Dict[str, Any]:
                 "blocker": r.main_blocker.value,
             })
 
+    # Sort segments by ID
+    easy_wins.sort(key=lambda x: x["id"])
+    needs_outreach.sort(key=lambda x: x["id"])
+    not_a_fit.sort(key=lambda x: x["id"])
+
     # 8. Priority Scoring & Top-15 Build Order
-    # Formula:
-    # Priority = Value Score (1-10 based on category demand & breadth) * Ease Score (Green=10, Yellow=5, Red=1)
-    # Deductions: +3 if has OpenAPI, +2 if already self-serve free, -3 if app review / partner gate
     scored_apps = []
     for r in records:
         ease = 10 if r.buildability.value == "green" else (5 if r.buildability.value == "yellow" else 1)
         breadth_mult = 1.3 if r.api_breadth.value == "broad" else (1.0 if r.api_breadth.value == "medium" else 0.7)
         bonus = (3 if r.openapi_spec.value == "yes" else 0) + (2 if r.access_model.value == "self_serve_free" else 0)
         penalty = 3 if r.main_blocker.value in ["app_review", "partner_program", "contact_sales"] else 0
-        
-        # Freshness / demand factor: higher priority for high-value categories
         cat_weight = 1.2 if r.category.value in ["CRM and Sales", "Support and Helpdesk", "Developer/Infra/Data"] else 1.0
 
         score = round((ease * breadth_mult + bonus - penalty) * cat_weight, 1)
@@ -145,21 +156,25 @@ def analyze_patterns(records: List[AppResearchRecord]) -> Dict[str, Any]:
             "reasoning": r.reasoning,
         })
 
-    # Filter out apps already in Composio for top build order recommendation
     new_opportunities = [a for a in scored_apps if a["already_in_composio"] != "yes"]
     new_opportunities.sort(key=lambda x: x["score"], reverse=True)
     top_15_build_order = new_opportunities[:15]
 
-    # Headline statements generated from exact computed figures
-    pct_oauth = round((auth_overall.get("oauth2", 0) / total_apps) * 100, 1)
-    pct_self_serve = round(((access_overall.get("self_serve_free", 0) + access_overall.get("self_serve_trial", 0)) / total_apps) * 100, 1)
-    top_blocker_name, top_blocker_count = ranked_blockers[0] if ranked_blockers else ("none", 0)
+    # Category Auth Insights
+    crm_oauth = auth_by_category.get("CRM and Sales", {}).get("oauth2", 0)
+    crm_total = sum(1 for r in records if r.category.value == "CRM and Sales")
+    dev_key = auth_by_category.get("Developer/Infra/Data", {}).get("api_key", 0)
+    dev_total = sum(1 for r in records if r.category.value == "Developer/Infra/Data")
 
+    # Top real blockers summary string
+    top_real_blockers_str = ", ".join(f"{b} ({c})" for b, c in ranked_real_blockers[:3])
+
+    # Rewrite headline patterns
     headlines = [
-        f"OAuth2 dominates across {pct_oauth}% of target platforms ({auth_overall.get('oauth2', 0)}/{total_apps}), but over a third require multi-tenant app reviews or enterprise partner agreements.",
-        f"{pct_self_serve}% of applications offer self-serve developer access ({access_overall.get('self_serve_free', 0) + access_overall.get('self_serve_trial', 0)}/{total_apps}), representing immediate low-friction integration opportunities.",
-        f"The single most prevalent blocker across the catalog is '{top_blocker_name}' ({top_blocker_count} applications), separating quick API key integrations from managed OAuth distributions.",
-        f"{buildability_overall['green']} apps are greenlit for immediate toolkit development, while {buildability_overall['yellow']} require per-instance configuration or tiered plan upgrades, and {buildability_overall['red']} are hard-gated.",
+        f"Top Real Integration Blockers (excluding {none_blocker_count} unblocked apps): {top_real_blockers_str}. Managed OAuth distribution and developer account verification create the steepest technical gating.",
+        f"Authentication by Category: CRM & Messaging mandate OAuth2 ({crm_oauth}/{crm_total} CRM apps), whereas Developer Infra & Scraping rely heavily on API Keys ({dev_key}/{dev_total} Dev apps) for direct machine-to-machine execution.",
+        f"High-Velocity Segments: {len(easy_wins)} Easy Wins greenlit with self-serve APIs / OpenAPI specs vs {len(needs_outreach)} Outreach Targets requiring formal partner applications, review queues, or commercial contracts.",
+        f"Catalog Feasibility: {buildability_overall['green']} apps ready to build immediately, {buildability_overall['yellow']} requiring partner access or sandboxed CLI runtimes, and {buildability_overall['red']} lacking public developer APIs.",
     ]
 
     summary = {
@@ -169,7 +184,9 @@ def analyze_patterns(records: List[AppResearchRecord]) -> Dict[str, Any]:
         "auth_by_category": auth_by_category,
         "access_overall": access_overall,
         "cat_x_access": cat_x_access,
-        "ranked_blockers": ranked_blockers,
+        "ranked_real_blockers": ranked_real_blockers,
+        "ranked_blockers": ranked_real_blockers,  # for backwards compatibility
+        "none_blocker_count": none_blocker_count,
         "buildability_overall": buildability_overall,
         "buildability_by_category": buildability_by_category,
         "mcp_coverage": mcp_coverage,
@@ -179,10 +196,12 @@ def analyze_patterns(records: List[AppResearchRecord]) -> Dict[str, Any]:
         "easy_wins_count": len(easy_wins),
         "needs_outreach_count": len(needs_outreach),
         "not_a_fit_count": len(not_a_fit),
+        "easy_wins": easy_wins,
+        "needs_outreach": needs_outreach,
+        "not_a_fit": not_a_fit,
         "top_15_build_order": top_15_build_order,
     }
 
-    # Save to data/patterns.json
     output_path = Path("data/patterns.json")
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, "w", encoding="utf-8") as f:

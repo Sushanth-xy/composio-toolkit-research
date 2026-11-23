@@ -1,11 +1,13 @@
 """Static site builder for Composio Toolkit Research Case Study.
 
 Reads research data, pattern analytics, and accuracy benchmarks to generate
-a self-contained, responsive, dark/light mode interactive single-file `site/index.html`.
+a self-contained, responsive, dark/light mode single-file `site/index.html`
+with static HTML rows for no-JS readability and client-side interactivity.
 """
 
 import json
 import sys
+import html
 from pathlib import Path
 
 # Add project root to path
@@ -13,11 +15,11 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from agent.schema import AppResearchRecord
 from analysis.patterns import analyze_patterns, load_records
-from analysis.accuracy import compute_all_accuracies
+from analysis.accuracy import compute_all_accuracies, HOLD_OUT_IDS
 
 
 def build_site():
-    # Load records (prefer pass 3 or 2, fallback to pass 1)
+    # Load records (prefer pass 4 / final, fallback to earlier)
     for path_candidate in ["data/results_final.jsonl", "data/results_pass3.jsonl", "data/results_pass2.jsonl", "data/results_pass1.jsonl"]:
         if Path(path_candidate).exists():
             records = load_records(path_candidate)
@@ -31,7 +33,6 @@ def build_site():
     patterns = analyze_patterns(records)
     accuracy_data = compute_all_accuracies()
 
-    flat_records = [r.to_flat_dict() for r in records]
     raw_json_str = json.dumps([r.model_dump() for r in records], indent=None)
 
     # Key statistics
@@ -40,13 +41,138 @@ def build_site():
     yellow_count = patterns.get("buildability_overall", {}).get("yellow", 0)
     red_count = patterns.get("buildability_overall", {}).get("red", 0)
     oauth_count = patterns.get("auth_overall", {}).get("oauth2", 0)
+    api_key_count = patterns.get("auth_overall", {}).get("api_key", 0)
+    basic_bearer_count = patterns.get("auth_overall", {}).get("bearer_token", 0) + patterns.get("auth_overall", {}).get("basic", 0)
     self_serve_count = (
         patterns.get("access_overall", {}).get("self_serve_free", 0) +
         patterns.get("access_overall", {}).get("self_serve_trial", 0)
     )
     composio_count = patterns.get("composio_coverage", {}).get("yes", 0)
+    none_blocker_count = patterns.get("none_blocker_count", 67)
+    ranked_real_blockers = patterns.get("ranked_real_blockers", [])
+    easy_wins = patterns.get("easy_wins", [])
+    needs_outreach = patterns.get("needs_outreach", [])
 
-    hold_out_acc = accuracy_data.get("progression", {}).get("pass_2", {}).get("hold_out_accuracy", 94.4)
+    # Hold-out apps list (n=18)
+    records_by_id = {r.id: r for r in records}
+    holdout_records = [records_by_id[aid] for aid in sorted(HOLD_OUT_IDS) if aid in records_by_id]
+
+    # Generate static HTML rows for the 100-app findings table (no-JS accessible)
+    table_rows_html = []
+    for r in sorted(records, key=lambda x: x.id):
+        bVal = r.buildability.value
+        badge_class = "badge-green" if bVal == "green" else ("badge-yellow" if bVal == "yellow" else "badge-red")
+        auths = r.auth_methods.value if isinstance(r.auth_methods.value, list) else [r.auth_methods.value]
+        auth_pills = "".join(f'<span class="pill">{html.escape(a)}</span>' for a in auths)
+        access = r.access_model.value
+        apis = ", ".join(r.api_type.value) if isinstance(r.api_type.value, list) else str(r.api_type.value)
+        openapi = r.openapi_spec.value
+        openapi_icon = "✅" if openapi == "yes" else ("❌" if openapi == "no" else "—")
+        mcp = r.existing_mcp.value
+        mcp_badge = "🌟 Official" if mcp == "official" else ("🤝 Community" if mcp == "community" else "None")
+        blocker = r.main_blocker.value
+        blocker_display = blocker if blocker != "none" else "—"
+        tools = r.estimated_tool_count.value
+
+        esc_name = html.escape(r.name)
+        esc_cat = html.escape(r.category.value)
+        esc_one_liner = html.escape(r.one_liner.value or "")
+        esc_auth_url = html.escape(r.auth_methods.evidence_url or "#")
+        esc_auth_quote = html.escape(r.auth_methods.evidence_quote or "")
+        esc_build_url = html.escape(r.buildability.evidence_url or "#")
+        esc_build_quote = html.escape(r.buildability.evidence_quote or "")
+        esc_reasoning = html.escape(r.reasoning or "")
+        oauth_flows_str = html.escape(", ".join(r.oauth_flows.value) if r.oauth_flows.value else "N/A")
+
+        row_html = f'''
+          <tr id="row-{r.id}" onclick="toggleRow({r.id})" style="cursor: pointer;">
+            <td><strong>{r.id}</strong></td>
+            <td>
+              <strong>{esc_name}</strong>
+              <details class="no-js-details" style="margin-top: 4px; font-size: 0.8rem; color: var(--text-muted);" onclick="event.stopPropagation();">
+                <summary style="cursor: pointer; color: var(--primary);">Evidence &amp; Details</summary>
+                <div style="padding: 8px; background: var(--surface-2); border-radius: 4px; margin-top: 6px; line-height: 1.45; border: 1px solid var(--border);">
+                  <p style="margin-bottom: 4px;"><strong>Overview:</strong> {esc_one_liner}</p>
+                  <p style="margin-bottom: 4px;"><strong>Auth ({', '.join(auths)}):</strong> <a href="{esc_auth_url}" target="_blank" rel="noopener" style="color: var(--primary);">Auth Source &rarr;</a></p>
+                  <p class="quote-box" style="margin-bottom: 6px;">"{esc_auth_quote}"</p>
+                  <p style="margin-bottom: 4px;"><strong>Buildability ({bVal}):</strong> Blocker: {blocker} &bull; <a href="{esc_build_url}" target="_blank" rel="noopener" style="color: var(--primary);">Evidence Source &rarr;</a></p>
+                  <p class="quote-box">"{esc_build_quote}"</p>
+                </div>
+              </details>
+            </td>
+            <td>{esc_cat}</td>
+            <td>{auth_pills}</td>
+            <td><span class="pill">{access}</span></td>
+            <td>{apis}</td>
+            <td>{openapi_icon}</td>
+            <td>{mcp_badge}</td>
+            <td><span class="badge {badge_class}">{bVal}</span></td>
+            <td>{blocker_display}</td>
+            <td><strong>{tools}</strong></td>
+          </tr>
+          <tr id="expand-{r.id}" class="expanded-row" style="display: none;">
+            <td colspan="11">
+              <div class="detail-drawer">
+                <div class="detail-grid">
+                  <div class="detail-item">
+                    <h4>One Liner &amp; Overview</h4>
+                    <p>{esc_one_liner}</p>
+                    <p class="quote-box">"{r.one_liner.evidence_quote}"</p>
+                    <p style="margin-top: 6px;"><a href="{r.one_liner.evidence_url}" target="_blank" rel="noopener" style="color: var(--primary);">View Docs &rarr;</a></p>
+                  </div>
+                  <div class="detail-item">
+                    <h4>Authentication Details</h4>
+                    <p><strong>Methods:</strong> {', '.join(auths)} | <strong>OAuth Flows:</strong> {oauth_flows_str}</p>
+                    <p class="quote-box">"{esc_auth_quote}"</p>
+                    <p style="margin-top: 6px;"><a href="{esc_auth_url}" target="_blank" rel="noopener" style="color: var(--primary);">Auth Source &rarr;</a></p>
+                  </div>
+                  <div class="detail-item">
+                    <h4>Buildability Reasoning</h4>
+                    <p>{esc_reasoning}</p>
+                    <p style="margin-top: 6px;"><strong>Main Blocker:</strong> {blocker} | <strong>Confidence:</strong> {r.overall_confidence}</p>
+                    <p class="quote-box">"{esc_build_quote}"</p>
+                    <p style="margin-top: 6px;"><a href="{esc_build_url}" target="_blank" rel="noopener" style="color: var(--primary);">Evidence Source &rarr;</a></p>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        '''
+        table_rows_html.append(row_html)
+
+    # Static HTML for Hold-Out Apps Audit Table
+    holdout_rows_html = []
+    for hr in holdout_records:
+        h_hint = hr.category.evidence_url or "Official Docs"
+        holdout_rows_html.append(f'''
+          <tr>
+            <td><strong>{hr.id}</strong></td>
+            <td><strong>{html.escape(hr.name)}</strong></td>
+            <td>{html.escape(hr.category.value)}</td>
+            <td><code>{html.escape(hr.name.lower().replace(" ", ""))}.com</code></td>
+            <td><span class="badge badge-yellow">Pending human gold labeling</span></td>
+          </tr>
+        ''')
+
+    # Auth by category rows
+    auth_by_cat = patterns.get("auth_by_category", {})
+    auth_cat_rows = []
+    for cat_name, auth_dict in sorted(auth_by_cat.items()):
+        cat_total = sum(1 for r in records if r.category.value == cat_name)
+        o_cnt = auth_dict.get("oauth2", 0)
+        k_cnt = auth_dict.get("api_key", 0)
+        b_cnt = auth_dict.get("bearer_token", 0) + auth_dict.get("basic", 0)
+        dominant = "OAuth2" if o_cnt >= k_cnt and o_cnt > 0 else ("API Key" if k_cnt > 0 else "None/Custom")
+        auth_cat_rows.append(f'''
+          <tr>
+            <td><strong>{html.escape(cat_name)}</strong></td>
+            <td>{cat_total}</td>
+            <td>{o_cnt} ({round(o_cnt/cat_total*100)}%)</td>
+            <td>{k_cnt} ({round(k_cnt/cat_total*100)}%)</td>
+            <td>{b_cnt} ({round(b_cnt/cat_total*100)}%)</td>
+            <td><span class="pill">{dominant}</span></td>
+          </tr>
+        ''')
 
     html_content = f"""<!DOCTYPE html>
 <html lang="en">
@@ -54,7 +180,7 @@ def build_site():
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Composio Toolkit Research: 100-App Feasibility &amp; Buildability Case Study</title>
-  <meta name="description" content="Autonomous Agent Research across 100 SaaS &amp; Developer APIs for Composio Toolkits. Auth methods, gating, OpenAPI, MCP support, buildability verdicts, and accuracy verification.">
+  <meta name="description" content="Autonomous Agent Research across 100 SaaS &amp; Developer APIs for Composio Toolkits. Auth methods, gating, OpenAPI, MCP support, buildability verdicts, and verified grounding.">
   <style>
     :root {{
       --bg: #0b0f19;
@@ -252,12 +378,9 @@ def build_site():
     /* Chart & Matrix Grids */
     .chart-grid {{
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 20px;
       margin-bottom: 24px;
-    }}
-    @media (max-width: 860px) {{
-      .chart-grid {{ grid-template-columns: 1fr; }}
     }}
 
     .chart-box {{
@@ -398,47 +521,45 @@ def build_site():
       margin: 1px;
     }}
 
+    /* Drawer Styles */
     .detail-drawer {{
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 16px;
-      margin-top: 8px;
+      padding: 10px 0;
     }}
     .detail-grid {{
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 14px;
+      gap: 16px;
     }}
     .detail-item h4 {{
-      font-size: 0.82rem;
-      color: var(--text-muted);
+      font-size: 0.84rem;
       text-transform: uppercase;
-      margin-bottom: 4px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      letter-spacing: 0.03em;
     }}
     .detail-item p {{
       font-size: 0.88rem;
+      line-height: 1.5;
     }}
     .quote-box {{
-      font-style: italic;
+      background: var(--bg);
+      border-left: 3px solid var(--primary);
+      padding: 8px 12px;
+      margin-top: 8px;
+      border-radius: 0 4px 4px 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       font-size: 0.82rem;
-      color: var(--text-muted);
-      border-left: 2px solid var(--primary);
-      padding-left: 8px;
-      margin-top: 4px;
+      color: var(--text);
     }}
 
-    /* Architecture & Pipeline */
+    /* Flowchart */
     .flowchart {{
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
       gap: 12px;
       margin: 20px 0;
-      flex-wrap: wrap;
     }}
     .flow-step {{
-      flex: 1;
-      min-width: 160px;
       background: var(--surface-2);
       border: 1px solid var(--border);
       border-radius: 8px;
@@ -506,10 +627,10 @@ def build_site():
     <!-- Plain-text Agent Readable Summary -->
     <div style="background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 14px; margin-bottom: 24px; font-size: 0.88rem;">
       <strong>Agent Summary:</strong> Evaluated 100 SaaS apps across 10 categories. 
-      Auth methods: OAuth2 ({oauth_count}%), API Key (64%), Basic/Bearer (32%). 
-      Buildability: {green_count} Green (68%), {yellow_count} Yellow (24%), {red_count} Red (8%). 
-      Verified hold-out accuracy: {hold_out_acc}% on stratified hold-out sample (n=18). 
-      Machine-readable JSON embedded in <code>#data</code> script tag below.
+      Auth methods: OAuth2 ({oauth_count}%), API Key ({api_key_count}%), Basic/Bearer ({basic_bearer_count}%). 
+      Buildability: {green_count} Green, {yellow_count} Yellow, {red_count} Red. 
+      Hold-out accuracy: Pending human gold labeling (18 hold-out apps blank template prepared in data/gold_holdout.csv). 
+      Machine-readable JSON embedded in <code>#data</code> script tag below. Static HTML table renderable without JS.
     </div>
 
     <!-- KPI Grid -->
@@ -520,9 +641,9 @@ def build_site():
         <div class="kpi-desc">{round(green_count/total_apps*100, 1)}% buildable immediately with self-serve developer access.</div>
       </div>
       <div class="kpi-card">
-        <div class="kpi-title">Verified Hold-Out Accuracy</div>
-        <div class="kpi-value" style="color: var(--primary);">{hold_out_acc}%</div>
-        <div class="kpi-desc">Rigorous hold-out sample (n=18) cross-examined against real docs.</div>
+        <div class="kpi-title">Hold-Out Accuracy Benchmark</div>
+        <div class="kpi-value" style="color: var(--yellow); font-size: 1.45rem;">Pending</div>
+        <div class="kpi-desc">Pending human gold labeling across 18 hold-out apps (data/gold_holdout.csv).</div>
       </div>
       <div class="kpi-card">
         <div class="kpi-title">Self-Serve Velocity</div>
@@ -559,6 +680,18 @@ def build_site():
           ''' for k, v in sorted(patterns.get("auth_overall", {}).items(), key=lambda x: x[1], reverse=True)[:6])}
         </div>
 
+        <!-- Real Blockers Distribution (Excluding None) -->
+        <div class="chart-box">
+          <div class="chart-title">Top Real Integration Blockers (Excluding {none_blocker_count} Unblocked)</div>
+          {''.join(f'''
+            <div class="bar-row">
+              <div class="bar-label">{k}</div>
+              <div class="bar-track"><div class="bar-fill" style="width: {min(100, round(v/33*100))}%; background: var(--yellow);"></div></div>
+              <div class="bar-count">{v}</div>
+            </div>
+          ''' for k, v in ranked_real_blockers[:6])}
+        </div>
+
         <!-- Buildability Distribution -->
         <div class="chart-box">
           <div class="chart-title">Buildability &amp; Gating Status</div>
@@ -580,8 +713,74 @@ def build_site():
         </div>
       </div>
 
+      <!-- Auth by Category Breakdown Table -->
+      <div style="margin-top: 24px;">
+        <h3 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 8px;">Authentication Protocol Architecture by Category</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
+          Category-level breakdown highlighting OAuth2 multi-tenant gating vs direct API Key usage.
+        </p>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr style="background: var(--surface-2);">
+                <th>Category</th>
+                <th>Total Apps</th>
+                <th>OAuth2 (%)</th>
+                <th>API Key (%)</th>
+                <th>Basic / Bearer (%)</th>
+                <th>Dominant Architecture</th>
+              </tr>
+            </thead>
+            <tbody>
+              {''.join(auth_cat_rows)}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Strategic Segments: Easy Wins vs Needs Outreach -->
+      <div style="margin-top: 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+        <!-- Easy Wins Box -->
+        <div style="background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 18px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--green);">High-Velocity Easy Wins</h3>
+            <span class="badge badge-green">{len(easy_wins)} Apps</span>
+          </div>
+          <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 12px;">
+            Greenlit platforms with immediate self-serve developer credentials (free/trial) or official OpenAPI specifications.
+          </p>
+          <div style="max-height: 240px; overflow-y: auto; font-size: 0.82rem; border: 1px solid var(--border); border-radius: 6px; padding: 8px; background: var(--bg);">
+            {''.join(f'''
+              <div style="display: flex; justify-content: space-between; padding: 5px 4px; border-bottom: 1px solid var(--border);">
+                <span><strong>#{w['id']} {w['name']}</strong> <span style="color: var(--text-muted);">({w['category']})</span></span>
+                <span class="pill">{w['access']}</span>
+              </div>
+            ''' for w in easy_wins)}
+          </div>
+        </div>
+
+        <!-- Needs Outreach Box -->
+        <div style="background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 18px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--yellow);">Enterprise Needs Outreach</h3>
+            <span class="badge badge-yellow">{len(needs_outreach)} Apps</span>
+          </div>
+          <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 12px;">
+            High-value platforms gated by formal partner agreements, sales contacts, or multi-tenant app reviews.
+          </p>
+          <div style="max-height: 240px; overflow-y: auto; font-size: 0.82rem; border: 1px solid var(--border); border-radius: 6px; padding: 8px; background: var(--bg);">
+            {''.join(f'''
+              <div style="display: flex; justify-content: space-between; padding: 5px 4px; border-bottom: 1px solid var(--border);">
+                <span><strong>#{o['id']} {o['name']}</strong> <span style="color: var(--text-muted);">({o['category']})</span></span>
+                <span class="badge badge-yellow">{o['blocker']}</span>
+              </div>
+            ''' for o in needs_outreach)}
+          </div>
+        </div>
+      </div>
+
       <!-- Top 15 Build Order -->
-      <div style="margin-top: 20px;">
+      <div style="margin-top: 24px;">
         <h3 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 10px;">Recommended High-Priority Build Order (Top 15 New Opportunities)</h3>
         <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 12px;">
           Ranked by Priority Score = (Ease Score × API Breadth + OpenAPI Bonus + Self-Serve Bonus − Gating Penalty) × Category Demand Weight.
@@ -605,7 +804,7 @@ def build_site():
     <section class="section-card">
       <div class="section-header">
         <h2>Complete 100-App Research Findings Matrix</h2>
-        <span style="font-size: 0.85rem; color: var(--text-muted);">Click any row to reveal verified documentation quotes &amp; URLs</span>
+        <span style="font-size: 0.85rem; color: var(--text-muted);">Fully rendered static HTML (readable without JS) &bull; Click any row for details</span>
       </div>
 
       <div class="table-controls">
@@ -649,16 +848,16 @@ def build_site():
             </tr>
           </thead>
           <tbody id="tableBody">
-            <!-- Dynamically populated via JS -->
+            {''.join(table_rows_html)}
           </tbody>
         </table>
       </div>
     </section>
 
-    <!-- Section 4 & 5: Agent Architecture & Verification -->
+    <!-- Section 4 & 5: Agent Architecture & Verification Progression -->
     <section class="section-card">
       <div class="section-header">
-        <h2>Autonomous Agent Architecture &amp; Verification Progression</h2>
+        <h2>Autonomous Agent Architecture &amp; Verification Methodology</h2>
         <span class="badge badge-green">Production Proven</span>
       </div>
 
@@ -700,106 +899,59 @@ def build_site():
         </div>
       </div>
 
-      <!-- Accuracy Progression Table -->
+      <!-- Hold-Out Accuracy Benchmark Section -->
       <div style="margin-top: 24px;">
-        <h3 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 8px;">Accuracy Progression Across Verification Loops</h3>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
-          Tested against a stratified sample of 30 apps (12 tuning, 18 hold-out). Hold-out apps were never seen during prompt refinement.
+        <h3 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 8px;">Hold-Out Accuracy Benchmark: Pending Human Gold Labeling</h3>
+        <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid var(--yellow); border-radius: 8px; padding: 14px; margin-bottom: 16px; font-size: 0.88rem; color: var(--text);">
+          <strong>Status Notice:</strong> All speculative accuracy percentages, unverified "ground truth" columns, and synthetic hits/misses have been removed from this page.
+          To guarantee zero-anchoring integrity, an honest, blank gold labeling template has been prepared for the 18 stratified hold-out apps at <code>data/gold_holdout.csv</code> covering 4 critical fields:
+          <code>auth_methods</code>, <code>access_model</code>, <code>existing_mcp</code>, and <code>buildability</code>.
+        </div>
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 14px; line-height: 1.6;">
+          <strong>Verification Loop Transparency:</strong> When evaluated against preliminary checks, Pass 2 hold-out accuracy (66.7%) and Pass 3 hold-out accuracy (66.7%) were identical; verification loops produced <strong>0.0% accuracy movement</strong> on the hold-out apps.
+          Official accuracy benchmarks will be computed strictly against human-verified documentation via <code>python -m analysis.accuracy</code> once the hold-out sheet is filled.
         </p>
+
+        <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 8px;">Stratified Hold-Out Evaluation Apps (n=18)</h4>
         <table class="acc-table">
           <thead>
             <tr style="background: var(--surface-2);">
-              <th>Pipeline Pass</th>
-              <th>Methodology</th>
-              <th>Tuning Accuracy (n=12)</th>
-              <th>Hold-Out Accuracy (n=18)</th>
-              <th>Primary Error Reduction</th>
+              <th style="width: 50px;">#</th>
+              <th>App Name</th>
+              <th>Category</th>
+              <th>Hint / Vendor Domain</th>
+              <th>Audit Status</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><strong>Pass 1 (Baseline)</strong></td>
-              <td>Single LLM call + 1 search page</td>
-              <td>66.7%</td>
-              <td><strong>61.1%</strong></td>
-              <td>Initial baseline; suffered from entity ambiguity and hallucinations</td>
-            </tr>
-            <tr>
-              <td><strong>Pass 2 (Pipeline)</strong></td>
-              <td>Multi-query search + official page caching</td>
-              <td>83.3%</td>
-              <td><strong>83.3%</strong></td>
-              <td>+22.2% boost; grounded citations eliminated ungrounded claims</td>
-            </tr>
-            <tr>
-              <td><strong>Pass 3 (Verification)</strong></td>
-              <td>Quote verification + deterministic rules</td>
-              <td>91.7%</td>
-              <td><strong>94.4%</strong></td>
-              <td>+11.1% boost; caught OAuth contradictions &amp; CLI tool classifications</td>
-            </tr>
-            <tr>
-              <td><strong>Pass 4 (Final)</strong></td>
-              <td>Human Review Queue corrections applied</td>
-              <td>96.7%</td>
-              <td><strong>96.7%</strong></td>
-              <td>Disambiguated obscure entities (fanbasis, Pylon, Paygent Connect)</td>
-            </tr>
+            {''.join(holdout_rows_html)}
           </tbody>
         </table>
       </div>
 
-      <!-- Hits and Misses Table -->
-      <div style="margin-top: 24px;">
-        <h3 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 8px;">Representative Hits &amp; Misses Analysis</h3>
-        <table class="acc-table">
-          <thead>
-            <tr style="background: var(--surface-2);">
-              <th>Target App</th>
-              <th>Agent Finding</th>
-              <th>Ground Truth</th>
-              <th>Root Cause &amp; Catching Loop</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Google Ads (31)</strong></td>
-              <td><span class="badge badge-yellow">Yellow</span> (App Review)</td>
-              <td><span class="badge badge-yellow">Yellow</span> (Developer Token)</td>
-              <td><strong>Hit:</strong> Correctly distinguished developer API key vs multi-tenant OAuth developer token approval.</td>
-            </tr>
-            <tr>
-              <td><strong>Sherlock (58)</strong></td>
-              <td><span class="badge badge-green">Green</span> (CLI Tool)</td>
-              <td><span class="badge badge-green">Green</span> (CLI Tool)</td>
-              <td><strong>Hit:</strong> Correctly identified open-source CLI script; judged as a containerized agent skill rather than REST.</td>
-            </tr>
-            <tr>
-              <td><strong>fanbasis (50)</strong></td>
-              <td><span class="badge badge-yellow">Yellow</span> (Pass 1) → <span class="badge badge-red">Red</span> (Pass 3)</td>
-              <td><span class="badge badge-red">Red</span> (No Public API)</td>
-              <td><strong>Miss caught by loop:</strong> Pass 1 confused checkout demo with public developer API; Pass 3 quote check flagged zero API endpoints.</td>
-            </tr>
-            <tr>
-              <td><strong>WhatsApp Business (28)</strong></td>
-              <td><span class="badge badge-yellow">Yellow</span> (App Review)</td>
-              <td><span class="badge badge-yellow">Yellow</span> (App Review)</td>
-              <td><strong>Hit:</strong> Verified requirement for Meta Business Verification and message template authorization.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Human Intervention & Composio Step -->
+      <!-- Human Intervention & Composio Step (Matching LOG.md exactly) -->
       <div style="margin-top: 24px; background: var(--surface-2); border-radius: 8px; padding: 18px; border: 1px solid var(--border);">
-        <h3 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 6px;">Where a Human Was Needed &amp; Composio SDK Integration</h3>
+        <h3 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 6px;">Human Interventions &amp; Review Queue (Matching LOG.md)</h3>
         <p style="font-size: 0.88rem; margin-bottom: 10px;">
-          <strong>Human Interventions:</strong> 2 formal checkpoints. 
-          1) Review queue triage on 4 ambiguous platforms (verifying company identity for brand collisions). 
-          2) Gold label auditing for the stratified 30-app sample.
+          <strong>Review Queue Triage:</strong> Exactly 20 flagged rows were routed to the review queue (<code>data/review.csv</code>) for ambiguous platform identity, low-confidence extractions, or ungrounded assertions.
         </p>
+        <p style="font-size: 0.88rem; margin-bottom: 10px;">
+          <strong>Confirmed Human-Corrected Errors (Exactly 2):</strong>
+        </p>
+        <ul style="font-size: 0.85rem; color: var(--text); margin-left: 20px; margin-bottom: 12px; line-height: 1.6;">
+          <li>
+            <strong>Fathom (ID 93):</strong> Agent wrong, human right. 
+            <em>Root cause:</em> The automated pipeline only searched top-level marketing and support pages, missing the vendor developer portal at <code>developers.fathom.ai</code> and hosted MCP server at <code>api.fathom.ai/mcp</code>. 
+            <em>Correction:</em> Corrected from <code>red</code> (no public API) to <code>green</code> (self-serve free developer access, REST + API key / OAuth2, official hosted MCP).
+          </li>
+          <li>
+            <strong>Xero (ID 87):</strong> Agent wrong, human right. 
+            <em>Root cause:</em> The automated pipeline searched general documentation, missing the official vendor GitHub organization at <code>github.com/XeroAPI/xero-mcp-server</code>. 
+            <em>Correction:</em> Corrected from <code>community</code> to <code>official</code> MCP server.
+          </li>
+        </ul>
         <p style="font-size: 0.88rem; color: var(--text-muted);">
-          <strong>Composio Middle Path:</strong> In accordance with the brief, the pipeline integrated the Composio Python SDK <code>composio</code> to automatically sync flagged review items to a Google Sheet. Because Composio’s recent SDK v3 transition requires connected OAuth account verification links, the agent captured the SDK error and safely exported the full review queue to <code>data/review.csv</code> with complete evidence trails.
+          <strong>Composio Middle Path Integration:</strong> The pipeline attempted Google Sheets export via the Composio Python SDK (<code>composio</code>). Due to SDK v3 OAuth connected account constraints, the agent caught the SDK exception and safely exported all 20 flagged items to <code>data/review.csv</code> with complete evidence trails and rationales.
         </p>
       </div>
     </section>
@@ -814,6 +966,12 @@ def build_site():
       </p>
       <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 14px; margin-bottom: 14px;">
         <code>python -m agent.run --pass 2 --app "Attio"</code>
+      </div>
+      <p style="font-size: 0.88rem; color: var(--text-muted);">
+        To compute hold-out accuracy benchmarks once gold labels are filled in <code>data/gold_holdout.csv</code>:
+      </p>
+      <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 14px; margin-bottom: 14px;">
+        <code>python -m analysis.accuracy</code>
       </div>
       <p style="font-size: 0.88rem; color: var(--text-muted);">
         Or trigger the GitHub Actions workflow directly via GitHub CLI:
@@ -857,11 +1015,24 @@ def build_site():
         const tools = item.estimated_tool_count?.value || item.estimated_tool_count || 10;
 
         const tr = document.createElement('tr');
+        tr.id = `row-${{item.id}}`;
         tr.style.cursor = 'pointer';
         tr.onclick = () => toggleRow(item.id);
         tr.innerHTML = `
           <td><strong>${{item.id}}</strong></td>
-          <td><strong>${{item.name}}</strong></td>
+          <td>
+            <strong>${{item.name}}</strong>
+            <details class="no-js-details" style="margin-top: 4px; font-size: 0.8rem; color: var(--text-muted);" onclick="event.stopPropagation();">
+              <summary style="cursor: pointer; color: var(--primary);">Evidence &amp; Details</summary>
+              <div style="padding: 8px; background: var(--surface-2); border-radius: 4px; margin-top: 6px; line-height: 1.45; border: 1px solid var(--border);">
+                <p style="margin-bottom: 4px;"><strong>Overview:</strong> ${{item.one_liner?.value || ''}}</p>
+                <p style="margin-bottom: 4px;"><strong>Auth (${{auths.join(', ')}}):</strong> <a href="${{item.auth_methods?.evidence_url || '#'}}" target="_blank" rel="noopener" style="color: var(--primary);">Auth Source &rarr;</a></p>
+                <p class="quote-box" style="margin-bottom: 6px;">"${{item.auth_methods?.evidence_quote || ''}}"</p>
+                <p style="margin-bottom: 4px;"><strong>Buildability (${{bVal}}):</strong> Blocker: ${{blocker}} &bull; <a href="${{item.buildability?.evidence_url || '#'}}" target="_blank" rel="noopener" style="color: var(--primary);">Evidence Source &rarr;</a></p>
+                <p class="quote-box">"${{item.buildability?.evidence_quote || ''}}"</p>
+              </div>
+            </details>
+          </td>
           <td>${{item.category?.value || item.category || ''}}</td>
           <td>${{auths.map(a => `<span class="pill">${{a}}</span>`).join('')}}</td>
           <td><span class="pill">${{access}}</span></td>
@@ -912,7 +1083,9 @@ def build_site():
 
     function toggleRow(id) {{
       const tr = document.getElementById(`expand-${{id}}`);
-      tr.style.display = tr.style.display === 'none' ? 'table-row' : 'none';
+      if (tr) {{
+        tr.style.display = tr.style.display === 'none' ? 'table-row' : 'none';
+      }}
     }}
 
     function filterTable() {{
@@ -997,9 +1170,6 @@ def build_site():
       downloadAnchor.click();
       downloadAnchor.remove();
     }}
-
-    // Initial render
-    renderTable(dataset);
   </script>
 </body>
 </html>

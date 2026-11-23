@@ -1,240 +1,32 @@
 {
-  "metadata": {
-    "sample_total": 30,
-    "tuning_count": 12,
-    "hold_out_count": 18,
-    "sample_size_caveat": "Sample size is n=30 (12 tuning, 18 hold-out). Results reflect precision within the sample bounds."
-  },
+  "status": "pending_human_labeling",
+  "message": "Pending human gold labeling",
+  "gold_file": "data/gold_holdout.csv",
+  "total_holdout_apps": 18,
+  "labeled_holdout_count": 0,
+  "scored_fields": [
+    "auth_methods",
+    "access_model",
+    "existing_mcp",
+    "buildability"
+  ],
   "progression": {
     "pass_1": {
-      "hold_out_accuracy": 66.7,
-      "tuning_accuracy": 66.7,
-      "overall_sample_accuracy": 66.7,
-      "hold_out_details": {
-        "sample_size": 18,
-        "total_evals": 108,
-        "overall_accuracy_pct": 66.7,
-        "field_breakdown": {
-          "auth_methods": {
-            "correct": 8,
-            "partial": 7,
-            "wrong": 3,
-            "unsupported": 0
-          },
-          "access_model": {
-            "correct": 14,
-            "partial": 0,
-            "wrong": 3,
-            "unsupported": 1
-          },
-          "api_type": {
-            "correct": 14,
-            "partial": 1,
-            "wrong": 3,
-            "unsupported": 0
-          },
-          "existing_mcp": {
-            "correct": 11,
-            "partial": 0,
-            "wrong": 7,
-            "unsupported": 0
-          },
-          "buildability": {
-            "correct": 12,
-            "partial": 0,
-            "wrong": 6,
-            "unsupported": 0
-          },
-          "main_blocker": {
-            "correct": 9,
-            "partial": 0,
-            "wrong": 9,
-            "unsupported": 0
-          }
-        }
-      }
+      "hold_out_accuracy": "Pending human gold labeling",
+      "details": null
     },
     "pass_2": {
-      "hold_out_accuracy": 66.7,
-      "tuning_accuracy": 75.7,
-      "overall_sample_accuracy": 70.3,
-      "hold_out_details": {
-        "sample_size": 18,
-        "total_evals": 108,
-        "overall_accuracy_pct": 66.7,
-        "field_breakdown": {
-          "auth_methods": {
-            "correct": 4,
-            "partial": 9,
-            "wrong": 5,
-            "unsupported": 0
-          },
-          "access_model": {
-            "correct": 13,
-            "partial": 0,
-            "wrong": 4,
-            "unsupported": 1
-          },
-          "api_type": {
-            "correct": 13,
-            "partial": 3,
-            "wrong": 2,
-            "unsupported": 0
-          },
-          "existing_mcp": {
-            "correct": 13,
-            "partial": 0,
-            "wrong": 5,
-            "unsupported": 0
-          },
-          "buildability": {
-            "correct": 11,
-            "partial": 0,
-            "wrong": 7,
-            "unsupported": 0
-          },
-          "main_blocker": {
-            "correct": 12,
-            "partial": 0,
-            "wrong": 6,
-            "unsupported": 0
-          }
-        }
-      }
+      "hold_out_accuracy": "Pending human gold labeling",
+      "details": null
     },
     "pass_3": {
-      "hold_out_accuracy": 66.7,
-      "tuning_accuracy": 75.7,
-      "overall_sample_accuracy": 70.3,
-      "hold_out_details": {
-        "sample_size": 18,
-        "total_evals": 108,
-        "overall_accuracy_pct": 66.7,
-        "field_breakdown": {
-          "auth_methods": {
-            "correct": 4,
-            "partial": 9,
-            "wrong": 5,
-            "unsupported": 0
-          },
-          "access_model": {
-            "correct": 13,
-            "partial": 0,
-            "wrong": 4,
-            "unsupported": 1
-          },
-          "api_type": {
-            "correct": 13,
-            "partial": 3,
-            "wrong": 2,
-            "unsupported": 0
-          },
-          "existing_mcp": {
-            "correct": 13,
-            "partial": 0,
-            "wrong": 5,
-            "unsupported": 0
-          },
-          "buildability": {
-            "correct": 11,
-            "partial": 0,
-            "wrong": 7,
-            "unsupported": 0
-          },
-          "main_blocker": {
-            "correct": 12,
-            "partial": 0,
-            "wrong": 6,
-            "unsupported": 0
-          }
-        }
-      }
+      "hold_out_accuracy": "Pending human gold labeling",
+      "details": null
     },
     "final": {
-      "hold_out_accuracy": 70.4,
-      "tuning_accuracy": 75.7,
-      "overall_sample_accuracy": 72.5,
-      "hold_out_details": {
-        "sample_size": 18,
-        "total_evals": 108,
-        "overall_accuracy_pct": 70.4,
-        "field_breakdown": {
-          "auth_methods": {
-            "correct": 4,
-            "partial": 9,
-            "wrong": 5,
-            "unsupported": 0
-          },
-          "access_model": {
-            "correct": 13,
-            "partial": 0,
-            "wrong": 4,
-            "unsupported": 1
-          },
-          "api_type": {
-            "correct": 13,
-            "partial": 3,
-            "wrong": 2,
-            "unsupported": 0
-          },
-          "existing_mcp": {
-            "correct": 13,
-            "partial": 0,
-            "wrong": 5,
-            "unsupported": 0
-          },
-          "buildability": {
-            "correct": 14,
-            "partial": 0,
-            "wrong": 4,
-            "unsupported": 0
-          },
-          "main_blocker": {
-            "correct": 13,
-            "partial": 0,
-            "wrong": 5,
-            "unsupported": 0
-          }
-        }
-      }
+      "hold_out_accuracy": "Pending human gold labeling",
+      "details": null
     }
   },
-  "misses": [
-    {
-      "id": 67,
-      "app": "Snowflake",
-      "field": "buildability",
-      "agent_claim": "yellow",
-      "truth": "green",
-      "root_cause": "Snowflake SQL REST API and official enterprise connectors",
-      "caught_by_loop": "Pass 3 rule check / review queue"
-    },
-    {
-      "id": 91,
-      "app": "NotebookLM",
-      "field": "buildability",
-      "agent_claim": "green",
-      "truth": "yellow",
-      "root_cause": "Gated behind Google Cloud Gemini Enterprise licensing",
-      "caught_by_loop": "Pass 3 rule check / review queue"
-    },
-    {
-      "id": 25,
-      "app": "Pumble",
-      "field": "buildability",
-      "agent_claim": "yellow",
-      "truth": "green",
-      "root_cause": "Team chat app with webhook and API bot integration",
-      "caught_by_loop": "Pass 3 rule check / review queue"
-    },
-    {
-      "id": 59,
-      "app": "Waterfall.io",
-      "field": "buildability",
-      "agent_claim": "green",
-      "truth": "yellow",
-      "root_cause": "B2B data provider requiring enterprise account and contract",
-      "caught_by_loop": "Pass 3 rule check / review queue"
-    }
-  ]
+  "verification_loop_note": "Verification loops (Pass 2 to Pass 3) produced 0.0% accuracy movement on hold-out apps when evaluated against preliminary baseline checks. Official benchmark accuracy will only be published once data/gold_holdout.csv is human-labeled directly from vendor documentation."
 }

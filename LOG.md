@@ -144,5 +144,57 @@ Composio turns external applications and SaaS platforms into agentic tools that 
 ### Phase 5: Pattern & Strategic Analysis
 - 54.0% of target apps rely on OAuth2 (54/100), but over 36% gate managed OAuth distribution behind app review or developer agreements.
 - 74.0% offer immediate self-serve developer access (74/100), representing quick-win toolkit opportunities.
-- 66 apps are greenlit for immediate toolkit development (`green`), 30 require per-instance configuration or partner approval (`yellow`), and 4 are blocked (`red`).
+- 67 apps are greenlit for immediate toolkit development (`green`), 30 require per-instance configuration or partner approval (`yellow`), and 3 are blocked (`red`).
+
+---
+
+## 3. Data Integrity & Verification Audit (Correction Record)
+
+### Transparent Breakdown of Previous Inconsistencies
+1. **Fabricated Page Numbers Discrepancy:**
+   - The web page previously displayed hardcoded HTML accuracy figures: Pass 1 (61.1%), Pass 2 (83.3%), Pass 3 (94.4%), Pass 4 (96.7%).
+   - These numbers were hardcoded strings in `site/build_site.py` and did NOT originate from any programmatic computation.
+   - Concurrently, `analysis/accuracy.py` evaluated against `data/gold.csv` produced: Pass 1 (66.7%), Pass 2 (70.3%), Pass 3 (70.3%), Final (72.5%) overall, and hold-out accuracy of 66.7%, 66.7%, 66.7%, 70.4%.
+   - Crucially, `data/gold.csv` was itself synthetically generated during Pass 1/2 without human verification from official documentation.
+   - **Action Taken:** ALL speculative accuracy numbers, ground truth columns, hits/misses, and claims of human gold auditing were scrubbed from the live page and replaced with "Pending human gold labeling".
+
+2. **Verification Loop Impact Reality:**
+   - Automated verification loops (Pass 2 to Pass 3) produced **0.0% movement** in hold-out accuracy (remaining flat at 66.7% on preliminary data).
+   - This zero-delta reality is now explicitly disclosed on the live site and in project documentation.
+
+3. **Blank Gold Labeling Sheet:**
+   - Authored `data/gold_holdout.csv` containing exclusively the 18 stratified hold-out apps with completely blank values for 4 critical fields: `auth_methods`, `access_model`, `existing_mcp`, and `buildability`.
+   - Updated `analysis/accuracy.py` to evaluate strictly against this file and only score rows that are populated. When 0 rows are labeled, it cleanly reports "Pending human gold labeling".
+
+4. **Human Interventions Aligned with Log:**
+   - Exactly 20 flagged rows routed to review queue (`data/review.csv`).
+   - Exactly 2 confirmed human-corrected errors:
+     - **Fathom (ID 93):** Agent searched only marketing docs, missing `developers.fathom.ai` and `api.fathom.ai/mcp`. Corrected from `red` to `green`.
+     - **Xero (ID 87):** Agent missed vendor GitHub org `github.com/XeroAPI/xero-mcp-server`. Corrected from `community` to `official`.
+
+5. **Vendor Domain Primary Grounding:**
+   - Re-sourced all factual claims directly to primary vendor domains, removing third-party links (unified.to, getknit.dev, mindcloud.co, prismatic.io):
+     - **Salesforce (ID 1):** `developer.salesforce.com` (OAuth2 Bearer token, free Developer Edition).
+     - **Meta Ads (ID 32):** `developers.facebook.com` (User & System User tokens, App Review for Advanced Access).
+     - **Sherlock (ID 58):** `github.com/sherlock-project/sherlock` (CLI tool, no auth, cli_or_local_only).
+     - **Mermaid CLI (ID 98):** `github.com/mermaid-js/mermaid-cli` (CLI tool, local headless compile, cli_or_local_only).
+     - **higgsfield (ID 97):** `docs.higgsfield.ai` & `higgsfield.ai/cli` (REST API key, official MCP).
+     - **Twilio (ID 22):** `twilio.com/docs/usage/api` (HTTP Basic authentication with Account SID / Auth Token).
+     - **LiveAgent (ID 16):** `faq.liveagent.com` & `QualityUnit/liveagent-mcp-server` (API v3 key, official MCP).
+
+6. **iPayX Domain Redo:**
+   - Corrected domain from defunct `ipayx.com` to `ipayx.ai/docs` and official repository `github.com/iPAYX-Technologies/mcp-fx-audit`.
+   - Reclassified from `red` to `green` (live remote streamable HTTP MCP server at `https://mcp.ipayx.ai/mcp`, zero auth, self-serve free).
+
+7. **Plaid MCP Tooling Clarification:**
+   - Clarified that the MCP server in `plaid/ai-coding-toolkit` is local developer/sandbox tooling (custom test users, mock data generation, test token generation, doc search), NOT production financial data access.
+   - Classified as `existing_mcp = official`, but `buildability = yellow` with `main_blocker = app_review` because production banking data requires security questionnaires, compliance review, and end-user Link OAuth flows.
+
+8. **Pattern Analysis & Blocker Rankings:**
+   - Excluded `'none'` when ranking blockers to show real bottlenecks (`app_review`, `self_hosted_per_instance`, `thin_or_unclear_docs`, etc.).
+   - Added auth-by-category breakdown and comprehensive Easy Wins (65 apps) vs Needs Outreach (15 apps) lists.
+
+9. **Static HTML Accessibility:**
+   - Re-built `site/build_site.py` to render all 100 rows directly into static HTML with `<details>` accordions inside table cells, enabling full accessibility without JavaScript while maintaining client-side search, filtering, and sorting enhancements.
+
 
