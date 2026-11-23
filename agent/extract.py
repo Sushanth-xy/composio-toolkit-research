@@ -113,12 +113,42 @@ def _sanitize_record_dict(data: Dict[str, Any], app_id: int, name: str) -> Dict[
     data["id"] = app_id
     data["name"] = name
 
+    # Sanitize estimated_tool_count
+    etc = data.get("estimated_tool_count")
+    if isinstance(etc, (int, float)):
+        data["estimated_tool_count"] = {
+            "value": int(etc),
+            "basis": "Estimated based on core API endpoint surface",
+            "confidence": "medium"
+        }
+    elif isinstance(etc, dict):
+        if "value" not in etc:
+            etc["value"] = 10
+        if "basis" not in etc:
+            etc["basis"] = "Estimated based on core API endpoint surface"
+        if "confidence" not in etc:
+            etc["confidence"] = "medium"
+        data["estimated_tool_count"] = etc
+    else:
+        data["estimated_tool_count"] = {
+            "value": 15,
+            "basis": "Standard toolkit estimate",
+            "confidence": "medium"
+        }
+
     # Sanitize existing_mcp
     mcp = data.get("existing_mcp", {})
     if isinstance(mcp, dict):
-        if mcp.get("value") not in ["official", "community", "none"]:
+        if mcp.get("value") not in ["official", "community", "none", "unknown"]:
             mcp["value"] = "none"
         data["existing_mcp"] = mcp
+    elif isinstance(mcp, str):
+        data["existing_mcp"] = {
+            "value": mcp if mcp in ["official", "community", "none"] else "none",
+            "evidence_url": "unknown",
+            "evidence_quote": "unknown",
+            "confidence": "medium"
+        }
 
     # Sanitize access_model
     acc = data.get("access_model", {})
@@ -127,6 +157,13 @@ def _sanitize_record_dict(data: Dict[str, Any], app_id: int, name: str) -> Dict[
         if acc.get("value") not in allowed_acc:
             acc["value"] = "self_serve_free"
         data["access_model"] = acc
+    elif isinstance(acc, str):
+        data["access_model"] = {
+            "value": acc if acc in ["self_serve_free", "self_serve_trial", "paid_plan_required", "app_review_required", "admin_approval", "partner_gated", "contact_sales", "not_applicable"] else "self_serve_free",
+            "evidence_url": "unknown",
+            "evidence_quote": "unknown",
+            "confidence": "medium"
+        }
 
     # Sanitize buildability
     bld = data.get("buildability", {})
@@ -134,6 +171,13 @@ def _sanitize_record_dict(data: Dict[str, Any], app_id: int, name: str) -> Dict[
         if bld.get("value") not in ["green", "yellow", "red"]:
             bld["value"] = "yellow"
         data["buildability"] = bld
+    elif isinstance(bld, str):
+        data["buildability"] = {
+            "value": bld if bld in ["green", "yellow", "red"] else "yellow",
+            "evidence_url": "unknown",
+            "evidence_quote": "unknown",
+            "confidence": "medium"
+        }
 
     # Sanitize main_blocker
     blk = data.get("main_blocker", {})
@@ -142,6 +186,13 @@ def _sanitize_record_dict(data: Dict[str, Any], app_id: int, name: str) -> Dict[
         if blk.get("value") not in allowed_blk:
             blk["value"] = "none"
         data["main_blocker"] = blk
+    elif isinstance(blk, str):
+        data["main_blocker"] = {
+            "value": blk if blk in ["app_review", "paid_plan", "partner_program", "contact_sales", "no_public_api", "cli_or_local_only", "self_hosted_per_instance", "complex_request_signing", "kyc_or_regional", "thin_or_unclear_docs", "enterprise_only", "waitlist", "none"] else "none",
+            "evidence_url": "unknown",
+            "evidence_quote": "unknown",
+            "confidence": "medium"
+        }
 
     # Sanitize app_type
     at = data.get("app_type", {})
@@ -149,6 +200,45 @@ def _sanitize_record_dict(data: Dict[str, Any], app_id: int, name: str) -> Dict[
         if at.get("value") not in ["hosted_saas", "self_hosted_oss", "cli_tool", "unclear"]:
             at["value"] = "hosted_saas"
         data["app_type"] = at
+    elif isinstance(at, str):
+        data["app_type"] = {
+            "value": at if at in ["hosted_saas", "self_hosted_oss", "cli_tool", "unclear"] else "hosted_saas",
+            "evidence_url": "unknown",
+            "evidence_quote": "unknown",
+            "confidence": "medium"
+        }
+
+    # Sanitize oauth_flows
+    of = data.get("oauth_flows", {})
+    if isinstance(of, dict):
+        val = of.get("value")
+        if isinstance(val, str):
+            of["value"] = [val] if val in ["auth_code", "client_credentials", "pkce", "device", "n/a"] else ["n/a"]
+        elif isinstance(val, list):
+            of["value"] = [v for v in val if v in ["auth_code", "client_credentials", "pkce", "device", "n/a"]] or ["n/a"]
+        data["oauth_flows"] = of
+    elif isinstance(of, list):
+        data["oauth_flows"] = {"value": [v for v in of if v in ["auth_code", "client_credentials", "pkce", "device", "n/a"]] or ["n/a"], "evidence_url": "unknown", "evidence_quote": "unknown", "confidence": "medium"}
+
+    # Sanitize auth_methods
+    am = data.get("auth_methods", {})
+    if isinstance(am, dict):
+        val = am.get("value")
+        if isinstance(val, str):
+            am["value"] = [val]
+        elif not isinstance(val, list):
+            am["value"] = ["other"]
+        data["auth_methods"] = am
+
+    # Sanitize api_type
+    apt = data.get("api_type", {})
+    if isinstance(apt, dict):
+        val = apt.get("value")
+        if isinstance(val, str):
+            apt["value"] = [val] if val in ["rest", "graphql", "soap", "websocket", "sdk_only", "cli_only", "none"] else ["rest"]
+        elif isinstance(val, list):
+            apt["value"] = [v for v in val if v in ["rest", "graphql", "soap", "websocket", "sdk_only", "cli_only", "none"]] or ["rest"]
+        data["api_type"] = apt
 
     return data
 
@@ -183,6 +273,7 @@ def _call_gemini_with_retry(prompt: str, temperature: float = 0.1) -> str:
                     print(f"[{model} rate limited] sleeping {wait_time}s before retry (attempt {attempt+1})...")
                     time.sleep(wait_time)
                 else:
+                    print(f"[{model} failed with non-rate-limit error]: {e}")
                     break
 
     raise RuntimeError("All Gemini models exhausted or failed for prompt.")

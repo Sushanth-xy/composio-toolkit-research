@@ -49,3 +49,34 @@ Composio turns external applications and SaaS platforms into agentic tools that 
   - Created directory layout (`data/`, `cache/`, `agent/`, `analysis/`, `site/`, `.github/workflows/`).
   - Created `.env.example` defining environment variables.
   - Authenticated GitHub CLI with user `Sushanth-xy`.
+
+### Phase 1: Schema Architecture & Dataset Seeding
+- **Date & Time:** 2026-11-23
+- **Actions:**
+  - Authored `data/apps.csv` containing all 100 applications categorized from Appendix A.
+  - Implemented `agent/schema.py` utilizing strict Pydantic models.
+  - Standardized all factual fields into `{value, evidence_url, evidence_quote, confidence}` tuples.
+  - Validated dry-run serialization and enum constraints against sample app (Attio).
+
+### Phase 2: Agent Baseline (Pass 1) & Multi-Angle Grounded Pipeline (Pass 2)
+- **Model Selection & Rate Limit Engineering:**
+  - Evaluated current Gemini models: `gemini-3.5-flash-lite` selected as primary extraction engine due to high speed and low latency.
+  - Identified Gemini Free Tier quota ceiling of 15 Requests Per Minute (15 RPM).
+  - Implemented thread-safe token bucket rate limiter in `agent/extract.py` with `MIN_INTERVAL = 4.2s` and exponential backoff retry.
+  - Added multi-model fallback cascade (`gemini-3.5-flash`, `gemini-3.1-flash-lite`) if primary model is saturated.
+- **Extraction Hardening:**
+  - Discovered edge cases in LLM outputs where `estimated_tool_count` was returned as a scalar integer rather than a dictionary. Implemented `_sanitize_record_dict()` in `agent/extract.py` to auto-normalize fields.
+  - Added `"unknown"` to `AuthMethod` and `ExistingMcpType` literals to handle apps with unstated auth/MCP details without raising Pydantic validation errors.
+- **Pass 1 Execution:**
+  - Ran baseline zero-shot extraction across all 100 apps.
+  - Saved to `data/results_pass1.jsonl`.
+- **Pass 2 Execution:**
+  - Executed 5 targeted search queries per app (`API authentication`, `getting started API credentials`, `pricing plans access`, `OAuth app review`, `rate limits openapi`).
+  - Fetched and cached official documentation pages by SHA256(URL).
+  - Queried official GitHub repositories and Composio catalog.
+  - Generated grounded citations with verbatim quotes.
+
+- **Search Provider Fallback (Tavily Quota Protection):**
+  - Received user notification of 80% Tavily credit consumption.
+  - Immediately transitioned primary discovery search to DuckDuckGo HTML parser and cached vendor hint URLs via `httpx`.
+  - Zero additional Tavily API calls dispatched, preserving user quota while maintaining grounded evidence collection.
