@@ -81,9 +81,9 @@ python site/build_site.py
 - `data/results_pass2.jsonl`: Multi-query grounded pipeline results with verbatim evidence.
 - `data/results_pass3.jsonl`: Verified results post-rule checks and quote validation.
 - `data/results_final.jsonl` & `.csv`: Final audited dataset with human review triage applied.
-- `data/gold.csv`: 30-app stratified benchmark (12 tuning, 18 hold-out).
+- `data/quote_audit.csv` & `.json`: Verbatim quote audit tracking char offsets and grounded agent inferences.
+- `data/gold_holdout.csv`: 18-app stratified hold-out benchmark template for human documentation audit.
 - `data/review.csv`: Review queue containing flagged low-confidence or ambiguous items.
-- `data/accuracy.json`: Precision progression and error taxonomy across passes.
 - `site/index.html`: Fully self-contained responsive case study dashboard deployed to GitHub Pages.
 
 ---

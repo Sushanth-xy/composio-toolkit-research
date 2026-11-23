@@ -125,7 +125,7 @@ def calculate_pass_accuracy(
     }
 
 
-def compute_all_accuracies(gold_path: str = "data/gold_holdout.csv") -> Dict[str, Any]:
+def compute_all_accuracies(gold_path: str = "data/gold_holdout.csv", output_json: Optional[str] = None) -> Dict[str, Any]:
     gold = load_holdout_gold(gold_path)
     labeled_apps = {aid for aid, row in gold.items() if any(row.get(f, "").strip() for f in SCORED_FIELDS)}
 
@@ -185,8 +185,17 @@ def compute_all_accuracies(gold_path: str = "data/gold_holdout.csv") -> Dict[str
                     f"Verification loops (Pass 2 to Pass 3) changed accuracy by {delta}% on the human-labeled hold-out set."
                 )
 
-    with open("data/accuracy.json", "w", encoding="utf-8") as f:
-        json.dump(report, f, indent=2)
+        if "final" in report["progression"]:
+            report["progression"]["final"]["is_independent_holdout_test"] = False
+            report["progression"]["final"]["note"] = (
+                "Pass 4 includes human corrections on several hold-out apps and is not an independent test; "
+                "hold-out accuracy is reported for Passes 1-3 only."
+            )
+
+    if output_json or len(labeled_apps) > 0:
+        target_path = output_json or "data/accuracy.json"
+        with open(target_path, "w", encoding="utf-8") as f:
+            json.dump(report, f, indent=2)
 
     return report
 

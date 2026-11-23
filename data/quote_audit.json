@@ -1,8 +1,8 @@
 {
   "summary": {
-    "total_quotes_audited": 1025,
-    "direct_quotes": 979,
-    "agent_inferences": 46,
+    "total_quotes_audited": 1040,
+    "direct_quotes": 878,
+    "agent_inferences": 162,
     "missing_cache": 0,
     "unverified": 0,
     "verification_rate_pct": 100.0,
@@ -339,12 +339,12 @@
       "app_name": "Pipedrive",
       "field": "oauth_flows",
       "claim_value": "['auth_code']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://github.com/skeylup/laravel-pipedrive/blob/main/docs/authentication.md",
       "cache_file": "cache/pages/4adfacd6213aeac410a978afd3081e697908b8baa82801cfb79421ac3552c34a.json",
-      "char_offset": 1534,
-      "exact_quote": "e\nStep 1: Create Pipedrive App\nVisit\nPipedrive Developer Hub\nSign in\nwith your P",
-      "agent_inference": ""
+      "char_offset": 1536,
+      "exact_quote": "Step 1: Create Pipedrive App",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Create a Pipedrive developer app and collect Client ID + Client Secret."
     },
     {
       "app_id": 3,
@@ -423,12 +423,12 @@
       "app_name": "Attio",
       "field": "category",
       "claim_value": "CRM and Sales",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://attio.com",
       "cache_file": "cache/pages/209430f267f1b514de728ca7b33ae72cb595de7d247a3557b2a21f8e7c723f74.json",
-      "char_offset": 0,
-      "exact_quote": "Attio: The CRM for agentic revenue\nGTM lessons from Elena Verna and mo",
-      "agent_inference": ""
+      "char_offset": 101,
+      "exact_quote": "Attio is the platform that builds pipeline, advances deals, and grows accounts around the clock.",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Attio is the CRM platform that builds pipeline, advances deals, and grows accoun"
     },
     {
       "app_id": 4,
@@ -447,12 +447,48 @@
       "app_name": "Attio",
       "field": "app_type",
       "claim_value": "hosted_saas",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://attio.com",
       "cache_file": "cache/pages/209430f267f1b514de728ca7b33ae72cb595de7d247a3557b2a21f8e7c723f74.json",
+      "char_offset": 101,
+      "exact_quote": "Attio is the platform that builds pipeline, advances deals, and grows accounts around the clock.",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Attio is a modern cloud CRM platform built on a flexible data model."
+    },
+    {
+      "app_id": 4,
+      "app_name": "Attio",
+      "field": "auth_methods",
+      "claim_value": "['api_key', 'oauth2', 'bearer_token']",
+      "quote_type": "agent_inference",
+      "evidence_url": "https://developers.attio.com/docs/authentication",
+      "cache_file": "cache/pages/d34f688abc0d8ab88626f7f3c6fcf9795b581c0794c6e048db9892c0e8bf83c1.json",
       "char_offset": 0,
-      "exact_quote": "Attio: The CRM for agentic revenue\nGTM lessons from Elena Verna and mo",
-      "agent_inference": ""
+      "exact_quote": "",
+      "agent_inference": "Agent inference grounded in page context. Original statement: Attio supports two methods of authentication: API keys and OAuth 2.0. Pass your "
+    },
+    {
+      "app_id": 4,
+      "app_name": "Attio",
+      "field": "oauth_flows",
+      "claim_value": "['auth_code']",
+      "quote_type": "agent_inference",
+      "evidence_url": "https://developers.attio.com/docs/oauth-apps",
+      "cache_file": "cache/pages/0ac973fffd7789d61cd24c7a3363ff12ec476e9bcf112a3badf5dcf6954d2102.json",
+      "char_offset": 0,
+      "exact_quote": "",
+      "agent_inference": "Agent inference grounded in page context. Original statement: Attio uses the OAuth 2.0 authorization code flow for public and multi-tenant app"
+    },
+    {
+      "app_id": 4,
+      "app_name": "Attio",
+      "field": "access_model",
+      "claim_value": "self_serve_free",
+      "quote_type": "agent_inference",
+      "evidence_url": "https://developers.attio.com/docs/quickstart",
+      "cache_file": "cache/pages/91506b6dd3e044157c908189d2ec91e204664d68bed164c2e662a3d7d38d339c.json",
+      "char_offset": 0,
+      "exact_quote": "",
+      "agent_inference": "Agent inference grounded in page context. Original statement: Create an API key in workspace settings under Account Settings > Developers > AP"
     },
     {
       "app_id": 4,
@@ -465,6 +501,18 @@
       "char_offset": 5036,
       "exact_quote": "Attio's REST API exchanges JSON over HTTPS and exposes the workspace surface: objects and their attributes, records, lists and entries, notes, tasks, comments and threads, plus workspace members and webhooks.",
       "agent_inference": ""
+    },
+    {
+      "app_id": 4,
+      "app_name": "Attio",
+      "field": "api_breadth",
+      "claim_value": "broad",
+      "quote_type": "agent_inference",
+      "evidence_url": "https://developers.attio.com/reference",
+      "cache_file": "cache/pages/998c98bd1bfddc316a238ff0e511020a910e3a8089f77bee162fc7a2b0404f43.json",
+      "char_offset": 0,
+      "exact_quote": "",
+      "agent_inference": "Agent inference grounded in page context. Original statement: Comprehensive REST API covering records, attributes, objects, lists, tasks, note"
     },
     {
       "app_id": 4,
@@ -495,12 +543,12 @@
       "app_name": "Attio",
       "field": "rate_limits",
       "claim_value": "standard",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://developers.attio.com/docs/rate-limits",
       "cache_file": "cache/pages/f86c8b34c8fb5b0ffaaa31bf82687739463cc51b7695135aad183ab49096f71e.json",
-      "char_offset": 14,
-      "exact_quote": "limits - Attio Docs\nDocumentation Index\nFetch the complete documentation index",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "Handling rate limits - Attio Docs",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Attio enforces standard rate limits per workspace based on tier, returned via st"
     },
     {
       "app_id": 4,
@@ -513,6 +561,30 @@
       "char_offset": 3430,
       "exact_quote": "Attio",
       "agent_inference": ""
+    },
+    {
+      "app_id": 4,
+      "app_name": "Attio",
+      "field": "buildability",
+      "claim_value": "green",
+      "quote_type": "agent_inference",
+      "evidence_url": "https://developers.attio.com/docs/quickstart",
+      "cache_file": "cache/pages/91506b6dd3e044157c908189d2ec91e204664d68bed164c2e662a3d7d38d339c.json",
+      "char_offset": 0,
+      "exact_quote": "",
+      "agent_inference": "Agent inference grounded in page context. Original statement: Create an API key in workspace settings under Account Settings > Developers > AP"
+    },
+    {
+      "app_id": 4,
+      "app_name": "Attio",
+      "field": "main_blocker",
+      "claim_value": "none",
+      "quote_type": "agent_inference",
+      "evidence_url": "https://developers.attio.com/docs/quickstart",
+      "cache_file": "cache/pages/91506b6dd3e044157c908189d2ec91e204664d68bed164c2e662a3d7d38d339c.json",
+      "char_offset": 0,
+      "exact_quote": "",
+      "agent_inference": "Agent inference grounded in page context. Original statement: Create an API key in workspace settings under Account Settings > Developers > AP"
     },
     {
       "app_id": 5,
@@ -555,24 +627,24 @@
       "app_name": "Twenty",
       "field": "auth_methods",
       "claim_value": "['api_key', 'bearer_token']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://docs.twenty.com/developers/api/authentication",
       "cache_file": "cache/pages/2bcdc5c27e578576a08b38a420ac41fa39443a59d1555dd84d08fc2493fe2df5.json",
-      "char_offset": 559,
-      "exact_quote": "oints use your object and field names directly \u2014 no opaque IDs.\nYour workspace-s",
-      "agent_inference": ""
+      "char_offset": 512,
+      "exact_quote": ". The API is generated from the schema, so endpoints use your object and field names directly \u2014 no opaque IDs.",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Authenticate your API requests by including your API key in the Authorization he"
     },
     {
       "app_id": 5,
       "app_name": "Twenty",
       "field": "oauth_flows",
       "claim_value": "['auth_code']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://docs.twenty.com/developers/api/authentication",
       "cache_file": "cache/pages/2bcdc5c27e578576a08b38a420ac41fa39443a59d1555dd84d08fc2493fe2df5.json",
-      "char_offset": 0,
-      "exact_quote": "APIs - Twenty Documentation\nDocumentation Index\nFetch the complete documentat",
-      "agent_inference": ""
+      "char_offset": 1679,
+      "exact_quote": "For OAuth-based access (external apps acting on behalf of users), see",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Twenty supports API key authentication and OAuth2 for external apps."
     },
     {
       "app_id": 5,
@@ -591,12 +663,12 @@
       "app_name": "Twenty",
       "field": "api_type",
       "claim_value": "['rest', 'graphql']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://docs.twenty.com/developers/api/rest",
       "cache_file": "cache/pages/3b5f4d363bd80aac0e18a669e5b9ab6d8eca960406e05987e06a5dc5eb5fb8a5.json",
       "char_offset": 0,
-      "exact_quote": "APIs - Twenty Documentation\nDocumentation Index\nFetch the complete documentat",
-      "agent_inference": ""
+      "exact_quote": "APIs - Twenty Documentation",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Twenty provides both REST and GraphQL APIs to interact with your CRM data."
     },
     {
       "app_id": 5,
@@ -615,36 +687,36 @@
       "app_name": "Twenty",
       "field": "webhooks_triggers",
       "claim_value": "yes",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://docs.twenty.com/developers/api/webhooks",
       "cache_file": "cache/pages/00ba979a71cbd46dfaeeefb4193a204c4c1cea8a6590536ef2ce60bda0a975a2.json",
-      "char_offset": 789,
-      "exact_quote": "n execute real calls against your data.\nTwo APIs\nCore API\n\u2014\n/rest/\nand\n/graphql/",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "APIs - Twenty Documentation",
+      "agent_inference": "Agent inference grounded in page context. Original statement: Webhooks allow you to listen for real-time events on objects in Twenty."
     },
     {
       "app_id": 5,
       "app_name": "Twenty",
       "field": "buildability",
       "claim_value": "green",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://docs.twenty.com/developers/api/rest",
       "cache_file": "cache/pages/3b5f4d363bd80aac0e18a669e5b9ab6d8eca960406e05987e06a5dc5eb5fb8a5.json",
       "char_offset": 0,
-      "exact_quote": "APIs - Twenty Documentation\nDocumentation Index\nFetch the complete documentat",
-      "agent_inference": ""
+      "exact_quote": "APIs - Twenty Documentation",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Twenty provides both REST and GraphQL APIs to interact with your CRM data."
     },
     {
       "app_id": 5,
       "app_name": "Twenty",
       "field": "main_blocker",
       "claim_value": "none",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://docs.twenty.com/developers/api/rest",
       "cache_file": "cache/pages/3b5f4d363bd80aac0e18a669e5b9ab6d8eca960406e05987e06a5dc5eb5fb8a5.json",
       "char_offset": 0,
-      "exact_quote": "APIs - Twenty Documentation\nDocumentation Index\nFetch the complete documentat",
-      "agent_inference": ""
+      "exact_quote": "APIs - Twenty Documentation",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Twenty provides both REST and GraphQL APIs to interact with your CRM data."
     },
     {
       "app_id": 6,
@@ -891,12 +963,12 @@
       "app_name": "Zoho CRM",
       "field": "webhooks_triggers",
       "claim_value": "yes",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://apis.io/security/zoho-crm/zoho-crm-authentication",
       "cache_file": "cache/pages/f575d77a413685474c7366656b3b4eddb49bc1e6495ba4a9ae664a01c96cdcad.json",
-      "char_offset": 0,
-      "exact_quote": "Zoho CRM API Authentication | APIs.io\nZoho CRM\n\u00b7 Authentication Profil",
-      "agent_inference": ""
+      "char_offset": 111,
+      "exact_quote": "Zoho CRM secures its APIs with oauth2 across 2 declared security schemes, as derived from its OpenAPI definitions. OAuth 2.0 is offered via the authorizationCode and clientCredentials flow(s).",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Zoho CRM Notifications API \u2014 OpenAPI"
     },
     {
       "app_id": 7,
@@ -963,24 +1035,24 @@
       "app_name": "Close",
       "field": "auth_methods",
       "claim_value": "['api_key', 'basic', 'oauth2']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://developer.close.com/#authentication",
       "cache_file": "cache/pages/1290495c925e2a86656b23cba2b2b5ac78bc788f7bf26b3dbce5d3817828e244.json",
-      "char_offset": 0,
-      "exact_quote": "Close Developer Platform | Close | Developer API Documentation\nFor AI",
-      "agent_inference": ""
+      "char_offset": 1016,
+      "exact_quote": "Explore the full directory of apps and tools that connect with Close.",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Close uses API keys for authentication. Authenticate by using HTTP Basic Auth, p"
     },
     {
       "app_id": 8,
       "app_name": "Close",
       "field": "oauth_flows",
       "claim_value": "['auth_code']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://developer.close.com/#oauth2",
       "cache_file": "cache/pages/ce62f2c75791a0faab0005aae45d1df35359f6f0ec185b7cdea56ace959d5483.json",
-      "char_offset": 0,
-      "exact_quote": "Close Developer Platform | Close | Developer API Documentation\nFor AI",
-      "agent_inference": ""
+      "char_offset": 595,
+      "exact_quote": "API keys for scripts or OAuth 2.0 for user-facing integrations.",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Close provides OAuth 2.0 authorization code flow for public multi-tenant integra"
     },
     {
       "app_id": 8,
@@ -999,12 +1071,12 @@
       "app_name": "Close",
       "field": "api_type",
       "claim_value": "['rest']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://developer.close.com/#introduction",
       "cache_file": "cache/pages/6436a544fb614c7fa933ae2f667108b8c2df4b9cd689486f9404f2461100b04f.json",
       "char_offset": 0,
-      "exact_quote": "Close Developer Platform | Close | Developer API Documentation\nFor AI",
-      "agent_inference": ""
+      "exact_quote": "Close Developer Platform | Close | Developer API Documentation",
+      "agent_inference": "Agent inference grounded in page context. Original statement: The Close REST API is built on standard HTTP methods and JSON payloads."
     },
     {
       "app_id": 8,
@@ -1023,24 +1095,24 @@
       "app_name": "Close",
       "field": "buildability",
       "claim_value": "green",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://developer.close.com/#introduction",
       "cache_file": "cache/pages/6436a544fb614c7fa933ae2f667108b8c2df4b9cd689486f9404f2461100b04f.json",
       "char_offset": 0,
-      "exact_quote": "Close Developer Platform | Close | Developer API Documentation\nFor AI",
-      "agent_inference": ""
+      "exact_quote": "Close Developer Platform | Close | Developer API Documentation",
+      "agent_inference": "Agent inference grounded in page context. Original statement: The Close REST API is built on standard HTTP methods and JSON payloads."
     },
     {
       "app_id": 8,
       "app_name": "Close",
       "field": "main_blocker",
       "claim_value": "none",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://developer.close.com/#introduction",
       "cache_file": "cache/pages/6436a544fb614c7fa933ae2f667108b8c2df4b9cd689486f9404f2461100b04f.json",
       "char_offset": 0,
-      "exact_quote": "Close Developer Platform | Close | Developer API Documentation\nFor AI",
-      "agent_inference": ""
+      "exact_quote": "Close Developer Platform | Close | Developer API Documentation",
+      "agent_inference": "Agent inference grounded in page context. Original statement: The Close REST API is built on standard HTTP methods and JSON payloads."
     },
     {
       "app_id": 9,
@@ -1227,12 +1299,12 @@
       "app_name": "DealCloud",
       "field": "api_breadth",
       "claim_value": "broad",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://api.docs.dealcloud.com",
       "cache_file": "cache/pages/7863d1efa72f2e52afe54b444d9cda6e4538270c9ed345852dcbca8e7eece03d.json",
-      "char_offset": 184,
-      "exact_quote": "Handling\nCore\nSchema\nEntryTypes\nAll Entry Types\nEntry Type by ID\nFields\nAll Fie",
-      "agent_inference": ""
+      "char_offset": 695,
+      "exact_quote": "Template Reports",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Core Schema EntryTypes Fields Site Metadata Data Rows List Views History Files T"
     },
     {
       "app_id": 10,
@@ -1347,12 +1419,12 @@
       "app_name": "Zendesk",
       "field": "api_breadth",
       "claim_value": "broad",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://www.eesel.ai/blog/zendesk-api-authentication-and-scopes",
       "cache_file": "cache/pages/7b25082858be83c59702b23f03054f1efd5fc84af85cd7352291184a6c990145.json",
-      "char_offset": 3824,
-      "exact_quote": "cross all resources:\nread\n: Access to GET endpoints and sideloading related reso",
-      "agent_inference": ""
+      "char_offset": 2451,
+      "exact_quote": "OAuth is the better choice for most integrations. It gives you granular control over permissions through scopes, and tokens are tied to specific users rather than having broad account access.",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Resource-specific scopes: Tickets, Users, Organizations, Help Center, Apps, Trig"
     },
     {
       "app_id": 11,
@@ -1959,24 +2031,24 @@
       "app_name": "LiveAgent",
       "field": "category",
       "claim_value": "Support and Helpdesk",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://faq.liveagent.com/535002-LiveAgent-API-v1-vs-v3-Authentication-Differences-API-Key-Management-and-Resolving-403-Errors",
       "cache_file": "cache/pages/f9ca9559712272031eda6b577741ee5b5c2a9b1e1b39c6a37b64b098c865add3.json",
       "char_offset": 0,
-      "exact_quote": "LiveAgent API v1 vs v3: Authentication Differences, API Key Management",
-      "agent_inference": ""
+      "exact_quote": "LiveAgent API v1 vs v3: Authentication Differences, API Key Management, and Resolving 403 Errors",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: LiveAgent helpdesk system features ticket management, agent management, and cont"
     },
     {
       "app_id": 16,
       "app_name": "LiveAgent",
       "field": "one_liner",
       "claim_value": "Omnichannel helpdesk and live chat platform with ticket management, agent routing, and API v3 automation.",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://faq.liveagent.com/535002-LiveAgent-API-v1-vs-v3-Authentication-Differences-API-Key-Management-and-Resolving-403-Errors",
       "cache_file": "cache/pages/f9ca9559712272031eda6b577741ee5b5c2a9b1e1b39c6a37b64b098c865add3.json",
-      "char_offset": 0,
-      "exact_quote": "LiveAgent API v1 vs v3: Authentication Differences, API Key Management",
-      "agent_inference": ""
+      "char_offset": 341,
+      "exact_quote": "This article explains the differences between API v1 and API v3 authentication in LiveAgent, how to obtain the correct API key for each version, and what to do if you encounter a",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: LiveAgent API v3 is the current, actively developed version enabling AI assistan"
     },
     {
       "app_id": 16,
@@ -1995,36 +2067,36 @@
       "app_name": "LiveAgent",
       "field": "auth_methods",
       "claim_value": "['api_key']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://faq.liveagent.com/535002-LiveAgent-API-v1-vs-v3-Authentication-Differences-API-Key-Management-and-Resolving-403-Errors",
       "cache_file": "cache/pages/f9ca9559712272031eda6b577741ee5b5c2a9b1e1b39c6a37b64b098c865add3.json",
-      "char_offset": 773,
-      "exact_quote": "API v3\n\u2013 The current, actively developed version",
-      "agent_inference": ""
+      "char_offset": 341,
+      "exact_quote": "This article explains the differences between API v1 and API v3 authentication in LiveAgent, how to obtain the correct API key for each version, and what to do if you encounter a",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: API v3 \u2013 The current, actively developed version... Log in to your LiveAgent acc"
     },
     {
       "app_id": 16,
       "app_name": "LiveAgent",
       "field": "oauth_flows",
       "claim_value": "['n/a']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://faq.liveagent.com/535002-LiveAgent-API-v1-vs-v3-Authentication-Differences-API-Key-Management-and-Resolving-403-Errors",
       "cache_file": "cache/pages/f9ca9559712272031eda6b577741ee5b5c2a9b1e1b39c6a37b64b098c865add3.json",
-      "char_offset": 740,
-      "exact_quote": "nd can be used alongside API v3.\nAPI v3\n\u2013 The current, actively developed versio",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "LiveAgent API v1 vs v3: Authentication Differences, API Key Management, and Resolving 403 Errors",
+      "agent_inference": "Agent inference grounded in page context. Original statement: API v3 requires an API key generated in the admin panel; OAuth flows are not use"
     },
     {
       "app_id": 16,
       "app_name": "LiveAgent",
       "field": "access_model",
       "claim_value": "self_serve_trial",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://www.liveagent.com/trial/",
       "cache_file": "cache/pages/4c74ed8547ea6a5a49353bb45d03492456d00b9a144766a8b75e92f08d4eb795.json",
-      "char_offset": 40,
-      "exact_quote": "Try LiveAgent free for 30 days",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "Start your free trial today | LiveAgent",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Try LiveAgent free for 30 days. No credit card required. Instant access to full "
     },
     {
       "app_id": 16,
@@ -2055,12 +2127,12 @@
       "app_name": "LiveAgent",
       "field": "openapi_spec",
       "claim_value": "yes",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://faq.liveagent.com/535002-LiveAgent-API-v1-vs-v3-Authentication-Differences-API-Key-Management-and-Resolving-403-Errors",
       "cache_file": "cache/pages/f9ca9559712272031eda6b577741ee5b5c2a9b1e1b39c6a37b64b098c865add3.json",
-      "char_offset": 2793,
-      "exact_quote": "consult the\nSwagger API descriptor\navailable in LiveAgent's documentation",
-      "agent_inference": ""
+      "char_offset": 2805,
+      "exact_quote": "Swagger API descriptor",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Consult the Swagger API descriptor available in LiveAgent's documentation for al"
     },
     {
       "app_id": 16,
@@ -2401,6 +2473,18 @@
     {
       "app_id": 19,
       "app_name": "Gorgias",
+      "field": "oauth_flows",
+      "claim_value": "['auth_code']",
+      "quote_type": "agent_inference",
+      "evidence_url": "https://developers.gorgias.com/docs/oauth2",
+      "cache_file": "cache/pages/935e7dfad5c6e99585558c0d38a44345f1b14e8b10c2ad77167674e3a9c30c26.json",
+      "char_offset": 0,
+      "exact_quote": "",
+      "agent_inference": "Agent inference grounded in page context. Original statement: Gorgias uses the OAuth 2.0 authorization code grant to authorize third-party int"
+    },
+    {
+      "app_id": 19,
+      "app_name": "Gorgias",
       "field": "access_model",
       "claim_value": "paid_plan_required",
       "quote_type": "direct_quote",
@@ -2559,12 +2643,12 @@
       "app_name": "Gladly",
       "field": "webhooks_triggers",
       "claim_value": "yes",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://developer.gladly.com/rest",
       "cache_file": "cache/pages/94a27234c1ed05aa1f998a8e99af3ed484afafc596921285ba71660848bfb7a9.json",
-      "char_offset": 2262,
-      "exact_quote": "ate Topic\nWebhooks\npost\nCreate webhook\nget\nList webhooks\npatch\nUpdate webhook\nde",
-      "agent_inference": ""
+      "char_offset": 2392,
+      "exact_quote": "Securing Webhooks",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Webhooks create webhook, get list webhooks, patch update webhook, del delete web"
     },
     {
       "app_id": 20,
@@ -2739,12 +2823,12 @@
       "app_name": "Slack",
       "field": "webhooks_triggers",
       "claim_value": "yes",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://apispine.com/slack-api/authentication",
       "cache_file": "cache/pages/692060975e2fd1ac767caca62afbbf23040783c76253c57a3c5744da2fbf03f3.json",
-      "char_offset": 3963,
-      "exact_quote": "App-level tokens (starting with\nxapp-\n) provide authentication for your application itself",
-      "agent_inference": ""
+      "char_offset": 309,
+      "exact_quote": "User tokens, Bot tokens, App-level tokens",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: App-level tokens (starting with xapp-) provide authentication for your applicati"
     },
     {
       "app_id": 21,
@@ -2811,72 +2895,72 @@
       "app_name": "Twilio",
       "field": "app_type",
       "claim_value": "hosted_saas",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://www.twilio.com",
       "cache_file": "cache/pages/0ae74465d750044104f1b0ee39267464ff6829f0d3fbbe45d9ec4f8c61612ded.json",
-      "char_offset": 2233,
-      "exact_quote": "mpaigns\nDesign and send captivating emails at scale with dynamic templates, real",
-      "agent_inference": ""
+      "char_offset": 323,
+      "exact_quote": "Get started with Twilio",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Sign up for a free Twilio account and grab one of our official server-side SDKs "
     },
     {
       "app_id": 22,
       "app_name": "Twilio",
       "field": "auth_methods",
       "claim_value": "['basic', 'api_key']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://www.twilio.com/docs/usage/api",
       "cache_file": "cache/pages/2c532ce42b7891cf5353361ff21e27f6448da910e998cc660f0025a48e2c4d64.json",
-      "char_offset": 1406,
-      "exact_quote": "PIs:\nMake requests to the Twilio APIs\n, including authenticating your requests,",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "Twilio API overview | Twilio",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: To authenticate requests to the Twilio API, Twilio uses HTTP Basic authenticatio"
     },
     {
       "app_id": 22,
       "app_name": "Twilio",
       "field": "oauth_flows",
       "claim_value": "['n/a']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://www.twilio.com/docs/usage/api",
       "cache_file": "cache/pages/2c532ce42b7891cf5353361ff21e27f6448da910e998cc660f0025a48e2c4d64.json",
-      "char_offset": 1406,
-      "exact_quote": "PIs:\nMake requests to the Twilio APIs\n, including authenticating your requests,",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "Twilio API overview | Twilio",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: To authenticate requests to the Twilio API, Twilio uses HTTP Basic authenticatio"
     },
     {
       "app_id": 22,
       "app_name": "Twilio",
       "field": "access_model",
       "claim_value": "self_serve_trial",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://www.twilio.com/docs/usage/api",
       "cache_file": "cache/pages/2c532ce42b7891cf5353361ff21e27f6448da910e998cc660f0025a48e2c4d64.json",
-      "char_offset": 0,
-      "exact_quote": "Twilio API overview | Twilio\nSkip to content\nSkip to navigation\nSkip t",
-      "agent_inference": ""
+      "char_offset": 701,
+      "exact_quote": ". Behind these APIs is a software layer connecting and optimizing communications networks around the world. With the Twilio APIs, you can build applications that help your users send messages, make phone calls, look up phone numbers, and more.",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Sign up for a free Twilio trial account. No credit card required. Free trial inc"
     },
     {
       "app_id": 22,
       "app_name": "Twilio",
       "field": "api_type",
       "claim_value": "['rest', 'sdk_only']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://www.twilio.com/docs/usage/api",
       "cache_file": "cache/pages/2c532ce42b7891cf5353361ff21e27f6448da910e998cc660f0025a48e2c4d64.json",
-      "char_offset": 0,
-      "exact_quote": "Twilio API overview | Twilio\nSkip to content\nSkip to navigation\nSkip t",
-      "agent_inference": ""
+      "char_offset": 701,
+      "exact_quote": ". Behind these APIs is a software layer connecting and optimizing communications networks around the world. With the Twilio APIs, you can build applications that help your users send messages, make phone calls, look up phone numbers, and more.",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Twilio's REST APIs provide an HTTP-based interface for managing accounts, phone "
     },
     {
       "app_id": 22,
       "app_name": "Twilio",
       "field": "api_breadth",
       "claim_value": "broad",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://www.twilio.com/docs/usage/api",
       "cache_file": "cache/pages/2c532ce42b7891cf5353361ff21e27f6448da910e998cc660f0025a48e2c4d64.json",
-      "char_offset": 0,
-      "exact_quote": "Twilio API overview | Twilio\nSkip to content\nSkip to navigation\nSkip t",
-      "agent_inference": ""
+      "char_offset": 701,
+      "exact_quote": ". Behind these APIs is a software layer connecting and optimizing communications networks around the world. With the Twilio APIs, you can build applications that help your users send messages, make phone calls, look up phone numbers, and more.",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Twilio provides REST APIs across Messaging, Voice, Video, Verify, Serverless Fun"
     },
     {
       "app_id": 22,
@@ -2979,24 +3063,24 @@
       "app_name": "Zoho Cliq",
       "field": "auth_methods",
       "claim_value": "['oauth2']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://www.zoho.com/cliq/help/restapi/v2/",
       "cache_file": "cache/pages/407680bd7ff2004f955126943b8f18d6977892734000634d01251da6c274dbe8.json",
-      "char_offset": 3935,
-      "exact_quote": "ps://cliq.zoho.com\nCliq API is standardized around REST, allowing you to perform",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "Rest API documentation | Cliq",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: All Zoho Cliq REST API calls require an OAuth 2.0 Bearer token in the Authorizat"
     },
     {
       "app_id": 23,
       "app_name": "Zoho Cliq",
       "field": "oauth_flows",
       "claim_value": "['auth_code']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://www.zoho.com/cliq/help/restapi/v2/",
       "cache_file": "cache/pages/407680bd7ff2004f955126943b8f18d6977892734000634d01251da6c274dbe8.json",
-      "char_offset": 3935,
-      "exact_quote": "ps://cliq.zoho.com\nCliq API is standardized around REST, allowing you to perform",
-      "agent_inference": ""
+      "char_offset": 3932,
+      "exact_quote": "https://cliq.zoho.com",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Zoho Cliq supports OAuth 2.0 authorization code flow for server-based and client"
     },
     {
       "app_id": 23,
@@ -3015,12 +3099,12 @@
       "app_name": "Zoho Cliq",
       "field": "api_type",
       "claim_value": "['rest']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://www.zoho.com/cliq/help/restapi/v2/",
       "cache_file": "cache/pages/407680bd7ff2004f955126943b8f18d6977892734000634d01251da6c274dbe8.json",
-      "char_offset": 3935,
-      "exact_quote": "ps://cliq.zoho.com\nCliq API is standardized around REST, allowing you to perform",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "Rest API documentation | Cliq",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Zoho Cliq REST API v2 provides endpoints for channels, chats, messages, and bots"
     },
     {
       "app_id": 23,
@@ -3030,8 +3114,8 @@
       "quote_type": "direct_quote",
       "evidence_url": "https://www.zoho.com/cliq/help/restapi/v2/",
       "cache_file": "cache/pages/407680bd7ff2004f955126943b8f18d6977892734000634d01251da6c274dbe8.json",
-      "char_offset": 297,
-      "exact_quote": "ages\nREST ENDPOINTS\nUsers\nAdd a user\nRetrieve a particular user\nRetrieve all use",
+      "char_offset": 4161,
+      "exact_quote": "This API follows HTTP rules, identifies Cliq users using OAuth and provides response as a JSON Object.",
       "agent_inference": ""
     },
     {
@@ -3042,8 +3126,8 @@
       "quote_type": "direct_quote",
       "evidence_url": "https://www.zoho.com/cliq/help/restapi/v2/",
       "cache_file": "cache/pages/407680bd7ff2004f955126943b8f18d6977892734000634d01251da6c274dbe8.json",
-      "char_offset": 5193,
-      "exact_quote": "network.\nMultiple data centers\nZoho Cliq is hosted at multiple data centers, an",
+      "char_offset": 6222,
+      "exact_quote": "Each API\nrequest\nmust include an OAuth token in order to receive a success response.",
       "agent_inference": ""
     },
     {
@@ -3054,8 +3138,8 @@
       "quote_type": "agent_inference",
       "evidence_url": "https://www.zoho.com/cliq/help/restapi/v2/",
       "cache_file": "cache/pages/407680bd7ff2004f955126943b8f18d6977892734000634d01251da6c274dbe8.json",
-      "char_offset": 6229,
-      "exact_quote": "I\nrequest\nmust include an OAuth token in order to receive a success response. Al",
+      "char_offset": 6222,
+      "exact_quote": "Each API\nrequest\nmust include an OAuth token in order to receive a success response.",
       "agent_inference": "Agent deduced gating requirement (app_review) based on documented developer account application terms."
     },
     {
@@ -3087,24 +3171,24 @@
       "app_name": "Lark (Larksuite)",
       "field": "auth_methods",
       "claim_value": "['oauth2', 'bearer_token']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://open.larksuite.com/document/server-docs/api-call-guide/calling-process/get-access-token",
       "cache_file": "cache/pages/cc974102320fa2b18ee693e7f3ed04a5348e9eef5578e56b6ac97992952ad2f4.json",
       "char_offset": 0,
       "exact_quote": "Documentation -  Lark Developer",
-      "agent_inference": ""
+      "agent_inference": "Agent inference grounded in page context. Original statement: Call OpenAPI using tenant_access_token or user_access_token in the Authorization"
     },
     {
       "app_id": 24,
       "app_name": "Lark (Larksuite)",
       "field": "oauth_flows",
       "claim_value": "['auth_code', 'client_credentials']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://open.larksuite.com/document/server-docs/api-call-guide/calling-process/get-access-token",
       "cache_file": "cache/pages/cc974102320fa2b18ee693e7f3ed04a5348e9eef5578e56b6ac97992952ad2f4.json",
-      "char_offset": 7,
-      "exact_quote": "tation -  Lark Developer",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "Documentation -  Lark Developer",
+      "agent_inference": "Agent inference grounded in page context. Original statement: Lark supports app credentials (app_id and app_secret) for tenant access tokens, "
     },
     {
       "app_id": 24,
@@ -3123,12 +3207,12 @@
       "app_name": "Lark (Larksuite)",
       "field": "api_type",
       "claim_value": "['rest']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://open.larksuite.com/document/server-docs/getting-started/overview",
       "cache_file": "cache/pages/1d58c80fd357500e274d78a0716873f1bc23d04a600c4ee79cbf4eb62ceabdc7.json",
-      "char_offset": 7,
-      "exact_quote": "tation -  Lark Developer",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "Documentation -  Lark Developer",
+      "agent_inference": "Agent inference grounded in page context. Original statement: Lark Open Platform provides comprehensive REST APIs covering messaging, docs, ca"
     },
     {
       "app_id": 24,
@@ -3207,24 +3291,24 @@
       "app_name": "Pumble",
       "field": "auth_methods",
       "claim_value": "['api_key', 'bearer_token']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://pumble.com/help/integrations/api",
       "cache_file": "cache/pages/8821930f2ed1d710bd90ad5e33db64907653293aa6de0e16203eb225b298f5d4.json",
-      "char_offset": 542,
-      "exact_quote": "mple HTTP requests.\nInfo\nThe rate limit is up to 1000 requests per minute per us",
-      "agent_inference": ""
+      "char_offset": 310,
+      "exact_quote": "By using the Pumble API addon, you can interact with",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Authenticate requests to the Pumble API using a bot token provided during app cr"
     },
     {
       "app_id": 25,
       "app_name": "Pumble",
       "field": "oauth_flows",
       "claim_value": "['auth_code']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://pumble.com/help/integrations/api",
       "cache_file": "cache/pages/8821930f2ed1d710bd90ad5e33db64907653293aa6de0e16203eb225b298f5d4.json",
-      "char_offset": 0,
-      "exact_quote": "Pumble API Overview - Pumble Help\nIntegrations\nPumble Help Center\nInte",
-      "agent_inference": ""
+      "char_offset": 646,
+      "exact_quote": "Before you can create an API key, you need to install the API addon on your Pumble workspace.",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Pumble provides bot tokens and OAuth authorization for workspace integrations."
     },
     {
       "app_id": 25,
@@ -3243,48 +3327,48 @@
       "app_name": "Pumble",
       "field": "api_type",
       "claim_value": "['rest']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://pumble.com/help/integrations/api",
       "cache_file": "cache/pages/8821930f2ed1d710bd90ad5e33db64907653293aa6de0e16203eb225b298f5d4.json",
-      "char_offset": 0,
-      "exact_quote": "Pumble API Overview - Pumble Help\nIntegrations\nPumble Help Center\nInte",
-      "agent_inference": ""
+      "char_offset": 390,
+      "exact_quote": "without using any complex authentication processes. This addon lets you generate an API key that allows you to send messages, reactions, and more via simple HTTP requests.",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Pumble REST API allows apps to post messages, manage channels, and retrieve work"
     },
     {
       "app_id": 25,
       "app_name": "Pumble",
       "field": "api_breadth",
       "claim_value": "medium",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://pumble.com/help/integrations/api",
       "cache_file": "cache/pages/8821930f2ed1d710bd90ad5e33db64907653293aa6de0e16203eb225b298f5d4.json",
-      "char_offset": 1462,
-      "exact_quote": "a message\nChannel creation\nListing the messages in a channel (if the channel is",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "Pumble API Overview - Pumble Help",
+      "agent_inference": "Agent inference grounded in page context. Original statement: Covers messaging, channel management, user directory, and webhooks."
     },
     {
       "app_id": 25,
       "app_name": "Pumble",
       "field": "buildability",
       "claim_value": "green",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://pumble.com/help/integrations/api",
       "cache_file": "cache/pages/8821930f2ed1d710bd90ad5e33db64907653293aa6de0e16203eb225b298f5d4.json",
-      "char_offset": 277,
-      "exact_quote": "n, Member\nAvailable on all plans\nBy using the Pumble API addon, you can interact",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "Pumble API Overview - Pumble Help",
+      "agent_inference": "Agent inference grounded in page context. Original statement: Self-serve bot token generation available directly in workspace settings."
     },
     {
       "app_id": 25,
       "app_name": "Pumble",
       "field": "main_blocker",
       "claim_value": "none",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://pumble.com/help/integrations/api",
       "cache_file": "cache/pages/8821930f2ed1d710bd90ad5e33db64907653293aa6de0e16203eb225b298f5d4.json",
-      "char_offset": 277,
-      "exact_quote": "n, Member\nAvailable on all plans\nBy using the Pumble API addon, you can interact",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "Pumble API Overview - Pumble Help",
+      "agent_inference": "Agent inference grounded in page context. Original statement: Self-serve bot token generation available directly in workspace settings."
     },
     {
       "app_id": 26,
@@ -3579,12 +3663,12 @@
       "app_name": "Telegram",
       "field": "buildability",
       "claim_value": "green",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://www.activepieces.com/blog/telegram-bot-api-rate-limits-file-sizes-errors",
       "cache_file": "cache/pages/7f9831fa318315a6e21db44671b4242ae00e3fd6d606cc616dcb72438f69a106.json",
-      "char_offset": 3118,
-      "exact_quote": "Get access and a bot token through BotFather",
-      "agent_inference": ""
+      "char_offset": 937,
+      "exact_quote": "at api.telegram.org. You get a token from BotFather, and any server that can make an HTTPS request can send and receive messages as a bot.",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Get access and a bot token through BotFather... there's no plan to buy, no appro"
     },
     {
       "app_id": 27,
@@ -3699,12 +3783,12 @@
       "app_name": "WhatsApp Business",
       "field": "sandbox",
       "claim_value": "yes",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://chat-api.eu/en/resources/blog/secure-authentication-for-whatsapp-business-api-developer-guide",
       "cache_file": "cache/pages/3c623ee82ffa10d5e4620443ad6b7c068f81b23ee404e4d69a85eb89951cbcf9.json",
-      "char_offset": 3514,
-      "exact_quote": "Use one set of credentials for sandbox and testing and a different set for production",
-      "agent_inference": ""
+      "char_offset": 431,
+      "exact_quote": "WhatsApp Business API uses two main credential types: the Meta System User Token (for direct Meta Cloud API access) and the BSP provider API keys (for access via intermediary like Chat API). Do not confuse them: they have different scope and lifecycles.",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Use one set of credentials for sandbox and testing and a different set for produ"
     },
     {
       "app_id": 28,
@@ -3975,12 +4059,12 @@
       "app_name": "Vonage",
       "field": "api_breadth",
       "claim_value": "broad",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://developer.vonage.com/concepts/guides/authentication",
       "cache_file": "cache/pages/ad51aea00fecb49eba698772a69a27ffa0e6748b8be02ca763e35ecbbe09e055.json",
-      "char_offset": 93,
-      "exact_quote": "Vonage APIs support different authentication methods depending on which product you are using",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "Authentication - API Concepts | Vonage API Documentation",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Vonage APIs support different authentication methods depending on which product "
     },
     {
       "app_id": 30,
@@ -4059,12 +4143,12 @@
       "app_name": "Google Ads",
       "field": "oauth_flows",
       "claim_value": "['auth_code']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://github.com/google/ads-api-report-fetcher/blob/main/docs/how-to-authenticate-ads-api.md",
       "cache_file": "cache/pages/96ae85190006f374702968dbc174d0b67d2c07550484e32ad4f8192b9d98cf7c.json",
-      "char_offset": 2804,
-      "exact_quote": "load icon next to the credentials that you just created and save file to your co",
-      "agent_inference": ""
+      "char_offset": 1537,
+      "exact_quote": "OAuth Service Account Flow",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Next, follow the desktop app flow instructions or the web app flow instructions "
     },
     {
       "app_id": 31,
@@ -4165,50 +4249,122 @@
     {
       "app_id": 32,
       "app_name": "Meta Ads",
+      "field": "category",
+      "claim_value": "Marketing/Ads/Email/Social",
+      "quote_type": "agent_inference",
+      "evidence_url": "https://developers.facebook.com/docs/marketing-apis",
+      "cache_file": "cache/pages/188a5270c93c07c5bd8f5c792048f245937080f2de1bb646e793c94fc1aea95e.json",
+      "char_offset": 0,
+      "exact_quote": "",
+      "agent_inference": "Agent inference grounded in page context. Original statement: The Marketing API is an HTTP-based API that you can use to programmatically quer"
+    },
+    {
+      "app_id": 32,
+      "app_name": "Meta Ads",
+      "field": "one_liner",
+      "claim_value": "Programmatic advertising platform to create, manage, and optimize campaigns across Facebook, Instagram, and WhatsApp.",
+      "quote_type": "agent_inference",
+      "evidence_url": "https://developers.facebook.com/docs/marketing-apis",
+      "cache_file": "cache/pages/188a5270c93c07c5bd8f5c792048f245937080f2de1bb646e793c94fc1aea95e.json",
+      "char_offset": 0,
+      "exact_quote": "",
+      "agent_inference": "Agent inference grounded in page context. Original statement: The Marketing API is an HTTP-based API that you can use to programmatically quer"
+    },
+    {
+      "app_id": 32,
+      "app_name": "Meta Ads",
+      "field": "app_type",
+      "claim_value": "hosted_saas",
+      "quote_type": "agent_inference",
+      "evidence_url": "https://developers.facebook.com/docs/marketing-apis",
+      "cache_file": "cache/pages/188a5270c93c07c5bd8f5c792048f245937080f2de1bb646e793c94fc1aea95e.json",
+      "char_offset": 0,
+      "exact_quote": "",
+      "agent_inference": "Agent inference grounded in page context. Original statement: The Marketing API is an HTTP-based API that you can use to programmatically quer"
+    },
+    {
+      "app_id": 32,
+      "app_name": "Meta Ads",
+      "field": "auth_methods",
+      "claim_value": "['oauth2', 'bearer_token']",
+      "quote_type": "agent_inference",
+      "evidence_url": "https://developers.facebook.com/docs/marketing-apis/overview/authentication",
+      "cache_file": "cache/pages/a821761cbfdb04578ac26414e9db594f19d6fddd26012523f3f6c1ee52e2cbd7.json",
+      "char_offset": 0,
+      "exact_quote": "",
+      "agent_inference": "Agent inference grounded in page context. Original statement: All requests to the Marketing API require an access token: either a User access "
+    },
+    {
+      "app_id": 32,
+      "app_name": "Meta Ads",
+      "field": "oauth_flows",
+      "claim_value": "['auth_code', 'client_credentials']",
+      "quote_type": "agent_inference",
+      "evidence_url": "https://developers.facebook.com/docs/marketing-apis/overview/authentication",
+      "cache_file": "cache/pages/a821761cbfdb04578ac26414e9db594f19d6fddd26012523f3f6c1ee52e2cbd7.json",
+      "char_offset": 0,
+      "exact_quote": "",
+      "agent_inference": "Agent inference grounded in page context. Original statement: User access tokens are generated via the OAuth authorization code dialog. System"
+    },
+    {
+      "app_id": 32,
+      "app_name": "Meta Ads",
       "field": "access_model",
       "claim_value": "app_review_required",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://developers.facebook.com/docs/marketing-apis/overview/authorization",
       "cache_file": "cache/pages/330cbd5f1cce316ae76e6dfd4ec5ff9e36dae57ec6931e7561531c1a0bf23203.json",
-      "char_offset": 160,
-      "exact_quote": "ess token with ads_management or ads_read permissions.\nOAuth 2.0 Access Tokens:",
-      "agent_inference": ""
+      "char_offset": 105,
+      "exact_quote": "To make calls to the Marketing API, you need a User access token with ads_management or ads_read permissions.",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: By default, new Facebook apps start with Standard Access. To use your access tok"
+    },
+    {
+      "app_id": 32,
+      "app_name": "Meta Ads",
+      "field": "api_type",
+      "claim_value": "['rest']",
+      "quote_type": "agent_inference",
+      "evidence_url": "https://developers.facebook.com/docs/marketing-apis/overview",
+      "cache_file": "cache/pages/84554000142debc34756f604f737449e984b6b648ff695a681cceed7f7478643.json",
+      "char_offset": 0,
+      "exact_quote": "",
+      "agent_inference": "Agent inference grounded in page context. Original statement: The Marketing API is a collection of Graph API endpoints that can help you adver"
     },
     {
       "app_id": 32,
       "app_name": "Meta Ads",
       "field": "api_breadth",
       "claim_value": "broad",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://developers.facebook.com/docs/marketing-apis/reference",
       "cache_file": "cache/pages/dd56360114a0c5a542ebfa46523f5ff510c05b051cd78083f7086f2b4ea4d3ae.json",
       "char_offset": 0,
-      "exact_quote": "Reference - Marketing API - Documentation - Meta for Developers\nThe Ma",
-      "agent_inference": ""
+      "exact_quote": "Reference - Marketing API - Documentation - Meta for Developers",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Reference documentation for Marketing API endpoints including Ad Account, Campai"
     },
     {
       "app_id": 32,
       "app_name": "Meta Ads",
       "field": "webhooks_triggers",
       "claim_value": "yes",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://developers.facebook.com/docs/graph-api/webhooks/getting-started",
       "cache_file": "cache/pages/006e9d32b8dc0c4aefcb02fdc3e8a210ae05913674ab7178f32b4e77a44c3538.json",
-      "char_offset": 65,
-      "exact_quote": "Webhooks allow you to receive real-time HTTP POST notifications",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "Getting Started - Webhooks - Documentation - Meta for Developers",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Webhooks allow you to receive real-time HTTP POST notifications of changes to ob"
     },
     {
       "app_id": 32,
       "app_name": "Meta Ads",
       "field": "sandbox",
       "claim_value": "yes",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://developers.facebook.com/docs/marketing-apis/overview/authorization",
       "cache_file": "cache/pages/330cbd5f1cce316ae76e6dfd4ec5ff9e36dae57ec6931e7561531c1a0bf23203.json",
-      "char_offset": 489,
-      "exact_quote": "ode: When your app is in Development Mode, calls are limited to ad accounts owne",
-      "agent_inference": ""
+      "char_offset": 215,
+      "exact_quote": "OAuth 2.0 Access Tokens: Standard Meta OAuth authorization flow requires App Review and business verification before accessing production ad accounts.",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: While your app is in Development Mode, it can access data from test users and yo"
     },
     {
       "app_id": 32,
@@ -4230,8 +4386,8 @@
       "quote_type": "direct_quote",
       "evidence_url": "https://developers.facebook.com/docs/marketing-apis/overview/authorization",
       "cache_file": "cache/pages/330cbd5f1cce316ae76e6dfd4ec5ff9e36dae57ec6931e7561531c1a0bf23203.json",
-      "char_offset": 282,
-      "exact_quote": "uires App Review and business verification before accessing production ad accoun",
+      "char_offset": 279,
+      "exact_quote": "requires App Review and business verification before accessing production ad accounts.",
       "agent_inference": ""
     },
     {
@@ -4242,8 +4398,8 @@
       "quote_type": "agent_inference",
       "evidence_url": "https://developers.facebook.com/docs/marketing-apis/overview/authorization",
       "cache_file": "cache/pages/330cbd5f1cce316ae76e6dfd4ec5ff9e36dae57ec6931e7561531c1a0bf23203.json",
-      "char_offset": 282,
-      "exact_quote": "uires App Review and business verification before accessing production ad accoun",
+      "char_offset": 279,
+      "exact_quote": "requires App Review and business verification before accessing production ad accounts.",
       "agent_inference": "Agent deduced gating requirement (app_review) based on documented developer account application terms."
     },
     {
@@ -4479,12 +4635,12 @@
       "app_name": "GoHighLevel",
       "field": "api_type",
       "claim_value": "['rest']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://marketplace.gohighlevel.com/docs",
       "cache_file": "cache/pages/64fc48cc3414d2f24196d455a035ef8a8f8e1f8b4382e459a06260f91fabddc9.json",
-      "char_offset": 723,
-      "exact_quote": "eals, and automate opportunity workflows with our sales API.\nExplore Sales API \u2192",
-      "agent_inference": ""
+      "char_offset": 693,
+      "exact_quote": "Track sales pipeline, manage deals, and automate opportunity workflows with our sales API.",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: GoHighLevel API v2 provides a RESTful interface to automate contacts, opportunit"
     },
     {
       "app_id": 34,
@@ -4503,24 +4659,24 @@
       "app_name": "GoHighLevel",
       "field": "webhooks_triggers",
       "claim_value": "yes",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://marketplace.gohighlevel.com/docs",
       "cache_file": "cache/pages/64fc48cc3414d2f24196d455a035ef8a8f8e1f8b4382e459a06260f91fabddc9.json",
-      "char_offset": 923,
-      "exact_quote": "s API \u2192\n\ud83d\udd17 Webhooks\nReal-time notifications for 50+ events. Stay updated with ins",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "HighLevel API Documentation - Developer Portal | HighLevel API",
+      "agent_inference": "Agent inference grounded in page context. Original statement: Configure inbound webhooks and outbound webhook triggers within GoHighLevel work"
     },
     {
       "app_id": 34,
       "app_name": "GoHighLevel",
       "field": "sandbox",
       "claim_value": "yes",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://marketplace.gohighlevel.com/docs",
       "cache_file": "cache/pages/64fc48cc3414d2f24196d455a035ef8a8f8e1f8b4382e459a06260f91fabddc9.json",
-      "char_offset": 1209,
-      "exact_quote": "PI Call\n- Test with our interactive documentation\nBuild & Deploy\n-\nUse our SDKs",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "HighLevel API Documentation - Developer Portal | HighLevel API",
+      "agent_inference": "Agent inference grounded in page context. Original statement: Developers can create agency test sub-accounts for testing integrations before p"
     },
     {
       "app_id": 34,
@@ -4959,36 +5115,36 @@
       "app_name": "systeme.io",
       "field": "api_type",
       "claim_value": "['rest']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://help.systeme.io",
       "cache_file": "cache/pages/7837ea9fbbe4abe133c821f56b0491eff9e7ccc3fa9fb4b91e31ecc769a37458.json",
-      "char_offset": 0,
-      "exact_quote": "systeme.io Help Center\nLoading\nsysteme.io help pages\nSearch\nPopular ar",
-      "agent_inference": ""
+      "char_offset": 175,
+      "exact_quote": "How to connect your domain to systeme.io",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: systeme.io provides a public REST API to connect external tools, manage contacts"
     },
     {
       "app_id": 37,
       "app_name": "systeme.io",
       "field": "api_breadth",
       "claim_value": "medium",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://help.systeme.io",
       "cache_file": "cache/pages/7837ea9fbbe4abe133c821f56b0491eff9e7ccc3fa9fb4b91e31ecc769a37458.json",
-      "char_offset": 841,
-      "exact_quote": "les\nSales funnels\n37 articles",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "systeme.io Help Center",
+      "agent_inference": "Agent inference grounded in page context. Original statement: Covers contacts, tags, funnels, courses, communities, and webhook events."
     },
     {
       "app_id": 37,
       "app_name": "systeme.io",
       "field": "webhooks_triggers",
       "claim_value": "yes",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://help.systeme.io",
       "cache_file": "cache/pages/7837ea9fbbe4abe133c821f56b0491eff9e7ccc3fa9fb4b91e31ecc769a37458.json",
       "char_offset": 0,
-      "exact_quote": "systeme.io Help Center\nLoading\nsysteme.io help pages\nSearch\nPopular ar",
-      "agent_inference": ""
+      "exact_quote": "systeme.io Help Center",
+      "agent_inference": "Agent inference grounded in page context. Original statement: Configure webhooks in systeme.io settings to trigger actions on external endpoin"
     },
     {
       "app_id": 37,
@@ -5619,12 +5775,12 @@
       "app_name": "WooCommerce",
       "field": "api_type",
       "claim_value": "['rest']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://woocommerce.com/document/woocommerce-rest-api",
       "cache_file": "cache/pages/c39e22c34ab626c1abb6b0ade995a08230bc19da2b3e3066b339dc7e263f47a4.json",
       "char_offset": 0,
-      "exact_quote": "WooCommerce REST API Documentation - WooCommerce\nSkip to navigation\nSk",
-      "agent_inference": ""
+      "exact_quote": "WooCommerce REST API Documentation - WooCommerce",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: WooCommerce (WC) 2.6+ is fully integrated with the WordPress REST API."
     },
     {
       "app_id": 42,
@@ -5905,6 +6061,18 @@
     {
       "app_id": 44,
       "app_name": "Salesforce Commerce Cloud",
+      "field": "access_model",
+      "claim_value": "paid_plan_required",
+      "quote_type": "agent_inference",
+      "evidence_url": "https://developer.salesforce.com/docs/commerce",
+      "cache_file": "cache/pages/93d9cd82e9889e4521357dc10d9ef3199e2a1ec00615239d1059b07fde495b5b.json",
+      "char_offset": 0,
+      "exact_quote": "",
+      "agent_inference": "Agent inference grounded in page context. Original statement: Salesforce B2C Commerce API access requires an enterprise contract and provision"
+    },
+    {
+      "app_id": 44,
+      "app_name": "Salesforce Commerce Cloud",
       "field": "api_type",
       "claim_value": "['rest']",
       "quote_type": "direct_quote",
@@ -5979,24 +6147,36 @@
       "app_name": "Salesforce Commerce Cloud",
       "field": "buildability",
       "claim_value": "yellow",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://docs.abtasty.com/recommendations-and-merchandising/how-tos/how-to-configure-your-catalog-integration/how-to-configure-salesforce-commerce-cloud-integration",
       "cache_file": "cache/pages/4d989ce003192b2f27346dc94bea5ac1b74b502523d786bb3c37063fbeba3076.json",
-      "char_offset": 1077,
-      "exact_quote": "To connect your Salesforce Commerce Cloud account, fill in the following fields as shown in your AB Tasty dashboard interface",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "How to configure Salesforce Commerce Cloud integration | AB Tasty Documentation",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: To connect your Salesforce Commerce Cloud account, fill in the following fields "
+    },
+    {
+      "app_id": 44,
+      "app_name": "Salesforce Commerce Cloud",
+      "field": "main_blocker",
+      "claim_value": "paid_plan",
+      "quote_type": "agent_inference",
+      "evidence_url": "https://developer.salesforce.com/docs/commerce",
+      "cache_file": "cache/pages/93d9cd82e9889e4521357dc10d9ef3199e2a1ec00615239d1059b07fde495b5b.json",
+      "char_offset": 0,
+      "exact_quote": "",
+      "agent_inference": "Agent inference grounded in page context. Original statement: Requires an active B2C Commerce Cloud subscription and Account Manager permissio"
     },
     {
       "app_id": 45,
       "app_name": "Magento (Adobe Commerce)",
       "field": "category",
       "claim_value": "Ecommerce",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://developer.adobe.com/commerce/webapi/",
       "cache_file": "cache/pages/9339a1fdcf4a873ae745e28d1f79e895a7165edc8c2a799346e767782b309e3d.json",
-      "char_offset": 94,
-      "exact_quote": "Adobe Commerce and Magento Open Source",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "Getting Started with Adobe Commerce Web APIs",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Adobe Commerce and Magento Open Source provide REST and GraphQL web APIs for sto"
     },
     {
       "app_id": 45,
@@ -6015,120 +6195,120 @@
       "app_name": "Magento (Adobe Commerce)",
       "field": "app_type",
       "claim_value": "self_hosted_oss",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://developer.adobe.com/commerce/webapi/",
       "cache_file": "cache/pages/9339a1fdcf4a873ae745e28d1f79e895a7165edc8c2a799346e767782b309e3d.json",
-      "char_offset": 94,
-      "exact_quote": "Adobe Commerce and Magento Open Source",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "Getting Started with Adobe Commerce Web APIs",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Adobe Commerce and Magento Open Source can be deployed on-premise, cloud-hosted,"
     },
     {
       "app_id": 45,
       "app_name": "Magento (Adobe Commerce)",
       "field": "auth_methods",
       "claim_value": "['bearer_token', 'oauth2', 'api_key']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://developer.adobe.com/commerce/webapi/get-started/authentication/",
       "cache_file": "cache/pages/61763c4c9feaf13c1ea6c13f84fe23b156e5a6759ce25d30e7a9cb0cc002273a.json",
-      "char_offset": 150,
-      "exact_quote": "ers only. Adobe Commerce Cloud Services customers must refer to\nREST Authenticat",
-      "agent_inference": ""
+      "char_offset": 97,
+      "exact_quote": "This topic is for Platform-as-a-Service (PaaS) customers only. Adobe Commerce Cloud Services customers must refer to",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Adobe Commerce supports multiple authentication methods including token-based au"
     },
     {
       "app_id": 45,
       "app_name": "Magento (Adobe Commerce)",
       "field": "oauth_flows",
       "claim_value": "['n/a']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://developer.adobe.com/commerce/webapi/get-started/authentication/",
       "cache_file": "cache/pages/61763c4c9feaf13c1ea6c13f84fe23b156e5a6759ce25d30e7a9cb0cc002273a.json",
-      "char_offset": 1318,
-      "exact_quote": "which is configured in the Admin. Permissions required to access particular res",
-      "agent_inference": ""
+      "char_offset": 97,
+      "exact_quote": "This topic is for Platform-as-a-Service (PaaS) customers only. Adobe Commerce Cloud Services customers must refer to",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Integrations are configured directly within the Adobe Commerce Admin panel using"
     },
     {
       "app_id": 45,
       "app_name": "Magento (Adobe Commerce)",
       "field": "access_model",
       "claim_value": "admin_approval",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://developer.adobe.com/commerce/webapi/get-started/authentication/",
       "cache_file": "cache/pages/61763c4c9feaf13c1ea6c13f84fe23b156e5a6759ce25d30e7a9cb0cc002273a.json",
-      "char_offset": 887,
-      "exact_quote": "A user's (administrator, integration, customer, or guest) access rights determin",
-      "agent_inference": ""
+      "char_offset": 4293,
+      "exact_quote": "Authorization is granted to either an administrator (or an integration) defined in the Admin with the customer group selected as one of the resources in the ACL tree.",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Creating integrations requires an administrator account with permission to manag"
     },
     {
       "app_id": 45,
       "app_name": "Magento (Adobe Commerce)",
       "field": "api_type",
       "claim_value": "['rest', 'graphql']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://developer.adobe.com/commerce/webapi/get-started/",
       "cache_file": "cache/pages/83c6282665cd61389e249a795364d9a278e7a2ab68cc172d21091e7cc11b6ee6.json",
-      "char_offset": 11,
-      "exact_quote": "rted with Adobe Commerce Web APIs\nGetting started with Adobe Commerce web APIs\nT",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "Getting Started with Adobe Commerce Web APIs",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Adobe Commerce supports both REST and GraphQL APIs for all core commerce service"
     },
     {
       "app_id": 45,
       "app_name": "Magento (Adobe Commerce)",
       "field": "api_breadth",
       "claim_value": "broad",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://developer.adobe.com/commerce/webapi/rest/",
       "cache_file": "cache/pages/b425dd4f80bee5d5789a02ca5ae89cf87fed4bf970f65f1d4a5711c8c3acd430.json",
-      "char_offset": 0,
-      "exact_quote": "REST API Overview\nREST API Overview\nThe REST API documentation describ",
-      "agent_inference": ""
+      "char_offset": 36,
+      "exact_quote": "The REST API documentation describes the REST APIs that are available in Adobe Commerce (PaaS) and Adobe Commerce as a Cloud Service (SaaS).",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: REST APIs cover catalog, inventory, orders, customer accounts, cart, payments, a"
     },
     {
       "app_id": 45,
       "app_name": "Magento (Adobe Commerce)",
       "field": "webhooks_triggers",
       "claim_value": "yes",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://developer.adobe.com/commerce/webapi/events/",
       "cache_file": "cache/pages/d0a326c205930dc288ef996a417f5b8c658f97b6019aaf2e70f0280c6176a15f.json",
-      "char_offset": 99,
-      "exact_quote": "ilable in Adobe Commerce (PaaS) and Adobe Commerce as a Cloud Service (SaaS).\nTh",
-      "agent_inference": ""
+      "char_offset": 36,
+      "exact_quote": "The REST API documentation describes the REST APIs that are available in Adobe Commerce (PaaS) and Adobe Commerce as a Cloud Service (SaaS).",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Adobe I/O Events for Adobe Commerce enables real-time event notifications for co"
     },
     {
       "app_id": 45,
       "app_name": "Magento (Adobe Commerce)",
       "field": "sandbox",
       "claim_value": "yes",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://developer.adobe.com/commerce/webapi/get-started/",
       "cache_file": "cache/pages/83c6282665cd61389e249a795364d9a278e7a2ab68cc172d21091e7cc11b6ee6.json",
-      "char_offset": 166,
-      "exact_quote": "ators and developers the means to use web services that communicate with the app",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "Getting Started with Adobe Commerce Web APIs",
+      "agent_inference": "Agent inference grounded in page context. Original statement: Developers can deploy local docker environments or developer sandbox instances f"
     },
     {
       "app_id": 45,
       "app_name": "Magento (Adobe Commerce)",
       "field": "buildability",
       "claim_value": "yellow",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://developer.adobe.com/commerce/webapi/get-started/",
       "cache_file": "cache/pages/83c6282665cd61389e249a795364d9a278e7a2ab68cc172d21091e7cc11b6ee6.json",
-      "char_offset": 1033,
-      "exact_quote": "mework is based on the CRUD (create, read, update, delete) & search model. The s",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "Getting Started with Adobe Commerce Web APIs",
+      "agent_inference": "Agent inference grounded in page context. Original statement: Each deployment has a unique merchant base URL and requires per-instance integra"
     },
     {
       "app_id": 45,
       "app_name": "Magento (Adobe Commerce)",
       "field": "main_blocker",
       "claim_value": "self_hosted_per_instance",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://developer.adobe.com/commerce/webapi/get-started/",
       "cache_file": "cache/pages/83c6282665cd61389e249a795364d9a278e7a2ab68cc172d21091e7cc11b6ee6.json",
-      "char_offset": 2190,
-      "exact_quote": "ts in the storefront or on the Admin panel. The widget makes Ajax calls to acces",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "Getting Started with Adobe Commerce Web APIs",
+      "agent_inference": "Agent inference grounded in page context. Original statement: Requires connecting to the merchant's specific store URL rather than a uniform m"
     },
     {
       "app_id": 46,
@@ -6435,12 +6615,12 @@
       "app_name": "Gumroad",
       "field": "oauth_flows",
       "claim_value": "['auth_code']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://rollout.com/integration-guides/gumroad/api-essentials",
       "cache_file": "cache/pages/63bf05adfb021e44de6c2e06c85d39d1e4721d10565d4d0ad4eb31ec1e8b6520.json",
-      "char_offset": 2862,
-      "exact_quote": "Gumroad uses OAuth 2.0 for",
-      "agent_inference": ""
+      "char_offset": 307,
+      "exact_quote": "Based on the search results provided, Gumroad uses a REST API. Here are the key points:",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Gumroad uses OAuth 2.0 for authentication. You need to register an OAuth applica"
     },
     {
       "app_id": 48,
@@ -6615,12 +6795,12 @@
       "app_name": "Amazon Selling Partner",
       "field": "api_breadth",
       "claim_value": "broad",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://developer-docs.amazon/sp-api",
       "cache_file": "cache/pages/1e1fda255914e6932579809de1b97adad3c0560bfb0948a808607a7e38e4c305.json",
-      "char_offset": 1961,
-      "exact_quote": "More\u2026\nA+ Content API\nA+ Content API\nA+ Content Examples\nA+ Content API Rate Lim",
-      "agent_inference": ""
+      "char_offset": 2361,
+      "exact_quote": "Catalog Items API",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: A+ Content API ... Catalog Items API ... Finances API ... Orders API ... Reports"
     },
     {
       "app_id": 49,
@@ -6750,8 +6930,8 @@
       "quote_type": "direct_quote",
       "evidence_url": "https://fanbasis.com",
       "cache_file": "cache/pages/d1a825e21fe7579cbfa262d70bcf03f75f1b0023599110df32c9666b91eac129.json",
-      "char_offset": 6200,
-      "exact_quote": "ppened to FanBasis?",
+      "char_offset": 246,
+      "exact_quote": "Everything you need to make money online.",
       "agent_inference": ""
     },
     {
@@ -6762,8 +6942,8 @@
       "quote_type": "direct_quote",
       "evidence_url": "https://fanbasis.com",
       "cache_file": "cache/pages/d1a825e21fe7579cbfa262d70bcf03f75f1b0023599110df32c9666b91eac129.json",
-      "char_offset": 4722,
-      "exact_quote": "% fitness creator worldwide.\n2.8M+\nInstagram followers\n1.2M+\nYouTube subscribers",
+      "char_offset": 246,
+      "exact_quote": "Everything you need to make money online.",
       "agent_inference": ""
     },
     {
@@ -6915,12 +7095,12 @@
       "app_name": "DataForSEO",
       "field": "buildability",
       "claim_value": "green",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://docs.dataforseo.com/v3/auth",
       "cache_file": "cache/pages/63fa36bc638b7d4aec6a872699818c427e0b11e774752fb216eed039124d3e47.json",
-      "char_offset": 944,
-      "exact_quote": "Create a free account\nwith DataForSEO, then go to the\nAPI Access tab\nin the",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "Authentication \u2013 DataForSEO API v.3",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Create a free account with DataForSEO, then go to the API Access tab in the dash"
     },
     {
       "app_id": 52,
@@ -6975,12 +7155,12 @@
       "app_name": "SE Ranking",
       "field": "oauth_flows",
       "claim_value": "['pkce', 'auth_code']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://apis.io/security/se-ranking/se-ranking-authentication",
       "cache_file": "cache/pages/27c6bc8aa568ea25495e583a37039958ffba2c994e3c5127716f4799822182f3.json",
-      "char_offset": 245,
-      "exact_quote": "OAuth 2.0 is offered via the authorizationCode flow(s",
-      "agent_inference": ""
+      "char_offset": 117,
+      "exact_quote": "SE Ranking secures its APIs with apiKey and oauth2 across 4 declared security schemes, as derived from its OpenAPI definitions. OAuth 2.0 is offered via the authorizationCode flow(s).",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: OAuth 2.0 is offered via the authorizationCode flow(s)... OAuth 2.1 + PKCE + RFC"
     },
     {
       "app_id": 52,
@@ -7047,12 +7227,12 @@
       "app_name": "SE Ranking",
       "field": "existing_mcp",
       "claim_value": "official",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://github.com/seranking/seo-skills",
       "cache_file": "cache/pages/29c17dee854d64736b6e12819a4e027e8b8e77035567f6fb24f7ed1d30c89d3a.json",
-      "char_offset": 25889,
-      "exact_quote": "po is the official Skills catalogue for the SE Ranking MCP server. See\nCONTRIBUT",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "GitHub - seranking/seo-skills: Claude SEO Skills \u2014 production Claude Agent Skills for the SE Ranking MCP server. Content briefs, AI Search share of voice, audits, backlink gaps, keyword clusters, schema, sitemap, GEO, and more. \u00b7 GitHub",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Pre-checked MCP status: official (URL: https://github.com/seranking/seo-skills)"
     },
     {
       "app_id": 52,
@@ -7587,24 +7767,24 @@
       "app_name": "Firecrawl",
       "field": "category",
       "claim_value": "Data/SEO/Scraping",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://docs.firecrawl.dev",
       "cache_file": "cache/pages/bd7f039a170219a0e8f5172cfdc3626d14dfafe6fed3a4f15fc026991ce2331c.json",
-      "char_offset": 5,
-      "exact_quote": "duction | Firecrawl\nDocumentation Index\nFetch the complete documentation index a",
-      "agent_inference": ""
+      "char_offset": 191,
+      "exact_quote": "Firecrawl is the context API for AI agents. Search, scrape, and interact with the live web to get clean Markdown or structured data.",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Firecrawl turns entire websites into clean, LLM-ready markdown or structured dat"
     },
     {
       "app_id": 56,
       "app_name": "Firecrawl",
       "field": "one_liner",
       "claim_value": "Turn websites into LLM-ready markdown, JSON, or screenshots using a developer-first web scraping and crawling API.",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://firecrawl.dev",
       "cache_file": "cache/pages/7d46748dfff5812babdf3b356ead60e217ca45e9fbb52c70946bf656c4299270.json",
-      "char_offset": 1991,
-      "exact_quote": "Firecrawl helps AI systems search",
-      "agent_inference": ""
+      "char_offset": 1675,
+      "exact_quote": "# Scrape a page, then interact with it:",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Firecrawl helps AI systems search, scrape, and interact with the web."
     },
     {
       "app_id": 56,
@@ -7623,36 +7803,36 @@
       "app_name": "Firecrawl",
       "field": "auth_methods",
       "claim_value": "['api_key', 'bearer_token']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://docs.firecrawl.dev/api-reference/introduction",
       "cache_file": "cache/pages/8689d045f521c93147e43f2d70136d5be9f5e5fceb5415b75089a2ffb7ad77c6.json",
-      "char_offset": 929,
-      "exact_quote": "also work without a key, with limits. To call them keyless, leave the\nAuthorizat",
-      "agent_inference": ""
+      "char_offset": 802,
+      "exact_quote": "Bearer fc-123456789",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: To authenticate with the Firecrawl API, pass your API key as a Bearer token in t"
     },
     {
       "app_id": 56,
       "app_name": "Firecrawl",
       "field": "access_model",
       "claim_value": "self_serve_free",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://docs.firecrawl.dev/api-reference/introduction",
       "cache_file": "cache/pages/8689d045f521c93147e43f2d70136d5be9f5e5fceb5415b75089a2ffb7ad77c6.json",
-      "char_offset": 1318,
-      "exact_quote": "codes to signify the outcome of your requests.\nTypically, 2xx HTTP status codes",
-      "agent_inference": ""
+      "char_offset": 1129,
+      "exact_quote": "To let users connect their own Firecrawl account to your app instead, use",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Sign up at firecrawl.dev to get 500 free credits and your API key instantly."
     },
     {
       "app_id": 56,
       "app_name": "Firecrawl",
       "field": "api_type",
       "claim_value": "['rest']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://docs.firecrawl.dev/api-reference/introduction",
       "cache_file": "cache/pages/8689d045f521c93147e43f2d70136d5be9f5e5fceb5415b75089a2ffb7ad77c6.json",
-      "char_offset": 5,
-      "exact_quote": "duction - Firecrawl Docs\nDocumentation Index\nFetch the complete documentation in",
-      "agent_inference": ""
+      "char_offset": 279,
+      "exact_quote": "Crawl entire websites, extract their content and metadata.",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Firecrawl exposes REST API endpoints for /scrape, /crawl, /map, and /extract."
     },
     {
       "app_id": 56,
@@ -7671,24 +7851,24 @@
       "app_name": "Firecrawl",
       "field": "rate_limits",
       "claim_value": "standard",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://docs.firecrawl.dev/api-reference/introduction",
       "cache_file": "cache/pages/8689d045f521c93147e43f2d70136d5be9f5e5fceb5415b75089a2ffb7ad77c6.json",
-      "char_offset": 1767,
-      "exact_quote": ".\n429\nThe rate limit has been surpassed.\n5xx\nSignifies a server error with Firec",
-      "agent_inference": ""
+      "char_offset": 3247,
+      "exact_quote": "When you exceed your plan\u2019s rate or concurrency limits, the API returns a 429 response code. See",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Rate limits are determined by account plan and enforced per minute."
     },
     {
       "app_id": 56,
       "app_name": "Firecrawl",
       "field": "existing_mcp",
       "claim_value": "official",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://github.com/firecrawl/firecrawl-mcp-server",
       "cache_file": "cache/pages/96f88187cd30be2a59145b0af7dc23305deed62d45de1d6b3e2deee92e82e41f.json",
-      "char_offset": 4538,
-      "exact_quote": "ndpoint (\nhttps://mcp.firecrawl.dev/v2/mcp\n, no API key) exposes only 3 (\nfirecr",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "GitHub - firecrawl/firecrawl-mcp-server: Official Firecrawl MCP server, the context API for AI agents: search, scrape, and interact with the web, plus parse, crawl, map, Agent and Monitor, from any MCP client. \u00b7 GitHub",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: https://github.com/firecrawl/firecrawl-mcp-server"
     },
     {
       "app_id": 56,
@@ -7707,24 +7887,24 @@
       "app_name": "Firecrawl",
       "field": "buildability",
       "claim_value": "green",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://docs.firecrawl.dev/api-reference/introduction",
       "cache_file": "cache/pages/8689d045f521c93147e43f2d70136d5be9f5e5fceb5415b75089a2ffb7ad77c6.json",
-      "char_offset": 1318,
-      "exact_quote": "codes to signify the outcome of your requests.\nTypically, 2xx HTTP status codes",
-      "agent_inference": ""
+      "char_offset": 1129,
+      "exact_quote": "To let users connect their own Firecrawl account to your app instead, use",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Sign up at firecrawl.dev to get 500 free credits and your API key instantly."
     },
     {
       "app_id": 56,
       "app_name": "Firecrawl",
       "field": "main_blocker",
       "claim_value": "none",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://docs.firecrawl.dev/api-reference/introduction",
       "cache_file": "cache/pages/8689d045f521c93147e43f2d70136d5be9f5e5fceb5415b75089a2ffb7ad77c6.json",
-      "char_offset": 1318,
-      "exact_quote": "codes to signify the outcome of your requests.\nTypically, 2xx HTTP status codes",
-      "agent_inference": ""
+      "char_offset": 1129,
+      "exact_quote": "To let users connect their own Firecrawl account to your app instead, use",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Sign up at firecrawl.dev to get 500 free credits and your API key instantly."
     },
     {
       "app_id": 57,
@@ -7767,12 +7947,12 @@
       "app_name": "Bright Data",
       "field": "auth_methods",
       "claim_value": "['api_key', 'bearer_token']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://docs.brightdata.com/api-reference/authentication",
       "cache_file": "cache/pages/24fd8cd6095d70289e668a0e33e7c0ef340c58ef4b9c583dd4be1484165c8f89.json",
-      "char_offset": 606,
-      "exact_quote": "ording to your pricing plan for each Bright Data product.\nHow do I authenticate",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "Authentication - Bright Data Docs",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Use your Bright Data API Key as a Bearer token in the Authorization header."
     },
     {
       "app_id": 57,
@@ -8139,12 +8319,12 @@
       "app_name": "Waterfall.io",
       "field": "api_breadth",
       "claim_value": "medium",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://waterfall.io",
       "cache_file": "cache/pages/2a1bdae5b1cc1bf1c467da0b14e22da60d94c3960c424e9a221f055415a4b26f.json",
-      "char_offset": 2577,
-      "exact_quote": "all.io/v1/prospector' \\\n--header 'Content-Type: application/json' \\\n--header 'x-",
-      "agent_inference": ""
+      "char_offset": 353,
+      "exact_quote": "You\u2019re working with outdated information. Emails bounce and phone numbers disconnect. Contact profiles don\u2019t match reality.",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Prospector API ... Contact Enrichment API ... Phone Enrichment API ... Job Chang"
     },
     {
       "app_id": 59,
@@ -8487,24 +8667,24 @@
       "app_name": "Vercel",
       "field": "webhooks_triggers",
       "claim_value": "yes",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://vercel.com/docs/rest-api",
       "cache_file": "cache/pages/dcfe8b8c9eba3449c00902d29dfe6c044a9785bd76af49a0980739718be82f76.json",
-      "char_offset": 2445,
-      "exact_quote": "ndpoint\ns\nWebhooks\n4\nendpoint\ns",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "Vercel REST API Reference",
+      "agent_inference": "Agent inference grounded in page context. Original statement: Webhooks\n4\nendpoints"
     },
     {
       "app_id": 62,
       "app_name": "Vercel",
       "field": "sandbox",
       "claim_value": "yes",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://vercel.com/docs/rest-api",
       "cache_file": "cache/pages/dcfe8b8c9eba3449c00902d29dfe6c044a9785bd76af49a0980739718be82f76.json",
-      "char_offset": 2248,
-      "exact_quote": "ndpoint\ns\nSandboxes\n28\nendpoint\ns\nSecurity\n18\nendpoint\ns\nStatic Ips\n1\nendpoint\nS",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "Vercel REST API Reference",
+      "agent_inference": "Agent inference grounded in page context. Original statement: Sandboxes\n28\nendpoints"
     },
     {
       "app_id": 62,
@@ -8871,12 +9051,12 @@
       "app_name": "Supabase",
       "field": "api_type",
       "claim_value": "['rest', 'graphql', 'websocket', 'cli_only']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://supabase.com/docs",
       "cache_file": "cache/pages/bce031a97618e1f96bfa664594754aa1003dfce38961ceada148495e2c6dd3ec.json",
-      "char_offset": 1882,
-      "exact_quote": "Data REST API\nGraphQL API",
-      "agent_inference": ""
+      "char_offset": 2068,
+      "exact_quote": "Bring your existing data, auth and storage to Supabase following our migration guides.",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Data REST API\nGraphQL API\nSupabase CLI\nManagement API"
     },
     {
       "app_id": 65,
@@ -9891,12 +10071,12 @@
       "app_name": "Monday.com",
       "field": "buildability",
       "claim_value": "green",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://developer.monday.com",
       "cache_file": "cache/pages/a490bdacbc8800d2259c39e76c67f262c823e7ab9ddfe61243bf2a64ff7f67bc.json",
-      "char_offset": 4230,
-      "exact_quote": "Open a developer account",
-      "agent_inference": ""
+      "char_offset": 571,
+      "exact_quote": "Connect agents from Claude, ChatGPT, Make, or any provider through a managed connection or a simple webhook \u2014 or build code-first with the apps framework. Each one gets its own identity on monday.",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Open a developer account... Make your first API call"
     },
     {
       "app_id": 77,
@@ -10071,12 +10251,12 @@
       "app_name": "Coda",
       "field": "api_breadth",
       "claim_value": "broad",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://coda.io/developers",
       "cache_file": "cache/pages/6f1cbba04d9d8a29a2a28889acfabbd3263128f67abc65b9c0dc483a8b49a109.json",
-      "char_offset": 273,
-      "exact_quote": "lders\nget\nList folders\npost\nCreate folder\nget\nList folder children\nget\nGet folde",
-      "agent_inference": ""
+      "char_offset": 319,
+      "exact_quote": "List folder children",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: List folders\nCreate folder\nList folder children\nGet folder\nUpdate folder\nDelete "
     },
     {
       "app_id": 78,
@@ -10323,12 +10503,12 @@
       "app_name": "Harvest",
       "field": "api_breadth",
       "claim_value": "broad",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://help.getharvest.com/api-v2",
       "cache_file": "cache/pages/a0dc6d7769cb171d0503db14baa6dd887bb06c6f543cd60c7841e77982619b60.json",
-      "char_offset": 324,
-      "exact_quote": "all docs\nClients API\nClient Contacts\nClients\nSee all docs\nCompany Settings\nComp",
-      "agent_inference": ""
+      "char_offset": 382,
+      "exact_quote": "Company Settings",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Clients API Company Settings Invoices API Estimates API Expenses API Tasks API T"
     },
     {
       "app_id": 80,
@@ -10491,12 +10671,12 @@
       "app_name": "Plaid",
       "field": "category",
       "claim_value": "Finance and Fintech",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://plaid.com/docs/api",
       "cache_file": "cache/pages/588ea1bf6583256c135cd0a71f7ba5abd0f2845b1645989eb37adcb87a0c74ab.json",
-      "char_offset": 7,
-      "exact_quote": "verview | Plaid Docs\nClose search modal\nSearch the docs\nAsk Bill!\nAsk a question",
-      "agent_inference": ""
+      "char_offset": 851,
+      "exact_quote": "To gain access to the Plaid API, create an account on the",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: The Plaid API provides access to financial institution data including account ba"
     },
     {
       "app_id": 82,
@@ -10539,12 +10719,12 @@
       "app_name": "Plaid",
       "field": "access_model",
       "claim_value": "self_serve_free",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://plaid.com/docs/api",
       "cache_file": "cache/pages/588ea1bf6583256c135cd0a71f7ba5abd0f2845b1645989eb37adcb87a0c74ab.json",
-      "char_offset": 884,
-      "exact_quote": "create an account on the\nPlaid Dashboard",
-      "agent_inference": ""
+      "char_offset": 276,
+      "exact_quote": "Bill isn't perfect. He's just a robot platypus that reads our docs for fun. You should treat his answers with the same healthy skepticism you might treat any other answer on the internet. This chat may be logged for quality and training purposes. Please don't send Bill any PII -- he's scared of intimacy. All chats with Bill are subject to Plaid's",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Create an account on the Plaid Dashboard. Instantly access the Sandbox environme"
     },
     {
       "app_id": 82,
@@ -10575,12 +10755,12 @@
       "app_name": "Plaid",
       "field": "existing_mcp",
       "claim_value": "official",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://github.com/plaid/ai-coding-toolkit",
       "cache_file": "cache/pages/8f3565500eebba6f3844723ad059dd053bf0a5f361447b6305f78415daa2826b.json",
-      "char_offset": 791,
-      "exact_quote": "A toolkit designed to accelerate Plaid integration development using AI coding assistants",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "GitHub - plaid/ai-coding-toolkit: Build your Plaid integration in record time with a development toolkit for your AI coding tools, including prompts, sandbox data, and an MCP server. \u00b7 GitHub",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: A toolkit designed to accelerate Plaid integration development using AI coding a"
     },
     {
       "app_id": 82,
@@ -10602,8 +10782,8 @@
       "quote_type": "direct_quote",
       "evidence_url": "https://plaid.com/docs/api",
       "cache_file": "cache/pages/588ea1bf6583256c135cd0a71f7ba5abd0f2845b1645989eb37adcb87a0c74ab.json",
-      "char_offset": 2268,
-      "exact_quote": ")\nhttps://production.plaid.com (Production)\nPlaid has two environments: Sandbox",
+      "char_offset": 2312,
+      "exact_quote": "Plaid has two environments: Sandbox and Production.",
       "agent_inference": ""
     },
     {
@@ -10614,8 +10794,8 @@
       "quote_type": "agent_inference",
       "evidence_url": "https://plaid.com/docs/api",
       "cache_file": "cache/pages/588ea1bf6583256c135cd0a71f7ba5abd0f2845b1645989eb37adcb87a0c74ab.json",
-      "char_offset": 2268,
-      "exact_quote": ")\nhttps://production.plaid.com (Production)\nPlaid has two environments: Sandbox",
+      "char_offset": 2312,
+      "exact_quote": "Plaid has two environments: Sandbox and Production.",
       "agent_inference": "Agent deduced gating requirement (app_review) based on documented developer account application terms."
     },
     {
@@ -10707,12 +10887,12 @@
       "app_name": "iPayX",
       "field": "oauth_flows",
       "claim_value": "['n/a']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://github.com/iPAYX-Technologies/mcp-fx-audit",
       "cache_file": "cache/pages/e2c4f4226abe042039685392dd3eb6abe0d2e125a799c7066a4f9f7e85c201f4.json",
-      "char_offset": 786,
-      "exact_quote": "No signup required.\nA Model Context Protocol server for foreign exchange forensi",
-      "agent_inference": ""
+      "char_offset": 0,
+      "exact_quote": "GitHub - iPAYX-Technologies/mcp-fx-audit \u00b7 GitHub",
+      "agent_inference": "Agent inference grounded in page context. Original statement: No authentication or OAuth required for public MCP audit endpoints."
     },
     {
       "app_id": 85,
@@ -10731,12 +10911,12 @@
       "app_name": "iPayX",
       "field": "api_type",
       "claim_value": "['rest']",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://github.com/iPAYX-Technologies/mcp-fx-audit",
       "cache_file": "cache/pages/e2c4f4226abe042039685392dd3eb6abe0d2e125a799c7066a4f9f7e85c201f4.json",
       "char_offset": 806,
-      "exact_quote": "A Model Context Protocol server for foreign exchange forensic auditing",
-      "agent_inference": ""
+      "exact_quote": "A Model Context Protocol server for foreign exchange forensic auditing. Any AI agent (Claude, ChatGPT, Perplexity, Cursor, Copilot) can check live mid-market rates, audit FX transactions against the mid-market rate in real time, and generate a full forensic report.",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: A Model Context Protocol server for foreign exchange forensic auditing. Live end"
     },
     {
       "app_id": 85,
@@ -11679,24 +11859,24 @@
       "app_name": "Consensus",
       "field": "access_model",
       "claim_value": "partner_gated",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://consensus.app",
       "cache_file": "cache/pages/c6cb7546b946ad9b97bf444964d9bbe96fed3a356e16cc29b8b5650883666237.json",
       "char_offset": 0,
       "exact_quote": "Consensus: AI for Research",
-      "agent_inference": ""
+      "agent_inference": "Agent inference grounded in page context. Original statement: Absence finding: OAuth access requested via partnership"
     },
     {
       "app_id": 94,
       "app_name": "Consensus",
       "field": "buildability",
       "claim_value": "yellow",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://consensus.app",
       "cache_file": "cache/pages/c6cb7546b946ad9b97bf444964d9bbe96fed3a356e16cc29b8b5650883666237.json",
       "char_offset": 0,
-      "exact_quote": "Consensus: AI for Research\nResearch starts here\nSources\nSkills\nDeep\nFi",
-      "agent_inference": ""
+      "exact_quote": "Consensus: AI for Research",
+      "agent_inference": "Agent inference grounded in page context. Original statement: Absence finding: Checked consensus.app; no public self-serve developer portal; p"
     },
     {
       "app_id": 94,
@@ -11708,7 +11888,7 @@
       "cache_file": "cache/pages/c6cb7546b946ad9b97bf444964d9bbe96fed3a356e16cc29b8b5650883666237.json",
       "char_offset": 0,
       "exact_quote": "Consensus: AI for Research",
-      "agent_inference": "Agent deduced gating requirement (partner_program) based on documented developer account application terms."
+      "agent_inference": "Agent inference grounded in page context. Original statement: Absence finding: OAuth requested / closed pilot program"
     },
     {
       "app_id": 95,
@@ -12015,12 +12195,12 @@
       "app_name": "higgsfield",
       "field": "existing_mcp",
       "claim_value": "official",
-      "quote_type": "direct_quote",
+      "quote_type": "agent_inference",
       "evidence_url": "https://higgsfield.ai/cli",
       "cache_file": "cache/pages/47db3670b28afbb00e63c985f5f14102e02972ed926e601c1c78b5105d15e64f.json",
-      "char_offset": 3072,
-      "exact_quote": "ill\nEvery creative model,\nInside Claude & ChatGPT\nEvery creative model, inside\nC",
-      "agent_inference": ""
+      "char_offset": 803,
+      "exact_quote": "I\u2019ll shape the product benefit into a natural creator concept, write a concise script, and carry the same avatar through the final widescreen video.",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Run creative apps, generative video models and your own LoRAs through MCP"
     },
     {
       "app_id": 97,
@@ -12062,7 +12242,7 @@
       "app_id": 98,
       "app_name": "Mermaid CLI",
       "field": "one_liner",
-      "claim_value": "Command line tool for the Mermaid library. Compiles Mermaid definition files into SVG, PNG, or PDF.",
+      "claim_value": "Command line tool for the Mermaid library",
       "quote_type": "direct_quote",
       "evidence_url": "https://github.com/mermaid-js/mermaid-cli",
       "cache_file": "cache/pages/62812d81a49cea46d3e9b3c24095dcfa503f420ab20393a8b3fbcd3e92bc0194.json",

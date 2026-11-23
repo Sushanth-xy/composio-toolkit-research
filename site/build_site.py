@@ -184,27 +184,31 @@ def build_site(gold_path: str = "data/gold_holdout.csv"):
     is_gold_computed = (acc_status == "computed_from_gold")
 
     if is_gold_computed:
-        final_holdout_acc = accuracy_data["progression"]["final"]["hold_out_accuracy"]
+        p3_holdout_acc = accuracy_data.get("progression", {}).get("pass_3", {}).get("hold_out_accuracy", "—")
+        p3_acc_str = f"{p3_holdout_acc}%" if isinstance(p3_holdout_acc, (int, float)) else str(p3_holdout_acc)
         kpi_acc_card = f"""
       <div class="kpi-card">
-        <div class="kpi-title">Hold-Out Accuracy Benchmark</div>
-        <div class="kpi-value" style="color: var(--primary); font-size: 1.8rem;">{final_holdout_acc}%</div>
-        <div class="kpi-desc">Hold-out accuracy computed strictly from {accuracy_data['labeled_holdout_count']}/18 human-audited hold-out apps.</div>
+        <div class="kpi-title">Hold-Out Accuracy Benchmark (Pass 3)</div>
+        <div class="kpi-value" style="color: var(--primary); font-size: 1.8rem;">{p3_acc_str}</div>
+        <div class="kpi-desc">Hold-out accuracy computed strictly from {accuracy_data['labeled_holdout_count']}/18 human-audited hold-out apps. Passes 1-3 only.</div>
       </div>
         """
-        summary_acc_text = f"Hold-out accuracy: {final_holdout_acc}% ({accuracy_data['labeled_holdout_count']}/18 hold-out apps labeled in data/gold_holdout.csv)."
+        summary_acc_text = f"Hold-out accuracy (Pass 3): {p3_acc_str} ({accuracy_data['labeled_holdout_count']}/18 hold-out apps labeled in data/gold_holdout.csv; Passes 1-3 only)."
         
         prog_rows = []
         passes_meta = [
-            ("Pass 1 (Baseline)", "pass_1", "Single LLM call + 1 search page"),
-            ("Pass 2 (Pipeline)", "pass_2", "Multi-query search + official page caching"),
-            ("Pass 3 (Verification)", "pass_3", "Quote verification + deterministic rules"),
-            ("Pass 4 (Final)", "final", "Human Review Queue corrections applied"),
+            ("Pass 1 (Baseline)", "pass_1", "Single LLM call + 1 search page", False),
+            ("Pass 2 (Pipeline)", "pass_2", "Multi-query search + official page caching", False),
+            ("Pass 3 (Verification)", "pass_3", "Quote verification + deterministic rules", False),
+            ("Pass 4 (Final)", "final", "Human Review Queue corrections applied (Hold-out corrected)", True),
         ]
-        for label, pkey, desc in passes_meta:
-            pdata = accuracy_data.get("progression", {}).get(pkey, {})
-            h_acc = pdata.get("hold_out_accuracy", "—")
-            h_acc_str = f"{h_acc}%" if isinstance(h_acc, (int, float)) else str(h_acc)
+        for label, pkey, desc, is_pass4 in passes_meta:
+            if is_pass4:
+                h_acc_str = "Excluded (Passes 1-3 only)"
+            else:
+                pdata = accuracy_data.get("progression", {}).get(pkey, {})
+                h_acc = pdata.get("hold_out_accuracy", "—")
+                h_acc_str = f"{h_acc}%" if isinstance(h_acc, (int, float)) else str(h_acc)
             prog_rows.append(f"""
             <tr>
               <td><strong>{label}</strong></td>
@@ -216,6 +220,9 @@ def build_site(gold_path: str = "data/gold_holdout.csv"):
         acc_section_html = f"""
       <div style="margin-top: 24px;">
         <h3 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 8px;">Hold-Out Accuracy Benchmark (Human-Audited Gold Labels)</h3>
+        <div style="background: rgba(59, 130, 246, 0.08); border: 1px solid var(--primary); border-radius: 8px; padding: 14px; margin-bottom: 16px; font-size: 0.88rem; color: var(--text);">
+          <strong>Evaluation Methodology &amp; Hold-Out Integrity:</strong> Pass 4 includes human corrections on several hold-out apps and is not an independent test; hold-out accuracy is reported for Passes 1-3 only.
+        </div>
         <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 14px; line-height: 1.6;">
           <strong>Source Integrity:</strong> Evaluated strictly against human documentation labels in <code>data/gold_holdout.csv</code> ({accuracy_data['labeled_holdout_count']}/18 hold-out apps labeled).
           <br>

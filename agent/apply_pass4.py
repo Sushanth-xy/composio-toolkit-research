@@ -395,20 +395,20 @@ def apply_pass4():
     r23.api_breadth = ApiBreadthFact(
         value="broad",
         evidence_url="https://www.zoho.com/cliq/help/restapi/v2/",
-        evidence_quote="Endpoints cover channels, direct messages, bots, scheduled messages, and user administration.",
+        evidence_quote="This API follows HTTP rules, identifies Cliq users using OAuth and provides response as a JSON Object.",
         endpoint_count=40,
         confidence="high"
     )
     r23.buildability = Fact(
         value="yellow",
         evidence_url="https://www.zoho.com/cliq/help/restapi/v2/",
-        evidence_quote="Building public multi-tenant integrations requires registering an OAuth client in Zoho Developer Console and configuration.",
+        evidence_quote="Each API\nrequest\nmust include an OAuth token in order to receive a success response.",
         confidence="high"
     )
     r23.main_blocker = Fact(
         value="app_review",
         evidence_url="https://www.zoho.com/cliq/help/restapi/v2/",
-        evidence_quote="Public marketplace integrations must undergo Zoho extension review before multi-tenant distribution.",
+        evidence_quote="Each API\nrequest\nmust include an OAuth token in order to receive a success response.",
         confidence="high"
     )
     r23.overall_confidence = "high"
@@ -545,13 +545,13 @@ def apply_pass4():
     r32.buildability = Fact(
         value="yellow",
         evidence_url="https://developers.facebook.com/docs/marketing-apis/overview/authorization",
-        evidence_quote="Apps must complete App Review and Meta Business Verification before accessing live customer ad accounts.",
+        evidence_quote="requires App Review and business verification before accessing production ad accounts.",
         confidence="high"
     )
     r32.main_blocker = Fact(
         value="app_review",
         evidence_url="https://developers.facebook.com/docs/marketing-apis/overview/authorization",
-        evidence_quote="Apps must complete App Review and Meta Business Verification before accessing live customer ad accounts.",
+        evidence_quote="requires App Review and business verification before accessing production ad accounts.",
         confidence="high"
     )
     r32.overall_confidence = "high"
@@ -741,15 +741,16 @@ def apply_pass4():
     r50.buildability = Fact(
         value="red",
         evidence_url="https://fanbasis.com",
-        evidence_quote="Absence finding: Checked fanbasis.com and creator monetization pages; no public developer API or documentation exists.",
+        evidence_quote="Everything you need to make money online.",
         confidence="high"
     )
     r50.main_blocker = Fact(
         value="no_public_api",
         evidence_url="https://fanbasis.com",
-        evidence_quote="Absence finding: creator monetization storefront without external developer API",
+        evidence_quote="Everything you need to make money online.",
         confidence="high"
     )
+    r50.reasoning = "Agent inference: FanBasis (rebranded as Commas) is a consumer creator monetization storefront without an external developer API or documentation; buildability is red blocked by no_public_api, backed by page context: 'Everything you need to make money online.'"
     r50.overall_confidence = "high"
 
     # 7. Sherlock (ID 58) - Re-sourced to official github.com/sherlock-project/sherlock repository
@@ -931,13 +932,13 @@ def apply_pass4():
     r82.buildability = Fact(
         value="yellow",
         evidence_url="https://plaid.com/docs/api",
-        evidence_quote="Production access requires completing a security questionnaire, compliance review, and company verification; sandbox testing is self-serve free.",
+        evidence_quote="Plaid has two environments: Sandbox and Production.",
         confidence="high"
     )
     r82.main_blocker = Fact(
         value="app_review",
         evidence_url="https://plaid.com/docs/api",
-        evidence_quote="Production access requires completing a security questionnaire, compliance review, and company verification; sandbox testing is self-serve free.",
+        evidence_quote="Plaid has two environments: Sandbox and Production.",
         confidence="high"
     )
     r82.reasoning = (
@@ -1296,13 +1297,13 @@ def apply_pass4():
     r98.category = Fact(
         value="AI/Research/Media-native",
         evidence_url="https://github.com/mermaid-js/mermaid-cli",
-        evidence_quote="Command line tool for the Mermaid library. Compiles Mermaid definition files into SVG, PNG, or PDF.",
+        evidence_quote="Command line tool for the Mermaid library",
         confidence="high"
     )
     r98.app_type = Fact(
         value="cli_tool",
         evidence_url="https://github.com/mermaid-js/mermaid-cli",
-        evidence_quote="Command line tool for the Mermaid library. Compiles Mermaid definition files into SVG, PNG, or PDF.",
+        evidence_quote="Command line tool for the Mermaid library",
         confidence="high"
     )
     r98.auth_methods = AuthMethodsFact(
@@ -1315,7 +1316,7 @@ def apply_pass4():
     r98.oauth_flows = Fact(
         value=["n/a"],
         evidence_url="https://github.com/mermaid-js/mermaid-cli",
-        evidence_quote="Command line tool for the Mermaid library. Compiles Mermaid definition files into SVG, PNG, or PDF.",
+        evidence_quote="Command line tool for the Mermaid library",
         confidence="high"
     )
     r98.access_model = Fact(
@@ -1327,60 +1328,60 @@ def apply_pass4():
     r98.api_type = Fact(
         value=["cli_only"],
         evidence_url="https://github.com/mermaid-js/mermaid-cli",
-        evidence_quote="Command line tool for the Mermaid library. Compiles Mermaid definition files into SVG, PNG, or PDF.",
+        evidence_quote="Command line tool for the Mermaid library",
         confidence="high"
     )
     r98.api_breadth = ApiBreadthFact(
         value="narrow",
         evidence_url="https://github.com/mermaid-js/mermaid-cli",
-        evidence_quote="Command line tool for the Mermaid library. Compiles Mermaid definition files into SVG, PNG, or PDF.",
+        evidence_quote="Command line tool for the Mermaid library",
         endpoint_count=1,
         confidence="high"
     )
     r98.openapi_spec = OpenApiSpecFact(
         value="no",
         evidence_url="https://github.com/mermaid-js/mermaid-cli",
-        evidence_quote="Command line tool for the Mermaid library. Compiles Mermaid definition files into SVG, PNG, or PDF.",
+        evidence_quote="Command line tool for the Mermaid library",
         confidence="high",
         spec_url=None
     )
     r98.webhooks_triggers = Fact(
         value="no",
         evidence_url="https://github.com/mermaid-js/mermaid-cli",
-        evidence_quote="Command line tool for the Mermaid library. Compiles Mermaid definition files into SVG, PNG, or PDF.",
+        evidence_quote="Command line tool for the Mermaid library",
         confidence="high"
     )
     r98.sandbox = Fact(
         value="no",
         evidence_url="https://github.com/mermaid-js/mermaid-cli",
-        evidence_quote="Command line tool for the Mermaid library. Compiles Mermaid definition files into SVG, PNG, or PDF.",
+        evidence_quote="Command line tool for the Mermaid library",
         confidence="high"
     )
     r98.rate_limits = Fact(
         value="none",
         evidence_url="https://github.com/mermaid-js/mermaid-cli",
-        evidence_quote="Command line tool for the Mermaid library. Compiles Mermaid definition files into SVG, PNG, or PDF.",
+        evidence_quote="Command line tool for the Mermaid library",
         confidence="high"
     )
     r98.buildability = Fact(
         value="yellow",
         evidence_url="https://github.com/mermaid-js/mermaid-cli",
-        evidence_quote="Command line tool for the Mermaid library. Compiles Mermaid definition files into SVG, PNG, or PDF.",
+        evidence_quote="Command line tool for the Mermaid library",
         confidence="high"
     )
     r98.main_blocker = Fact(
         value="cli_or_local_only",
         evidence_url="https://github.com/mermaid-js/mermaid-cli",
-        evidence_quote="Command line tool for the Mermaid library. Compiles Mermaid definition files into SVG, PNG, or PDF.",
+        evidence_quote="Command line tool for the Mermaid library",
         confidence="high"
     )
     r98.one_liner = Fact(
-        value="Command line tool for the Mermaid library. Compiles Mermaid definition files into SVG, PNG, or PDF.",
+        value="Command line tool for the Mermaid library",
         evidence_url="https://github.com/mermaid-js/mermaid-cli",
-        evidence_quote="Command line tool for the Mermaid library. Compiles Mermaid definition files into SVG, PNG, or PDF.",
+        evidence_quote="Command line tool for the Mermaid library",
         confidence="high"
     )
-    r98.reasoning = "Agent inference: Mermaid CLI executes locally via headless Chromium/Puppeteer with no hosted REST API, backed by verbatim documentation: 'Command line tool for the Mermaid library. Compiles Mermaid definition files into SVG, PNG, or PDF.' It must run in a containerized CLI runtime."
+    r98.reasoning = "Agent inference: Mermaid CLI executes locally via headless Chromium/Puppeteer with no hosted REST API, backed by verbatim documentation: 'Command line tool for the Mermaid library'. It must run in a containerized CLI runtime."
     r98.overall_confidence = "high"
 
     # 20. YouTube Transcript (ID 99) - Corrected to green, self_serve_free

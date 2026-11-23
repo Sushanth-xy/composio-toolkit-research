@@ -232,5 +232,32 @@ Composio turns external applications and SaaS platforms into agentic tools that 
    - Featured Real Blocker Ranking (`app_review (11), self_hosted_per_instance (4), thin_or_unclear_docs (4)`) and Portfolio Velocity Split (68 Easy Wins vs 15 Outreach Targets vs 3 Local CLI/Isolated Tools).
    - Sanitized HTML entity/escapes for Zendesk article IDs to eliminate regex collisions with unescaped `96.7` grep checks while maintaining 100% browser link functionality.
 
+---
+
+### Phase 6: Reviewer Audit & Slicing Hardening (2026-11-23)
+
+1. **Purged `data/accuracy.json` from Git & Disk:**
+   - Identified that `data/accuracy.json` was still tracked in git despite prior deletion claims; executed `git rm -f data/accuracy.json`.
+   - Updated `analysis/accuracy.py` so `data/accuracy.json` is never generated when hold-out annotations are unpopulated (`len(labeled_apps) == 0`), preventing phantom accuracy artifacts from being recreated during site builds.
+   - Cleaned `README.md` to reference `data/gold_holdout.csv` and `data/quote_audit.csv` instead of deleted synthetic files.
+
+2. **Fixed Quote Slicing & Elimination of Mid-Word Truncations:**
+   - Identified that `find_verbatim_slice` and fallback logic in `agent/audit_quotes.py` were slicing into mid-word boundaries (`b_idx - 10`), generating truncated quotes (e.g. `'ppened to FanBasis?'`, `'uires App Review and business verificati'`).
+   - Fixed regex matching to strictly enforce word boundaries (`\b`), require >=75% token sequences on long quotes, and ground agent inferences in clean, whole sentences.
+   - Grounded clean verbatim doc quotes for Fanbasis (`Everything you need to make money online.`), Meta Ads (`requires App Review and business verification before accessing production ad accounts.`), Zoho Cliq (`Each API\nrequest\nmust include an OAuth token in order to receive a success response.`), Plaid (`Plaid has two environments: Sandbox and Production.`), and Mermaid CLI (`Command line tool for the Mermaid library`).
+
+3. **Methodological Rigor for Requirement 7:**
+   - Ensured that when dynamic gold evaluations run, Pass 4 hold-out accuracy is strictly marked as `Excluded (Passes 1-3 only; human corrections on hold-out)` in both KPI cards and progression tables.
+   - Ensured the required methodology notice is prominently displayed in both pending and gold-evaluated views.
+
+4. **Test Suite Expansion:**
+   - Added 5 new automated tests to `tests/test_audit_requirements.py`:
+     - `test_synthetic_files_deleted`: confirms `gold.csv` and `accuracy.json` are absent.
+     - `test_exactly_100_apps_no_discourse_deel`: confirms 1..100 app IDs and zero strays.
+     - `test_higgsfield_and_cli_policy`: validates Higgsfield SaaS classification and Sherlock/Mermaid CLI-only policy.
+     - `test_otter_ai_classification`: validates official Otter MCP server and REST API.
+     - `test_quote_audit_char_offsets`: validates 100% of quote audit rows against disk cache files at exact offsets.
+
+
 
 

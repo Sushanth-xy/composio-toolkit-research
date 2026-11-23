@@ -206,15 +206,93 @@ class TestAuditRequirements(unittest.TestCase):
             with open(self.root / "site" / "index.html", "r", encoding="utf-8") as f:
                 site_content = f.read()
             self.assertIn("Hold-Out Accuracy Benchmark (Human-Audited Gold Labels)", site_content)
-            self.assertIn(f"{rep['progression']['final']['hold_out_accuracy']}%", site_content)
+            self.assertIn(f"{rep['progression']['pass_3']['hold_out_accuracy']}%", site_content)
+            self.assertIn("Pass 4 includes human corrections on several hold-out apps and is not an independent test; hold-out accuracy is reported for Passes 1-3 only.", site_content)
+            self.assertIn("Excluded (Passes 1-3 only)", site_content)
         finally:
             Path(temp_gold_path).unlink(missing_ok=True)
+            Path(self.root / "data" / "accuracy.json").unlink(missing_ok=True)
             # Restore clean pending accuracy and site
             compute_all_accuracies("data/gold_holdout.csv")
             spec = importlib.util.spec_from_file_location("build_site_mod", self.root / "site" / "build_site.py")
             build_mod = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(build_mod)
             build_mod.build_site("data/gold_holdout.csv")
+
+    def test_synthetic_files_deleted(self):
+        """Task 6: Verify data/gold.csv and data/accuracy.json do not exist on disk."""
+        self.assertFalse((self.root / "data" / "gold.csv").exists(), "data/gold.csv must be deleted")
+        self.assertFalse((self.root / "data" / "accuracy.json").exists(), "data/accuracy.json must be deleted")
+
+    def test_exactly_100_apps_no_discourse_deel(self):
+        """Task 3: Verify apps.csv and results_final contain exactly 100 IDs (1..100) and no Discourse/Deel."""
+        with open(self.root / "data" / "apps.csv", "r", encoding="utf-8") as f:
+            apps = list(csv.DictReader(f))
+        self.assertEqual(len(apps), 100)
+        app_ids = {int(r["id"]) for r in apps}
+        self.assertEqual(app_ids, set(range(1, 101)))
+
+        with open(self.root / "data" / "results_final.csv", "r", encoding="utf-8") as f:
+            results_csv = list(csv.DictReader(f))
+        self.assertEqual(len(results_csv), 100)
+        res_ids = {int(r["id"]) for r in results_csv}
+        self.assertEqual(res_ids, set(range(1, 101)))
+
+        with open(self.root / "data" / "results_final.jsonl", "r", encoding="utf-8") as f:
+            jsonl_records = [json.loads(l) for l in f if l.strip()]
+        self.assertEqual(len(jsonl_records), 100)
+
+        with open(self.root / "data" / "patterns.json", "r", encoding="utf-8") as f:
+            patterns_str = f.read().lower()
+        self.assertNotIn("discourse", patterns_str)
+        self.assertNotIn("deel", patterns_str)
+
+    def test_higgsfield_and_cli_policy(self):
+        """Task 4: Verify higgsfield (97) reclassification and CLI policy strictly on 58 & 98."""
+        records = {r.id: r for r in load_records("data/results_final.jsonl")}
+        r97 = records[97]
+        self.assertEqual(r97.app_type.value, "hosted_saas")
+        self.assertEqual(r97.api_type.value, ["rest"])
+        self.assertEqual(r97.auth_methods.value, ["api_key"])
+        self.assertEqual(r97.buildability.value, "green")
+        self.assertEqual(r97.main_blocker.value, "none")
+        self.assertEqual(r97.existing_mcp.value, "official")
+
+        # CLI policy applies only to Sherlock (58) and Mermaid CLI (98)
+        from agent.verify import verify_deterministic_rules
+        cli_apps = [r for r in records.values() if r.app_type.value == "cli_tool"]
+        cli_ids = {r.id for r in cli_apps}
+        self.assertEqual(cli_ids, {58, 98}, "Only Sherlock and Mermaid CLI must be cli_tool")
+
+    def test_otter_ai_classification(self):
+        """Task 5: Verify Otter AI (92) official MCP server and public API reclassification."""
+        records = {r.id: r for r in load_records("data/results_final.jsonl")}
+        r92 = records[92]
+        self.assertEqual(r92.app_type.value, "hosted_saas")
+        self.assertEqual(r92.api_type.value, ["rest"])
+        self.assertEqual(r92.existing_mcp.value, "official")
+        self.assertIn("Otter-MCP-Server", r92.existing_mcp.evidence_url)
+        self.assertEqual(r92.buildability.value, "green")
+        self.assertEqual(r92.main_blocker.value, "none")
+
+    def test_quote_audit_char_offsets(self):
+        """Task 2: Verify quote audit offsets and exact slices match cache files 100%."""
+        audit_csv = self.root / "data" / "quote_audit.csv"
+        self.assertTrue(audit_csv.exists(), "quote_audit.csv must exist")
+        with open(audit_csv, "r", encoding="utf-8") as f:
+            rows = list(csv.DictReader(f))
+
+        self.assertGreaterEqual(len(rows), 1000)
+        for row in rows:
+            cpath = row["cache_file"]
+            if cpath.startswith("none"):
+                continue
+            offset = int(row["char_offset"])
+            quote = row["exact_quote"]
+            self.assertGreaterEqual(offset, 0, f"Offset must be >= 0 for {row['app_id']} {row['field']}")
+            with open(self.root / cpath, "r", encoding="utf-8") as cf:
+                ctext = json.load(cf).get("text", "")
+            self.assertEqual(ctext[offset:offset+len(quote)], quote, f"Exact quote mismatch in {row['app_id']} {row['field']}")
 
 
 if __name__ == "__main__":

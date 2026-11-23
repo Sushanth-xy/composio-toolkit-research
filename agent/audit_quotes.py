@@ -27,22 +27,33 @@ def find_verbatim_slice(ctext: str, quote: str) -> Optional[Tuple[int, int, str]
     if idx != -1:
         return idx, idx + len(quote), quote
     
-    # 2. Token-sequence match (handles HTML newlines and spacing differences)
+    # 2. Token-sequence match with full word boundaries (handles HTML newlines and spacing differences)
     tokens = re.findall(r"\w+", quote)
     if not tokens or len(tokens) < 2:
         return None
     
-    # Try full token sequence, down to minimum 4 tokens
-    min_len = min(len(tokens), 4)
-    for length in range(len(tokens), min_len - 1, -1):
-        pattern_str = r"[\s\W]+".join(re.escape(tok) for tok in tokens[:length])
-        try:
-            m = re.search(pattern_str, ctext, re.IGNORECASE)
-            if m:
-                matched_slice = ctext[m.start():m.end()]
-                return m.start(), m.end(), matched_slice
-        except Exception:
-            pass
+    # Try full token sequence with word boundaries
+    pattern_str = r"\b" + r"[\s\W]+".join(re.escape(tok) for tok in tokens) + r"\b"
+    try:
+        m = re.search(pattern_str, ctext, re.IGNORECASE)
+        if m:
+            matched_slice = ctext[m.start():m.end()]
+            return m.start(), m.end(), matched_slice
+    except Exception:
+        pass
+        
+    # For longer quotes (>= 6 words), try progressive prefix down to 75% with word boundaries
+    if len(tokens) >= 6:
+        min_len = max(5, int(len(tokens) * 0.75))
+        for length in range(len(tokens) - 1, min_len - 1, -1):
+            pattern_str = r"\b" + r"[\s\W]+".join(re.escape(tok) for tok in tokens[:length]) + r"\b"
+            try:
+                m = re.search(pattern_str, ctext, re.IGNORECASE)
+                if m:
+                    matched_slice = ctext[m.start():m.end()]
+                    return m.start(), m.end(), matched_slice
+            except Exception:
+                pass
             
     return None
 
@@ -240,21 +251,21 @@ def run_quote_audit(
                     "agent_inference": inference_note
                 })
             else:
-                # If exact quote is an inference string, find backing snippet on page
+                # If exact quote is an inference string, find clean backing line/sentence on page
                 words = [w for w in re.findall(r"\w+", quote) if len(w) > 3]
-                backing_slice = None
-                for w in words:
-                    b_idx = ctext.lower().find(w.lower())
-                    if b_idx != -1:
-                        # Extract a surrounding sentence of ~80 chars
-                        start = max(0, b_idx - 10)
-                        end = min(len(ctext), b_idx + 70)
-                        backing_slice = (b_idx, ctext[start:end].strip())
+                best_line = None
+                for line in ctext.splitlines():
+                    line_str = line.strip()
+                    if len(line_str) < 15:
+                        continue
+                    matches = sum(1 for w in words if re.search(r"\b" + re.escape(w) + r"\b", line_str, re.IGNORECASE))
+                    if matches >= 2:
+                        best_line = line_str
                         break
 
-                if backing_slice:
-                    b_offset, b_text = backing_slice
-                    field_obj.evidence_quote = b_text
+                if best_line:
+                    b_offset = ctext.find(best_line)
+                    field_obj.evidence_quote = best_line
                     agent_inferences_count += 1
                     audit_rows.append({
                         "app_id": app_id,
@@ -264,13 +275,12 @@ def run_quote_audit(
                         "quote_type": "agent_inference",
                         "evidence_url": url,
                         "cache_file": str(cpath),
-                        "char_offset": b_offset,
-                        "exact_quote": b_text,
+                        "char_offset": max(0, b_offset),
+                        "exact_quote": best_line,
                         "agent_inference": f"Agent inference relabeled and backed by verbatim page quote. Original statement: {quote[:80]}"
                     })
                 else:
-                    # Fallback to page title or first non-empty line
-                    first_line = next((l.strip() for l in ctext.splitlines() if len(l.strip()) > 10), ctext[:50])
+                    first_line = next((l.strip() for l in ctext.splitlines() if len(l.strip()) > 15), ctext[:50].strip())
                     f_offset = ctext.find(first_line)
                     field_obj.evidence_quote = first_line
                     agent_inferences_count += 1
