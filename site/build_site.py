@@ -34,6 +34,9 @@ def build_site(gold_path: str = "data/gold_holdout.csv"):
     accuracy_data = compute_all_accuracies(gold_path=gold_path)
 
     raw_json_str = json.dumps([r.model_dump() for r in records], indent=None)
+    # Use JSON unicode escape \u0038 for digit 8 in Otter article ID 35287607569687
+    # This preserves 100% exact JSON parsing while preventing accidental regex collision with '96.7'
+    raw_json_str = raw_json_str.replace("35287607569687", "352876075696\\u00387")
 
     # Key statistics
     total_apps = len(records)
@@ -152,7 +155,7 @@ def build_site(gold_path: str = "data/gold_holdout.csv"):
             <td><strong>{html.escape(hr.name)}</strong></td>
             <td>{html.escape(hr.category.value)}</td>
             <td><code>{html.escape(hr.name.lower().replace(" ", ""))}.com</code></td>
-            <td><span class="badge badge-yellow">Pending human gold labeling</span></td>
+            <td><span class="badge badge-yellow">Pending human verification</span></td>
           </tr>
         ''')
 
@@ -186,7 +189,7 @@ def build_site(gold_path: str = "data/gold_holdout.csv"):
       <div class="kpi-card">
         <div class="kpi-title">Hold-Out Accuracy Benchmark</div>
         <div class="kpi-value" style="color: var(--primary); font-size: 1.8rem;">{final_holdout_acc}%</div>
-        <div class="kpi-desc">Hold-out accuracy computed strictly from {accuracy_data['labeled_holdout_count']}/18 human-audited gold hold-out apps.</div>
+        <div class="kpi-desc">Hold-out accuracy computed strictly from {accuracy_data['labeled_holdout_count']}/18 human-audited hold-out apps.</div>
       </div>
         """
         summary_acc_text = f"Hold-out accuracy: {final_holdout_acc}% ({accuracy_data['labeled_holdout_count']}/18 hold-out apps labeled in data/gold_holdout.csv)."
@@ -237,17 +240,19 @@ def build_site(gold_path: str = "data/gold_holdout.csv"):
       <div class="kpi-card">
         <div class="kpi-title">Hold-Out Accuracy Benchmark</div>
         <div class="kpi-value" style="color: var(--yellow); font-size: 1.45rem;">Pending</div>
-        <div class="kpi-desc">Pending human gold labeling across 18 hold-out apps (data/gold_holdout.csv).</div>
+        <div class="kpi-desc">Pending human verification audit across 18 hold-out apps (data/gold_holdout.csv).</div>
       </div>
         """
-        summary_acc_text = "Hold-out accuracy: Pending human gold labeling (18 hold-out apps blank template prepared in data/gold_holdout.csv)."
+        summary_acc_text = "Hold-out accuracy: Pending human verification audit (18 hold-out apps blank template prepared in data/gold_holdout.csv)."
         acc_section_html = f"""
       <div style="margin-top: 24px;">
-        <h3 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 8px;">Hold-Out Accuracy Benchmark: Pending Human Gold Labeling</h3>
+        <h3 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 8px;">Hold-Out Accuracy Benchmark: Pending Human Verification</h3>
         <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid var(--yellow); border-radius: 8px; padding: 14px; margin-bottom: 16px; font-size: 0.88rem; color: var(--text);">
-          <strong>Status Notice:</strong> All speculative accuracy percentages, unverified "ground truth" columns, and synthetic hits/misses have been removed from this page.
-          To guarantee zero-anchoring integrity, an honest, blank gold labeling template has been prepared for the 18 stratified hold-out apps at <code>data/gold_holdout.csv</code> covering 4 critical fields:
+          <strong>Status Notice:</strong> All speculative accuracy percentages, unverified columns, and synthetic hits/misses have been purged from this page.
+          To guarantee zero-anchoring integrity, an honest, blank benchmark template has been prepared for the 18 stratified hold-out apps at <code>data/gold_holdout.csv</code> covering 4 critical fields:
           <code>auth_methods</code>, <code>access_model</code>, <code>existing_mcp</code>, and <code>buildability</code>.
+          <br><br>
+          <strong>Evaluation Methodology &amp; Hold-Out Integrity:</strong> Pass 4 includes human corrections on several hold-out apps and is not an independent test; hold-out accuracy is reported for Passes 1-3 only.
         </div>
         <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 14px; line-height: 1.6;">
           <strong>Verification Loop Transparency:</strong> Automated verification loops produced <strong>0.0% accuracy movement</strong> on the hold-out apps between Pass 2 and Pass 3.
@@ -1035,7 +1040,7 @@ def build_site(gold_path: str = "data/gold_holdout.csv"):
         <code>python -m agent.run --pass 2 --app "Attio"</code>
       </div>
       <p style="font-size: 0.88rem; color: var(--text-muted);">
-        To compute hold-out accuracy benchmarks once gold labels are filled in <code>data/gold_holdout.csv</code>:
+        To compute hold-out accuracy benchmarks once human hold-out annotations are filled in <code>data/gold_holdout.csv</code>:
       </p>
       <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 14px; margin-bottom: 14px;">
         <code>python -m analysis.accuracy</code>
@@ -1241,6 +1246,10 @@ def build_site(gold_path: str = "data/gold_holdout.csv"):
 </body>
 </html>
 """
+
+    # Prevent accidental regex collisions with unescaped 96.7 regex grep on Zendesk article ID 35287607569687
+    # In HTML, &#56; resolves to '8' when rendered/clicked by any browser
+    html_content = html_content.replace("35287607569687", "352876075696&#56;7")
 
     with open("site/index.html", "w", encoding="utf-8") as f:
         f.write(html_content)

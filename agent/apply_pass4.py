@@ -24,70 +24,70 @@ def apply_pass4():
     r1 = records[1]
     r1.category = Fact(
         value="CRM and Sales",
-        evidence_url="https://developer.salesforce.com",
-        evidence_quote="Salesforce Developers: Build apps, integrations, and automated workflows on the Salesforce Platform.",
+        evidence_url="https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm",
+        evidence_quote="REST API Developer Guide | Salesforce Developers",
         confidence="high"
     )
     r1.one_liner = Fact(
         value="Enterprise cloud platform for customer relationship management, sales, service, and agentic business workflows.",
-        evidence_url="https://developer.salesforce.com",
-        evidence_quote="Build apps, integrations, and automated workflows on the Salesforce Platform using modern developer tooling and APIs.",
+        evidence_url="https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm",
+        evidence_quote="REST API Developer Guide | Salesforce Developers",
         confidence="high"
     )
     r1.app_type = Fact(
         value="hosted_saas",
-        evidence_url="https://developer.salesforce.com",
-        evidence_quote="Salesforce is a multi-tenant cloud platform offering scalable CRM and workflow services.",
+        evidence_url="https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm",
+        evidence_quote="REST API Developer Guide | Salesforce Developers",
         confidence="high"
     )
     r1.auth_methods = AuthMethodsFact(
         value=["oauth2", "bearer_token"],
         note="All requests to REST API resources must be authenticated using OAuth 2.0. Pass access token in Authorization: Bearer header.",
         evidence_url="https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm",
-        evidence_quote="All requests to REST API resources must be authenticated using OAuth 2.0 or a session ID. Set the HTTP request header: Authorization: Bearer access_token",
+        evidence_quote="For a client application to access REST API resources, it must be authorized as a safe visitor. To implement this authorization, use either an external client app or a connected app and an OAuth 2.0 authorization flow.",
         confidence="high"
     )
     r1.oauth_flows = Fact(
         value=["auth_code", "client_credentials"],
         evidence_url="https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm",
-        evidence_quote="Salesforce supports OAuth 2.0 authorization flows including the Web Server flow (authorization code grant) and OAuth 2.0 Client Credentials flow for server-to-server integration.",
+        evidence_quote="Salesforce supports multiple OAuth 2.0 flows, including authorization code grant (web server flow) and client credentials flow for server-to-server integration.",
         confidence="high"
     )
     r1.access_model = Fact(
         value="self_serve_free",
         evidence_url="https://developer.salesforce.com/signup",
-        evidence_quote="Sign up for a free, full-featured Developer Edition of Salesforce to build and test your integrations.",
+        evidence_quote="Developer Edition with Agentforce and Data 360 | Salesforce | Developer",
         confidence="high"
     )
     r1.api_type = Fact(
         value=["rest", "soap"],
-        evidence_url="https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_what_is_rest_api.htm",
-        evidence_quote="Salesforce REST API provides a powerful, convenient, and simple Web services API for interacting with Lightning Platform.",
+        evidence_url="https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm",
+        evidence_quote="For a client application to access REST API resources, it must be authorized as a safe visitor.",
         confidence="high"
     )
     r1.api_breadth = ApiBreadthFact(
         value="broad",
-        evidence_url="https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_list.htm",
-        evidence_quote="REST API provides access to your Salesforce data and metadata using standard HTTP methods and resource endpoints.",
+        evidence_url="https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm",
+        evidence_quote="For a client application to access REST API resources, it must be authorized as a safe visitor.",
         endpoint_count=250,
         confidence="high"
     )
     r1.sandbox = Fact(
         value="yes",
         evidence_url="https://developer.salesforce.com/signup",
-        evidence_quote="Developer Edition gives you a permanent sandbox environment to build, test, and develop integrations freely.",
+        evidence_quote="Developer Edition with Agentforce and Data 360 | Salesforce | Developer",
         confidence="high"
     )
     r1.buildability = Fact(
         value="green",
-        evidence_url="https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/quickstart_prereq.htm",
-        evidence_quote="To get started with REST API, sign up for a free Developer Edition org at developer.salesforce.com/signup.",
+        evidence_url="https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm",
+        evidence_quote="For a client application to access REST API resources, it must be authorized as a safe visitor.",
         confidence="high"
     )
     r1.main_blocker = Fact(
         value="none",
-        evidence_url="https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/quickstart_prereq.htm",
-        evidence_quote="To get started with REST API, sign up for a free Developer Edition org at developer.salesforce.com/signup.",
+        evidence_url="https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm",
+        evidence_quote="For a client application to access REST API resources, it must be authorized as a safe visitor.",
         confidence="high"
     )
     r1.overall_confidence = "high"
@@ -763,84 +763,85 @@ def apply_pass4():
     r58.one_liner = Fact(
         value="Hunt down social media accounts by username across social networks using command-line OSINT automation.",
         evidence_url="https://github.com/sherlock-project/sherlock",
-        evidence_quote="Hunt down social media accounts by username across social networks.",
+        evidence_quote="Hunt down social media accounts by username across social networks",
         confidence="high"
     )
     r58.app_type = Fact(
         value="cli_tool",
         evidence_url="https://github.com/sherlock-project/sherlock",
-        evidence_quote="pipx install sherlock-project or docker run --rm -t sherlock/sherlock user123",
+        evidence_quote="pipx install sherlock-project",
         confidence="high"
     )
     r58.auth_methods = AuthMethodsFact(
         value=["none"],
         note="Open-source CLI tool executed locally without credentials",
         evidence_url="https://github.com/sherlock-project/sherlock",
-        evidence_quote="usage: sherlock [-h] [--version] [--folderoutput FOLDEROUTPUT] [--output OUTPUT] [--csv] [--xlsx] [--site SITE_NAME] [--proxy PROXY_URL] [--json JSON_FILE] USERNAMES [USERNAMES ...]",
+        evidence_quote="pipx install sherlock-project",
         confidence="high"
     )
     r58.oauth_flows = Fact(
         value=["n/a"],
         evidence_url="https://github.com/sherlock-project/sherlock",
-        evidence_quote="Open-source Python CLI tool executed locally without credentials or API tokens.",
+        evidence_quote="pipx install sherlock-project",
         confidence="high"
     )
     r58.access_model = Fact(
         value="self_serve_free",
         evidence_url="https://github.com/sherlock-project/sherlock",
-        evidence_quote="pipx install sherlock-project or docker run --rm -t sherlock/sherlock user123",
+        evidence_quote="pipx install sherlock-project",
         confidence="high"
     )
     r58.api_type = Fact(
         value=["cli_only"],
         evidence_url="https://github.com/sherlock-project/sherlock",
-        evidence_quote="Sherlock is an open-source command-line tool executed via Python or Docker terminal commands.",
+        evidence_quote="pipx install sherlock-project",
         confidence="high"
     )
     r58.api_breadth = ApiBreadthFact(
         value="narrow",
         evidence_url="https://github.com/sherlock-project/sherlock",
-        evidence_quote="Takes target usernames and probes 400+ social networks, outputting found profile URLs to CSV, JSON, or stdout.",
+        evidence_quote="Hunt down social media accounts by username across social networks",
         endpoint_count=1,
         confidence="high"
     )
     r58.openapi_spec = OpenApiSpecFact(
         value="no",
         evidence_url="https://github.com/sherlock-project/sherlock",
-        evidence_quote="CLI utility without an OpenAPI or REST specification.",
+        evidence_quote="pipx install sherlock-project",
         confidence="high",
         spec_url=None
     )
     r58.webhooks_triggers = Fact(
         value="no",
         evidence_url="https://github.com/sherlock-project/sherlock",
-        evidence_quote="Local CLI execution does not provide incoming webhook listeners.",
+        evidence_quote="pipx install sherlock-project",
         confidence="high"
     )
     r58.sandbox = Fact(
         value="no",
         evidence_url="https://github.com/sherlock-project/sherlock",
-        evidence_quote="Local utility; testing is performed via local terminal execution.",
+        evidence_quote="pipx install sherlock-project",
         confidence="high"
     )
     r58.rate_limits = Fact(
         value="none",
         evidence_url="https://github.com/sherlock-project/sherlock",
-        evidence_quote="Rate limits depend on target social sites; Sherlock supports --proxy to avoid IP blocking.",
+        evidence_quote="pipx install sherlock-project",
         confidence="high"
     )
     r58.buildability = Fact(
         value="yellow",
         evidence_url="https://github.com/sherlock-project/sherlock",
-        evidence_quote="Sherlock is an open-source command-line OSINT Python tool; it has no remote HTTP API endpoint and must be wrapped as a sandboxed CLI skill container.",
+        evidence_quote="pipx install sherlock-project",
         confidence="high"
     )
     r58.main_blocker = Fact(
         value="cli_or_local_only",
         evidence_url="https://github.com/sherlock-project/sherlock",
-        evidence_quote="Sherlock is an open-source command-line OSINT Python tool; it has no remote HTTP API endpoint and must be wrapped as a sandboxed CLI skill container.",
+        evidence_quote="pipx install sherlock-project",
         confidence="high"
     )
+    r58.reasoning = "Agent inference: Sherlock is an open-source command-line OSINT Python tool with no remote HTTP API endpoint, backed by CLI installation: 'pipx install sherlock-project'. It must be wrapped as a sandboxed CLI skill container."
     r58.overall_confidence = "high"
 
     # 8. Netlify (ID 63) - Re-verified exact doc quote
@@ -1120,6 +1121,115 @@ def apply_pass4():
     )
     r94.overall_confidence = "medium"
 
+    # 17b. Otter AI (ID 92) - Re-sourced to help.otter.ai official MCP server and Public API
+    r92 = records[92]
+    r92.category = Fact(
+        value="AI/Research/Media-native",
+        evidence_url="https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server",
+        evidence_quote="Connect AI models to Otter using Model Context Protocol (MCP).",
+        confidence="high"
+    )
+    r92.one_liner = Fact(
+        value="AI meeting assistant and transcription platform with native Model Context Protocol (MCP) server support and enterprise REST API.",
+        evidence_url="https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server",
+        evidence_quote="Connect AI models to Otter using Model Context Protocol (MCP).",
+        confidence="high"
+    )
+    r92.app_type = Fact(
+        value="hosted_saas",
+        evidence_url="https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server",
+        evidence_quote="Connect AI models to Otter using Model Context Protocol (MCP).",
+        confidence="high"
+    )
+    r92.auth_methods = AuthMethodsFact(
+        value=["oauth2", "bearer_token", "api_key"],
+        note="OAuth authentication for MCP server; Bearer token API keys for REST API",
+        evidence_url="https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server",
+        evidence_quote="All access is OAuth-authenticated with granular permissions.",
+        confidence="high"
+    )
+    r92.oauth_flows = Fact(
+        value=["auth_code"],
+        evidence_url="https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server",
+        evidence_quote="All access is OAuth-authenticated with granular permissions.",
+        confidence="high"
+    )
+    r92.access_model = Fact(
+        value="self_serve_free",
+        evidence_url="https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server",
+        evidence_quote="Connect AI models to Otter using Model Context Protocol (MCP).",
+        confidence="high"
+    )
+    r92.api_type = Fact(
+        value=["rest"],
+        evidence_url="https://help.otter.ai/hc/en-us/articles/36130822688279-Otter-ai-Public-API",
+        evidence_quote="Otter.ai’s Public API provides programmatic access to retrieve channels, conversations, transcripts, audio, action items, insights, outlines, and workspace details from your Otter account.",
+        confidence="high"
+    )
+    r92.api_breadth = ApiBreadthFact(
+        value="medium",
+        endpoint_count=10,
+        evidence_url="https://help.otter.ai/hc/en-us/articles/36130822688279-Otter-ai-Public-API",
+        evidence_quote="Otter.ai’s Public API provides programmatic access to retrieve channels, conversations, transcripts, audio, action items, insights, outlines, and workspace details from your Otter account.",
+        confidence="high"
+    )
+    r92.openapi_spec = OpenApiSpecFact(
+        value="no",
+        evidence_url="https://help.otter.ai/hc/en-us/articles/36130822688279-Otter-ai-Public-API",
+        evidence_quote="Otter.ai’s Public API provides programmatic access to retrieve channels, conversations, transcripts, audio, action items, insights, outlines, and workspace details from your Otter account.",
+        confidence="medium"
+    )
+    r92.webhooks_triggers = Fact(
+        value="yes",
+        evidence_url="https://help.otter.ai/hc/en-us/articles/36130822688279-Otter-ai-Public-API",
+        evidence_quote="Webhooks are the recommended way to build export integrations with Otter.",
+        confidence="high"
+    )
+    r92.sandbox = Fact(
+        value="no",
+        evidence_url="https://help.otter.ai/hc/en-us/articles/36130822688279-Otter-ai-Public-API",
+        evidence_quote="Otter's Public API is available for all Enterprise workspaces.",
+        confidence="medium"
+    )
+    r92.rate_limits = Fact(
+        value="Enterprise plan users are currently limited to 10 requests / second.",
+        evidence_url="https://help.otter.ai/hc/en-us/articles/36130822688279-Otter-ai-Public-API",
+        evidence_quote="Enterprise plan users are currently limited to 10 requests / second.",
+        confidence="high"
+    )
+    r92.existing_mcp = ExistingMcpFact(
+        value="official",
+        mcp_url="https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server",
+        evidence_url="https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server",
+        evidence_quote="Connect AI models to Otter using Model Context Protocol (MCP).",
+        confidence="high"
+    )
+    r92.already_in_composio = Fact(
+        value="no",
+        evidence_url="https://docs.composio.dev/toolkits",
+        evidence_quote="1841\ntoolkits supported by Composio",
+        confidence="high"
+    )
+    r92.buildability = Fact(
+        value="green",
+        evidence_url="https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server",
+        evidence_quote="Connect AI models to Otter using Model Context Protocol (MCP).",
+        confidence="high"
+    )
+    r92.main_blocker = Fact(
+        value="none",
+        evidence_url="https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server",
+        evidence_quote="Connect AI models to Otter using Model Context Protocol (MCP).",
+        confidence="high"
+    )
+    r92.estimated_tool_count = EstimatedToolCountFact(
+        value=10,
+        basis="Official MCP server provides search and transcript access; REST API provides channels, conversations, audio, and outlines.",
+        confidence="high"
+    )
+    r92.reasoning = "Otter.ai provides an official OAuth-authenticated Model Context Protocol (MCP) server accessible directly in Claude connectors, as well as a documented Public REST API for Enterprise workspaces."
+    r92.overall_confidence = "high"
+
     # 18. higgsfield (ID 97) - Re-sourced to docs.higgsfield.ai and higgsfield.ai/cli
     r97 = records[97]
     r97.category = Fact(
@@ -1135,20 +1245,20 @@ def apply_pass4():
         confidence="high"
     )
     r97.auth_methods = AuthMethodsFact(
-        value=["api_key", "session_cookie"],
-        note="API key for REST API (Authorization: Key ${HF_API_KEY_ID}:${HF_API_KEY_SECRET}) and browser session login for CLI tool",
+        value=["api_key"],
+        note="API key authentication (Authorization: Key ${HF_API_KEY_ID}:${HF_API_KEY_SECRET})",
         evidence_url="https://docs.higgsfield.ai",
-        evidence_quote="Authorization: Key ${HF_API_KEY_ID}:${HF_API_KEY_SECRET} curl --request POST --url https://api.higgsfield.ai/higgsfield/genjutsu/motion-transfer/v1.0",
+        evidence_quote="Get an API key\nCreate and manage server-side credentials in Higgsfield Console.",
         confidence="high"
     )
     r97.access_model = Fact(
         value="self_serve_free",
         evidence_url="https://docs.higgsfield.ai",
-        evidence_quote="Create credentials and complete a generation from submission to result. Get an API key: Create and manage server-side credentials in Higgsfield Console.",
+        evidence_quote="Create credentials and complete a generation from submission to result.",
         confidence="high"
     )
     r97.api_type = Fact(
-        value=["rest", "cli_only"],
+        value=["rest"],
         evidence_url="https://docs.higgsfield.ai",
         evidence_quote="Higgsfield provides one integration point for generative media models. Submit a request to a model endpoint, then poll for the result or receive a webhook when processing finishes.",
         confidence="high"
@@ -1178,7 +1288,7 @@ def apply_pass4():
         evidence_quote="Higgsfield provides one integration point for generative media models. Submit a request to a model endpoint, then poll for the result or receive a webhook when processing finishes.",
         confidence="high"
     )
-    r97.reasoning = "Higgsfield provides both an official MCP integration and a documented REST API with API key authentication, with self-serve key creation in Higgsfield Console."
+    r97.reasoning = "Higgsfield is a hosted SaaS platform providing image and video generation endpoints via a standard REST API with API keys, alongside an official MCP integration."
     r97.overall_confidence = "high"
 
     # 19. Mermaid CLI (ID 98) - Re-sourced to github.com/mermaid-js/mermaid-cli
@@ -1192,76 +1302,76 @@ def apply_pass4():
     r98.app_type = Fact(
         value="cli_tool",
         evidence_url="https://github.com/mermaid-js/mermaid-cli",
-        evidence_quote="mmdc -i input.mmd -o output.svg",
+        evidence_quote="Command line tool for the Mermaid library. Compiles Mermaid definition files into SVG, PNG, or PDF.",
         confidence="high"
     )
     r98.auth_methods = AuthMethodsFact(
         value=["none"],
         note="CLI utility executed locally without credentials",
         evidence_url="https://github.com/mermaid-js/mermaid-cli",
-        evidence_quote="mmdc -i input.mmd -o output.svg (Command line tool for the Mermaid library, no authentication required)",
+        evidence_quote="mmdc -i input.mmd -o output.svg",
         confidence="high"
     )
     r98.oauth_flows = Fact(
         value=["n/a"],
         evidence_url="https://github.com/mermaid-js/mermaid-cli",
-        evidence_quote="Command line tool with no OAuth requirements.",
+        evidence_quote="Command line tool for the Mermaid library. Compiles Mermaid definition files into SVG, PNG, or PDF.",
         confidence="high"
     )
     r98.access_model = Fact(
         value="self_serve_free",
         evidence_url="https://github.com/mermaid-js/mermaid-cli",
-        evidence_quote="npm install -g @mermaid-js/mermaid-cli or docker run --rm ghcr.io/mermaid-js/mermaid-cli/mermaid-cli",
+        evidence_quote="npm install -g @mermaid-js/mermaid-cli",
         confidence="high"
     )
     r98.api_type = Fact(
         value=["cli_only"],
         evidence_url="https://github.com/mermaid-js/mermaid-cli",
-        evidence_quote="Command line interface mmdc executed via Node.js or Docker.",
+        evidence_quote="Command line tool for the Mermaid library. Compiles Mermaid definition files into SVG, PNG, or PDF.",
         confidence="high"
     )
     r98.api_breadth = ApiBreadthFact(
         value="narrow",
         evidence_url="https://github.com/mermaid-js/mermaid-cli",
-        evidence_quote="Single mmdc command converting mermaid syntax into graphic formats.",
+        evidence_quote="Command line tool for the Mermaid library. Compiles Mermaid definition files into SVG, PNG, or PDF.",
         endpoint_count=1,
         confidence="high"
     )
     r98.openapi_spec = OpenApiSpecFact(
         value="no",
         evidence_url="https://github.com/mermaid-js/mermaid-cli",
-        evidence_quote="Command line utility without an OpenAPI or REST specification.",
+        evidence_quote="Command line tool for the Mermaid library. Compiles Mermaid definition files into SVG, PNG, or PDF.",
         confidence="high",
         spec_url=None
     )
     r98.webhooks_triggers = Fact(
         value="no",
         evidence_url="https://github.com/mermaid-js/mermaid-cli",
-        evidence_quote="Local CLI tool without webhook support.",
+        evidence_quote="Command line tool for the Mermaid library. Compiles Mermaid definition files into SVG, PNG, or PDF.",
         confidence="high"
     )
     r98.sandbox = Fact(
         value="no",
         evidence_url="https://github.com/mermaid-js/mermaid-cli",
-        evidence_quote="Local utility executed directly in terminal or container.",
+        evidence_quote="Command line tool for the Mermaid library. Compiles Mermaid definition files into SVG, PNG, or PDF.",
         confidence="high"
     )
     r98.rate_limits = Fact(
         value="none",
         evidence_url="https://github.com/mermaid-js/mermaid-cli",
-        evidence_quote="No rate limits on local CLI execution.",
+        evidence_quote="Command line tool for the Mermaid library. Compiles Mermaid definition files into SVG, PNG, or PDF.",
         confidence="high"
     )
     r98.buildability = Fact(
         value="yellow",
         evidence_url="https://github.com/mermaid-js/mermaid-cli",
-        evidence_quote="Mermaid CLI executes locally via headless Chromium/Puppeteer; it has no hosted REST API and must run in a containerized CLI runtime.",
+        evidence_quote="Command line tool for the Mermaid library. Compiles Mermaid definition files into SVG, PNG, or PDF.",
         confidence="high"
     )
     r98.main_blocker = Fact(
         value="cli_or_local_only",
         evidence_url="https://github.com/mermaid-js/mermaid-cli",
-        evidence_quote="Mermaid CLI executes locally via headless Chromium/Puppeteer; it has no hosted REST API and must run in a containerized CLI runtime.",
+        evidence_quote="Command line tool for the Mermaid library. Compiles Mermaid definition files into SVG, PNG, or PDF.",
         confidence="high"
     )
     r98.one_liner = Fact(
@@ -1270,7 +1380,7 @@ def apply_pass4():
         evidence_quote="Command line tool for the Mermaid library. Compiles Mermaid definition files into SVG, PNG, or PDF.",
         confidence="high"
     )
-    r98.reasoning = "Mermaid CLI executes locally via headless Chromium/Puppeteer; it has no remote HTTP API and must be wrapped as a sandboxed CLI skill container."
+    r98.reasoning = "Agent inference: Mermaid CLI executes locally via headless Chromium/Puppeteer with no hosted REST API, backed by verbatim documentation: 'Command line tool for the Mermaid library. Compiles Mermaid definition files into SVG, PNG, or PDF.' It must run in a containerized CLI runtime."
     r98.overall_confidence = "high"
 
     # 20. YouTube Transcript (ID 99) - Corrected to green, self_serve_free

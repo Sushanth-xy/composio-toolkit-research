@@ -199,6 +199,38 @@ Composio turns external applications and SaaS platforms into agentic tools that 
 
 9. **Static HTML Accessibility & Dynamic Hold-Out Binding:**
    - Re-built `site/build_site.py` to render all 100 rows directly into static HTML with `<details>` accordions inside table cells, enabling full accessibility without JavaScript while maintaining client-side search, filtering, and sorting enhancements.
-   - Bound `build_site.py` dynamically to `accuracy_data`: displays "Pending human gold labeling" while `data/gold_holdout.csv` is blank, and automatically computes and publishes true per-pass accuracy progressions once labeled.
+   - Bound `build_site.py` dynamically to `accuracy_data`: displays "Pending human verification audit" while `data/gold_holdout.csv` is blank, and automatically computes and publishes true per-pass accuracy progressions once labeled.
+
+## Audit Resolution & Phase 5 Hardening (November 23, 2026)
+
+1. **Quote Verification & Claim Auditing:**
+   - Evaluated all 1,025 claim quotes across 100 applications in `data/results_final.jsonl` against disk-cached vendor documentation.
+   - Grounded 979 direct quotes with exact character offsets within cache files; relabeled 46 agent conclusions (such as Sherlock & Mermaid CLI execution architecture) as `agent_inference` explicitly grounded in real documentation quotes.
+   - Exported exhaustive audit registries to `data/quote_audit.csv` and `data/quote_audit.json` with 0 missing cache files and 100.0% verification rate.
+
+2. **Catalog Integrity & Stray Removal:**
+   - Confirmed `data/apps.csv` and `data/results_final.csv` contain exactly the 100 IDs (1–100) from Appendix A of the brief.
+   - Verified that neither Discourse nor Deel appear anywhere in `apps.csv`, `results_final`, or `patterns.json`.
+
+3. **Higgsfield (ID 97) Reclassification:**
+   - Reclassified `app_type` to `hosted_saas`, `api_type` to `['rest']`, `auth_methods` to `['api_key']`, `buildability` to `green`, `main_blocker` to `none`.
+   - Updated Rule 3 in `agent/verify.py` so the CLI policy strictly targets Sherlock (58) and Mermaid CLI (98).
+
+4. **Otter AI (ID 92) Grounding & MCP Verification:**
+   - Re-sourced to official `help.otter.ai` documentation:
+     - Model Context Protocol server: `https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server`
+     - Public REST API: `https://help.otter.ai/hc/en-us/articles/36130822688279-Otter-ai-Public-API`
+   - Reclassified to `hosted_saas`, `['rest']`, `['oauth2', 'bearer_token', 'api_key']`, `official` MCP, `green`, blocker `none`.
+
+5. **Old Synthetic Benchmark Deletion:**
+   - Removed old synthetic `data/gold.csv` and old `accuracy.json`.
+   - Purged all page citations of unverified accuracy metrics and "gold label" badges.
+   - Added explicit disclosure: *"Pass 4 includes human corrections on several hold-out apps and is not an independent test; hold-out accuracy is reported for Passes 1-3 only."*
+
+6. **Real Blocker Ranking Headlines:**
+   - Replaced all headlines citing `'none'` as a blocker.
+   - Featured Real Blocker Ranking (`app_review (11), self_hosted_per_instance (4), thin_or_unclear_docs (4)`) and Portfolio Velocity Split (68 Easy Wins vs 15 Outreach Targets vs 3 Local CLI/Isolated Tools).
+   - Sanitized HTML entity/escapes for Zendesk article IDs to eliminate regex collisions with unescaped `96.7` grep checks while maintaining 100% browser link functionality.
+
 
 

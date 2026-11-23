@@ -1,22 +1,21 @@
 {
   "total_apps": 100,
   "headlines": [
-    "Top Real Integration Blockers (excluding 68 unblocked apps): app_review (11), self_hosted_per_instance (4), thin_or_unclear_docs (4). Managed OAuth distribution and developer account verification create the steepest technical gating.",
-    "Authentication by Category: CRM & Messaging mandate OAuth2 (9/10 CRM apps), whereas Developer Infra & Scraping rely heavily on API Keys (5/10 Dev apps) for direct machine-to-machine execution.",
-    "High-Velocity Segments: 67 Easy Wins greenlit with self-serve APIs / OpenAPI specs vs 15 Outreach Targets requiring formal partner applications, review queues, or commercial contracts.",
-    "Catalog Feasibility: 69 apps ready to build immediately, 28 requiring partner access or sandboxed CLI runtimes, and 3 lacking public developer APIs."
+    "Real Blocker Ranking: Gating analysis across restricted platforms reveals app_review (11), self_hosted_per_instance (4), thin_or_unclear_docs (4) as the primary architectural bottlenecks. Managed OAuth scopes and partner review queues represent the highest integration friction.",
+    "Portfolio Velocity Split: 68 Easy Wins (self-serve free/trial APIs & OpenAPI schemas) vs 15 Outreach Targets (gated behind enterprise partner reviews or sales agreements) vs 3 Local CLI/Isolated Tools.",
+    "Authentication Architecture by Category: CRM & Messaging mandate OAuth2 (9/10 CRM apps), whereas Developer Infra & Scraping rely primarily on API Keys (5/10 Dev apps) for headless machine execution.",
+    "Catalog Feasibility: 70 apps immediately buildable today, 28 requiring partner provisioning or containerized execution, and 2 lacking public developer APIs."
   ],
   "auth_overall": {
-    "oauth2": 57,
-    "bearer_token": 45,
-    "api_key": 50,
+    "oauth2": 58,
+    "bearer_token": 46,
+    "api_key": 51,
     "basic": 13,
     "hmac_signature": 3,
     "jwt": 5,
-    "none": 5,
+    "none": 4,
     "other": 3,
-    "unknown": 1,
-    "session_cookie": 1
+    "unknown": 1
   },
   "auth_by_category": {
     "CRM and Sales": {
@@ -83,24 +82,22 @@
       "none": 2
     },
     "AI/Research/Media-native": {
-      "api_key": 5,
-      "none": 2,
-      "oauth2": 2,
+      "api_key": 6,
+      "oauth2": 3,
+      "bearer_token": 3,
       "unknown": 1,
       "other": 1,
-      "session_cookie": 1,
-      "bearer_token": 2
+      "none": 1
     }
   },
   "access_overall": {
-    "self_serve_free": 55,
+    "self_serve_free": 56,
     "self_serve_trial": 20,
     "contact_sales": 4,
     "admin_approval": 4,
     "paid_plan_required": 7,
     "app_review_required": 7,
-    "partner_gated": 2,
-    "not_applicable": 1
+    "partner_gated": 2
   },
   "cat_x_access": {
     "CRM and Sales": {
@@ -154,8 +151,7 @@
       "admin_approval": 1
     },
     "AI/Research/Media-native": {
-      "self_serve_free": 6,
-      "not_applicable": 1,
+      "self_serve_free": 7,
       "partner_gated": 1,
       "self_serve_trial": 1,
       "paid_plan_required": 1
@@ -187,12 +183,12 @@
       2
     ],
     [
-      "no_public_api",
+      "cli_or_local_only",
       2
     ],
     [
-      "cli_or_local_only",
-      2
+      "no_public_api",
+      1
     ],
     [
       "enterprise_only",
@@ -229,12 +225,12 @@
       2
     ],
     [
-      "no_public_api",
+      "cli_or_local_only",
       2
     ],
     [
-      "cli_or_local_only",
-      2
+      "no_public_api",
+      1
     ],
     [
       "enterprise_only",
@@ -245,11 +241,11 @@
       1
     ]
   ],
-  "none_blocker_count": 68,
+  "none_blocker_count": 69,
   "buildability_overall": {
-    "green": 69,
+    "green": 70,
     "yellow": 28,
-    "red": 3
+    "red": 2
   },
   "buildability_by_category": {
     "CRM and Sales": {
@@ -298,15 +294,15 @@
       "red": 1
     },
     "AI/Research/Media-native": {
-      "green": 5,
+      "green": 6,
       "yellow": 4,
-      "red": 1
+      "red": 0
     }
   },
   "mcp_coverage": {
-    "official": 19,
+    "official": 20,
     "community": 41,
-    "none": 40
+    "none": 39
   },
   "composio_coverage": {
     "yes": 58,
@@ -315,17 +311,17 @@
   },
   "openapi_counts": {
     "yes": 26,
-    "no": 8,
-    "unknown": 66
+    "no": 9,
+    "unknown": 65
   },
   "openapi_vs_green": {
     "yes": 20,
-    "no": 4,
+    "no": 5,
     "unknown": 45
   },
-  "easy_wins_count": 67,
+  "easy_wins_count": 68,
   "needs_outreach_count": 15,
-  "not_a_fit_count": 4,
+  "not_a_fit_count": 3,
   "easy_wins": [
     {
       "id": 1,
@@ -1075,6 +1071,19 @@
       "mcp": "none"
     },
     {
+      "id": 92,
+      "name": "Otter AI",
+      "category": "AI/Research/Media-native",
+      "access": "self_serve_free",
+      "openapi": "no",
+      "auth": [
+        "oauth2",
+        "bearer_token",
+        "api_key"
+      ],
+      "mcp": "official"
+    },
+    {
       "id": 93,
       "name": "Fathom",
       "category": "AI/Research/Media-native",
@@ -1093,8 +1102,7 @@
       "access": "self_serve_free",
       "openapi": "no",
       "auth": [
-        "api_key",
-        "session_cookie"
+        "api_key"
       ],
       "mcp": "official"
     },
@@ -1257,12 +1265,6 @@
       "name": "Sherlock",
       "category": "Data/SEO/Scraping",
       "blocker": "cli_or_local_only"
-    },
-    {
-      "id": 92,
-      "name": "Otter AI",
-      "category": "AI/Research/Media-native",
-      "blocker": "no_public_api"
     },
     {
       "id": 98,

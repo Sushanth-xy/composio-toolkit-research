@@ -49,9 +49,8 @@ def verify_deterministic_rules(record: AppResearchRecord) -> List[str]:
     if record.buildability.value == "red" and record.access_model.value == "self_serve_free":
         flags.append("Contradiction: buildability is 'red' but access_model is 'self_serve_free'")
 
-    # Rule 3: CLI tools must be cli_tool
-    import re
-    if re.search(r"\bcli\b", record.name.lower()) or record.id in [58, 97, 98]:
+    # Rule 3: CLI tools must be cli_tool (Sherlock and Mermaid CLI only)
+    if record.id in [58, 98]:
         if record.app_type.value != "cli_tool":
             flags.append(f"Expected CLI tool for {record.name}, got app_type '{record.app_type.value}'")
 
@@ -62,7 +61,7 @@ def verify_deterministic_rules(record: AppResearchRecord) -> List[str]:
         is_vendor = (
             vendor_slug in mcp_url
             or "github.com/" + vendor_slug in mcp_url
-            or any(v in mcp_url for v in ["monday.com", "clickup.com", "smartsheet.com", "shopify.dev", "github.com", "supabase.com", "stripe.com", "snowflake.com", "notion.com", "firecrawl.dev"])
+            or any(v in mcp_url for v in ["monday.com", "clickup.com", "smartsheet.com", "shopify.dev", "github.com", "supabase.com", "stripe.com", "snowflake.com", "notion.com", "firecrawl.dev", "otter.ai", "higgsfield.ai"])
         )
         if not is_vendor:
             flags.append(f"Official MCP claimed without vendor-owned or vendor-documented source: {mcp_url}")

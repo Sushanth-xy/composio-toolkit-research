@@ -171,10 +171,10 @@ def analyze_patterns(records: List[AppResearchRecord]) -> Dict[str, Any]:
 
     # Rewrite headline patterns
     headlines = [
-        f"Top Real Integration Blockers (excluding {none_blocker_count} unblocked apps): {top_real_blockers_str}. Managed OAuth distribution and developer account verification create the steepest technical gating.",
-        f"Authentication by Category: CRM & Messaging mandate OAuth2 ({crm_oauth}/{crm_total} CRM apps), whereas Developer Infra & Scraping rely heavily on API Keys ({dev_key}/{dev_total} Dev apps) for direct machine-to-machine execution.",
-        f"High-Velocity Segments: {len(easy_wins)} Easy Wins greenlit with self-serve APIs / OpenAPI specs vs {len(needs_outreach)} Outreach Targets requiring formal partner applications, review queues, or commercial contracts.",
-        f"Catalog Feasibility: {buildability_overall['green']} apps ready to build immediately, {buildability_overall['yellow']} requiring partner access or sandboxed CLI runtimes, and {buildability_overall['red']} lacking public developer APIs.",
+        f"Real Blocker Ranking: Gating analysis across restricted platforms reveals {top_real_blockers_str} as the primary architectural bottlenecks. Managed OAuth scopes and partner review queues represent the highest integration friction.",
+        f"Portfolio Velocity Split: {len(easy_wins)} Easy Wins (self-serve free/trial APIs & OpenAPI schemas) vs {len(needs_outreach)} Outreach Targets (gated behind enterprise partner reviews or sales agreements) vs {len(not_a_fit)} Local CLI/Isolated Tools.",
+        f"Authentication Architecture by Category: CRM & Messaging mandate OAuth2 ({crm_oauth}/{crm_total} CRM apps), whereas Developer Infra & Scraping rely primarily on API Keys ({dev_key}/{dev_total} Dev apps) for headless machine execution.",
+        f"Catalog Feasibility: {buildability_overall['green']} apps immediately buildable today, {buildability_overall['yellow']} requiring partner provisioning or containerized execution, and {buildability_overall['red']} lacking public developer APIs.",
     ]
 
     summary = {
