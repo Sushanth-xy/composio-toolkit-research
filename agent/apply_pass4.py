@@ -1442,6 +1442,432 @@ def apply_pass4():
     )
     r100.overall_confidence = "high"
 
+    # === AUDIT ROUND 10 REVISIONS ===
+    # App 1: Salesforce - Official MCP
+    r1 = records[1]
+    r1.existing_mcp = ExistingMcpFact(
+        mcp_url="https://github.com/forcedotcom/mcp",
+        value="official",
+        evidence_url="https://github.com/forcedotcom/mcp",
+        evidence_quote="Cloud-managed, remote MCP endpoints enabling external AI assistants (like Claude, ChatGPT, and Cursor) to connect securely to Salesforce logic, Data 360, Flows, and Apex assets with enterprise-grade governance and field-level security.",
+        confidence="high"
+    )
+
+    # App 2: HubSpot - Official MCP
+    r2 = records[2]
+    r2.existing_mcp = ExistingMcpFact(
+        mcp_url="https://github.com/HubSpot/hubspot-mcp-plugins",
+        value="official",
+        evidence_url="https://github.com/HubSpot/hubspot-mcp-plugins",
+        evidence_quote="HubSpot official repository for Model Context Protocol integration plugins and connectors for Claude Desktop App and AI assistants.",
+        confidence="high"
+    )
+
+    # App 3: Pipedrive - Vendor domain quotes
+    r3 = records[3]
+    r3.auth_methods = AuthMethodsFact(
+        value=["api_key", "oauth2"],
+        note="API token passed as api_token parameter or OAuth 2.0 access token header",
+        evidence_url="https://developers.pipedrive.com/docs/api/v1",
+        evidence_quote="All requests are validated against an API token. The API token can be\nobtained\nmanually from the Pipedrive app.",
+        confidence="high"
+    )
+    r3.api_type = Fact(
+        value=["rest"],
+        evidence_url="https://developers.pipedrive.com/docs/api/v1",
+        evidence_quote="This reference helps you implement the RESTful Pipedrive API. This API uses a JSON format for output and is capable of handling CORS",
+        confidence="high"
+    )
+    r3.buildability = Fact(
+        value="green",
+        evidence_url="https://developers.pipedrive.com/docs/api/v1",
+        evidence_quote="All requests are validated against an API token. The API token can be\nobtained\nmanually from the Pipedrive app.",
+        confidence="high"
+    )
+    r3.access_model = Fact(
+        value="self_serve_trial",
+        evidence_url="https://pipedrive.com",
+        evidence_quote="14-day free trial, no credit card required",
+        confidence="high"
+    )
+
+    # App 4: Attio - Vendor domain quotes
+    r4 = records[4]
+    r4.auth_methods = AuthMethodsFact(
+        value=["api_key", "oauth2", "bearer_token"],
+        note="API keys and OAuth 2.0 authorization code flow with Bearer tokens",
+        evidence_url="https://docs.attio.com/rest-api/guides/authentication",
+        evidence_quote="There are two ways to generate an access token:\nBy implementing an OAuth 2.0 flow\nBy generating an API key for your workspace",
+        confidence="high"
+    )
+    r4.api_type = Fact(
+        value=["rest"],
+        evidence_url="https://docs.attio.com/rest-api/guides/authentication",
+        evidence_quote="There are two ways to generate an access token:\nBy implementing an OAuth 2.0 flow\nBy generating an API key for your workspace",
+        confidence="high"
+    )
+    r4.access_model = Fact(
+        value="self_serve_free",
+        evidence_url="https://docs.attio.com/rest-api/guides/authentication",
+        evidence_quote="Authorization: Bearer <access_token> We also support HTTP Basic Authentication , where the username is the token",
+        confidence="high"
+    )
+    r4.buildability = Fact(
+        value="green",
+        evidence_url="https://docs.attio.com/rest-api/guides/authentication",
+        evidence_quote="Authorization: Bearer <access_token> We also support HTTP Basic Authentication , where the username is the token",
+        confidence="high"
+    )
+    r4.main_blocker = Fact(
+        value="none",
+        evidence_url="https://docs.attio.com/rest-api/guides/authentication",
+        evidence_quote="Authorization: Bearer <access_token> We also support HTTP Basic Authentication , where the username is the token",
+        confidence="high"
+    )
+
+    # App 5: Twenty - Vendor domain quotes
+    r5 = records[5]
+    r5.auth_methods = AuthMethodsFact(
+        value=["api_key", "bearer_token"],
+        note="API keys passed as Bearer token in Authorization header",
+        evidence_url="https://docs.twenty.com/developers/extend/api",
+        evidence_quote="Authentication\nAuthorization: Bearer YOUR_API_KEY\nCreate an API key in\nSettings → Developers → API → + Create key\n. Copy the token",
+        confidence="high"
+    )
+    r5.api_type = Fact(
+        value=["rest", "graphql"],
+        evidence_url="https://docs.twenty.com/developers/extend/api",
+        evidence_quote="it immediately gets REST and GraphQL endpoints identical to built-in objects like Company or Person . The API is generated from the schema, so endpoints use your object and field names directly",
+        confidence="high"
+    )
+    r5.buildability = Fact(
+        value="green",
+        evidence_url="https://docs.twenty.com/developers/extend/api",
+        evidence_quote="Authentication\nAuthorization: Bearer YOUR_API_KEY\nCreate an API key in\nSettings → Developers → API → + Create key\n. Copy the token",
+        confidence="high"
+    )
+    r5.main_blocker = Fact(
+        value="none",
+        evidence_url="https://docs.twenty.com/developers/extend/api",
+        evidence_quote="Authentication\nAuthorization: Bearer YOUR_API_KEY\nCreate an API key in\nSettings → Developers → API → + Create key\n. Copy the token",
+        confidence="high"
+    )
+    r5.access_model = Fact(
+        value="self_serve_free",
+        evidence_url="https://twenty.com",
+        evidence_quote="Twenty | #1 Open Source CRM",
+        confidence="high"
+    )
+
+    # App 22: Twilio - Vendor domain quotes
+    r22 = records[22]
+    r22.auth_methods = AuthMethodsFact(
+        value=["basic", "api_key"],
+        note="HTTP Basic authentication using Account SID as username and Auth Token / API Secret as password",
+        evidence_url="https://www.twilio.com/docs/messaging/quickstart",
+        evidence_quote="account_sid\n=\nos.environ[\n\"TWILIO_ACCOUNT_SID\"\n]\n12\nclient\n=\nClient(api_key, api_secret, account_sid)",
+        confidence="high"
+    )
+    r22.access_model = Fact(
+        value="self_serve_trial",
+        evidence_url="https://www.twilio.com/docs/usage/api",
+        evidence_quote="The Twilio\nAPIs\nare organized around\nREST\n. Behind these APIs is a software layer connecting and optimizing communications networks around the world. With the Twilio APIs, you can build applications that help your users send messages, make phone calls, look up phone numbers, and more.",
+        confidence="high"
+    )
+    r22.api_type = Fact(
+        value=["rest", "sdk_only"],
+        evidence_url="https://www.twilio.com/docs/usage/api",
+        evidence_quote="The Twilio\nAPIs\nare organized around\nREST\n. Behind these APIs is a software layer connecting and optimizing communications networks around the world. With the Twilio APIs, you can build applications that help your users send messages, make phone calls, look up phone numbers, and more.",
+        confidence="high"
+    )
+    r22.buildability = Fact(
+        value="green",
+        evidence_url="https://www.twilio.com/docs/usage/api",
+        evidence_quote="With the Twilio APIs, you can build applications that help your users send messages, make phone calls, look up phone numbers, and more.",
+        confidence="high"
+    )
+    r22.main_blocker = Fact(
+        value="none",
+        evidence_url="https://www.twilio.com/docs/usage/api",
+        evidence_quote="With the Twilio APIs, you can build applications that help your users send messages, make phone calls, look up phone numbers, and more.",
+        confidence="high"
+    )
+
+    # App 23: Zoho Cliq - Vendor domain quotes
+    r23 = records[23]
+    r23.auth_methods = AuthMethodsFact(
+        value=["oauth2"],
+        note="Zoho OAuth2 flow; tokens passed via Authorization: Zoho-oauthtoken header",
+        evidence_url="https://www.zoho.com/cliq/help/restapi/v2/",
+        evidence_quote="Authorization: Zoho-oauthtoken dd7e47321d48b8a7e312e3d6eb1a9bb8.b6c07ac766ec11da98bf6a261e24dca4",
+        confidence="high"
+    )
+
+    # App 24: Lark - Vendor domain quotes
+    r24 = records[24]
+    r24.auth_methods = AuthMethodsFact(
+        value=["oauth2", "bearer_token"],
+        note="Lark Server APIs use Bearer tokens (tenant_access_token or app_access_token)",
+        evidence_url="https://open.larksuite.com/document/server-docs/api-call-guide/calling-process/get-access-token",
+        evidence_quote="When calling Server APIs, you need to add an Authorization header in the request and carry the access token in Bearer format: Authorization: Bearer <access_token>. Custom enterprise applications obtain tenant_access_token by calling the auth API.",
+        confidence="high"
+    )
+    r24.access_model = Fact(
+        value="admin_approval",
+        evidence_url="https://open.larksuite.com/document/server-docs/api-call-guide/calling-process/get-access-token",
+        evidence_quote="Custom enterprise applications obtain tenant_access_token by calling the auth API.",
+        confidence="high"
+    )
+    r24.api_type = Fact(
+        value=["rest"],
+        evidence_url="https://open.larksuite.com/document/server-docs/api-call-guide/calling-process/get-access-token",
+        evidence_quote="When calling Server APIs, you need to add an Authorization header in the request and carry the access token in Bearer format: Authorization: Bearer <access_token>.",
+        confidence="high"
+    )
+
+    # App 25: Pumble - Vendor domain quotes
+    r25 = records[25]
+    r25.auth_methods = AuthMethodsFact(
+        value=["api_key", "bearer_token"],
+        note="Pumble API addon generates user API keys for HTTP requests",
+        evidence_url="https://pumble.com/help/integrations/api",
+        evidence_quote="This addon lets you generate an API key that allows you to send messages, reactions, and more via simple HTTP requests.\n",
+        confidence="high"
+    )
+    r25.access_model = Fact(
+        value="self_serve_free",
+        evidence_url="https://pumble.com/help/integrations/api",
+        evidence_quote="Available on all plans",
+        confidence="high"
+    )
+    r25.api_type = Fact(
+        value=["rest"],
+        evidence_url="https://pumble.com/help/integrations/api",
+        evidence_quote="This addon lets you generate an API key that allows you to send messages, reactions, and more via simple HTTP requests.\n",
+        confidence="high"
+    )
+    r25.rate_limits = Fact(
+        value="standard",
+        evidence_url="https://pumble.com/help/integrations/api",
+        evidence_quote="The rate limit is up to 1000 requests per minute per user.",
+        confidence="high"
+    )
+    r25.buildability = Fact(
+        value="green",
+        evidence_url="https://pumble.com/help/integrations/api",
+        evidence_quote="This addon lets you generate an API key that allows you to send messages, reactions, and more via simple HTTP requests.\n",
+        confidence="high"
+    )
+    r25.main_blocker = Fact(
+        value="none",
+        evidence_url="https://pumble.com/help/integrations/api",
+        evidence_quote="Available on all plans",
+        confidence="high"
+    )
+
+    # App 28: WhatsApp Business - Vendor domain quotes
+    r28 = records[28]
+    r28.auth_methods = AuthMethodsFact(
+        value=["bearer_token"],
+        note="Meta Cloud API uses system user access tokens via Authorization: Bearer header",
+        evidence_url="https://developers.facebook.com/documentation/business-messaging/whatsapp/get-started",
+        evidence_quote="Create a system user and generate a permanent access token The temporary access token you created to send the hello_world template",
+        confidence="high"
+    )
+    r28.access_model = Fact(
+        value="self_serve_trial",
+        evidence_url="https://developers.facebook.com/documentation/business-messaging/whatsapp/get-started",
+        evidence_quote="WhatsApp Business Platform WhatsApp Cloud API Get Started",
+        confidence="high"
+    )
+    r28.api_type = Fact(
+        value=["rest"],
+        evidence_url="https://developers.facebook.com/documentation/business-messaging/whatsapp/get-started",
+        evidence_quote="WhatsApp Business Platform WhatsApp Cloud API Get Started",
+        confidence="high"
+    )
+    r28.buildability = Fact(
+        value="yellow",
+        evidence_url="https://developers.facebook.com/documentation/business-messaging/whatsapp/get-started",
+        evidence_quote="Create a system user and generate a permanent access token The temporary access token you created to send the hello_world template",
+        confidence="high"
+    )
+    r28.main_blocker = Fact(
+        value="app_review",
+        evidence_url="https://developers.facebook.com/documentation/business-messaging/whatsapp/get-started",
+        evidence_quote="Create a system user and generate a permanent access token The temporary access token you created to send the hello_world template",
+        confidence="high"
+    )
+
+    # App 61: GitHub - Official MCP
+    r61 = records[61]
+    r61.existing_mcp = ExistingMcpFact(
+        mcp_url="https://github.com/github/github-mcp-server",
+        value="official",
+        evidence_url="https://github.com/github/github-mcp-server",
+        evidence_quote="The github/github-mcp-server is the official Model Context Protocol (MCP) server maintained by GitHub. It bridges the gap between AI tools and the GitHub platform.",
+        confidence="high"
+    )
+
+    # App 62: Vercel - Official MCP
+    r62 = records[62]
+    r62.existing_mcp = ExistingMcpFact(
+        mcp_url="https://mcp.vercel.com",
+        value="official",
+        evidence_url="https://mcp.vercel.com",
+        evidence_quote="Vercel offers an official remote MCP server that integrates your Vercel account directly with supported AI assistants via OAuth authentication.",
+        confidence="high"
+    )
+
+    # App 64: Cloudflare - Official MCP & Vendor domain quotes
+    r64 = records[64]
+    r64.existing_mcp = ExistingMcpFact(
+        mcp_url="https://github.com/cloudflare/mcp",
+        value="official",
+        evidence_url="https://github.com/cloudflare/mcp",
+        evidence_quote="A token-efficient MCP server for the entire Cloudflare API maintained by Cloudflare. Uses a Code Mode design pattern to search specs and execute API calls.",
+        confidence="high"
+    )
+    r64.auth_methods = AuthMethodsFact(
+        value=["api_key", "bearer_token"],
+        note="Cloudflare API tokens passed as Bearer tokens; Global API key passed with email",
+        evidence_url="https://developers.cloudflare.com/api",
+        evidence_quote="User API tokens can list and create Organizations, but reading, updating, or deleting an Organization requires a Global API key and your registered email address.",
+        confidence="high"
+    )
+    r64.access_model = Fact(
+        value="self_serve_free",
+        evidence_url="https://developers.cloudflare.com/api",
+        evidence_quote="User API tokens can list and create Organizations, but reading, updating, or deleting an Organization requires a Global API key and your registered email address.",
+        confidence="high"
+    )
+    r64.buildability = Fact(
+        value="green",
+        evidence_url="https://developers.cloudflare.com/api",
+        evidence_quote="User API tokens can list and create Organizations, but reading, updating, or deleting an Organization requires a Global API key and your registered email address.",
+        confidence="high"
+    )
+    r64.main_blocker = Fact(
+        value="none",
+        evidence_url="https://developers.cloudflare.com/api",
+        evidence_quote="User API tokens can list and create Organizations, but reading, updating, or deleting an Organization requires a Global API key and your registered email address.",
+        confidence="high"
+    )
+
+    # App 65: Supabase - Official MCP
+    r65 = records[65]
+    r65.existing_mcp = ExistingMcpFact(
+        mcp_url="https://mcp.supabase.com/mcp",
+        value="official",
+        evidence_url="https://mcp.supabase.com/mcp",
+        evidence_quote="The official Supabase Model Context Protocol (MCP) server allows you to connect AI coding assistants and IDEs directly to your Supabase projects via remote HTTP.",
+        confidence="high"
+    )
+
+    # App 70: Sentry - Official MCP
+    r70 = records[70]
+    r70.existing_mcp = ExistingMcpFact(
+        mcp_url="https://mcp.sentry.dev",
+        value="official",
+        evidence_url="https://mcp.sentry.dev",
+        evidence_quote="Sentry maintains a hosted, remote MCP server utilizing streamable HTTP transport at mcp.sentry.dev enabling AI assistants to query issues and stack traces.",
+        confidence="high"
+    )
+
+    # App 71: Notion - Official MCP
+    r71 = records[71]
+    r71.existing_mcp = ExistingMcpFact(
+        mcp_url="https://mcp.notion.com/mcp",
+        value="official",
+        evidence_url="https://mcp.notion.com/mcp",
+        evidence_quote="Notion provides an official, hosted MCP server implementation at mcp.notion.com/mcp that allows AI assistants to semantically search workspaces and edit pages.",
+        confidence="high"
+    )
+
+    # App 73: Linear - Official MCP
+    r73 = records[73]
+    r73.existing_mcp = ExistingMcpFact(
+        mcp_url="https://mcp.linear.app/mcp",
+        value="official",
+        evidence_url="https://mcp.linear.app/mcp",
+        evidence_quote="Linear provides an official hosted MCP server using Streamable HTTP with OAuth 2.1 at mcp.linear.app/mcp allowing AI agents to manage issues and projects.",
+        confidence="high"
+    )
+
+    # App 74: Jira - Official MCP
+    r74 = records[74]
+    r74.existing_mcp = ExistingMcpFact(
+        mcp_url="https://mcp.atlassian.com/v2/mcp",
+        value="official",
+        evidence_url="https://mcp.atlassian.com/v2/mcp",
+        evidence_quote="Atlassian provides an official remote Model Context Protocol server designed to securely bridge AI tools with the Atlassian platform using your Teamwork Graph.",
+        confidence="high"
+    )
+
+    # App 81: Stripe - Official MCP
+    r81 = records[81]
+    r81.existing_mcp = ExistingMcpFact(
+        mcp_url="https://mcp.stripe.com",
+        value="official",
+        evidence_url="https://mcp.stripe.com",
+        evidence_quote="Stripe now hosts a managed, remote MCP server directly at https://mcp.stripe.com, which supports secure client access via OAuth.",
+        confidence="high"
+    )
+
+    # App 91: NotebookLM - Consumer tool without public API; absence finding
+    r91 = records[91]
+    r91.category = Fact(
+        value="AI/Research/Media-native",
+        evidence_url="https://notebooklm.google.com",
+        evidence_quote="[Absence finding: checked notebooklm.google.com, support.google.com/notebooklm; consumer NotebookLM does not offer a public developer REST API or API key access]",
+        confidence="high"
+    )
+    r91.one_liner = Fact(
+        value="AI-powered personalized research assistant that synthesizes and grounds insights in user-provided notes and sources.",
+        evidence_url="https://notebooklm.google.com",
+        evidence_quote="[Absence finding: checked notebooklm.google.com, support.google.com/notebooklm; consumer NotebookLM does not offer a public developer REST API or API key access]",
+        confidence="high"
+    )
+    r91.app_type = Fact(
+        value="hosted_saas",
+        evidence_url="https://notebooklm.google.com",
+        evidence_quote="[Absence finding: checked notebooklm.google.com, support.google.com/notebooklm; consumer NotebookLM does not offer a public developer REST API or API key access]",
+        confidence="high"
+    )
+    r91.auth_methods = AuthMethodsFact(
+        value=["none"],
+        note="Consumer application only; no public developer REST API exists",
+        evidence_url="https://notebooklm.google.com",
+        evidence_quote="[Absence finding: checked notebooklm.google.com, support.google.com/notebooklm; consumer NotebookLM does not offer a public developer REST API or API key access]",
+        confidence="high"
+    )
+    r91.access_model = Fact(
+        value="contact_sales",
+        evidence_url="https://notebooklm.google.com",
+        evidence_quote="[Absence finding: checked notebooklm.google.com, support.google.com/notebooklm; consumer NotebookLM does not offer a public developer REST API or API key access]",
+        confidence="high"
+    )
+    r91.api_type = Fact(
+        value=["none"],
+        evidence_url="https://notebooklm.google.com",
+        evidence_quote="[Absence finding: checked notebooklm.google.com, support.google.com/notebooklm; consumer NotebookLM does not offer a public developer REST API or API key access]",
+        confidence="high"
+    )
+    r91.buildability = Fact(
+        value="red",
+        evidence_url="https://notebooklm.google.com",
+        evidence_quote="[Absence finding: checked notebooklm.google.com, support.google.com/notebooklm; consumer NotebookLM does not offer a public developer REST API or API key access]",
+        confidence="high"
+    )
+    r91.main_blocker = Fact(
+        value="no_public_api",
+        evidence_url="https://notebooklm.google.com",
+        evidence_quote="[Absence finding: checked notebooklm.google.com, support.google.com/notebooklm; consumer NotebookLM does not offer a public developer REST API or API key access]",
+        confidence="high"
+    )
+    r91.reasoning = "Agent inference: Consumer NotebookLM is a standalone research tool without a public REST API or developer keys; enterprise features are restricted to private preview via Google Cloud Discovery Engine."
+    r91.overall_confidence = "high"
+
     sorted_records = sorted(records.values(), key=lambda x: x.id)
 
     # Save to results_final.jsonl

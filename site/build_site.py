@@ -34,9 +34,6 @@ def build_site(gold_path: str = "data/gold_holdout.csv"):
     accuracy_data = compute_all_accuracies(gold_path=gold_path)
 
     raw_json_str = json.dumps([r.model_dump() for r in records], indent=None)
-    # Use JSON unicode escape \u0038 for digit 8 in Otter article ID 35287607569687
-    # This preserves 100% exact JSON parsing while preventing accidental regex collision with '96.7'
-    raw_json_str = raw_json_str.replace("35287607569687", "352876075696\\u00387")
 
     # Key statistics
     total_apps = len(records)
@@ -55,6 +52,8 @@ def build_site(gold_path: str = "data/gold_holdout.csv"):
     ranked_real_blockers = patterns.get("ranked_real_blockers", [])
     easy_wins = patterns.get("easy_wins", [])
     needs_outreach = patterns.get("needs_outreach", [])
+    requires_configuration = patterns.get("requires_configuration", [])
+    not_a_fit = patterns.get("not_a_fit", [])
 
     # Hold-out apps list (n=18)
     records_by_id = {r.id: r for r in records}
@@ -145,16 +144,26 @@ def build_site(gold_path: str = "data/gold_holdout.csv"):
         '''
         table_rows_html.append(row_html)
 
+    # Load apps.csv for hint domain lookup
+    import csv as _csv
+    apps_hints = {}
+    with open("data/apps.csv", "r", encoding="utf-8") as _f:
+        for _row in _csv.DictReader(_f):
+            try:
+                apps_hints[int(_row["id"])] = _row.get("hint", "")
+            except (ValueError, KeyError):
+                pass
+
     # Static HTML for Hold-Out Apps Audit Table
     holdout_rows_html = []
     for hr in holdout_records:
-        h_hint = hr.category.evidence_url or "Official Docs"
+        h_hint = apps_hints.get(hr.id, "") or hr.category.evidence_url or "Official Docs"
         holdout_rows_html.append(f'''
           <tr>
             <td><strong>{hr.id}</strong></td>
             <td><strong>{html.escape(hr.name)}</strong></td>
             <td>{html.escape(hr.category.value)}</td>
-            <td><code>{html.escape(hr.name.lower().replace(" ", ""))}.com</code></td>
+            <td><code>{html.escape(h_hint)}</code></td>
             <td><span class="badge badge-yellow">Pending human verification</span></td>
           </tr>
         ''')
@@ -262,7 +271,7 @@ def build_site(gold_path: str = "data/gold_holdout.csv"):
           <strong>Evaluation Methodology &amp; Hold-Out Integrity:</strong> Pass 4 includes human corrections on several hold-out apps and is not an independent test; hold-out accuracy is reported for Passes 1-3 only.
         </div>
         <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 14px; line-height: 1.6;">
-          <strong>Verification Loop Transparency:</strong> Automated verification loops produced <strong>0.0% accuracy movement</strong> on the hold-out apps between Pass 2 and Pass 3.
+          <strong>Verification Loop Transparency:</strong> Verification loop impact on hold-out accuracy: not yet computed (pending human verification in <code>data/gold_holdout.csv</code>).
           Official accuracy benchmarks will be computed strictly against human-verified documentation via <code>python -m analysis.accuracy</code> once the hold-out sheet is filled.
         </p>
 
@@ -844,8 +853,8 @@ def build_site(gold_path: str = "data/gold_holdout.csv"):
         </div>
       </div>
 
-      <!-- Strategic Segments: Easy Wins vs Needs Outreach -->
-      <div style="margin-top: 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+      <!-- Strategic Segments: Portfolio Breakdown -->
+      <div style="margin-top: 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
         <!-- Easy Wins Box -->
         <div style="background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 18px;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
@@ -853,7 +862,7 @@ def build_site(gold_path: str = "data/gold_holdout.csv"):
             <span class="badge badge-green">{len(easy_wins)} Apps</span>
           </div>
           <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 12px;">
-            Greenlit platforms with immediate self-serve developer credentials (free/trial) or official OpenAPI specifications.
+            Greenlit platforms with immediate self-serve developer credentials (free/trial). Strictly excludes paid-only or admin-gated platforms.
           </p>
           <div style="max-height: 240px; overflow-y: auto; font-size: 0.82rem; border: 1px solid var(--border); border-radius: 6px; padding: 8px; background: var(--bg);">
             {''.join(f'''
@@ -881,6 +890,44 @@ def build_site(gold_path: str = "data/gold_holdout.csv"):
                 <span class="badge badge-yellow">{o['blocker']}</span>
               </div>
             ''' for o in needs_outreach)}
+          </div>
+        </div>
+
+        <!-- Requires Configuration / Custom Box -->
+        <div style="background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 18px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <h3 style="font-size: 1.05rem; font-weight: 700; color: #a855f7;">Specialized / Paid / Self-Hosted</h3>
+            <span class="badge" style="background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3);">{len(requires_configuration)} Apps</span>
+          </div>
+          <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 12px;">
+            Platforms requiring paid plans (Aircall, Devin, SE Ranking), self-hosted instances (WooCommerce, Snowflake), or admin approval (Pylon, Ramp).
+          </p>
+          <div style="max-height: 240px; overflow-y: auto; font-size: 0.82rem; border: 1px solid var(--border); border-radius: 6px; padding: 8px; background: var(--bg);">
+            {''.join(f'''
+              <div style="display: flex; justify-content: space-between; padding: 5px 4px; border-bottom: 1px solid var(--border);">
+                <span><strong>#{c['id']} {c['name']}</strong> <span style="color: var(--text-muted);">({c['category']})</span></span>
+                <span class="pill">{c['access']}</span>
+              </div>
+            ''' for c in requires_configuration)}
+          </div>
+        </div>
+
+        <!-- Local CLI & No Public API Box -->
+        <div style="background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 18px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--red);">CLI-Only &amp; No Public API</h3>
+            <span class="badge badge-red">{len(not_a_fit)} Apps</span>
+          </div>
+          <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 12px;">
+            Local binary tools (Sherlock, Mermaid CLI) or consumer applications without public developer APIs (fanbasis, NotebookLM).
+          </p>
+          <div style="max-height: 240px; overflow-y: auto; font-size: 0.82rem; border: 1px solid var(--border); border-radius: 6px; padding: 8px; background: var(--bg);">
+            {''.join(f'''
+              <div style="display: flex; justify-content: space-between; padding: 5px 4px; border-bottom: 1px solid var(--border);">
+                <span><strong>#{n['id']} {n['name']}</strong> <span style="color: var(--text-muted);">({n['category']})</span></span>
+                <span class="badge badge-red">{n['blocker']}</span>
+              </div>
+            ''' for n in not_a_fit)}
           </div>
         </div>
       </div>
@@ -1253,10 +1300,6 @@ def build_site(gold_path: str = "data/gold_holdout.csv"):
 </body>
 </html>
 """
-
-    # Prevent accidental regex collisions with unescaped 96.7 regex grep on Zendesk article ID 35287607569687
-    # In HTML, &#56; resolves to '8' when rendered/clicked by any browser
-    html_content = html_content.replace("35287607569687", "352876075696&#56;7")
 
     with open("site/index.html", "w", encoding="utf-8") as f:
         f.write(html_content)

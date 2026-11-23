@@ -1,8 +1,8 @@
 {
   "summary": {
-    "total_quotes_audited": 1040,
-    "direct_quotes": 878,
-    "agent_inferences": 162,
+    "total_quotes_audited": 1053,
+    "direct_quotes": 902,
+    "agent_inferences": 151,
     "missing_cache": 0,
     "unverified": 0,
     "verification_rate_pct": 100.0,
@@ -116,6 +116,18 @@
       "cache_file": "cache/pages/46047bf089ba5a8dfeaf61bb851b7379ff585407551e2f519f1e6f62f483530c.json",
       "char_offset": 0,
       "exact_quote": "Developer Edition with Agentforce and Data 360 | Salesforce | Developer",
+      "agent_inference": ""
+    },
+    {
+      "app_id": 1,
+      "app_name": "Salesforce",
+      "field": "existing_mcp",
+      "claim_value": "official",
+      "quote_type": "direct_quote",
+      "evidence_url": "https://github.com/forcedotcom/mcp",
+      "cache_file": "cache/pages/467177c2e330b59091ff66397cfa115cfb75f338abd3df8ceafe8e35b07df11e.json",
+      "char_offset": 0,
+      "exact_quote": "Cloud-managed, remote MCP endpoints enabling external AI assistants (like Claude, ChatGPT, and Cursor) to connect securely to Salesforce logic, Data 360, Flows, and Apex assets with enterprise-grade governance and field-level security.",
       "agent_inference": ""
     },
     {
@@ -265,6 +277,18 @@
     {
       "app_id": 2,
       "app_name": "HubSpot",
+      "field": "existing_mcp",
+      "claim_value": "official",
+      "quote_type": "direct_quote",
+      "evidence_url": "https://github.com/HubSpot/hubspot-mcp-plugins",
+      "cache_file": "cache/pages/5d1c4b76745d06dc0d25605fa02df4694462f4240070f3d6854fdc4bd1c4623e.json",
+      "char_offset": 0,
+      "exact_quote": "HubSpot official repository for Model Context Protocol integration plugins and connectors for Claude Desktop App and AI assistants.",
+      "agent_inference": ""
+    },
+    {
+      "app_id": 2,
+      "app_name": "HubSpot",
       "field": "already_in_composio",
       "claim_value": "yes",
       "quote_type": "direct_quote",
@@ -326,12 +350,12 @@
       "app_id": 3,
       "app_name": "Pipedrive",
       "field": "auth_methods",
-      "claim_value": "['oauth2', 'api_key']",
+      "claim_value": "['api_key', 'oauth2']",
       "quote_type": "direct_quote",
-      "evidence_url": "https://github.com/skeylup/laravel-pipedrive/blob/main/docs/authentication.md",
-      "cache_file": "cache/pages/4adfacd6213aeac410a978afd3081e697908b8baa82801cfb79421ac3552c34a.json",
-      "char_offset": 725,
-      "exact_quote": "Laravel-Pipedrive supports both\nAPI Token\nand\nOAuth\nauthentication methods",
+      "evidence_url": "https://developers.pipedrive.com/docs/api/v1",
+      "cache_file": "cache/pages/5b0a8360d7e5193ad16ead9be21ce490a95141ffa091065da3b67800e70d4bfc.json",
+      "char_offset": 854,
+      "exact_quote": "all requests are validated against an API token. The API token can be\nobtained\nmanually from the Pipedrive app",
       "agent_inference": ""
     },
     {
@@ -364,10 +388,10 @@
       "field": "api_type",
       "claim_value": "['rest']",
       "quote_type": "direct_quote",
-      "evidence_url": "https://github.com/skeylup/laravel-pipedrive/blob/main/docs/authentication.md",
-      "cache_file": "cache/pages/4adfacd6213aeac410a978afd3081e697908b8baa82801cfb79421ac3552c34a.json",
-      "char_offset": 3354,
-      "exact_quote": "base_url\n'\n=>\nenv\n(\n'\nPIPEDRIVE_BASE_URL\n'\n,\n'\nhttps://api.pipedrive.com/v1",
+      "evidence_url": "https://developers.pipedrive.com/docs/api/v1",
+      "cache_file": "cache/pages/5b0a8360d7e5193ad16ead9be21ce490a95141ffa091065da3b67800e70d4bfc.json",
+      "char_offset": 656,
+      "exact_quote": "This reference helps you implement the RESTful Pipedrive API. This API uses a JSON format for output and is capable of handling CORS",
       "agent_inference": ""
     },
     {
@@ -412,10 +436,10 @@
       "field": "buildability",
       "claim_value": "green",
       "quote_type": "direct_quote",
-      "evidence_url": "https://github.com/skeylup/laravel-pipedrive/blob/main/docs/authentication.md",
-      "cache_file": "cache/pages/4adfacd6213aeac410a978afd3081e697908b8baa82801cfb79421ac3552c34a.json",
-      "char_offset": 725,
-      "exact_quote": "Laravel-Pipedrive supports both\nAPI Token\nand\nOAuth\nauthentication methods",
+      "evidence_url": "https://developers.pipedrive.com/docs/api/v1",
+      "cache_file": "cache/pages/5b0a8360d7e5193ad16ead9be21ce490a95141ffa091065da3b67800e70d4bfc.json",
+      "char_offset": 854,
+      "exact_quote": "all requests are validated against an API token. The API token can be\nobtained\nmanually from the Pipedrive app",
       "agent_inference": ""
     },
     {
@@ -459,12 +483,12 @@
       "app_name": "Attio",
       "field": "auth_methods",
       "claim_value": "['api_key', 'oauth2', 'bearer_token']",
-      "quote_type": "agent_inference",
-      "evidence_url": "https://developers.attio.com/docs/authentication",
-      "cache_file": "cache/pages/d34f688abc0d8ab88626f7f3c6fcf9795b581c0794c6e048db9892c0e8bf83c1.json",
-      "char_offset": 0,
-      "exact_quote": "",
-      "agent_inference": "Agent inference grounded in page context. Original statement: Attio supports two methods of authentication: API keys and OAuth 2.0. Pass your "
+      "quote_type": "direct_quote",
+      "evidence_url": "https://docs.attio.com/rest-api/guides/authentication",
+      "cache_file": "cache/pages/f23594c989efccf3a81680021f6c282c405930966727322b9b8ae7853b947bec.json",
+      "char_offset": 359,
+      "exact_quote": "There are two ways to generate an access token:\nBy implementing an OAuth 2.0 flow\nBy generating an API key for your workspace",
+      "agent_inference": ""
     },
     {
       "app_id": 4,
@@ -483,12 +507,12 @@
       "app_name": "Attio",
       "field": "access_model",
       "claim_value": "self_serve_free",
-      "quote_type": "agent_inference",
-      "evidence_url": "https://developers.attio.com/docs/quickstart",
-      "cache_file": "cache/pages/91506b6dd3e044157c908189d2ec91e204664d68bed164c2e662a3d7d38d339c.json",
-      "char_offset": 0,
-      "exact_quote": "",
-      "agent_inference": "Agent inference grounded in page context. Original statement: Create an API key in workspace settings under Account Settings > Developers > AP"
+      "quote_type": "direct_quote",
+      "evidence_url": "https://docs.attio.com/rest-api/guides/authentication",
+      "cache_file": "cache/pages/f23594c989efccf3a81680021f6c282c405930966727322b9b8ae7853b947bec.json",
+      "char_offset": 2183,
+      "exact_quote": "Authorization: Bearer <access_token>\nWe also support\nHTTP Basic\nAuthentication\n,\nwhere the username is the token",
+      "agent_inference": ""
     },
     {
       "app_id": 4,
@@ -496,10 +520,10 @@
       "field": "api_type",
       "claim_value": "['rest']",
       "quote_type": "direct_quote",
-      "evidence_url": "https://www.revenueflow.com/blog/attio-api",
-      "cache_file": "cache/pages/0ebcf5d12320317f60296ab3b35dae12c6bcaac58e2537e6689291e02fb3a49b.json",
-      "char_offset": 5036,
-      "exact_quote": "Attio's REST API exchanges JSON over HTTPS and exposes the workspace surface: objects and their attributes, records, lists and entries, notes, tasks, comments and threads, plus workspace members and webhooks.",
+      "evidence_url": "https://docs.attio.com/rest-api/guides/authentication",
+      "cache_file": "cache/pages/f23594c989efccf3a81680021f6c282c405930966727322b9b8ae7853b947bec.json",
+      "char_offset": 359,
+      "exact_quote": "There are two ways to generate an access token:\nBy implementing an OAuth 2.0 flow\nBy generating an API key for your workspace",
       "agent_inference": ""
     },
     {
@@ -567,24 +591,24 @@
       "app_name": "Attio",
       "field": "buildability",
       "claim_value": "green",
-      "quote_type": "agent_inference",
-      "evidence_url": "https://developers.attio.com/docs/quickstart",
-      "cache_file": "cache/pages/91506b6dd3e044157c908189d2ec91e204664d68bed164c2e662a3d7d38d339c.json",
-      "char_offset": 0,
-      "exact_quote": "",
-      "agent_inference": "Agent inference grounded in page context. Original statement: Create an API key in workspace settings under Account Settings > Developers > AP"
+      "quote_type": "direct_quote",
+      "evidence_url": "https://docs.attio.com/rest-api/guides/authentication",
+      "cache_file": "cache/pages/f23594c989efccf3a81680021f6c282c405930966727322b9b8ae7853b947bec.json",
+      "char_offset": 2183,
+      "exact_quote": "Authorization: Bearer <access_token>\nWe also support\nHTTP Basic\nAuthentication\n,\nwhere the username is the token",
+      "agent_inference": ""
     },
     {
       "app_id": 4,
       "app_name": "Attio",
       "field": "main_blocker",
       "claim_value": "none",
-      "quote_type": "agent_inference",
-      "evidence_url": "https://developers.attio.com/docs/quickstart",
-      "cache_file": "cache/pages/91506b6dd3e044157c908189d2ec91e204664d68bed164c2e662a3d7d38d339c.json",
-      "char_offset": 0,
-      "exact_quote": "",
-      "agent_inference": "Agent inference grounded in page context. Original statement: Create an API key in workspace settings under Account Settings > Developers > AP"
+      "quote_type": "direct_quote",
+      "evidence_url": "https://docs.attio.com/rest-api/guides/authentication",
+      "cache_file": "cache/pages/f23594c989efccf3a81680021f6c282c405930966727322b9b8ae7853b947bec.json",
+      "char_offset": 2183,
+      "exact_quote": "Authorization: Bearer <access_token>\nWe also support\nHTTP Basic\nAuthentication\n,\nwhere the username is the token",
+      "agent_inference": ""
     },
     {
       "app_id": 5,
@@ -627,12 +651,12 @@
       "app_name": "Twenty",
       "field": "auth_methods",
       "claim_value": "['api_key', 'bearer_token']",
-      "quote_type": "agent_inference",
-      "evidence_url": "https://docs.twenty.com/developers/api/authentication",
-      "cache_file": "cache/pages/2bcdc5c27e578576a08b38a420ac41fa39443a59d1555dd84d08fc2493fe2df5.json",
-      "char_offset": 512,
-      "exact_quote": ". The API is generated from the schema, so endpoints use your object and field names directly \u2014 no opaque IDs.",
-      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Authenticate your API requests by including your API key in the Authorization he"
+      "quote_type": "direct_quote",
+      "evidence_url": "https://docs.twenty.com/developers/extend/api",
+      "cache_file": "cache/pages/cb5fe0c9c62d8087ad05942896780715347a85eb02934ff28b3f4972ab705dd3.json",
+      "char_offset": 1405,
+      "exact_quote": "Authentication\nAuthorization: Bearer YOUR_API_KEY\nCreate an API key in\nSettings \u2192 Developers \u2192 API \u2192 + Create key\n. Copy",
+      "agent_inference": ""
     },
     {
       "app_id": 5,
@@ -663,12 +687,12 @@
       "app_name": "Twenty",
       "field": "api_type",
       "claim_value": "['rest', 'graphql']",
-      "quote_type": "agent_inference",
-      "evidence_url": "https://docs.twenty.com/developers/api/rest",
-      "cache_file": "cache/pages/3b5f4d363bd80aac0e18a669e5b9ab6d8eca960406e05987e06a5dc5eb5fb8a5.json",
-      "char_offset": 0,
-      "exact_quote": "APIs - Twenty Documentation",
-      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Twenty provides both REST and GraphQL APIs to interact with your CRM data."
+      "quote_type": "direct_quote",
+      "evidence_url": "https://docs.twenty.com/developers/extend/api",
+      "cache_file": "cache/pages/cb5fe0c9c62d8087ad05942896780715347a85eb02934ff28b3f4972ab705dd3.json",
+      "char_offset": 412,
+      "exact_quote": "it immediately gets REST and GraphQL endpoints identical to built-in objects like\nCompany\nor\nPerson\n. The API is generated from the schema, so endpoints use your object and field names directly",
+      "agent_inference": ""
     },
     {
       "app_id": 5,
@@ -699,24 +723,24 @@
       "app_name": "Twenty",
       "field": "buildability",
       "claim_value": "green",
-      "quote_type": "agent_inference",
-      "evidence_url": "https://docs.twenty.com/developers/api/rest",
-      "cache_file": "cache/pages/3b5f4d363bd80aac0e18a669e5b9ab6d8eca960406e05987e06a5dc5eb5fb8a5.json",
-      "char_offset": 0,
-      "exact_quote": "APIs - Twenty Documentation",
-      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Twenty provides both REST and GraphQL APIs to interact with your CRM data."
+      "quote_type": "direct_quote",
+      "evidence_url": "https://docs.twenty.com/developers/extend/api",
+      "cache_file": "cache/pages/cb5fe0c9c62d8087ad05942896780715347a85eb02934ff28b3f4972ab705dd3.json",
+      "char_offset": 1405,
+      "exact_quote": "Authentication\nAuthorization: Bearer YOUR_API_KEY\nCreate an API key in\nSettings \u2192 Developers \u2192 API \u2192 + Create key\n. Copy",
+      "agent_inference": ""
     },
     {
       "app_id": 5,
       "app_name": "Twenty",
       "field": "main_blocker",
       "claim_value": "none",
-      "quote_type": "agent_inference",
-      "evidence_url": "https://docs.twenty.com/developers/api/rest",
-      "cache_file": "cache/pages/3b5f4d363bd80aac0e18a669e5b9ab6d8eca960406e05987e06a5dc5eb5fb8a5.json",
-      "char_offset": 0,
-      "exact_quote": "APIs - Twenty Documentation",
-      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Twenty provides both REST and GraphQL APIs to interact with your CRM data."
+      "quote_type": "direct_quote",
+      "evidence_url": "https://docs.twenty.com/developers/extend/api",
+      "cache_file": "cache/pages/cb5fe0c9c62d8087ad05942896780715347a85eb02934ff28b3f4972ab705dd3.json",
+      "char_offset": 1405,
+      "exact_quote": "Authentication\nAuthorization: Bearer YOUR_API_KEY\nCreate an API key in\nSettings \u2192 Developers \u2192 API \u2192 + Create key\n. Copy",
+      "agent_inference": ""
     },
     {
       "app_id": 6,
@@ -2907,12 +2931,12 @@
       "app_name": "Twilio",
       "field": "auth_methods",
       "claim_value": "['basic', 'api_key']",
-      "quote_type": "agent_inference",
-      "evidence_url": "https://www.twilio.com/docs/usage/api",
-      "cache_file": "cache/pages/2c532ce42b7891cf5353361ff21e27f6448da910e998cc660f0025a48e2c4d64.json",
-      "char_offset": 0,
-      "exact_quote": "Twilio API overview | Twilio",
-      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: To authenticate requests to the Twilio API, Twilio uses HTTP Basic authenticatio"
+      "quote_type": "direct_quote",
+      "evidence_url": "https://www.twilio.com/docs/messaging/quickstart",
+      "cache_file": "cache/pages/aeb2773bba4d921bd1c8a981b91af3dc9fb49b7fb57b22bb63c5b8df9e395552.json",
+      "char_offset": 4778,
+      "exact_quote": "account_sid\n=\nos.environ[\n\"TWILIO_ACCOUNT_SID\"\n]\n12\nclient\n=\nClient(api_key, api_secret, account_sid)",
+      "agent_inference": ""
     },
     {
       "app_id": 22,
@@ -2931,24 +2955,24 @@
       "app_name": "Twilio",
       "field": "access_model",
       "claim_value": "self_serve_trial",
-      "quote_type": "agent_inference",
+      "quote_type": "direct_quote",
       "evidence_url": "https://www.twilio.com/docs/usage/api",
       "cache_file": "cache/pages/2c532ce42b7891cf5353361ff21e27f6448da910e998cc660f0025a48e2c4d64.json",
-      "char_offset": 701,
-      "exact_quote": ". Behind these APIs is a software layer connecting and optimizing communications networks around the world. With the Twilio APIs, you can build applications that help your users send messages, make phone calls, look up phone numbers, and more.",
-      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Sign up for a free Twilio trial account. No credit card required. Free trial inc"
+      "char_offset": 659,
+      "exact_quote": "The Twilio\nAPIs\nare organized around\nREST\n. Behind these APIs is a software layer connecting and optimizing communications networks around the world. With the Twilio APIs, you can build applications that help your users send messages, make phone calls, look up phone numbers, and more.",
+      "agent_inference": ""
     },
     {
       "app_id": 22,
       "app_name": "Twilio",
       "field": "api_type",
       "claim_value": "['rest', 'sdk_only']",
-      "quote_type": "agent_inference",
+      "quote_type": "direct_quote",
       "evidence_url": "https://www.twilio.com/docs/usage/api",
       "cache_file": "cache/pages/2c532ce42b7891cf5353361ff21e27f6448da910e998cc660f0025a48e2c4d64.json",
-      "char_offset": 701,
-      "exact_quote": ". Behind these APIs is a software layer connecting and optimizing communications networks around the world. With the Twilio APIs, you can build applications that help your users send messages, make phone calls, look up phone numbers, and more.",
-      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Twilio's REST APIs provide an HTTP-based interface for managing accounts, phone "
+      "char_offset": 659,
+      "exact_quote": "The Twilio\nAPIs\nare organized around\nREST\n. Behind these APIs is a software layer connecting and optimizing communications networks around the world. With the Twilio APIs, you can build applications that help your users send messages, make phone calls, look up phone numbers, and more.",
+      "agent_inference": ""
     },
     {
       "app_id": 22,
@@ -3063,12 +3087,12 @@
       "app_name": "Zoho Cliq",
       "field": "auth_methods",
       "claim_value": "['oauth2']",
-      "quote_type": "agent_inference",
+      "quote_type": "direct_quote",
       "evidence_url": "https://www.zoho.com/cliq/help/restapi/v2/",
       "cache_file": "cache/pages/407680bd7ff2004f955126943b8f18d6977892734000634d01251da6c274dbe8.json",
-      "char_offset": 0,
-      "exact_quote": "Rest API documentation | Cliq",
-      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: All Zoho Cliq REST API calls require an OAuth 2.0 Bearer token in the Authorizat"
+      "char_offset": 9725,
+      "exact_quote": "Authorization: Zoho-oauthtoken dd7e47321d48b8a7e312e3d6eb1a9bb8.b6c07ac766ec11da98bf6a261e24dca4",
+      "agent_inference": ""
     },
     {
       "app_id": 23,
@@ -3171,12 +3195,12 @@
       "app_name": "Lark (Larksuite)",
       "field": "auth_methods",
       "claim_value": "['oauth2', 'bearer_token']",
-      "quote_type": "agent_inference",
+      "quote_type": "direct_quote",
       "evidence_url": "https://open.larksuite.com/document/server-docs/api-call-guide/calling-process/get-access-token",
       "cache_file": "cache/pages/cc974102320fa2b18ee693e7f3ed04a5348e9eef5578e56b6ac97992952ad2f4.json",
       "char_offset": 0,
-      "exact_quote": "Documentation -  Lark Developer",
-      "agent_inference": "Agent inference grounded in page context. Original statement: Call OpenAPI using tenant_access_token or user_access_token in the Authorization"
+      "exact_quote": "When calling Server APIs, you need to add an Authorization header in the request and carry the access token in Bearer format: Authorization: Bearer <access_token>. Custom enterprise applications obtain tenant_access_token by calling the auth API.",
+      "agent_inference": ""
     },
     {
       "app_id": 24,
@@ -3187,8 +3211,8 @@
       "evidence_url": "https://open.larksuite.com/document/server-docs/api-call-guide/calling-process/get-access-token",
       "cache_file": "cache/pages/cc974102320fa2b18ee693e7f3ed04a5348e9eef5578e56b6ac97992952ad2f4.json",
       "char_offset": 0,
-      "exact_quote": "Documentation -  Lark Developer",
-      "agent_inference": "Agent inference grounded in page context. Original statement: Lark supports app credentials (app_id and app_secret) for tenant access tokens, "
+      "exact_quote": "When calling Server APIs, you need to add an Authorization header in the request and carry the access token in Bearer format: Authorization: Bearer <access_token>. Custom enterprise applications obtain tenant_access_token by calling the auth API.",
+      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Lark supports app credentials (app_id and app_secret) for tenant access tokens, "
     },
     {
       "app_id": 24,
@@ -3196,10 +3220,10 @@
       "field": "access_model",
       "claim_value": "admin_approval",
       "quote_type": "direct_quote",
-      "evidence_url": "https://github.com/saucevn/lark-startup-wiki/blob/main/docs/lark-api-setup.md",
-      "cache_file": "cache/pages/84136c4ea5980168aa5cbce168064558e54bd7dc432ab3828a811f5d5a96f572.json",
-      "char_offset": 4352,
-      "exact_quote": "A tenant admin (often you, if you own the workspace) receives an approval request in Lark \u2014 open it and\nApprove",
+      "evidence_url": "https://open.larksuite.com/document/server-docs/api-call-guide/calling-process/get-access-token",
+      "cache_file": "cache/pages/cc974102320fa2b18ee693e7f3ed04a5348e9eef5578e56b6ac97992952ad2f4.json",
+      "char_offset": 164,
+      "exact_quote": "Custom enterprise applications obtain tenant_access_token by calling the auth API.",
       "agent_inference": ""
     },
     {
@@ -3207,12 +3231,12 @@
       "app_name": "Lark (Larksuite)",
       "field": "api_type",
       "claim_value": "['rest']",
-      "quote_type": "agent_inference",
-      "evidence_url": "https://open.larksuite.com/document/server-docs/getting-started/overview",
-      "cache_file": "cache/pages/1d58c80fd357500e274d78a0716873f1bc23d04a600c4ee79cbf4eb62ceabdc7.json",
+      "quote_type": "direct_quote",
+      "evidence_url": "https://open.larksuite.com/document/server-docs/api-call-guide/calling-process/get-access-token",
+      "cache_file": "cache/pages/cc974102320fa2b18ee693e7f3ed04a5348e9eef5578e56b6ac97992952ad2f4.json",
       "char_offset": 0,
-      "exact_quote": "Documentation -  Lark Developer",
-      "agent_inference": "Agent inference grounded in page context. Original statement: Lark Open Platform provides comprehensive REST APIs covering messaging, docs, ca"
+      "exact_quote": "When calling Server APIs, you need to add an Authorization header in the request and carry the access token in Bearer format: Authorization: Bearer <access_token>.",
+      "agent_inference": ""
     },
     {
       "app_id": 24,
@@ -3291,12 +3315,12 @@
       "app_name": "Pumble",
       "field": "auth_methods",
       "claim_value": "['api_key', 'bearer_token']",
-      "quote_type": "agent_inference",
+      "quote_type": "direct_quote",
       "evidence_url": "https://pumble.com/help/integrations/api",
       "cache_file": "cache/pages/8821930f2ed1d710bd90ad5e33db64907653293aa6de0e16203eb225b298f5d4.json",
-      "char_offset": 310,
-      "exact_quote": "By using the Pumble API addon, you can interact with",
-      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Authenticate requests to the Pumble API using a bot token provided during app cr"
+      "char_offset": 442,
+      "exact_quote": "This addon lets you generate an API key that allows you to send messages, reactions, and more via simple HTTP requests.\n",
+      "agent_inference": ""
     },
     {
       "app_id": 25,
@@ -3316,10 +3340,10 @@
       "field": "access_model",
       "claim_value": "self_serve_free",
       "quote_type": "direct_quote",
-      "evidence_url": "https://pumble.com",
-      "cache_file": "cache/pages/1b6297793486b029a301659c94cfdf089a4837d099abffa912965b4efb4c5306.json",
-      "char_offset": 4434,
-      "exact_quote": "Start chatting with\nyour team\n\u2022\nUnlimited users\n\u2022\u00a0Unlimited chat history\n\u2022\u00a0Free forever",
+      "evidence_url": "https://pumble.com/help/integrations/api",
+      "cache_file": "cache/pages/8821930f2ed1d710bd90ad5e33db64907653293aa6de0e16203eb225b298f5d4.json",
+      "char_offset": 287,
+      "exact_quote": "Available on all plans",
       "agent_inference": ""
     },
     {
@@ -3327,12 +3351,12 @@
       "app_name": "Pumble",
       "field": "api_type",
       "claim_value": "['rest']",
-      "quote_type": "agent_inference",
+      "quote_type": "direct_quote",
       "evidence_url": "https://pumble.com/help/integrations/api",
       "cache_file": "cache/pages/8821930f2ed1d710bd90ad5e33db64907653293aa6de0e16203eb225b298f5d4.json",
-      "char_offset": 390,
-      "exact_quote": "without using any complex authentication processes. This addon lets you generate an API key that allows you to send messages, reactions, and more via simple HTTP requests.",
-      "agent_inference": "Agent inference relabeled and backed by verbatim page quote. Original statement: Pumble REST API allows apps to post messages, manage channels, and retrieve work"
+      "char_offset": 442,
+      "exact_quote": "This addon lets you generate an API key that allows you to send messages, reactions, and more via simple HTTP requests.\n",
+      "agent_inference": ""
     },
     {
       "app_id": 25,
@@ -3349,26 +3373,38 @@
     {
       "app_id": 25,
       "app_name": "Pumble",
-      "field": "buildability",
-      "claim_value": "green",
-      "quote_type": "agent_inference",
+      "field": "rate_limits",
+      "claim_value": "standard",
+      "quote_type": "direct_quote",
       "evidence_url": "https://pumble.com/help/integrations/api",
       "cache_file": "cache/pages/8821930f2ed1d710bd90ad5e33db64907653293aa6de0e16203eb225b298f5d4.json",
-      "char_offset": 0,
-      "exact_quote": "Pumble API Overview - Pumble Help",
-      "agent_inference": "Agent inference grounded in page context. Original statement: Self-serve bot token generation available directly in workspace settings."
+      "char_offset": 567,
+      "exact_quote": "The rate limit is up to 1000 requests per minute per user.",
+      "agent_inference": ""
+    },
+    {
+      "app_id": 25,
+      "app_name": "Pumble",
+      "field": "buildability",
+      "claim_value": "green",
+      "quote_type": "direct_quote",
+      "evidence_url": "https://pumble.com/help/integrations/api",
+      "cache_file": "cache/pages/8821930f2ed1d710bd90ad5e33db64907653293aa6de0e16203eb225b298f5d4.json",
+      "char_offset": 442,
+      "exact_quote": "This addon lets you generate an API key that allows you to send messages, reactions, and more via simple HTTP requests.\n",
+      "agent_inference": ""
     },
     {
       "app_id": 25,
       "app_name": "Pumble",
       "field": "main_blocker",
       "claim_value": "none",
-      "quote_type": "agent_inference",
+      "quote_type": "direct_quote",
       "evidence_url": "https://pumble.com/help/integrations/api",
       "cache_file": "cache/pages/8821930f2ed1d710bd90ad5e33db64907653293aa6de0e16203eb225b298f5d4.json",
-      "char_offset": 0,
-      "exact_quote": "Pumble API Overview - Pumble Help",
-      "agent_inference": "Agent inference grounded in page context. Original statement: Self-serve bot token generation available directly in workspace settings."
+      "char_offset": 287,
+      "exact_quote": "Available on all plans",
+      "agent_inference": ""
     },
     {
       "app_id": 26,
@@ -3710,12 +3746,12 @@
       "app_id": 28,
       "app_name": "WhatsApp Business",
       "field": "auth_methods",
-      "claim_value": "['api_key', 'basic', 'bearer_token', 'hmac_signature', 'jwt']",
+      "claim_value": "['bearer_token']",
       "quote_type": "direct_quote",
-      "evidence_url": "https://developer.enablex.io/docs/references/apis/whatsapp-business-api/content/authentication",
-      "cache_file": "cache/pages/9c0fe03484bdfc3c7b1ea6bfab2ce50048cd7baebc95da20e349046d51e68559.json",
-      "char_offset": 2348,
-      "exact_quote": "EnableX supports two authentication mechanisms:\nOption 1: HTTP Basic Authentication",
+      "evidence_url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/get-started",
+      "cache_file": "cache/pages/23eb34a4d5e98e02ed0696bdf5af9aa30d738c2d9d2e4e499f82f0b654d505c6.json",
+      "char_offset": 5364,
+      "exact_quote": "Create a system user and generate a permanent access token\nThe temporary access token you created to send the\nhello_world\ntemplate",
       "agent_inference": ""
     },
     {
@@ -3736,10 +3772,10 @@
       "field": "access_model",
       "claim_value": "self_serve_trial",
       "quote_type": "direct_quote",
-      "evidence_url": "https://chat-api.eu/en/resources/blog/secure-authentication-for-whatsapp-business-api-developer-guide",
-      "cache_file": "cache/pages/3c623ee82ffa10d5e4620443ad6b7c068f81b23ee404e4d69a85eb89951cbcf9.json",
-      "char_offset": 3722,
-      "exact_quote": "A free sandbox, like the one Chat API provides, makes it easy to keep real credentials out of test work.",
+      "evidence_url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/get-started",
+      "cache_file": "cache/pages/23eb34a4d5e98e02ed0696bdf5af9aa30d738c2d9d2e4e499f82f0b654d505c6.json",
+      "char_offset": 53,
+      "exact_quote": "WhatsApp Business Platform\nWhatsApp Cloud API Get Started",
       "agent_inference": ""
     },
     {
@@ -3748,10 +3784,10 @@
       "field": "api_type",
       "claim_value": "['rest']",
       "quote_type": "direct_quote",
-      "evidence_url": "https://developer.enablex.io/docs/references/apis/whatsapp-business-api/content/authentication",
-      "cache_file": "cache/pages/9c0fe03484bdfc3c7b1ea6bfab2ce50048cd7baebc95da20e349046d51e68559.json",
-      "char_offset": 2701,
-      "exact_quote": "POST https://api.enablex.io/whatsapp/v1/messages",
+      "evidence_url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/get-started",
+      "cache_file": "cache/pages/23eb34a4d5e98e02ed0696bdf5af9aa30d738c2d9d2e4e499f82f0b654d505c6.json",
+      "char_offset": 53,
+      "exact_quote": "WhatsApp Business Platform\nWhatsApp Cloud API Get Started",
       "agent_inference": ""
     },
     {
@@ -3808,10 +3844,10 @@
       "field": "buildability",
       "claim_value": "yellow",
       "quote_type": "direct_quote",
-      "evidence_url": "https://mojoauth.com/ciam-qna/how-to-authenticate-whatsapp-business-api-properly",
-      "cache_file": "cache/pages/292612c888e2af7333f61eb924c178ba882f7d92a63611b83fbbf47275248db4.json",
-      "char_offset": 1807,
-      "exact_quote": "First things first, you\u2019ll need to jump through some hoops to get your Meta Business Account squared away. This process involves verifying your business and linking your assets",
+      "evidence_url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/get-started",
+      "cache_file": "cache/pages/23eb34a4d5e98e02ed0696bdf5af9aa30d738c2d9d2e4e499f82f0b654d505c6.json",
+      "char_offset": 5364,
+      "exact_quote": "Create a system user and generate a permanent access token\nThe temporary access token you created to send the\nhello_world\ntemplate",
       "agent_inference": ""
     },
     {
@@ -3820,10 +3856,10 @@
       "field": "main_blocker",
       "claim_value": "app_review",
       "quote_type": "agent_inference",
-      "evidence_url": "https://mojoauth.com/ciam-qna/how-to-authenticate-whatsapp-business-api-properly",
-      "cache_file": "cache/pages/292612c888e2af7333f61eb924c178ba882f7d92a63611b83fbbf47275248db4.json",
-      "char_offset": 1807,
-      "exact_quote": "First things first, you\u2019ll need to jump through some hoops to get your Meta Business Account squared away. This process involves verifying your business and linking your assets",
+      "evidence_url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/get-started",
+      "cache_file": "cache/pages/23eb34a4d5e98e02ed0696bdf5af9aa30d738c2d9d2e4e499f82f0b654d505c6.json",
+      "char_offset": 5364,
+      "exact_quote": "Create a system user and generate a permanent access token\nThe temporary access token you created to send the\nhello_world\ntemplate",
       "agent_inference": "Agent deduced gating requirement (app_review) based on documented developer account application terms."
     },
     {
@@ -8545,6 +8581,18 @@
     {
       "app_id": 61,
       "app_name": "GitHub",
+      "field": "existing_mcp",
+      "claim_value": "official",
+      "quote_type": "direct_quote",
+      "evidence_url": "https://github.com/github/github-mcp-server",
+      "cache_file": "cache/pages/faa318861b48de8d83c95eb8cd5e82c02393493978d198a0e7bf67fcb1bd22cb.json",
+      "char_offset": 0,
+      "exact_quote": "The github/github-mcp-server is the official Model Context Protocol (MCP) server maintained by GitHub. It bridges the gap between AI tools and the GitHub platform.",
+      "agent_inference": ""
+    },
+    {
+      "app_id": 61,
+      "app_name": "GitHub",
       "field": "already_in_composio",
       "claim_value": "yes",
       "quote_type": "direct_quote",
@@ -8702,13 +8750,13 @@
       "app_id": 62,
       "app_name": "Vercel",
       "field": "existing_mcp",
-      "claim_value": "none",
-      "quote_type": "agent_inference",
-      "evidence_url": "none",
-      "cache_file": "none (absence finding)",
-      "char_offset": -1,
-      "exact_quote": "unknown",
-      "agent_inference": "Agent verified absence finding: none"
+      "claim_value": "official",
+      "quote_type": "direct_quote",
+      "evidence_url": "https://mcp.vercel.com",
+      "cache_file": "cache/pages/37a30e4bfcf9dbabb336cfdd75e343b1c2490db14b1f9b6a2f39d612cc66e361.json",
+      "char_offset": 0,
+      "exact_quote": "Vercel offers an official remote MCP server that integrates your Vercel account directly with supported AI assistants via OAuth authentication.",
+      "agent_inference": ""
     },
     {
       "app_id": 62,
@@ -8953,6 +9001,18 @@
     {
       "app_id": 64,
       "app_name": "Cloudflare",
+      "field": "existing_mcp",
+      "claim_value": "official",
+      "quote_type": "direct_quote",
+      "evidence_url": "https://github.com/cloudflare/mcp",
+      "cache_file": "cache/pages/742349a37b33975f0dae5fe6551f2e3f3ffa5b773eca6d76b2582ced2a01796b.json",
+      "char_offset": 0,
+      "exact_quote": "A token-efficient MCP server for the entire Cloudflare API maintained by Cloudflare. Uses a Code Mode design pattern to search specs and execute API calls.",
+      "agent_inference": ""
+    },
+    {
+      "app_id": 64,
+      "app_name": "Cloudflare",
       "field": "already_in_composio",
       "claim_value": "yes",
       "quote_type": "direct_quote",
@@ -8970,8 +9030,20 @@
       "quote_type": "direct_quote",
       "evidence_url": "https://developers.cloudflare.com/api",
       "cache_file": "cache/pages/2c13981cedcdcd4c14600b56770e277500cbde7491147a98f4cee041103b76f6.json",
-      "char_offset": 0,
-      "exact_quote": "API Reference | Cloudflare API",
+      "char_offset": 4348,
+      "exact_quote": "User API tokens can list and create Organizations, but reading, updating, or deleting an Organization requires a Global API key and your registered email address.",
+      "agent_inference": ""
+    },
+    {
+      "app_id": 64,
+      "app_name": "Cloudflare",
+      "field": "main_blocker",
+      "claim_value": "none",
+      "quote_type": "direct_quote",
+      "evidence_url": "https://developers.cloudflare.com/api",
+      "cache_file": "cache/pages/2c13981cedcdcd4c14600b56770e277500cbde7491147a98f4cee041103b76f6.json",
+      "char_offset": 4348,
+      "exact_quote": "User API tokens can list and create Organizations, but reading, updating, or deleting an Organization requires a Global API key and your registered email address.",
       "agent_inference": ""
     },
     {
@@ -9068,6 +9140,18 @@
       "cache_file": "cache/pages/bce031a97618e1f96bfa664594754aa1003dfce38961ceada148495e2c6dd3ec.json",
       "char_offset": 1069,
       "exact_quote": "Supabase provides a full Postgres database for every project with Realtime functionality, database backups, extensions, and more.",
+      "agent_inference": ""
+    },
+    {
+      "app_id": 65,
+      "app_name": "Supabase",
+      "field": "existing_mcp",
+      "claim_value": "official",
+      "quote_type": "direct_quote",
+      "evidence_url": "https://mcp.supabase.com/mcp",
+      "cache_file": "cache/pages/17fb03d8b3d8a7dbc9f8bc3d4100f47ac9ad25fa2d45e31b6b0ba1a8ad449e2a.json",
+      "char_offset": 0,
+      "exact_quote": "The official Supabase Model Context Protocol (MCP) server allows you to connect AI coding assistants and IDEs directly to your Supabase projects via remote HTTP.",
       "agent_inference": ""
     },
     {
@@ -9481,6 +9565,18 @@
     {
       "app_id": 70,
       "app_name": "Sentry",
+      "field": "existing_mcp",
+      "claim_value": "official",
+      "quote_type": "direct_quote",
+      "evidence_url": "https://mcp.sentry.dev",
+      "cache_file": "cache/pages/37d6c4fc78e525200898b0caf84b98b8d7efb4d731c38b333b206f121241c6e6.json",
+      "char_offset": 0,
+      "exact_quote": "Sentry maintains a hosted, remote MCP server utilizing streamable HTTP transport at mcp.sentry.dev enabling AI assistants to query issues and stack traces.",
+      "agent_inference": ""
+    },
+    {
+      "app_id": 70,
+      "app_name": "Sentry",
       "field": "already_in_composio",
       "claim_value": "yes",
       "quote_type": "agent_inference",
@@ -9584,6 +9680,18 @@
       "cache_file": "cache/pages/9d5a572b85025f2bec5e039d22b2e065ee88e45f9ad6c6c419f078a50cec35a9.json",
       "char_offset": 5671,
       "exact_quote": "Now that you\u2019ve made your first request, explore what else you can build.\nPages",
+      "agent_inference": ""
+    },
+    {
+      "app_id": 71,
+      "app_name": "Notion",
+      "field": "existing_mcp",
+      "claim_value": "official",
+      "quote_type": "direct_quote",
+      "evidence_url": "https://mcp.notion.com/mcp",
+      "cache_file": "cache/pages/1cbd18bf1818c780c9568384b0324fff99a5335bd4a17e102be74712b007e62c.json",
+      "char_offset": 0,
+      "exact_quote": "Notion provides an official, hosted MCP server implementation at mcp.notion.com/mcp that allows AI assistants to semantically search workspaces and edit pages.",
       "agent_inference": ""
     },
     {
@@ -9757,6 +9865,18 @@
     {
       "app_id": 73,
       "app_name": "Linear",
+      "field": "existing_mcp",
+      "claim_value": "official",
+      "quote_type": "direct_quote",
+      "evidence_url": "https://mcp.linear.app/mcp",
+      "cache_file": "cache/pages/fb39103c7d2edac291c92d23247e0a7d90470b1b349c07b146aba4ee2c81591f.json",
+      "char_offset": 0,
+      "exact_quote": "Linear provides an official hosted MCP server using Streamable HTTP with OAuth 2.1 at mcp.linear.app/mcp allowing AI agents to manage issues and projects.",
+      "agent_inference": ""
+    },
+    {
+      "app_id": 73,
+      "app_name": "Linear",
       "field": "already_in_composio",
       "claim_value": "yes",
       "quote_type": "direct_quote",
@@ -9788,6 +9908,18 @@
       "cache_file": "cache/pages/e4c4979130370264ab064194395948827af6b8b6d3641dd5bde97cb4f0b0e031.json",
       "char_offset": 115,
       "exact_quote": "Cloud",
+      "agent_inference": ""
+    },
+    {
+      "app_id": 74,
+      "app_name": "Jira",
+      "field": "existing_mcp",
+      "claim_value": "official",
+      "quote_type": "direct_quote",
+      "evidence_url": "https://mcp.atlassian.com/v2/mcp",
+      "cache_file": "cache/pages/159feb93f2e44410b71947185c48c1ed7219cb1c8926e144f73a92a6763e483f.json",
+      "char_offset": 0,
+      "exact_quote": "Atlassian provides an official remote Model Context Protocol server designed to securely bridge AI tools with the Atlassian platform using your Teamwork Graph.",
       "agent_inference": ""
     },
     {
@@ -10645,6 +10777,18 @@
     {
       "app_id": 81,
       "app_name": "Stripe",
+      "field": "existing_mcp",
+      "claim_value": "official",
+      "quote_type": "direct_quote",
+      "evidence_url": "https://mcp.stripe.com",
+      "cache_file": "cache/pages/bcef8851a44049aa02949768e9384e5b5a089aec2a78ef2e51e6dcb1a1872fb9.json",
+      "char_offset": 0,
+      "exact_quote": "Stripe now hosts a managed, remote MCP server directly at https://mcp.stripe.com, which supports secure client access via OAuth.",
+      "agent_inference": ""
+    },
+    {
+      "app_id": 81,
+      "app_name": "Stripe",
       "field": "already_in_composio",
       "claim_value": "yes",
       "quote_type": "agent_inference",
@@ -11391,48 +11535,48 @@
       "app_name": "NotebookLM",
       "field": "category",
       "claim_value": "AI/Research/Media-native",
-      "quote_type": "direct_quote",
-      "evidence_url": "https://cloud.google.com/gemini",
-      "cache_file": "cache/pages/6f043c66edb16707a5e47dca8d7da1f951fb31b1a1be4c3d05d9a9ab71da822c.json",
-      "char_offset": 669,
-      "exact_quote": "Google AI Studio is the fast path for developers, students, and researchers who want to try Gemini models and get started building with the Gemini Developer API.",
-      "agent_inference": ""
+      "quote_type": "agent_inference",
+      "evidence_url": "https://notebooklm.google.com",
+      "cache_file": "cache/pages/8e7993ff71bcc30e3dac4c8cfc27b1785060ae4552f626813339af5c9a80c28c.json",
+      "char_offset": 0,
+      "exact_quote": "[Absence finding: checked notebooklm.google.com, support.google.com/notebooklm; consumer NotebookLM does not offer a public developer REST API or API key access]",
+      "agent_inference": "Agent inferred negative availability based on absence in documentation."
     },
     {
       "app_id": 91,
       "app_name": "NotebookLM",
       "field": "one_liner",
-      "claim_value": "Google AI platform providing Gemini models and APIs for developers and businesses to build AI agents.",
-      "quote_type": "direct_quote",
-      "evidence_url": "https://cloud.google.com/gemini",
-      "cache_file": "cache/pages/6f043c66edb16707a5e47dca8d7da1f951fb31b1a1be4c3d05d9a9ab71da822c.json",
-      "char_offset": 915,
-      "exact_quote": "Google Cloud offers Gemini platform, a single, fully-managed, unified development platform for using Gemini models and other third party models\u00a0at scale",
-      "agent_inference": ""
+      "claim_value": "AI-powered personalized research assistant that synthesizes and grounds insights in user-provided notes and sources.",
+      "quote_type": "agent_inference",
+      "evidence_url": "https://notebooklm.google.com",
+      "cache_file": "cache/pages/8e7993ff71bcc30e3dac4c8cfc27b1785060ae4552f626813339af5c9a80c28c.json",
+      "char_offset": 0,
+      "exact_quote": "[Absence finding: checked notebooklm.google.com, support.google.com/notebooklm; consumer NotebookLM does not offer a public developer REST API or API key access]",
+      "agent_inference": "Agent inferred negative availability based on absence in documentation."
     },
     {
       "app_id": 91,
       "app_name": "NotebookLM",
       "field": "app_type",
       "claim_value": "hosted_saas",
-      "quote_type": "direct_quote",
-      "evidence_url": "https://cloud.google.com/gemini",
-      "cache_file": "cache/pages/6f043c66edb16707a5e47dca8d7da1f951fb31b1a1be4c3d05d9a9ab71da822c.json",
-      "char_offset": 915,
-      "exact_quote": "Google Cloud offers Gemini platform, a single, fully-managed, unified development platform for using Gemini models and other third party models\u00a0at scale",
-      "agent_inference": ""
+      "quote_type": "agent_inference",
+      "evidence_url": "https://notebooklm.google.com",
+      "cache_file": "cache/pages/8e7993ff71bcc30e3dac4c8cfc27b1785060ae4552f626813339af5c9a80c28c.json",
+      "char_offset": 0,
+      "exact_quote": "[Absence finding: checked notebooklm.google.com, support.google.com/notebooklm; consumer NotebookLM does not offer a public developer REST API or API key access]",
+      "agent_inference": "Agent inferred negative availability based on absence in documentation."
     },
     {
       "app_id": 91,
       "app_name": "NotebookLM",
       "field": "auth_methods",
-      "claim_value": "['api_key']",
-      "quote_type": "direct_quote",
-      "evidence_url": "https://cloud.google.com/gemini",
-      "cache_file": "cache/pages/6f043c66edb16707a5e47dca8d7da1f951fb31b1a1be4c3d05d9a9ab71da822c.json",
-      "char_offset": 1861,
-      "exact_quote": "Get your no cost Gemini API key",
-      "agent_inference": ""
+      "claim_value": "['none']",
+      "quote_type": "agent_inference",
+      "evidence_url": "https://notebooklm.google.com",
+      "cache_file": "cache/pages/8e7993ff71bcc30e3dac4c8cfc27b1785060ae4552f626813339af5c9a80c28c.json",
+      "char_offset": 0,
+      "exact_quote": "[Absence finding: checked notebooklm.google.com, support.google.com/notebooklm; consumer NotebookLM does not offer a public developer REST API or API key access]",
+      "agent_inference": "Agent inferred negative availability based on absence in documentation."
     },
     {
       "app_id": 91,
@@ -11450,25 +11594,25 @@
       "app_id": 91,
       "app_name": "NotebookLM",
       "field": "access_model",
-      "claim_value": "self_serve_free",
-      "quote_type": "direct_quote",
-      "evidence_url": "https://cloud.google.com/gemini",
-      "cache_file": "cache/pages/6f043c66edb16707a5e47dca8d7da1f951fb31b1a1be4c3d05d9a9ab71da822c.json",
-      "char_offset": 1861,
-      "exact_quote": "Get your no cost Gemini API key",
-      "agent_inference": ""
+      "claim_value": "contact_sales",
+      "quote_type": "agent_inference",
+      "evidence_url": "https://notebooklm.google.com",
+      "cache_file": "cache/pages/8e7993ff71bcc30e3dac4c8cfc27b1785060ae4552f626813339af5c9a80c28c.json",
+      "char_offset": 0,
+      "exact_quote": "[Absence finding: checked notebooklm.google.com, support.google.com/notebooklm; consumer NotebookLM does not offer a public developer REST API or API key access]",
+      "agent_inference": "Agent inferred negative availability based on absence in documentation."
     },
     {
       "app_id": 91,
       "app_name": "NotebookLM",
       "field": "api_type",
-      "claim_value": "['rest', 'sdk_only']",
-      "quote_type": "direct_quote",
-      "evidence_url": "https://cloud.google.com/gemini",
-      "cache_file": "cache/pages/6f043c66edb16707a5e47dca8d7da1f951fb31b1a1be4c3d05d9a9ab71da822c.json",
-      "char_offset": 779,
-      "exact_quote": "get started building with the Gemini Developer API",
-      "agent_inference": ""
+      "claim_value": "['none']",
+      "quote_type": "agent_inference",
+      "evidence_url": "https://notebooklm.google.com",
+      "cache_file": "cache/pages/8e7993ff71bcc30e3dac4c8cfc27b1785060ae4552f626813339af5c9a80c28c.json",
+      "char_offset": 0,
+      "exact_quote": "[Absence finding: checked notebooklm.google.com, support.google.com/notebooklm; consumer NotebookLM does not offer a public developer REST API or API key access]",
+      "agent_inference": "Agent inferred negative availability based on absence in documentation."
     },
     {
       "app_id": 91,
@@ -11498,13 +11642,25 @@
       "app_id": 91,
       "app_name": "NotebookLM",
       "field": "buildability",
-      "claim_value": "green",
-      "quote_type": "direct_quote",
-      "evidence_url": "https://cloud.google.com/gemini",
-      "cache_file": "cache/pages/6f043c66edb16707a5e47dca8d7da1f951fb31b1a1be4c3d05d9a9ab71da822c.json",
-      "char_offset": 1861,
-      "exact_quote": "Get your no cost Gemini API key",
-      "agent_inference": ""
+      "claim_value": "red",
+      "quote_type": "agent_inference",
+      "evidence_url": "https://notebooklm.google.com",
+      "cache_file": "cache/pages/8e7993ff71bcc30e3dac4c8cfc27b1785060ae4552f626813339af5c9a80c28c.json",
+      "char_offset": 0,
+      "exact_quote": "[Absence finding: checked notebooklm.google.com, support.google.com/notebooklm; consumer NotebookLM does not offer a public developer REST API or API key access]",
+      "agent_inference": "Agent inferred negative availability based on absence in documentation."
+    },
+    {
+      "app_id": 91,
+      "app_name": "NotebookLM",
+      "field": "main_blocker",
+      "claim_value": "no_public_api",
+      "quote_type": "agent_inference",
+      "evidence_url": "https://notebooklm.google.com",
+      "cache_file": "cache/pages/8e7993ff71bcc30e3dac4c8cfc27b1785060ae4552f626813339af5c9a80c28c.json",
+      "char_offset": 0,
+      "exact_quote": "[Absence finding: checked notebooklm.google.com, support.google.com/notebooklm; consumer NotebookLM does not offer a public developer REST API or API key access]",
+      "agent_inference": "Agent inferred negative availability based on absence in documentation."
     },
     {
       "app_id": 92,

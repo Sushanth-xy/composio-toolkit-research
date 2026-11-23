@@ -8,6 +8,7 @@ app_id,app_name,field,claim_value,quote_type,evidence_url,cache_file,char_offset
 1,Salesforce,api_type,"['rest', 'soap']",direct_quote,https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm,cache/pages/23738d468bd3bf5ce12f94a0f0fd3c9c786cebc06d84969094234516c8fed1ee.json,228,"For a client application to access REST API resources, it must be authorized as a safe visitor.",
 1,Salesforce,api_breadth,broad,direct_quote,https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm,cache/pages/23738d468bd3bf5ce12f94a0f0fd3c9c786cebc06d84969094234516c8fed1ee.json,228,"For a client application to access REST API resources, it must be authorized as a safe visitor.",
 1,Salesforce,sandbox,yes,direct_quote,https://developer.salesforce.com/signup,cache/pages/46047bf089ba5a8dfeaf61bb851b7379ff585407551e2f519f1e6f62f483530c.json,0,Developer Edition with Agentforce and Data 360 | Salesforce | Developer,
+1,Salesforce,existing_mcp,official,direct_quote,https://github.com/forcedotcom/mcp,cache/pages/467177c2e330b59091ff66397cfa115cfb75f338abd3df8ceafe8e35b07df11e.json,0,"Cloud-managed, remote MCP endpoints enabling external AI assistants (like Claude, ChatGPT, and Cursor) to connect securely to Salesforce logic, Data 360, Flows, and Apex assets with enterprise-grade governance and field-level security.",
 1,Salesforce,already_in_composio,yes,agent_inference,https://docs.composio.dev/toolkits,cache/pages/cf000f65f84bdac714b129dcc4c395b80995f5b01fb596b018b7d63140a6bca8.json,36,"1841
 toolkits supported by Composio",Agent verified inclusion in Composio toolkit catalog
 1,Salesforce,buildability,green,direct_quote,https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm,cache/pages/23738d468bd3bf5ce12f94a0f0fd3c9c786cebc06d84969094234516c8fed1ee.json,228,"For a client application to access REST API resources, it must be authorized as a safe visitor.",
@@ -33,6 +34,7 @@ GET
 2,HubSpot,api_breadth,broad,direct_quote,https://hubspot.com,cache/pages/e7ff61d3c55006bd100d56bd84cbdffd82836b93f45f949a7594384617b26f20.json,3528,"Works with the tools you already use. 2,000+ integrations.",
 2,HubSpot,webhooks_triggers,yes,direct_quote,https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/overview,cache/pages/1876a2b7bb2849ddf63db4662a3b158f64254fb36126e85942ecd345c9667119.json,4314,"Currently, the only feature using client credential tokens is the
 webhooks journal API",
+2,HubSpot,existing_mcp,official,direct_quote,https://github.com/HubSpot/hubspot-mcp-plugins,cache/pages/5d1c4b76745d06dc0d25605fa02df4694462f4240070f3d6854fdc4bd1c4623e.json,0,HubSpot official repository for Model Context Protocol integration plugins and connectors for Claude Desktop App and AI assistants.,
 2,HubSpot,already_in_composio,yes,direct_quote,https://docs.composio.dev/toolkits,cache/pages/cf000f65f84bdac714b129dcc4c395b80995f5b01fb596b018b7d63140a6bca8.json,512,HubSpot,
 2,HubSpot,buildability,green,direct_quote,https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/overview,cache/pages/1876a2b7bb2849ddf63db4662a3b158f64254fb36126e85942ecd345c9667119.json,1076,"HubSpot provides a Node.js quickstart guide
 here
@@ -40,24 +42,12 @@ here
 3,Pipedrive,category,CRM and Sales,direct_quote,https://pipedrive.com,cache/pages/2bfcedf6b4b8137db808e5fd50439f8d62993fb3f6fc8521c04d36ea18ff42ab.json,0,Sales CRM & Pipeline Management Software | Pipedrive,
 3,Pipedrive,one_liner,Sales CRM and pipeline management software with built-in AI and automation.,direct_quote,https://pipedrive.com,cache/pages/2bfcedf6b4b8137db808e5fd50439f8d62993fb3f6fc8521c04d36ea18ff42ab.json,0,Sales CRM & Pipeline Management Software | Pipedrive,
 3,Pipedrive,app_type,hosted_saas,direct_quote,https://pipedrive.com,cache/pages/2bfcedf6b4b8137db808e5fd50439f8d62993fb3f6fc8521c04d36ea18ff42ab.json,270,"14-day free trial, no credit card required",
-3,Pipedrive,auth_methods,"['oauth2', 'api_key']",direct_quote,https://github.com/skeylup/laravel-pipedrive/blob/main/docs/authentication.md,cache/pages/4adfacd6213aeac410a978afd3081e697908b8baa82801cfb79421ac3552c34a.json,725,"Laravel-Pipedrive supports both
-API Token
-and
-OAuth
-authentication methods",
+3,Pipedrive,auth_methods,"['api_key', 'oauth2']",direct_quote,https://developers.pipedrive.com/docs/api/v1,cache/pages/5b0a8360d7e5193ad16ead9be21ce490a95141ffa091065da3b67800e70d4bfc.json,854,"all requests are validated against an API token. The API token can be
+obtained
+manually from the Pipedrive app",
 3,Pipedrive,oauth_flows,['auth_code'],agent_inference,https://github.com/skeylup/laravel-pipedrive/blob/main/docs/authentication.md,cache/pages/4adfacd6213aeac410a978afd3081e697908b8baa82801cfb79421ac3552c34a.json,1536,Step 1: Create Pipedrive App,Agent inference relabeled and backed by verbatim page quote. Original statement: Create a Pipedrive developer app and collect Client ID + Client Secret.
 3,Pipedrive,access_model,self_serve_trial,direct_quote,https://pipedrive.com,cache/pages/2bfcedf6b4b8137db808e5fd50439f8d62993fb3f6fc8521c04d36ea18ff42ab.json,270,"14-day free trial, no credit card required",
-3,Pipedrive,api_type,['rest'],direct_quote,https://github.com/skeylup/laravel-pipedrive/blob/main/docs/authentication.md,cache/pages/4adfacd6213aeac410a978afd3081e697908b8baa82801cfb79421ac3552c34a.json,3354,"base_url
-'
-=>
-env
-(
-'
-PIPEDRIVE_BASE_URL
-'
-,
-'
-https://api.pipedrive.com/v1",
+3,Pipedrive,api_type,['rest'],direct_quote,https://developers.pipedrive.com/docs/api/v1,cache/pages/5b0a8360d7e5193ad16ead9be21ce490a95141ffa091065da3b67800e70d4bfc.json,656,This reference helps you implement the RESTful Pipedrive API. This API uses a JSON format for output and is capable of handling CORS,
 3,Pipedrive,api_breadth,broad,direct_quote,https://github.com/skeylup/laravel-pipedrive/blob/main/docs/authentication.md,cache/pages/4adfacd6213aeac410a978afd3081e697908b8baa82801cfb79421ac3552c34a.json,725,"Laravel-Pipedrive supports both
 API Token
 and
@@ -66,32 +56,57 @@ authentication methods",
 3,Pipedrive,rate_limits,"10,000 requests per day for API tokens",direct_quote,https://github.com/skeylup/laravel-pipedrive/blob/main/docs/authentication.md,cache/pages/4adfacd6213aeac410a978afd3081e697908b8baa82801cfb79421ac3552c34a.json,1384,"Rate limits
 - 10,000 requests per day",
 3,Pipedrive,already_in_composio,yes,direct_quote,https://docs.composio.dev/toolkits,cache/pages/cf000f65f84bdac714b129dcc4c395b80995f5b01fb596b018b7d63140a6bca8.json,32773,Pipedrive,
-3,Pipedrive,buildability,green,direct_quote,https://github.com/skeylup/laravel-pipedrive/blob/main/docs/authentication.md,cache/pages/4adfacd6213aeac410a978afd3081e697908b8baa82801cfb79421ac3552c34a.json,725,"Laravel-Pipedrive supports both
-API Token
-and
-OAuth
-authentication methods",
+3,Pipedrive,buildability,green,direct_quote,https://developers.pipedrive.com/docs/api/v1,cache/pages/5b0a8360d7e5193ad16ead9be21ce490a95141ffa091065da3b67800e70d4bfc.json,854,"all requests are validated against an API token. The API token can be
+obtained
+manually from the Pipedrive app",
 4,Attio,category,CRM and Sales,agent_inference,https://attio.com,cache/pages/209430f267f1b514de728ca7b33ae72cb595de7d247a3557b2a21f8e7c723f74.json,101,"Attio is the platform that builds pipeline, advances deals, and grows accounts around the clock.","Agent inference relabeled and backed by verbatim page quote. Original statement: Attio is the CRM platform that builds pipeline, advances deals, and grows accoun"
 4,Attio,one_liner,"Attio is the CRM platform that builds pipeline, advances deals, and grows accounts around the clock with agentic revenue tools and a comprehensive API.",direct_quote,https://attio.com,cache/pages/209430f267f1b514de728ca7b33ae72cb595de7d247a3557b2a21f8e7c723f74.json,101,"Attio is the platform that builds pipeline, advances deals, and grows accounts around the clock.",
 4,Attio,app_type,hosted_saas,agent_inference,https://attio.com,cache/pages/209430f267f1b514de728ca7b33ae72cb595de7d247a3557b2a21f8e7c723f74.json,101,"Attio is the platform that builds pipeline, advances deals, and grows accounts around the clock.",Agent inference relabeled and backed by verbatim page quote. Original statement: Attio is a modern cloud CRM platform built on a flexible data model.
-4,Attio,auth_methods,"['api_key', 'oauth2', 'bearer_token']",agent_inference,https://developers.attio.com/docs/authentication,cache/pages/d34f688abc0d8ab88626f7f3c6fcf9795b581c0794c6e048db9892c0e8bf83c1.json,0,,Agent inference grounded in page context. Original statement: Attio supports two methods of authentication: API keys and OAuth 2.0. Pass your 
+4,Attio,auth_methods,"['api_key', 'oauth2', 'bearer_token']",direct_quote,https://docs.attio.com/rest-api/guides/authentication,cache/pages/f23594c989efccf3a81680021f6c282c405930966727322b9b8ae7853b947bec.json,359,"There are two ways to generate an access token:
+By implementing an OAuth 2.0 flow
+By generating an API key for your workspace",
 4,Attio,oauth_flows,['auth_code'],agent_inference,https://developers.attio.com/docs/oauth-apps,cache/pages/0ac973fffd7789d61cd24c7a3363ff12ec476e9bcf112a3badf5dcf6954d2102.json,0,,Agent inference grounded in page context. Original statement: Attio uses the OAuth 2.0 authorization code flow for public and multi-tenant app
-4,Attio,access_model,self_serve_free,agent_inference,https://developers.attio.com/docs/quickstart,cache/pages/91506b6dd3e044157c908189d2ec91e204664d68bed164c2e662a3d7d38d339c.json,0,,Agent inference grounded in page context. Original statement: Create an API key in workspace settings under Account Settings > Developers > AP
-4,Attio,api_type,['rest'],direct_quote,https://www.revenueflow.com/blog/attio-api,cache/pages/0ebcf5d12320317f60296ab3b35dae12c6bcaac58e2537e6689291e02fb3a49b.json,5036,"Attio's REST API exchanges JSON over HTTPS and exposes the workspace surface: objects and their attributes, records, lists and entries, notes, tasks, comments and threads, plus workspace members and webhooks.",
+4,Attio,access_model,self_serve_free,direct_quote,https://docs.attio.com/rest-api/guides/authentication,cache/pages/f23594c989efccf3a81680021f6c282c405930966727322b9b8ae7853b947bec.json,2183,"Authorization: Bearer <access_token>
+We also support
+HTTP Basic
+Authentication
+,
+where the username is the token",
+4,Attio,api_type,['rest'],direct_quote,https://docs.attio.com/rest-api/guides/authentication,cache/pages/f23594c989efccf3a81680021f6c282c405930966727322b9b8ae7853b947bec.json,359,"There are two ways to generate an access token:
+By implementing an OAuth 2.0 flow
+By generating an API key for your workspace",
 4,Attio,api_breadth,broad,agent_inference,https://developers.attio.com/reference,cache/pages/998c98bd1bfddc316a238ff0e511020a910e3a8089f77bee162fc7a2b0404f43.json,0,,"Agent inference grounded in page context. Original statement: Comprehensive REST API covering records, attributes, objects, lists, tasks, note"
 4,Attio,openapi_spec,yes,direct_quote,https://www.revenueflow.com/blog/attio-api,cache/pages/0ebcf5d12320317f60296ab3b35dae12c6bcaac58e2537e6689291e02fb3a49b.json,5245,"Its own overview points to guides on authentication, rate limits, webhooks, filtering and sorting, and pagination, and an OpenAPI specification is published.",
 4,Attio,webhooks_triggers,yes,direct_quote,https://www.revenueflow.com/blog/attio-api,cache/pages/0ebcf5d12320317f60296ab3b35dae12c6bcaac58e2537e6689291e02fb3a49b.json,6563,"For anything that has to react to change rather than poll for it, webhooks are the route, and Attio's implementation carries one design decision worth understanding before you build",
 4,Attio,rate_limits,standard,agent_inference,https://developers.attio.com/docs/rate-limits,cache/pages/f86c8b34c8fb5b0ffaaa31bf82687739463cc51b7695135aad183ab49096f71e.json,0,Handling rate limits - Attio Docs,"Agent inference relabeled and backed by verbatim page quote. Original statement: Attio enforces standard rate limits per workspace based on tier, returned via st"
 4,Attio,already_in_composio,yes,direct_quote,https://docs.composio.dev/toolkits,cache/pages/cf000f65f84bdac714b129dcc4c395b80995f5b01fb596b018b7d63140a6bca8.json,3430,Attio,
-4,Attio,buildability,green,agent_inference,https://developers.attio.com/docs/quickstart,cache/pages/91506b6dd3e044157c908189d2ec91e204664d68bed164c2e662a3d7d38d339c.json,0,,Agent inference grounded in page context. Original statement: Create an API key in workspace settings under Account Settings > Developers > AP
-4,Attio,main_blocker,none,agent_inference,https://developers.attio.com/docs/quickstart,cache/pages/91506b6dd3e044157c908189d2ec91e204664d68bed164c2e662a3d7d38d339c.json,0,,Agent inference grounded in page context. Original statement: Create an API key in workspace settings under Account Settings > Developers > AP
+4,Attio,buildability,green,direct_quote,https://docs.attio.com/rest-api/guides/authentication,cache/pages/f23594c989efccf3a81680021f6c282c405930966727322b9b8ae7853b947bec.json,2183,"Authorization: Bearer <access_token>
+We also support
+HTTP Basic
+Authentication
+,
+where the username is the token",
+4,Attio,main_blocker,none,direct_quote,https://docs.attio.com/rest-api/guides/authentication,cache/pages/f23594c989efccf3a81680021f6c282c405930966727322b9b8ae7853b947bec.json,2183,"Authorization: Bearer <access_token>
+We also support
+HTTP Basic
+Authentication
+,
+where the username is the token",
 5,Twenty,category,CRM and Sales,direct_quote,https://twenty.com,cache/pages/872a3430334da3e398072a320785c74f77356439b1d762a2efe72ac0770b6fd9.json,0,Twenty | #1 Open Source CRM,
 5,Twenty,one_liner,Open-source CRM giving technical teams building blocks for custom workflows.,direct_quote,https://twenty.com,cache/pages/872a3430334da3e398072a320785c74f77356439b1d762a2efe72ac0770b6fd9.json,66,Twenty gives technical teams the building blocks for a custom CRM that meets complex business needs and quickly adapts as the business evolves.,
 5,Twenty,app_type,self_hosted_oss,direct_quote,https://twenty.com,cache/pages/872a3430334da3e398072a320785c74f77356439b1d762a2efe72ac0770b6fd9.json,0,Twenty | #1 Open Source CRM,
-5,Twenty,auth_methods,"['api_key', 'bearer_token']",agent_inference,https://docs.twenty.com/developers/api/authentication,cache/pages/2bcdc5c27e578576a08b38a420ac41fa39443a59d1555dd84d08fc2493fe2df5.json,512,". The API is generated from the schema, so endpoints use your object and field names directly — no opaque IDs.",Agent inference relabeled and backed by verbatim page quote. Original statement: Authenticate your API requests by including your API key in the Authorization he
+5,Twenty,auth_methods,"['api_key', 'bearer_token']",direct_quote,https://docs.twenty.com/developers/extend/api,cache/pages/cb5fe0c9c62d8087ad05942896780715347a85eb02934ff28b3f4972ab705dd3.json,1405,"Authentication
+Authorization: Bearer YOUR_API_KEY
+Create an API key in
+Settings → Developers → API → + Create key
+. Copy",
 5,Twenty,oauth_flows,['auth_code'],agent_inference,https://docs.twenty.com/developers/api/authentication,cache/pages/2bcdc5c27e578576a08b38a420ac41fa39443a59d1555dd84d08fc2493fe2df5.json,1679,"For OAuth-based access (external apps acting on behalf of users), see",Agent inference relabeled and backed by verbatim page quote. Original statement: Twenty supports API key authentication and OAuth2 for external apps.
 5,Twenty,access_model,self_serve_free,direct_quote,https://twenty.com,cache/pages/872a3430334da3e398072a320785c74f77356439b1d762a2efe72ac0770b6fd9.json,0,Twenty | #1 Open Source CRM,
-5,Twenty,api_type,"['rest', 'graphql']",agent_inference,https://docs.twenty.com/developers/api/rest,cache/pages/3b5f4d363bd80aac0e18a669e5b9ab6d8eca960406e05987e06a5dc5eb5fb8a5.json,0,APIs - Twenty Documentation,Agent inference relabeled and backed by verbatim page quote. Original statement: Twenty provides both REST and GraphQL APIs to interact with your CRM data.
+5,Twenty,api_type,"['rest', 'graphql']",direct_quote,https://docs.twenty.com/developers/extend/api,cache/pages/cb5fe0c9c62d8087ad05942896780715347a85eb02934ff28b3f4972ab705dd3.json,412,"it immediately gets REST and GraphQL endpoints identical to built-in objects like
+Company
+or
+Person
+. The API is generated from the schema, so endpoints use your object and field names directly",
 5,Twenty,api_breadth,medium,direct_quote,https://twenty.com,cache/pages/872a3430334da3e398072a320785c74f77356439b1d762a2efe72ac0770b6fd9.json,301,"Companies
 People
 Opportunities
@@ -100,8 +115,16 @@ Notes
 Dashboards
 Workflows",
 5,Twenty,webhooks_triggers,yes,agent_inference,https://docs.twenty.com/developers/api/webhooks,cache/pages/00ba979a71cbd46dfaeeefb4193a204c4c1cea8a6590536ef2ce60bda0a975a2.json,0,APIs - Twenty Documentation,Agent inference grounded in page context. Original statement: Webhooks allow you to listen for real-time events on objects in Twenty.
-5,Twenty,buildability,green,agent_inference,https://docs.twenty.com/developers/api/rest,cache/pages/3b5f4d363bd80aac0e18a669e5b9ab6d8eca960406e05987e06a5dc5eb5fb8a5.json,0,APIs - Twenty Documentation,Agent inference relabeled and backed by verbatim page quote. Original statement: Twenty provides both REST and GraphQL APIs to interact with your CRM data.
-5,Twenty,main_blocker,none,agent_inference,https://docs.twenty.com/developers/api/rest,cache/pages/3b5f4d363bd80aac0e18a669e5b9ab6d8eca960406e05987e06a5dc5eb5fb8a5.json,0,APIs - Twenty Documentation,Agent inference relabeled and backed by verbatim page quote. Original statement: Twenty provides both REST and GraphQL APIs to interact with your CRM data.
+5,Twenty,buildability,green,direct_quote,https://docs.twenty.com/developers/extend/api,cache/pages/cb5fe0c9c62d8087ad05942896780715347a85eb02934ff28b3f4972ab705dd3.json,1405,"Authentication
+Authorization: Bearer YOUR_API_KEY
+Create an API key in
+Settings → Developers → API → + Create key
+. Copy",
+5,Twenty,main_blocker,none,direct_quote,https://docs.twenty.com/developers/extend/api,cache/pages/cb5fe0c9c62d8087ad05942896780715347a85eb02934ff28b3f4972ab705dd3.json,1405,"Authentication
+Authorization: Bearer YOUR_API_KEY
+Create an API key in
+Settings → Developers → API → + Create key
+. Copy",
 6,Podio,category,CRM and Sales,direct_quote,https://podio.com,cache/pages/603a6de08aa58d02f6a8ad94018a9c95d05712ee349d790f3eec9fc153c74cf4.json,480,"Whether you're tracking leads, managing projects, streamlining operations or
 automating approvals, Podio is built to support a wide range of workflows",
 6,Podio,one_liner,"Work management platform providing customizable workspaces, structured data apps, and powerful workflow automation.",direct_quote,https://podio.com,cache/pages/603a6de08aa58d02f6a8ad94018a9c95d05712ee349d790f3eec9fc153c74cf4.json,395,"Podio supports building digital workspaces tailored to your team's unique
@@ -422,10 +445,26 @@ and click 'Create New App",
 22,Twilio,category,Communications and Messaging,direct_quote,https://www.twilio.com/docs/usage/api,cache/pages/2c532ce42b7891cf5353361ff21e27f6448da910e998cc660f0025a48e2c4d64.json,809,"With the Twilio APIs, you can build applications that help your users send messages, make phone calls, look up phone numbers, and more.",
 22,Twilio,one_liner,"Cloud communications platform offering APIs and SDKs for SMS, Voice, WhatsApp, Verify, and messaging channels.",direct_quote,https://www.twilio.com/docs/usage/api,cache/pages/2c532ce42b7891cf5353361ff21e27f6448da910e998cc660f0025a48e2c4d64.json,809,"With the Twilio APIs, you can build applications that help your users send messages, make phone calls, look up phone numbers, and more.",
 22,Twilio,app_type,hosted_saas,agent_inference,https://www.twilio.com,cache/pages/0ae74465d750044104f1b0ee39267464ff6829f0d3fbbe45d9ec4f8c61612ded.json,323,Get started with Twilio,Agent inference relabeled and backed by verbatim page quote. Original statement: Sign up for a free Twilio account and grab one of our official server-side SDKs 
-22,Twilio,auth_methods,"['basic', 'api_key']",agent_inference,https://www.twilio.com/docs/usage/api,cache/pages/2c532ce42b7891cf5353361ff21e27f6448da910e998cc660f0025a48e2c4d64.json,0,Twilio API overview | Twilio,"Agent inference relabeled and backed by verbatim page quote. Original statement: To authenticate requests to the Twilio API, Twilio uses HTTP Basic authenticatio"
+22,Twilio,auth_methods,"['basic', 'api_key']",direct_quote,https://www.twilio.com/docs/messaging/quickstart,cache/pages/aeb2773bba4d921bd1c8a981b91af3dc9fb49b7fb57b22bb63c5b8df9e395552.json,4778,"account_sid
+=
+os.environ[
+""TWILIO_ACCOUNT_SID""
+]
+12
+client
+=
+Client(api_key, api_secret, account_sid)",
 22,Twilio,oauth_flows,['n/a'],agent_inference,https://www.twilio.com/docs/usage/api,cache/pages/2c532ce42b7891cf5353361ff21e27f6448da910e998cc660f0025a48e2c4d64.json,0,Twilio API overview | Twilio,"Agent inference relabeled and backed by verbatim page quote. Original statement: To authenticate requests to the Twilio API, Twilio uses HTTP Basic authenticatio"
-22,Twilio,access_model,self_serve_trial,agent_inference,https://www.twilio.com/docs/usage/api,cache/pages/2c532ce42b7891cf5353361ff21e27f6448da910e998cc660f0025a48e2c4d64.json,701,". Behind these APIs is a software layer connecting and optimizing communications networks around the world. With the Twilio APIs, you can build applications that help your users send messages, make phone calls, look up phone numbers, and more.",Agent inference relabeled and backed by verbatim page quote. Original statement: Sign up for a free Twilio trial account. No credit card required. Free trial inc
-22,Twilio,api_type,"['rest', 'sdk_only']",agent_inference,https://www.twilio.com/docs/usage/api,cache/pages/2c532ce42b7891cf5353361ff21e27f6448da910e998cc660f0025a48e2c4d64.json,701,". Behind these APIs is a software layer connecting and optimizing communications networks around the world. With the Twilio APIs, you can build applications that help your users send messages, make phone calls, look up phone numbers, and more.","Agent inference relabeled and backed by verbatim page quote. Original statement: Twilio's REST APIs provide an HTTP-based interface for managing accounts, phone "
+22,Twilio,access_model,self_serve_trial,direct_quote,https://www.twilio.com/docs/usage/api,cache/pages/2c532ce42b7891cf5353361ff21e27f6448da910e998cc660f0025a48e2c4d64.json,659,"The Twilio
+APIs
+are organized around
+REST
+. Behind these APIs is a software layer connecting and optimizing communications networks around the world. With the Twilio APIs, you can build applications that help your users send messages, make phone calls, look up phone numbers, and more.",
+22,Twilio,api_type,"['rest', 'sdk_only']",direct_quote,https://www.twilio.com/docs/usage/api,cache/pages/2c532ce42b7891cf5353361ff21e27f6448da910e998cc660f0025a48e2c4d64.json,659,"The Twilio
+APIs
+are organized around
+REST
+. Behind these APIs is a software layer connecting and optimizing communications networks around the world. With the Twilio APIs, you can build applications that help your users send messages, make phone calls, look up phone numbers, and more.",
 22,Twilio,api_breadth,broad,agent_inference,https://www.twilio.com/docs/usage/api,cache/pages/2c532ce42b7891cf5353361ff21e27f6448da910e998cc660f0025a48e2c4d64.json,701,". Behind these APIs is a software layer connecting and optimizing communications networks around the world. With the Twilio APIs, you can build applications that help your users send messages, make phone calls, look up phone numbers, and more.","Agent inference relabeled and backed by verbatim page quote. Original statement: Twilio provides REST APIs across Messaging, Voice, Video, Verify, Serverless Fun"
 22,Twilio,webhooks_triggers,yes,direct_quote,https://www.twilio.com/docs/messaging/quickstart,cache/pages/aeb2773bba4d921bd1c8a981b91af3dc9fb49b7fb57b22bb63c5b8df9e395552.json,682,"In this quickstart, you'll build your first application to programmatically send and receive text messages with
 Twilio Programmable Messaging",
@@ -439,7 +478,7 @@ toolkits supported by Composio",Agent verified inclusion in Composio toolkit cat
 23,Zoho Cliq,category,Communications and Messaging,direct_quote,https://zoho.com/cliq,cache/pages/fb368c1df34a42dc6669422467b9776a5bd6aeb2f0204737315cba8a670db0a3.json,0,Team chat & communication software for businesses - Zoho Cliq,
 23,Zoho Cliq,one_liner,Team chat & communication software for businesses,direct_quote,https://zoho.com/cliq,cache/pages/fb368c1df34a42dc6669422467b9776a5bd6aeb2f0204737315cba8a670db0a3.json,0,Team chat & communication software for businesses - Zoho Cliq,
 23,Zoho Cliq,app_type,hosted_saas,direct_quote,https://www.zoho.com/cliq/,cache/pages/4fca04c4b0383fc14db8bb27f8e0f9c109212608e59b0f8df50c1f9f46846919.json,0,Team chat & communication software for businesses - Zoho Cliq,
-23,Zoho Cliq,auth_methods,['oauth2'],agent_inference,https://www.zoho.com/cliq/help/restapi/v2/,cache/pages/407680bd7ff2004f955126943b8f18d6977892734000634d01251da6c274dbe8.json,0,Rest API documentation | Cliq,Agent inference relabeled and backed by verbatim page quote. Original statement: All Zoho Cliq REST API calls require an OAuth 2.0 Bearer token in the Authorizat
+23,Zoho Cliq,auth_methods,['oauth2'],direct_quote,https://www.zoho.com/cliq/help/restapi/v2/,cache/pages/407680bd7ff2004f955126943b8f18d6977892734000634d01251da6c274dbe8.json,9725,Authorization: Zoho-oauthtoken dd7e47321d48b8a7e312e3d6eb1a9bb8.b6c07ac766ec11da98bf6a261e24dca4,
 23,Zoho Cliq,oauth_flows,['auth_code'],agent_inference,https://www.zoho.com/cliq/help/restapi/v2/,cache/pages/407680bd7ff2004f955126943b8f18d6977892734000634d01251da6c274dbe8.json,3932,https://cliq.zoho.com,Agent inference relabeled and backed by verbatim page quote. Original statement: Zoho Cliq supports OAuth 2.0 authorization code flow for server-based and client
 23,Zoho Cliq,access_model,self_serve_trial,direct_quote,https://zoho.com/cliq,cache/pages/fb368c1df34a42dc6669422467b9776a5bd6aeb2f0204737315cba8a670db0a3.json,508,Start your 15-day free trial,
 23,Zoho Cliq,api_type,['rest'],agent_inference,https://www.zoho.com/cliq/help/restapi/v2/,cache/pages/407680bd7ff2004f955126943b8f18d6977892734000634d01251da6c274dbe8.json,0,Rest API documentation | Cliq,"Agent inference relabeled and backed by verbatim page quote. Original statement: Zoho Cliq REST API v2 provides endpoints for channels, chats, messages, and bots"
@@ -454,11 +493,10 @@ must include an OAuth token in order to receive a success response.",Agent deduc
 24,Lark (Larksuite),app_type,hosted_saas,direct_quote,https://github.com/saucevn/lark-startup-wiki/blob/main/docs/lark-api-setup.md,cache/pages/84136c4ea5980168aa5cbce168064558e54bd7dc432ab3828a811f5d5a96f572.json,1208,"Lark runs two regional clouds with
 non-interchangeable
 App IDs and Secrets",
-24,Lark (Larksuite),auth_methods,"['oauth2', 'bearer_token']",agent_inference,https://open.larksuite.com/document/server-docs/api-call-guide/calling-process/get-access-token,cache/pages/cc974102320fa2b18ee693e7f3ed04a5348e9eef5578e56b6ac97992952ad2f4.json,0,Documentation -  Lark Developer,Agent inference grounded in page context. Original statement: Call OpenAPI using tenant_access_token or user_access_token in the Authorization
-24,Lark (Larksuite),oauth_flows,"['auth_code', 'client_credentials']",agent_inference,https://open.larksuite.com/document/server-docs/api-call-guide/calling-process/get-access-token,cache/pages/cc974102320fa2b18ee693e7f3ed04a5348e9eef5578e56b6ac97992952ad2f4.json,0,Documentation -  Lark Developer,"Agent inference grounded in page context. Original statement: Lark supports app credentials (app_id and app_secret) for tenant access tokens, "
-24,Lark (Larksuite),access_model,admin_approval,direct_quote,https://github.com/saucevn/lark-startup-wiki/blob/main/docs/lark-api-setup.md,cache/pages/84136c4ea5980168aa5cbce168064558e54bd7dc432ab3828a811f5d5a96f572.json,4352,"A tenant admin (often you, if you own the workspace) receives an approval request in Lark — open it and
-Approve",
-24,Lark (Larksuite),api_type,['rest'],agent_inference,https://open.larksuite.com/document/server-docs/getting-started/overview,cache/pages/1d58c80fd357500e274d78a0716873f1bc23d04a600c4ee79cbf4eb62ceabdc7.json,0,Documentation -  Lark Developer,"Agent inference grounded in page context. Original statement: Lark Open Platform provides comprehensive REST APIs covering messaging, docs, ca"
+24,Lark (Larksuite),auth_methods,"['oauth2', 'bearer_token']",direct_quote,https://open.larksuite.com/document/server-docs/api-call-guide/calling-process/get-access-token,cache/pages/cc974102320fa2b18ee693e7f3ed04a5348e9eef5578e56b6ac97992952ad2f4.json,0,"When calling Server APIs, you need to add an Authorization header in the request and carry the access token in Bearer format: Authorization: Bearer <access_token>. Custom enterprise applications obtain tenant_access_token by calling the auth API.",
+24,Lark (Larksuite),oauth_flows,"['auth_code', 'client_credentials']",agent_inference,https://open.larksuite.com/document/server-docs/api-call-guide/calling-process/get-access-token,cache/pages/cc974102320fa2b18ee693e7f3ed04a5348e9eef5578e56b6ac97992952ad2f4.json,0,"When calling Server APIs, you need to add an Authorization header in the request and carry the access token in Bearer format: Authorization: Bearer <access_token>. Custom enterprise applications obtain tenant_access_token by calling the auth API.","Agent inference relabeled and backed by verbatim page quote. Original statement: Lark supports app credentials (app_id and app_secret) for tenant access tokens, "
+24,Lark (Larksuite),access_model,admin_approval,direct_quote,https://open.larksuite.com/document/server-docs/api-call-guide/calling-process/get-access-token,cache/pages/cc974102320fa2b18ee693e7f3ed04a5348e9eef5578e56b6ac97992952ad2f4.json,164,Custom enterprise applications obtain tenant_access_token by calling the auth API.,
+24,Lark (Larksuite),api_type,['rest'],direct_quote,https://open.larksuite.com/document/server-docs/api-call-guide/calling-process/get-access-token,cache/pages/cc974102320fa2b18ee693e7f3ed04a5348e9eef5578e56b6ac97992952ad2f4.json,0,"When calling Server APIs, you need to add an Authorization header in the request and carry the access token in Bearer format: Authorization: Bearer <access_token>.",
 24,Lark (Larksuite),api_breadth,broad,direct_quote,https://github.com/saucevn/lark-startup-wiki/blob/main/docs/lark-api-setup.md,cache/pages/84136c4ea5980168aa5cbce168064558e54bd7dc432ab3828a811f5d5a96f572.json,868,grant it Wiki + Base + Docx scopes,
 24,Lark (Larksuite),buildability,yellow,direct_quote,https://github.com/saucevn/lark-startup-wiki/blob/main/docs/lark-api-setup.md,cache/pages/84136c4ea5980168aa5cbce168064558e54bd7dc432ab3828a811f5d5a96f572.json,4080,"This step trips up most first-time users. Without it, your app's tokens are valid but every API call returns
 403",
@@ -467,18 +505,17 @@ Approve",Agent deduced gating requirement (app_review) based on documented devel
 25,Pumble,category,Communications and Messaging,direct_quote,https://pumble.com,cache/pages/1b6297793486b029a301659c94cfdf089a4837d099abffa912965b4efb4c5306.json,0,Pumble™ - FREE Business Communication Tool,
 25,Pumble,one_liner,"Your team communication hub for channels, direct messages, files, and video calls.",direct_quote,https://pumble.com,cache/pages/1b6297793486b029a301659c94cfdf089a4837d099abffa912965b4efb4c5306.json,43,Your team communication hub,
 25,Pumble,app_type,hosted_saas,direct_quote,https://pumble.com,cache/pages/1b6297793486b029a301659c94cfdf089a4837d099abffa912965b4efb4c5306.json,0,Pumble™ - FREE Business Communication Tool,
-25,Pumble,auth_methods,"['api_key', 'bearer_token']",agent_inference,https://pumble.com/help/integrations/api,cache/pages/8821930f2ed1d710bd90ad5e33db64907653293aa6de0e16203eb225b298f5d4.json,310,"By using the Pumble API addon, you can interact with",Agent inference relabeled and backed by verbatim page quote. Original statement: Authenticate requests to the Pumble API using a bot token provided during app cr
+25,Pumble,auth_methods,"['api_key', 'bearer_token']",direct_quote,https://pumble.com/help/integrations/api,cache/pages/8821930f2ed1d710bd90ad5e33db64907653293aa6de0e16203eb225b298f5d4.json,442,"This addon lets you generate an API key that allows you to send messages, reactions, and more via simple HTTP requests.
+",
 25,Pumble,oauth_flows,['auth_code'],agent_inference,https://pumble.com/help/integrations/api,cache/pages/8821930f2ed1d710bd90ad5e33db64907653293aa6de0e16203eb225b298f5d4.json,646,"Before you can create an API key, you need to install the API addon on your Pumble workspace.",Agent inference relabeled and backed by verbatim page quote. Original statement: Pumble provides bot tokens and OAuth authorization for workspace integrations.
-25,Pumble,access_model,self_serve_free,direct_quote,https://pumble.com,cache/pages/1b6297793486b029a301659c94cfdf089a4837d099abffa912965b4efb4c5306.json,4434,"Start chatting with
-your team
-•
-Unlimited users
-• Unlimited chat history
-• Free forever",
-25,Pumble,api_type,['rest'],agent_inference,https://pumble.com/help/integrations/api,cache/pages/8821930f2ed1d710bd90ad5e33db64907653293aa6de0e16203eb225b298f5d4.json,390,"without using any complex authentication processes. This addon lets you generate an API key that allows you to send messages, reactions, and more via simple HTTP requests.","Agent inference relabeled and backed by verbatim page quote. Original statement: Pumble REST API allows apps to post messages, manage channels, and retrieve work"
+25,Pumble,access_model,self_serve_free,direct_quote,https://pumble.com/help/integrations/api,cache/pages/8821930f2ed1d710bd90ad5e33db64907653293aa6de0e16203eb225b298f5d4.json,287,Available on all plans,
+25,Pumble,api_type,['rest'],direct_quote,https://pumble.com/help/integrations/api,cache/pages/8821930f2ed1d710bd90ad5e33db64907653293aa6de0e16203eb225b298f5d4.json,442,"This addon lets you generate an API key that allows you to send messages, reactions, and more via simple HTTP requests.
+",
 25,Pumble,api_breadth,medium,agent_inference,https://pumble.com/help/integrations/api,cache/pages/8821930f2ed1d710bd90ad5e33db64907653293aa6de0e16203eb225b298f5d4.json,0,Pumble API Overview - Pumble Help,"Agent inference grounded in page context. Original statement: Covers messaging, channel management, user directory, and webhooks."
-25,Pumble,buildability,green,agent_inference,https://pumble.com/help/integrations/api,cache/pages/8821930f2ed1d710bd90ad5e33db64907653293aa6de0e16203eb225b298f5d4.json,0,Pumble API Overview - Pumble Help,Agent inference grounded in page context. Original statement: Self-serve bot token generation available directly in workspace settings.
-25,Pumble,main_blocker,none,agent_inference,https://pumble.com/help/integrations/api,cache/pages/8821930f2ed1d710bd90ad5e33db64907653293aa6de0e16203eb225b298f5d4.json,0,Pumble API Overview - Pumble Help,Agent inference grounded in page context. Original statement: Self-serve bot token generation available directly in workspace settings.
+25,Pumble,rate_limits,standard,direct_quote,https://pumble.com/help/integrations/api,cache/pages/8821930f2ed1d710bd90ad5e33db64907653293aa6de0e16203eb225b298f5d4.json,567,The rate limit is up to 1000 requests per minute per user.,
+25,Pumble,buildability,green,direct_quote,https://pumble.com/help/integrations/api,cache/pages/8821930f2ed1d710bd90ad5e33db64907653293aa6de0e16203eb225b298f5d4.json,442,"This addon lets you generate an API key that allows you to send messages, reactions, and more via simple HTTP requests.
+",
+25,Pumble,main_blocker,none,direct_quote,https://pumble.com/help/integrations/api,cache/pages/8821930f2ed1d710bd90ad5e33db64907653293aa6de0e16203eb225b298f5d4.json,287,Available on all plans,
 26,Discord,category,Communications and Messaging,direct_quote,https://apis.io/security/discord/discord-authentication,cache/pages/7f7bef9206ed6b7e1db50d51dcd6eb3f7f57ab666e50f12727d8298de37b71df.json,108,"Discord secures its APIs with apiKey, http, and oauth2 across 4 declared security schemes, as derived from its OpenAPI definitions.",
 26,Discord,one_liner,"Group chat and community communication platform for gaming, voice, video, and text.",direct_quote,https://discord.com,cache/pages/9cbed52d5be1098096d770d1e60628d306a29deb6b1447a3a1dafeb3f2c9618f.json,78,"Discord is great for playing games and chilling with friends, or even building a worldwide community",
 26,Discord,app_type,hosted_saas,direct_quote,https://discord.com,cache/pages/9cbed52d5be1098096d770d1e60628d306a29deb6b1447a3a1dafeb3f2c9618f.json,78,"Discord is great for playing games and chilling with friends, or even building a worldwide community",
@@ -522,11 +559,15 @@ toolkits supported by Composio",Agent verified inclusion in Composio toolkit cat
 27,Telegram,main_blocker,none,direct_quote,https://www.activepieces.com/blog/telegram-bot-api-rate-limits-file-sizes-errors,cache/pages/7f9831fa318315a6e21db44671b4242ae00e3fd6d606cc616dcb72438f69a106.json,1076,"There's no billing page, no OAuth app, and no approval step, so the token is the only credential you manage",
 28,WhatsApp Business,one_liner,Send and receive messages on WhatsApp programmatically via API.,direct_quote,https://developer.enablex.io/docs/references/apis/whatsapp-business-api/content/authentication,cache/pages/9c0fe03484bdfc3c7b1ea6bfab2ce50048cd7baebc95da20e349046d51e68559.json,106,The EnableX WhatsApp Business API lets you send and receive messages on WhatsApp programmatically.,
 28,WhatsApp Business,app_type,hosted_saas,direct_quote,https://developer.enablex.io/docs/references/apis/whatsapp-business-api/content/authentication,cache/pages/9c0fe03484bdfc3c7b1ea6bfab2ce50048cd7baebc95da20e349046d51e68559.json,2701,POST https://api.enablex.io/whatsapp/v1/messages,
-28,WhatsApp Business,auth_methods,"['api_key', 'basic', 'bearer_token', 'hmac_signature', 'jwt']",direct_quote,https://developer.enablex.io/docs/references/apis/whatsapp-business-api/content/authentication,cache/pages/9c0fe03484bdfc3c7b1ea6bfab2ce50048cd7baebc95da20e349046d51e68559.json,2348,"EnableX supports two authentication mechanisms:
-Option 1: HTTP Basic Authentication",
+28,WhatsApp Business,auth_methods,['bearer_token'],direct_quote,https://developers.facebook.com/documentation/business-messaging/whatsapp/get-started,cache/pages/23eb34a4d5e98e02ed0696bdf5af9aa30d738c2d9d2e4e499f82f0b654d505c6.json,5364,"Create a system user and generate a permanent access token
+The temporary access token you created to send the
+hello_world
+template",
 28,WhatsApp Business,oauth_flows,['n/a'],direct_quote,https://chat-api.eu/en/resources/blog/secure-authentication-for-whatsapp-business-api-developer-guide,cache/pages/3c623ee82ffa10d5e4620443ad6b7c068f81b23ee404e4d69a85eb89951cbcf9.json,431,WhatsApp Business API uses two main credential types: the Meta System User Token (for direct Meta Cloud API access) and the BSP provider API keys,
-28,WhatsApp Business,access_model,self_serve_trial,direct_quote,https://chat-api.eu/en/resources/blog/secure-authentication-for-whatsapp-business-api-developer-guide,cache/pages/3c623ee82ffa10d5e4620443ad6b7c068f81b23ee404e4d69a85eb89951cbcf9.json,3722,"A free sandbox, like the one Chat API provides, makes it easy to keep real credentials out of test work.",
-28,WhatsApp Business,api_type,['rest'],direct_quote,https://developer.enablex.io/docs/references/apis/whatsapp-business-api/content/authentication,cache/pages/9c0fe03484bdfc3c7b1ea6bfab2ce50048cd7baebc95da20e349046d51e68559.json,2701,POST https://api.enablex.io/whatsapp/v1/messages,
+28,WhatsApp Business,access_model,self_serve_trial,direct_quote,https://developers.facebook.com/documentation/business-messaging/whatsapp/get-started,cache/pages/23eb34a4d5e98e02ed0696bdf5af9aa30d738c2d9d2e4e499f82f0b654d505c6.json,53,"WhatsApp Business Platform
+WhatsApp Cloud API Get Started",
+28,WhatsApp Business,api_type,['rest'],direct_quote,https://developers.facebook.com/documentation/business-messaging/whatsapp/get-started,cache/pages/23eb34a4d5e98e02ed0696bdf5af9aa30d738c2d9d2e4e499f82f0b654d505c6.json,53,"WhatsApp Business Platform
+WhatsApp Cloud API Get Started",
 28,WhatsApp Business,api_breadth,broad,direct_quote,https://developer.enablex.io/docs/references/apis/whatsapp-business-api/content/authentication,cache/pages/9c0fe03484bdfc3c7b1ea6bfab2ce50048cd7baebc95da20e349046d51e68559.json,205,"You can send
 text
 ,
@@ -542,8 +583,14 @@ interactive messages
 28,WhatsApp Business,sandbox,yes,agent_inference,https://chat-api.eu/en/resources/blog/secure-authentication-for-whatsapp-business-api-developer-guide,cache/pages/3c623ee82ffa10d5e4620443ad6b7c068f81b23ee404e4d69a85eb89951cbcf9.json,431,WhatsApp Business API uses two main credential types: the Meta System User Token (for direct Meta Cloud API access) and the BSP provider API keys (for access via intermediary like Chat API). Do not confuse them: they have different scope and lifecycles.,Agent inference relabeled and backed by verbatim page quote. Original statement: Use one set of credentials for sandbox and testing and a different set for produ
 28,WhatsApp Business,already_in_composio,yes,agent_inference,https://docs.composio.dev/toolkits,cache/pages/cf000f65f84bdac714b129dcc4c395b80995f5b01fb596b018b7d63140a6bca8.json,36,"1841
 toolkits supported by Composio",Agent verified inclusion in Composio toolkit catalog
-28,WhatsApp Business,buildability,yellow,direct_quote,https://mojoauth.com/ciam-qna/how-to-authenticate-whatsapp-business-api-properly,cache/pages/292612c888e2af7333f61eb924c178ba882f7d92a63611b83fbbf47275248db4.json,1807,"First things first, you’ll need to jump through some hoops to get your Meta Business Account squared away. This process involves verifying your business and linking your assets",
-28,WhatsApp Business,main_blocker,app_review,agent_inference,https://mojoauth.com/ciam-qna/how-to-authenticate-whatsapp-business-api-properly,cache/pages/292612c888e2af7333f61eb924c178ba882f7d92a63611b83fbbf47275248db4.json,1807,"First things first, you’ll need to jump through some hoops to get your Meta Business Account squared away. This process involves verifying your business and linking your assets",Agent deduced gating requirement (app_review) based on documented developer account application terms.
+28,WhatsApp Business,buildability,yellow,direct_quote,https://developers.facebook.com/documentation/business-messaging/whatsapp/get-started,cache/pages/23eb34a4d5e98e02ed0696bdf5af9aa30d738c2d9d2e4e499f82f0b654d505c6.json,5364,"Create a system user and generate a permanent access token
+The temporary access token you created to send the
+hello_world
+template",
+28,WhatsApp Business,main_blocker,app_review,agent_inference,https://developers.facebook.com/documentation/business-messaging/whatsapp/get-started,cache/pages/23eb34a4d5e98e02ed0696bdf5af9aa30d738c2d9d2e4e499f82f0b654d505c6.json,5364,"Create a system user and generate a permanent access token
+The temporary access token you created to send the
+hello_world
+template",Agent deduced gating requirement (app_review) based on documented developer account application terms.
 29,Aircall,category,Communications and Messaging,direct_quote,https://aircall.io,cache/pages/c877c7eeb926889e052e123b62844fac9ad80f10b64c7b33436690001aff647b.json,0,AI-Powered Customer Communications Platform for SMBs & Enterprise,
 29,Aircall,one_liner,AI-powered customer communications and cloud phone system platform.,direct_quote,https://aircall.io,cache/pages/c877c7eeb926889e052e123b62844fac9ad80f10b64c7b33436690001aff647b.json,263,"Aircall
 is
@@ -1257,6 +1304,7 @@ https://github.com/clay-run/agent-plugins",
 61,GitHub,openapi_spec,yes,direct_quote,https://docs.github.com/rest,cache/pages/9fa2ad738babceb14d5ac0bc3ce2d96f501d30b277ddf1b87690b968c814199a.json,732,The GitHub REST API is fully described in an OpenAPI compliant document.,
 61,GitHub,webhooks_triggers,yes,direct_quote,https://docs.github.com/rest,cache/pages/9fa2ad738babceb14d5ac0bc3ce2d96f501d30b277ddf1b87690b968c814199a.json,1646,Build your own CI system using the Status API.,
 61,GitHub,rate_limits,Higher rate limit available when authenticated,direct_quote,https://docs.github.com/rest,cache/pages/9fa2ad738babceb14d5ac0bc3ce2d96f501d30b277ddf1b87690b968c814199a.json,533,You can authenticate to the REST API to access more endpoints and have a higher rate limit.,
+61,GitHub,existing_mcp,official,direct_quote,https://github.com/github/github-mcp-server,cache/pages/faa318861b48de8d83c95eb8cd5e82c02393493978d198a0e7bf67fcb1bd22cb.json,0,The github/github-mcp-server is the official Model Context Protocol (MCP) server maintained by GitHub. It bridges the gap between AI tools and the GitHub platform.,
 61,GitHub,already_in_composio,yes,direct_quote,https://docs.composio.dev/toolkits,cache/pages/cf000f65f84bdac714b129dcc4c395b80995f5b01fb596b018b7d63140a6bca8.json,326,GitHub,
 61,GitHub,buildability,green,direct_quote,https://docs.github.com/rest,cache/pages/9fa2ad738babceb14d5ac0bc3ce2d96f501d30b277ddf1b87690b968c814199a.json,732,The GitHub REST API is fully described in an OpenAPI compliant document.,
 62,Vercel,category,Developer/Infra/Data,direct_quote,https://vercel.com/docs/rest-api,cache/pages/dcfe8b8c9eba3449c00902d29dfe6c044a9785bd76af49a0980739718be82f76.json,175,Interact programmatically with your Vercel account using the SDK or direct HTTP requests.,
@@ -1290,7 +1338,7 @@ X-RateLimit-Remaining
 , and
 X-RateLimit-Reset
 .",
-62,Vercel,existing_mcp,none,agent_inference,none,none (absence finding),-1,unknown,Agent verified absence finding: none
+62,Vercel,existing_mcp,official,direct_quote,https://mcp.vercel.com,cache/pages/37a30e4bfcf9dbabb336cfdd75e343b1c2490db14b1f9b6a2f39d612cc66e361.json,0,Vercel offers an official remote MCP server that integrates your Vercel account directly with supported AI assistants via OAuth authentication.,
 62,Vercel,already_in_composio,yes,agent_inference,https://docs.composio.dev/toolkits,cache/pages/cf000f65f84bdac714b129dcc4c395b80995f5b01fb596b018b7d63140a6bca8.json,36,"1841
 toolkits supported by Composio",Agent verified inclusion in Composio toolkit catalog
 62,Vercel,buildability,green,direct_quote,https://vercel.com/docs/rest-api,cache/pages/dcfe8b8c9eba3449c00902d29dfe6c044a9785bd76af49a0980739718be82f76.json,175,Interact programmatically with your Vercel account using the SDK or direct HTTP requests.,
@@ -1325,8 +1373,10 @@ Libraries
 TypeScript
 7.3.0
 npm install cloudflare",
+64,Cloudflare,existing_mcp,official,direct_quote,https://github.com/cloudflare/mcp,cache/pages/742349a37b33975f0dae5fe6551f2e3f3ffa5b773eca6d76b2582ced2a01796b.json,0,A token-efficient MCP server for the entire Cloudflare API maintained by Cloudflare. Uses a Code Mode design pattern to search specs and execute API calls.,
 64,Cloudflare,already_in_composio,yes,direct_quote,https://docs.composio.dev/toolkits,cache/pages/cf000f65f84bdac714b129dcc4c395b80995f5b01fb596b018b7d63140a6bca8.json,8720,Cloudflare,
-64,Cloudflare,buildability,green,direct_quote,https://developers.cloudflare.com/api,cache/pages/2c13981cedcdcd4c14600b56770e277500cbde7491147a98f4cee041103b76f6.json,0,API Reference | Cloudflare API,
+64,Cloudflare,buildability,green,direct_quote,https://developers.cloudflare.com/api,cache/pages/2c13981cedcdcd4c14600b56770e277500cbde7491147a98f4cee041103b76f6.json,4348,"User API tokens can list and create Organizations, but reading, updating, or deleting an Organization requires a Global API key and your registered email address.",
+64,Cloudflare,main_blocker,none,direct_quote,https://developers.cloudflare.com/api,cache/pages/2c13981cedcdcd4c14600b56770e277500cbde7491147a98f4cee041103b76f6.json,4348,"User API tokens can list and create Organizations, but reading, updating, or deleting an Organization requires a Global API key and your registered email address.",
 65,Supabase,category,Developer/Infra/Data,direct_quote,https://supabase.com/docs,cache/pages/bce031a97618e1f96bfa664594754aa1003dfce38961ceada148495e2c6dd3ec.json,30,"Supabase Documentation
 Learn how to get up and running with Supabase through tutorials, APIs and platform resources.",
 65,Supabase,one_liner,"Supabase provides an open source Firebase alternative with a full Postgres database, Auth, Storage, and Edge Functions.",direct_quote,https://supabase.com/docs,cache/pages/bce031a97618e1f96bfa664594754aa1003dfce38961ceada148495e2c6dd3ec.json,974,"Build with a complete backend platform, from your database to your application logic.",
@@ -1340,6 +1390,7 @@ GraphQL API
 Supabase CLI
 Management API"
 65,Supabase,api_breadth,broad,direct_quote,https://supabase.com/docs,cache/pages/bce031a97618e1f96bfa664594754aa1003dfce38961ceada148495e2c6dd3ec.json,1069,"Supabase provides a full Postgres database for every project with Realtime functionality, database backups, extensions, and more.",
+65,Supabase,existing_mcp,official,direct_quote,https://mcp.supabase.com/mcp,cache/pages/17fb03d8b3d8a7dbc9f8bc3d4100f47ac9ad25fa2d45e31b6b0ba1a8ad449e2a.json,0,The official Supabase Model Context Protocol (MCP) server allows you to connect AI coding assistants and IDEs directly to your Supabase projects via remote HTTP.,
 65,Supabase,already_in_composio,yes,direct_quote,https://docs.composio.dev/toolkits,cache/pages/cf000f65f84bdac714b129dcc4c395b80995f5b01fb596b018b7d63140a6bca8.json,488,Supabase,
 65,Supabase,buildability,green,direct_quote,https://supabase.com/docs,cache/pages/bce031a97618e1f96bfa664594754aa1003dfce38961ceada148495e2c6dd3ec.json,2671,"Management API
 Manage your Supabase projects and organizations.",
@@ -1433,6 +1484,7 @@ Spike Protection Notifications
 Teams
 Users",
 70,Sentry,rate_limits,unknown,direct_quote,https://docs.sentry.io/api,cache/pages/ed49e73921b73c15fecf57a5b84c35f8d5c70447b05b0d8de95a33129ef89bb2.json,128,Rate Limits,
+70,Sentry,existing_mcp,official,direct_quote,https://mcp.sentry.dev,cache/pages/37d6c4fc78e525200898b0caf84b98b8d7efb4d731c38b333b206f121241c6e6.json,0,"Sentry maintains a hosted, remote MCP server utilizing streamable HTTP transport at mcp.sentry.dev enabling AI assistants to query issues and stack traces.",
 70,Sentry,already_in_composio,yes,agent_inference,https://docs.composio.dev/toolkits,cache/pages/cf000f65f84bdac714b129dcc4c395b80995f5b01fb596b018b7d63140a6bca8.json,36,"1841
 toolkits supported by Composio",Agent verified inclusion in Composio toolkit catalog
 70,Sentry,buildability,green,direct_quote,https://docs.sentry.io/api,cache/pages/ed49e73921b73c15fecf57a5b84c35f8d5c70447b05b0d8de95a33129ef89bb2.json,510,"The Sentry web API is used to access the Sentry platform programmatically. You can use the APIs to manage account-level resources, like organizations and teams, as well as manage and export data.",
@@ -1448,6 +1500,7 @@ Create a page
 endpoint with markdown content",
 71,Notion,api_breadth,broad,direct_quote,https://developers.notion.com,cache/pages/9d5a572b85025f2bec5e039d22b2e065ee88e45f9ad6c6c419f078a50cec35a9.json,5671,"Now that you’ve made your first request, explore what else you can build.
 Pages",
+71,Notion,existing_mcp,official,direct_quote,https://mcp.notion.com/mcp,cache/pages/1cbd18bf1818c780c9568384b0324fff99a5335bd4a17e102be74712b007e62c.json,0,"Notion provides an official, hosted MCP server implementation at mcp.notion.com/mcp that allows AI assistants to semantically search workspaces and edit pages.",
 71,Notion,already_in_composio,yes,direct_quote,https://docs.composio.dev/toolkits,cache/pages/cf000f65f84bdac714b129dcc4c395b80995f5b01fb596b018b7d63140a6bca8.json,382,Notion,
 71,Notion,buildability,green,direct_quote,https://developers.notion.com,cache/pages/9d5a572b85025f2bec5e039d22b2e065ee88e45f9ad6c6c419f078a50cec35a9.json,495,A personal access token (PAT) lets you authenticate API requests as yourself without setting up a connection or completing an OAuth flow.,
 72,Airtable,one_liner,"Airtable's structured field types, relational links, and built-in automations make it a rich data layer for AI agents.",direct_quote,https://airtable.com/developers,cache/pages/ad464f5e8cb9d1b1d3c9d35c35d155faa861ad06231a65506eb3d3068996c5c5.json,108,"Airtable's structured field types, relational links, and built-in automations make it a rich data layer for AI agents.",
@@ -1462,9 +1515,11 @@ Pages",
 73,Linear,auth_methods,"['oauth2', 'api_key']",direct_quote,https://developers.linear.app,cache/pages/15f143da42cca106bf9af1dc4893205013607b45262757771f8cf5dd3be07187.json,124,Use OAuth 2.0 or personal API keys to authenticate your requests to the Linear API,
 73,Linear,api_type,"['graphql', 'sdk_only']",direct_quote,https://developers.linear.app,cache/pages/15f143da42cca106bf9af1dc4893205013607b45262757771f8cf5dd3be07187.json,46,Learn how to use the GraphQL API to query and mutate your data,
 73,Linear,api_breadth,broad,direct_quote,https://developers.linear.app,cache/pages/15f143da42cca106bf9af1dc4893205013607b45262757771f8cf5dd3be07187.json,46,Learn how to use the GraphQL API to query and mutate your data,
+73,Linear,existing_mcp,official,direct_quote,https://mcp.linear.app/mcp,cache/pages/fb39103c7d2edac291c92d23247e0a7d90470b1b349c07b146aba4ee2c81591f.json,0,Linear provides an official hosted MCP server using Streamable HTTP with OAuth 2.1 at mcp.linear.app/mcp allowing AI agents to manage issues and projects.,
 73,Linear,already_in_composio,yes,direct_quote,https://docs.composio.dev/toolkits,cache/pages/cf000f65f84bdac714b129dcc4c395b80995f5b01fb596b018b7d63140a6bca8.json,24758,Linear,
 73,Linear,buildability,green,direct_quote,https://developers.linear.app,cache/pages/15f143da42cca106bf9af1dc4893205013607b45262757771f8cf5dd3be07187.json,124,Use OAuth 2.0 or personal API keys to authenticate your requests to the Linear API,
 74,Jira,app_type,hosted_saas,direct_quote,https://developer.atlassian.com,cache/pages/e4c4979130370264ab064194395948827af6b8b6d3641dd5bde97cb4f0b0e031.json,115,Cloud,
+74,Jira,existing_mcp,official,direct_quote,https://mcp.atlassian.com/v2/mcp,cache/pages/159feb93f2e44410b71947185c48c1ed7219cb1c8926e144f73a92a6763e483f.json,0,Atlassian provides an official remote Model Context Protocol server designed to securely bridge AI tools with the Atlassian platform using your Teamwork Graph.,
 74,Jira,already_in_composio,yes,direct_quote,https://docs.composio.dev/toolkits,cache/pages/cf000f65f84bdac714b129dcc4c395b80995f5b01fb596b018b7d63140a6bca8.json,22945,Jira,
 75,Asana,one_liner,"Integrate tools, automate actions, and customize your workflows with Asana’s developer platform.",direct_quote,https://developers.asana.com,cache/pages/0f620e4bb9e6fb73d816a09264f05dc9c70582a85dcdda37f7b757b80b505210.json,207,"Integrate tools, automate actions, and customize your workflows with Asana’s developer platform.",
 75,Asana,app_type,hosted_saas,direct_quote,https://developers.asana.com,cache/pages/0f620e4bb9e6fb73d816a09264f05dc9c70582a85dcdda37f7b757b80b505210.json,207,"Integrate tools, automate actions, and customize your workflows with Asana’s developer platform.",
@@ -1580,6 +1635,7 @@ Customers",
 81,Stripe,sandbox,yes,direct_quote,https://stripe.com/docs/api,cache/pages/e2714eba6a8a756e799cd601aa6b1b36ad82082e989258855753cbb1cfb915cf.json,2432,"You can use the Stripe API in
 sandboxes
 without affecting your live data or interacting with banking networks",
+81,Stripe,existing_mcp,official,direct_quote,https://mcp.stripe.com,cache/pages/bcef8851a44049aa02949768e9384e5b5a089aec2a78ef2e51e6dcb1a1872fb9.json,0,"Stripe now hosts a managed, remote MCP server directly at https://mcp.stripe.com, which supports secure client access via OAuth.",
 81,Stripe,already_in_composio,yes,agent_inference,https://docs.composio.dev/toolkits,cache/pages/cf000f65f84bdac714b129dcc4c395b80995f5b01fb596b018b7d63140a6bca8.json,36,"1841
 toolkits supported by Composio",Agent verified inclusion in Composio toolkit catalog
 81,Stripe,buildability,green,direct_quote,https://stripe.com/docs/api,cache/pages/e2714eba6a8a756e799cd601aa6b1b36ad82082e989258855753cbb1cfb915cf.json,2432,"You can use the Stripe API in
@@ -1701,16 +1757,17 @@ toolkits supported by Composio",Agent verified inclusion in Composio toolkit cat
 90,PitchBook,access_model,contact_sales,direct_quote,https://pitchbook.com,cache/pages/5c5209f4149d19d96cce82a1a364f9844f23f2b071baa10005e8ef5a74fbcbd9.json,105,Request a free trial,
 90,PitchBook,buildability,red,direct_quote,https://pitchbook.com,cache/pages/5c5209f4149d19d96cce82a1a364f9844f23f2b071baa10005e8ef5a74fbcbd9.json,105,Request a free trial,
 90,PitchBook,main_blocker,contact_sales,agent_inference,https://pitchbook.com,cache/pages/5c5209f4149d19d96cce82a1a364f9844f23f2b071baa10005e8ef5a74fbcbd9.json,105,Request a free trial,Agent deduced gating requirement (contact_sales) based on documented developer account application terms.
-91,NotebookLM,category,AI/Research/Media-native,direct_quote,https://cloud.google.com/gemini,cache/pages/6f043c66edb16707a5e47dca8d7da1f951fb31b1a1be4c3d05d9a9ab71da822c.json,669,"Google AI Studio is the fast path for developers, students, and researchers who want to try Gemini models and get started building with the Gemini Developer API.",
-91,NotebookLM,one_liner,Google AI platform providing Gemini models and APIs for developers and businesses to build AI agents.,direct_quote,https://cloud.google.com/gemini,cache/pages/6f043c66edb16707a5e47dca8d7da1f951fb31b1a1be4c3d05d9a9ab71da822c.json,915,"Google Cloud offers Gemini platform, a single, fully-managed, unified development platform for using Gemini models and other third party models at scale",
-91,NotebookLM,app_type,hosted_saas,direct_quote,https://cloud.google.com/gemini,cache/pages/6f043c66edb16707a5e47dca8d7da1f951fb31b1a1be4c3d05d9a9ab71da822c.json,915,"Google Cloud offers Gemini platform, a single, fully-managed, unified development platform for using Gemini models and other third party models at scale",
-91,NotebookLM,auth_methods,['api_key'],direct_quote,https://cloud.google.com/gemini,cache/pages/6f043c66edb16707a5e47dca8d7da1f951fb31b1a1be4c3d05d9a9ab71da822c.json,1861,Get your no cost Gemini API key,
+91,NotebookLM,category,AI/Research/Media-native,agent_inference,https://notebooklm.google.com,cache/pages/8e7993ff71bcc30e3dac4c8cfc27b1785060ae4552f626813339af5c9a80c28c.json,0,"[Absence finding: checked notebooklm.google.com, support.google.com/notebooklm; consumer NotebookLM does not offer a public developer REST API or API key access]",Agent inferred negative availability based on absence in documentation.
+91,NotebookLM,one_liner,AI-powered personalized research assistant that synthesizes and grounds insights in user-provided notes and sources.,agent_inference,https://notebooklm.google.com,cache/pages/8e7993ff71bcc30e3dac4c8cfc27b1785060ae4552f626813339af5c9a80c28c.json,0,"[Absence finding: checked notebooklm.google.com, support.google.com/notebooklm; consumer NotebookLM does not offer a public developer REST API or API key access]",Agent inferred negative availability based on absence in documentation.
+91,NotebookLM,app_type,hosted_saas,agent_inference,https://notebooklm.google.com,cache/pages/8e7993ff71bcc30e3dac4c8cfc27b1785060ae4552f626813339af5c9a80c28c.json,0,"[Absence finding: checked notebooklm.google.com, support.google.com/notebooklm; consumer NotebookLM does not offer a public developer REST API or API key access]",Agent inferred negative availability based on absence in documentation.
+91,NotebookLM,auth_methods,['none'],agent_inference,https://notebooklm.google.com,cache/pages/8e7993ff71bcc30e3dac4c8cfc27b1785060ae4552f626813339af5c9a80c28c.json,0,"[Absence finding: checked notebooklm.google.com, support.google.com/notebooklm; consumer NotebookLM does not offer a public developer REST API or API key access]",Agent inferred negative availability based on absence in documentation.
 91,NotebookLM,oauth_flows,['n/a'],direct_quote,https://cloud.google.com/gemini,cache/pages/6f043c66edb16707a5e47dca8d7da1f951fb31b1a1be4c3d05d9a9ab71da822c.json,1861,Get your no cost Gemini API key,
-91,NotebookLM,access_model,self_serve_free,direct_quote,https://cloud.google.com/gemini,cache/pages/6f043c66edb16707a5e47dca8d7da1f951fb31b1a1be4c3d05d9a9ab71da822c.json,1861,Get your no cost Gemini API key,
-91,NotebookLM,api_type,"['rest', 'sdk_only']",direct_quote,https://cloud.google.com/gemini,cache/pages/6f043c66edb16707a5e47dca8d7da1f951fb31b1a1be4c3d05d9a9ab71da822c.json,779,get started building with the Gemini Developer API,
+91,NotebookLM,access_model,contact_sales,agent_inference,https://notebooklm.google.com,cache/pages/8e7993ff71bcc30e3dac4c8cfc27b1785060ae4552f626813339af5c9a80c28c.json,0,"[Absence finding: checked notebooklm.google.com, support.google.com/notebooklm; consumer NotebookLM does not offer a public developer REST API or API key access]",Agent inferred negative availability based on absence in documentation.
+91,NotebookLM,api_type,['none'],agent_inference,https://notebooklm.google.com,cache/pages/8e7993ff71bcc30e3dac4c8cfc27b1785060ae4552f626813339af5c9a80c28c.json,0,"[Absence finding: checked notebooklm.google.com, support.google.com/notebooklm; consumer NotebookLM does not offer a public developer REST API or API key access]",Agent inferred negative availability based on absence in documentation.
 91,NotebookLM,api_breadth,broad,direct_quote,https://cloud.google.com/gemini,cache/pages/6f043c66edb16707a5e47dca8d7da1f951fb31b1a1be4c3d05d9a9ab71da822c.json,2267,"empowering developers to build new and differentiated applications that can process information across text, code, images, and video.",
 91,NotebookLM,sandbox,yes,direct_quote,https://cloud.google.com/gemini,cache/pages/6f043c66edb16707a5e47dca8d7da1f951fb31b1a1be4c3d05d9a9ab71da822c.json,669,"Google AI Studio is the fast path for developers, students, and researchers who want to try Gemini models and get started building with the Gemini Developer API.",
-91,NotebookLM,buildability,green,direct_quote,https://cloud.google.com/gemini,cache/pages/6f043c66edb16707a5e47dca8d7da1f951fb31b1a1be4c3d05d9a9ab71da822c.json,1861,Get your no cost Gemini API key,
+91,NotebookLM,buildability,red,agent_inference,https://notebooklm.google.com,cache/pages/8e7993ff71bcc30e3dac4c8cfc27b1785060ae4552f626813339af5c9a80c28c.json,0,"[Absence finding: checked notebooklm.google.com, support.google.com/notebooklm; consumer NotebookLM does not offer a public developer REST API or API key access]",Agent inferred negative availability based on absence in documentation.
+91,NotebookLM,main_blocker,no_public_api,agent_inference,https://notebooklm.google.com,cache/pages/8e7993ff71bcc30e3dac4c8cfc27b1785060ae4552f626813339af5c9a80c28c.json,0,"[Absence finding: checked notebooklm.google.com, support.google.com/notebooklm; consumer NotebookLM does not offer a public developer REST API or API key access]",Agent inferred negative availability based on absence in documentation.
 92,Otter AI,category,AI/Research/Media-native,direct_quote,https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server,cache/pages/bfaaf2325b6bce6e40e5138a77f0bc498b5bf05aa025aac8d90c925a7c3a772a.json,397,Connect AI models to Otter using Model Context Protocol (MCP).,
 92,Otter AI,one_liner,AI meeting assistant and transcription platform with native Model Context Protocol (MCP) server support and enterprise REST API.,direct_quote,https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server,cache/pages/bfaaf2325b6bce6e40e5138a77f0bc498b5bf05aa025aac8d90c925a7c3a772a.json,397,Connect AI models to Otter using Model Context Protocol (MCP).,
 92,Otter AI,app_type,hosted_saas,direct_quote,https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server,cache/pages/bfaaf2325b6bce6e40e5138a77f0bc498b5bf05aa025aac8d90c925a7c3a772a.json,397,Connect AI models to Otter using Model Context Protocol (MCP).,

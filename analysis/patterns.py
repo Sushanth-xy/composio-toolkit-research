@@ -91,17 +91,18 @@ def analyze_patterns(records: List[AppResearchRecord]) -> Dict[str, Any]:
         if r.buildability.value == "green":
             openapi_vs_green[spec] = openapi_vs_green.get(spec, 0) + 1
 
-    # 7. Strategic Segments: Easy Wins vs Needs Outreach
+    # 7. Strategic Segments: Easy Wins vs Needs Outreach vs Configuration Required vs Not a Fit
     easy_wins = []
     needs_outreach = []
     not_a_fit = []
+    requires_configuration = []
 
     for r in records:
         is_green = r.buildability.value == "green"
         is_self_serve = r.access_model.value in ["self_serve_free", "self_serve_trial"]
-        has_openapi = r.openapi_spec.value == "yes"
 
-        if is_green and (is_self_serve or has_openapi):
+        # Easy wins MUST strictly be green AND self_serve_free or self_serve_trial
+        if is_green and is_self_serve:
             easy_wins.append({
                 "id": r.id,
                 "name": r.name,
@@ -127,11 +128,22 @@ def analyze_patterns(records: List[AppResearchRecord]) -> Dict[str, Any]:
                 "category": r.category.value,
                 "blocker": r.main_blocker.value,
             })
+        else:
+            requires_configuration.append({
+                "id": r.id,
+                "name": r.name,
+                "category": r.category.value,
+                "access": r.access_model.value,
+                "blocker": r.main_blocker.value,
+                "buildability": r.buildability.value,
+                "reason": r.reasoning,
+            })
 
     # Sort segments by ID
     easy_wins.sort(key=lambda x: x["id"])
     needs_outreach.sort(key=lambda x: x["id"])
     not_a_fit.sort(key=lambda x: x["id"])
+    requires_configuration.sort(key=lambda x: x["id"])
 
     # 8. Priority Scoring & Top-15 Build Order
     scored_apps = []
@@ -172,7 +184,7 @@ def analyze_patterns(records: List[AppResearchRecord]) -> Dict[str, Any]:
     # Rewrite headline patterns
     headlines = [
         f"Real Blocker Ranking: Gating analysis across restricted platforms reveals {top_real_blockers_str} as the primary architectural bottlenecks. Managed OAuth scopes and partner review queues represent the highest integration friction.",
-        f"Portfolio Velocity Split: {len(easy_wins)} Easy Wins (self-serve free/trial APIs & OpenAPI schemas) vs {len(needs_outreach)} Outreach Targets (gated behind enterprise partner reviews or sales agreements) vs {len(not_a_fit)} Local CLI/Isolated Tools.",
+        f"Portfolio Velocity Split: {len(easy_wins)} Easy Wins (self-serve free/trial APIs) vs {len(needs_outreach)} Outreach Targets (gated behind partner reviews or sales agreements) vs {len(requires_configuration)} Configuration-Dependent (paid/self-hosted/admin) vs {len(not_a_fit)} CLI/No-API Tools (Total: {total_apps}).",
         f"Authentication Architecture by Category: CRM & Messaging mandate OAuth2 ({crm_oauth}/{crm_total} CRM apps), whereas Developer Infra & Scraping rely primarily on API Keys ({dev_key}/{dev_total} Dev apps) for headless machine execution.",
         f"Catalog Feasibility: {buildability_overall['green']} apps immediately buildable today, {buildability_overall['yellow']} requiring partner provisioning or containerized execution, and {buildability_overall['red']} lacking public developer APIs.",
     ]
@@ -196,9 +208,11 @@ def analyze_patterns(records: List[AppResearchRecord]) -> Dict[str, Any]:
         "easy_wins_count": len(easy_wins),
         "needs_outreach_count": len(needs_outreach),
         "not_a_fit_count": len(not_a_fit),
+        "requires_configuration_count": len(requires_configuration),
         "easy_wins": easy_wins,
         "needs_outreach": needs_outreach,
         "not_a_fit": not_a_fit,
+        "requires_configuration": requires_configuration,
         "top_15_build_order": top_15_build_order,
     }
 
