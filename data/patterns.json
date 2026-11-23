@@ -1,0 +1,458 @@
+{
+  "total_apps": 100,
+  "headlines": [
+    "OAuth2 dominates across 54.0% of target platforms (54/100), but over a third require multi-tenant app reviews or enterprise partner agreements.",
+    "74.0% of applications offer self-serve developer access (74/100), representing immediate low-friction integration opportunities.",
+    "The single most prevalent blocker across the catalog is 'none' (66 applications), separating quick API key integrations from managed OAuth distributions.",
+    "66 apps are greenlit for immediate toolkit development, while 30 require per-instance configuration or tiered plan upgrades, and 4 are hard-gated."
+  ],
+  "auth_overall": {
+    "oauth2": 54,
+    "bearer_token": 44,
+    "api_key": 49,
+    "basic": 14,
+    "hmac_signature": 3,
+    "jwt": 5,
+    "other": 4,
+    "none": 5,
+    "unknown": 1,
+    "session_cookie": 1
+  },
+  "auth_by_category": {
+    "CRM and Sales": {
+      "oauth2": 8,
+      "bearer_token": 3,
+      "api_key": 7,
+      "basic": 3,
+      "hmac_signature": 1,
+      "jwt": 1
+    },
+    "Support and Helpdesk": {
+      "oauth2": 6,
+      "bearer_token": 4,
+      "basic": 3,
+      "api_key": 5
+    },
+    "Communications and Messaging": {
+      "oauth2": 5,
+      "api_key": 7,
+      "basic": 4,
+      "bearer_token": 4,
+      "hmac_signature": 1,
+      "jwt": 2
+    },
+    "Marketing/Ads/Email/Social": {
+      "oauth2": 8,
+      "bearer_token": 4,
+      "api_key": 5
+    },
+    "Ecommerce": {
+      "oauth2": 7,
+      "bearer_token": 5,
+      "api_key": 4,
+      "basic": 1,
+      "jwt": 1,
+      "other": 1
+    },
+    "Data/SEO/Scraping": {
+      "basic": 1,
+      "api_key": 8,
+      "oauth2": 2,
+      "bearer_token": 7,
+      "none": 1
+    },
+    "Developer/Infra/Data": {
+      "oauth2": 4,
+      "bearer_token": 7,
+      "api_key": 5,
+      "jwt": 1,
+      "basic": 1,
+      "other": 1
+    },
+    "Productivity and PM": {
+      "bearer_token": 6,
+      "oauth2": 9,
+      "api_key": 1
+    },
+    "Finance and Fintech": {
+      "api_key": 3,
+      "basic": 1,
+      "bearer_token": 2,
+      "hmac_signature": 1,
+      "other": 1,
+      "none": 2,
+      "oauth2": 3
+    },
+    "AI/Research/Media-native": {
+      "api_key": 4,
+      "none": 2,
+      "oauth2": 2,
+      "unknown": 1,
+      "other": 1,
+      "session_cookie": 1,
+      "bearer_token": 2
+    }
+  },
+  "access_overall": {
+    "self_serve_free": 54,
+    "self_serve_trial": 20,
+    "contact_sales": 5,
+    "admin_approval": 4,
+    "paid_plan_required": 7,
+    "app_review_required": 7,
+    "partner_gated": 2,
+    "not_applicable": 1
+  },
+  "cat_x_access": {
+    "CRM and Sales": {
+      "self_serve_free": 6,
+      "self_serve_trial": 3,
+      "contact_sales": 1
+    },
+    "Support and Helpdesk": {
+      "self_serve_trial": 6,
+      "admin_approval": 1,
+      "self_serve_free": 2,
+      "paid_plan_required": 1
+    },
+    "Communications and Messaging": {
+      "self_serve_free": 5,
+      "self_serve_trial": 3,
+      "admin_approval": 1,
+      "paid_plan_required": 1
+    },
+    "Marketing/Ads/Email/Social": {
+      "app_review_required": 4,
+      "paid_plan_required": 1,
+      "self_serve_free": 5
+    },
+    "Ecommerce": {
+      "app_review_required": 2,
+      "self_serve_free": 3,
+      "self_serve_trial": 1,
+      "paid_plan_required": 1,
+      "admin_approval": 1,
+      "partner_gated": 1,
+      "contact_sales": 1
+    },
+    "Data/SEO/Scraping": {
+      "self_serve_trial": 3,
+      "paid_plan_required": 2,
+      "self_serve_free": 5
+    },
+    "Developer/Infra/Data": {
+      "self_serve_free": 8,
+      "self_serve_trial": 2
+    },
+    "Productivity and PM": {
+      "self_serve_free": 9,
+      "self_serve_trial": 1
+    },
+    "Finance and Fintech": {
+      "self_serve_free": 5,
+      "contact_sales": 3,
+      "app_review_required": 1,
+      "admin_approval": 1
+    },
+    "AI/Research/Media-native": {
+      "self_serve_free": 6,
+      "not_applicable": 1,
+      "partner_gated": 1,
+      "self_serve_trial": 1,
+      "paid_plan_required": 1
+    }
+  },
+  "ranked_blockers": [
+    [
+      "none",
+      66
+    ],
+    [
+      "app_review",
+      10
+    ],
+    [
+      "self_hosted_per_instance",
+      5
+    ],
+    [
+      "thin_or_unclear_docs",
+      4
+    ],
+    [
+      "paid_plan",
+      3
+    ],
+    [
+      "no_public_api",
+      3
+    ],
+    [
+      "cli_or_local_only",
+      3
+    ],
+    [
+      "contact_sales",
+      2
+    ],
+    [
+      "partner_program",
+      2
+    ],
+    [
+      "enterprise_only",
+      1
+    ],
+    [
+      "kyc_or_regional",
+      1
+    ]
+  ],
+  "buildability_overall": {
+    "green": 66,
+    "yellow": 30,
+    "red": 4
+  },
+  "buildability_by_category": {
+    "CRM and Sales": {
+      "green": 8,
+      "yellow": 2,
+      "red": 0
+    },
+    "Support and Helpdesk": {
+      "green": 9,
+      "yellow": 1,
+      "red": 0
+    },
+    "Communications and Messaging": {
+      "green": 6,
+      "yellow": 4,
+      "red": 0
+    },
+    "Marketing/Ads/Email/Social": {
+      "green": 6,
+      "yellow": 4,
+      "red": 0
+    },
+    "Ecommerce": {
+      "green": 3,
+      "yellow": 6,
+      "red": 1
+    },
+    "Data/SEO/Scraping": {
+      "green": 7,
+      "yellow": 3,
+      "red": 0
+    },
+    "Developer/Infra/Data": {
+      "green": 8,
+      "yellow": 2,
+      "red": 0
+    },
+    "Productivity and PM": {
+      "green": 10,
+      "yellow": 0,
+      "red": 0
+    },
+    "Finance and Fintech": {
+      "green": 5,
+      "yellow": 3,
+      "red": 2
+    },
+    "AI/Research/Media-native": {
+      "green": 4,
+      "yellow": 5,
+      "red": 1
+    }
+  },
+  "mcp_coverage": {
+    "official": 18,
+    "community": 41,
+    "none": 41
+  },
+  "composio_coverage": {
+    "yes": 58,
+    "no": 42,
+    "unknown": 0
+  },
+  "openapi_counts": {
+    "yes": 26,
+    "no": 8,
+    "unknown": 66
+  },
+  "openapi_vs_green": {
+    "yes": 20,
+    "no": 3,
+    "unknown": 43
+  },
+  "easy_wins_count": 64,
+  "needs_outreach_count": 14,
+  "not_a_fit_count": 6,
+  "top_15_build_order": [
+    {
+      "id": 15,
+      "name": "Pylon",
+      "category": "Support and Helpdesk",
+      "score": 19.2,
+      "buildability": "green",
+      "access_model": "admin_approval",
+      "already_in_composio": "no",
+      "one_liner": "Agentic B2B support platform enabling human-AI collaboration across channels, ticketing, and customer data.",
+      "reasoning": "Pylon provides well-documented REST APIs using simple API token bearer authentication which can be generated directly by workspace admins. Developers can easily build integrations today."
+    },
+    {
+      "id": 16,
+      "name": "LiveAgent",
+      "category": "Support and Helpdesk",
+      "score": 19.2,
+      "buildability": "green",
+      "access_model": "self_serve_trial",
+      "already_in_composio": "no",
+      "one_liner": "Cloud help desk software with AI agents, live chat, phone, and ticketing shared inbox.",
+      "reasoning": "LiveAgent provides a well-documented REST API with Swagger descriptors and self-serve trial access, making it straightforward to build tools using API keys."
+    },
+    {
+      "id": 6,
+      "name": "Podio",
+      "category": "CRM and Sales",
+      "score": 18.0,
+      "buildability": "green",
+      "access_model": "self_serve_free",
+      "already_in_composio": "no",
+      "one_liner": "Work management platform providing customizable workspaces, structured data apps, and powerful workflow automation.",
+      "reasoning": "Podio provides a fully documented REST API with standard OAuth 2.0 authentication flows and self-serve developer registration, making it straightforward to build and integrate today."
+    },
+    {
+      "id": 47,
+      "name": "Ecwid",
+      "category": "Ecommerce",
+      "score": 18.0,
+      "buildability": "green",
+      "access_model": "self_serve_free",
+      "already_in_composio": "no",
+      "one_liner": "E-commerce platform providing APIs for storefronts, orders, products, and customer management.",
+      "reasoning": "Ecwid provides well-documented REST APIs and OAuth2 authentication flows that are fully self-serve for developers to build integrations and manage store data."
+    },
+    {
+      "id": 51,
+      "name": "DataForSEO",
+      "category": "Data/SEO/Scraping",
+      "score": 16.0,
+      "buildability": "green",
+      "access_model": "self_serve_trial",
+      "already_in_composio": "no",
+      "one_liner": "Powerful SEO software, data analysis pipelines, and robust no-code automations via comprehensive SEO and SERP APIs.",
+      "reasoning": "DataForSEO provides broad REST APIs with complete OpenAPI specifications and self-serve trial credentials utilizing Basic Authentication. Developers can easily generate API credentials immediately, making it fully ready to build as a green-status integration without multi-tenant OAuth app review friction."
+    },
+    {
+      "id": 52,
+      "name": "SE Ranking",
+      "category": "Data/SEO/Scraping",
+      "score": 16.0,
+      "buildability": "green",
+      "access_model": "paid_plan_required",
+      "already_in_composio": "no",
+      "one_liner": "An all-in-one SEO platform and API for rank tracking, backlinks, website audits, and AI search visibility metrics.",
+      "reasoning": "SE Ranking provides well-documented REST APIs across multiple domains (backlinks, rankings, site audits, AI search visibility) with self-serve API keys obtainable directly from the dashboard. Developers can easily integrate tools using API key authentication, and there is an official MCP repository available."
+    },
+    {
+      "id": 30,
+      "name": "Vonage",
+      "category": "Communications and Messaging",
+      "score": 15.0,
+      "buildability": "green",
+      "access_model": "self_serve_free",
+      "already_in_composio": "no",
+      "one_liner": "Cloud communications platform providing APIs for SMS, Voice, Video, and Verification services.",
+      "reasoning": "Vonage provides clear self-serve credentials via its developer dashboard and well-documented API key/secret and JWT mechanisms, making it fully ready to build as a managed integration today."
+    },
+    {
+      "id": 37,
+      "name": "systeme.io",
+      "category": "Marketing/Ads/Email/Social",
+      "score": 15.0,
+      "buildability": "green",
+      "access_model": "self_serve_free",
+      "already_in_composio": "no",
+      "one_liner": "All-in-one marketing platform for sales funnels, email marketing, online courses, and affiliate management.",
+      "reasoning": "Systeme.io provides a robust public API accessible via self-serve API keys generated directly in the user settings. Since credentials can be self-generated and a comprehensive set of REST actions are documented, it is fully buildable today (green buildability)."
+    },
+    {
+      "id": 38,
+      "name": "Pinterest",
+      "category": "Marketing/Ads/Email/Social",
+      "score": 15.0,
+      "buildability": "green",
+      "access_model": "self_serve_free",
+      "already_in_composio": "no",
+      "one_liner": "One API to seamlessly integrate with Pinterest for managing content, ads, and product feeds.",
+      "reasoning": "Pinterest provides a well-documented v5 REST API supporting pins, boards, and ads management via OAuth 2.0. Developers can self-serve credentials, making it fully ready for integration into Composio as a managed OAuth app."
+    },
+    {
+      "id": 91,
+      "name": "NotebookLM",
+      "category": "AI/Research/Media-native",
+      "score": 15.0,
+      "buildability": "green",
+      "access_model": "self_serve_free",
+      "already_in_composio": "no",
+      "one_liner": "Google AI platform providing Gemini models and APIs for developers and businesses to build AI agents.",
+      "reasoning": "The Gemini platform provides self-serve API keys via Google AI Studio, making it fully buildable today with green status. Developers can easily provision credentials and integrate generative models."
+    },
+    {
+      "id": 17,
+      "name": "Plain",
+      "category": "Support and Helpdesk",
+      "score": 14.4,
+      "buildability": "green",
+      "access_model": "self_serve_free",
+      "already_in_composio": "no",
+      "one_liner": "Support infrastructure for humans and agents to orchestrate customer conversations and workflows.",
+      "reasoning": "Plain provides clear documentation for machine user API keys and workspace OAuth apps, making it straightforward to build integrations using their GraphQL API."
+    },
+    {
+      "id": 34,
+      "name": "GoHighLevel",
+      "category": "Marketing/Ads/Email/Social",
+      "score": 13.0,
+      "buildability": "green",
+      "access_model": "paid_plan_required",
+      "already_in_composio": "no",
+      "one_liner": "HighLevel provides APIs that allow developers to build custom integrations, automate processes, and connect external applications with the HighLevel platform.",
+      "reasoning": "GoHighLevel provides both self-serve Private Integration Tokens (PIT) for direct account access and OAuth 2.0 for multi-tenant integrations. Standard API access is available across subscription plans, making it fully ready to build."
+    },
+    {
+      "id": 54,
+      "name": "MrScraper",
+      "category": "Data/SEO/Scraping",
+      "score": 12.0,
+      "buildability": "green",
+      "access_model": "self_serve_free",
+      "already_in_composio": "no",
+      "one_liner": "MrScraper turns websites into clean, structured data with AI-powered scraping, APIs, proxies, and automation.",
+      "reasoning": "MrScraper is ready to integrate immediately with API tokens available via self-serve dashboard access, including a free tier. It already maintains an official open-source MCP server on GitHub."
+    },
+    {
+      "id": 20,
+      "name": "Gladly",
+      "category": "Support and Helpdesk",
+      "score": 11.4,
+      "buildability": "yellow",
+      "access_model": "self_serve_trial",
+      "already_in_composio": "no",
+      "one_liner": "Agentic commerce and customer service platform built for top retail brands.",
+      "reasoning": "Gladly provides a well-documented REST API and OpenAPI specification with token-based basic auth. However, because API endpoints are hosted at per-organization domains ({organization}.gladly.com) and use organization-specific credentials, building a generic multi-tenant integration requires handling dynamic base URLs."
+    },
+    {
+      "id": 59,
+      "name": "Waterfall.io",
+      "category": "Data/SEO/Scraping",
+      "score": 10.0,
+      "buildability": "green",
+      "access_model": "self_serve_trial",
+      "already_in_composio": "no",
+      "one_liner": "One B2B data solution to connect them all for contact and company intelligence.",
+      "reasoning": "Waterfall.io provides a clean REST API with simple API key authentication for contact discovery and enrichment. Developers can easily integrate it into Composio since it follows standard HTTP request patterns without complex OAuth flows."
+    }
+  ]
+}

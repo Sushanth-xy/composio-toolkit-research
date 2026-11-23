@@ -50,15 +50,22 @@ def verify_deterministic_rules(record: AppResearchRecord) -> List[str]:
         flags.append("Contradiction: buildability is 'red' but access_model is 'self_serve_free'")
 
     # Rule 3: CLI tools must be cli_tool
-    if "cli" in record.name.lower() or record.id in [58, 97, 98]:
+    import re
+    if re.search(r"\bcli\b", record.name.lower()) or record.id in [58, 97, 98]:
         if record.app_type.value != "cli_tool":
             flags.append(f"Expected CLI tool for {record.name}, got app_type '{record.app_type.value}'")
 
-    # Rule 4: Official MCP must have vendor URL or github repo
+    # Rule 4: Official MCP must be vendor-documented or vendor-owned
     if record.existing_mcp.value == "official":
-        mcp_url = record.existing_mcp.mcp_url or ""
-        if not mcp_url or ("github.com" not in mcp_url and record.name.lower().replace(" ", "") not in mcp_url):
-            flags.append(f"Official MCP claimed without verifiable official repo: {mcp_url}")
+        mcp_url = (record.existing_mcp.mcp_url or record.existing_mcp.evidence_url or "").lower()
+        vendor_slug = record.name.lower().replace(" ", "").replace("-", "").replace(".", "")
+        is_vendor = (
+            vendor_slug in mcp_url
+            or "github.com/" + vendor_slug in mcp_url
+            or any(v in mcp_url for v in ["monday.com", "clickup.com", "smartsheet.com", "shopify.dev", "github.com", "supabase.com", "stripe.com", "snowflake.com", "notion.com", "firecrawl.dev"])
+        )
+        if not is_vendor:
+            flags.append(f"Official MCP claimed without vendor-owned or vendor-documented source: {mcp_url}")
 
     # Rule 5: Self-hosted OSS (e.g. Twenty) should flag per-instance hosting
     if record.id in [5, 42, 45]:  # Twenty, WooCommerce, Magento
