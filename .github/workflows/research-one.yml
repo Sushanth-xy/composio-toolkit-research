@@ -1,0 +1,47 @@
+name: Research Single App
+
+on:
+  workflow_dispatch:
+    inputs:
+      app_name:
+        description: 'Target Application Name (from apps.csv)'
+        required: true
+        default: 'Attio'
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Execute Pipeline for App
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+        run: |
+          python -m agent.run --pass 2 --app "${{ inputs.app_name }}"
+
+      - name: Upload Single App Result Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: research-result-${{ inputs.app_name }}
+          path: data/results_pass2.jsonl
+
+      - name: Publish Step Summary
+        run: |
+          echo "### Research Completed for ${{ inputs.app_name }}" >> $GITHUB_STEP_SUMMARY
+          echo '```json' >> $GITHUB_STEP_SUMMARY
+          cat data/results_pass2.jsonl | grep -i "${{ inputs.app_name }}" >> $GITHUB_STEP_SUMMARY || cat data/results_pass2.jsonl >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY

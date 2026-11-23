@@ -25,6 +25,7 @@ AuthMethod = Literal[
     "session_cookie",
     "none",
     "other",
+    "unknown",
 ]
 OAuthFlow = Literal["auth_code", "client_credentials", "pkce", "device", "n/a"]
 AccessModel = Literal[
@@ -42,7 +43,7 @@ ApiType = Literal[
 ]
 ApiBreadth = Literal["narrow", "medium", "broad", "unknown"]
 YesNoUnknown = Literal["yes", "no", "unknown"]
-ExistingMcpType = Literal["official", "community", "none"]
+ExistingMcpType = Literal["official", "community", "none", "unknown"]
 Buildability = Literal["green", "yellow", "red"]
 MainBlocker = Literal[
     "app_review",
