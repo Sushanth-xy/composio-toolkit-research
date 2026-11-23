@@ -173,28 +173,32 @@ Composio turns external applications and SaaS platforms into agentic tools that 
      - **Xero (ID 87):** Agent missed vendor GitHub org `github.com/XeroAPI/xero-mcp-server`. Corrected from `community` to `official`.
 
 5. **Vendor Domain Primary Grounding:**
-   - Re-sourced all factual claims directly to primary vendor domains, removing third-party links (unified.to, getknit.dev, mindcloud.co, prismatic.io):
-     - **Salesforce (ID 1):** `developer.salesforce.com` (OAuth2 Bearer token, free Developer Edition).
-     - **Meta Ads (ID 32):** `developers.facebook.com` (User & System User tokens, App Review for Advanced Access).
-     - **Sherlock (ID 58):** `github.com/sherlock-project/sherlock` (CLI tool, no auth, cli_or_local_only).
+   - Re-sourced all factual claims directly to primary vendor domains, eliminating third-party links (unified.to, getknit.dev, mindcloud.co, prismatic.io, frontal.so, linkedin.com, docs.cloudferro.com, digital-expanse.com, adstellar.ai, dev.to, deepwiki.com, ncnodes.com, itechnolabs.ca, zackproser.com) across all 100 apps:
+     - **Salesforce (ID 1):** `developer.salesforce.com` (OAuth2 Bearer token, free Developer Edition, eliminated getknit.dev links, replaced tagline quotes).
+     - **Meta Ads (ID 32):** `developers.facebook.com` (User & System User tokens, App Review for Advanced Access, eliminated prismatic.io and unified.to links).
+     - **Sherlock (ID 58):** `github.com/sherlock-project/sherlock` (CLI tool, no auth, cli_or_local_only, eliminated CloudFerro hallucination).
      - **Mermaid CLI (ID 98):** `github.com/mermaid-js/mermaid-cli` (CLI tool, local headless compile, cli_or_local_only).
      - **higgsfield (ID 97):** `docs.higgsfield.ai` & `higgsfield.ai/cli` (REST API key, official MCP).
-     - **Twilio (ID 22):** `twilio.com/docs/usage/api` (HTTP Basic authentication with Account SID / Auth Token).
+     - **Twilio (ID 22):** `twilio.com/docs/usage/api` (HTTP Basic authentication with Account SID / Auth Token, eliminated mindcloud.co).
      - **LiveAgent (ID 16):** `faq.liveagent.com` & `QualityUnit/liveagent-mcp-server` (API v3 key, official MCP).
+     - **Attio (ID 4), Twenty (ID 5), Close (ID 8), Gorgias (ID 19), Zoho Cliq (ID 23), Lark (ID 24), Pumble (ID 25), GoHighLevel (ID 34), systeme.io (ID 37), Salesforce Commerce Cloud (ID 44), Magento (ID 45), Firecrawl (ID 56):** All re-sourced to official vendor documentation portals.
+     - Verified quotes support specific technical claims rather than page titles or marketing taglines.
 
 6. **iPayX Domain Redo:**
    - Corrected domain from defunct `ipayx.com` to `ipayx.ai/docs` and official repository `github.com/iPAYX-Technologies/mcp-fx-audit`.
-   - Reclassified from `red` to `green` (live remote streamable HTTP MCP server at `https://mcp.ipayx.ai/mcp`, zero auth, self-serve free).
+   - Reclassified from `red` to `green` (live remote streamable HTTP MCP server at `https://mcp.ipayx.ai/mcp`, zero auth, self-serve free). Tool count updated to 3 based on official MCP capabilities.
 
 7. **Plaid MCP Tooling Clarification:**
    - Clarified that the MCP server in `plaid/ai-coding-toolkit` is local developer/sandbox tooling (custom test users, mock data generation, test token generation, doc search), NOT production financial data access.
+   - Cleaned quotes to remove page titles ("Home | Plaid Docs").
    - Classified as `existing_mcp = official`, but `buildability = yellow` with `main_blocker = app_review` because production banking data requires security questionnaires, compliance review, and end-user Link OAuth flows.
 
 8. **Pattern Analysis & Blocker Rankings:**
    - Excluded `'none'` when ranking blockers to show real bottlenecks (`app_review`, `self_hosted_per_instance`, `thin_or_unclear_docs`, etc.).
-   - Added auth-by-category breakdown and comprehensive Easy Wins (65 apps) vs Needs Outreach (15 apps) lists.
+   - Added auth-by-category breakdown and comprehensive Easy Wins (67 apps) vs Needs Outreach (15 apps) lists.
 
-9. **Static HTML Accessibility:**
+9. **Static HTML Accessibility & Dynamic Hold-Out Binding:**
    - Re-built `site/build_site.py` to render all 100 rows directly into static HTML with `<details>` accordions inside table cells, enabling full accessibility without JavaScript while maintaining client-side search, filtering, and sorting enhancements.
+   - Bound `build_site.py` dynamically to `accuracy_data`: displays "Pending human gold labeling" while `data/gold_holdout.csv` is blank, and automatically computes and publishes true per-pass accuracy progressions once labeled.
 
 

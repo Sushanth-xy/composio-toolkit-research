@@ -1,29 +1,29 @@
 {
   "total_apps": 100,
   "headlines": [
-    "Top Real Integration Blockers (excluding 67 unblocked apps): app_review (11), self_hosted_per_instance (5), thin_or_unclear_docs (4). Managed OAuth distribution and developer account verification create the steepest technical gating.",
-    "Authentication by Category: CRM & Messaging mandate OAuth2 (8/10 CRM apps), whereas Developer Infra & Scraping rely heavily on API Keys (5/10 Dev apps) for direct machine-to-machine execution.",
-    "High-Velocity Segments: 65 Easy Wins greenlit with self-serve APIs / OpenAPI specs vs 15 Outreach Targets requiring formal partner applications, review queues, or commercial contracts.",
-    "Catalog Feasibility: 67 apps ready to build immediately, 30 requiring partner access or sandboxed CLI runtimes, and 3 lacking public developer APIs."
+    "Top Real Integration Blockers (excluding 68 unblocked apps): app_review (11), self_hosted_per_instance (4), thin_or_unclear_docs (4). Managed OAuth distribution and developer account verification create the steepest technical gating.",
+    "Authentication by Category: CRM & Messaging mandate OAuth2 (9/10 CRM apps), whereas Developer Infra & Scraping rely heavily on API Keys (5/10 Dev apps) for direct machine-to-machine execution.",
+    "High-Velocity Segments: 67 Easy Wins greenlit with self-serve APIs / OpenAPI specs vs 15 Outreach Targets requiring formal partner applications, review queues, or commercial contracts.",
+    "Catalog Feasibility: 69 apps ready to build immediately, 28 requiring partner access or sandboxed CLI runtimes, and 3 lacking public developer APIs."
   ],
   "auth_overall": {
-    "oauth2": 55,
-    "bearer_token": 43,
+    "oauth2": 57,
+    "bearer_token": 45,
     "api_key": 50,
-    "basic": 14,
+    "basic": 13,
     "hmac_signature": 3,
     "jwt": 5,
-    "other": 4,
     "none": 5,
+    "other": 3,
     "unknown": 1,
     "session_cookie": 1
   },
   "auth_by_category": {
     "CRM and Sales": {
-      "oauth2": 8,
-      "bearer_token": 3,
+      "oauth2": 9,
+      "bearer_token": 4,
       "api_key": 7,
-      "basic": 3,
+      "basic": 2,
       "hmac_signature": 1,
       "jwt": 1
     },
@@ -47,12 +47,11 @@
       "api_key": 5
     },
     "Ecommerce": {
-      "oauth2": 7,
-      "bearer_token": 5,
+      "oauth2": 8,
+      "bearer_token": 6,
       "api_key": 4,
       "basic": 1,
-      "jwt": 1,
-      "other": 1
+      "jwt": 1
     },
     "Data/SEO/Scraping": {
       "basic": 1,
@@ -169,7 +168,7 @@
     ],
     [
       "self_hosted_per_instance",
-      5
+      4
     ],
     [
       "thin_or_unclear_docs",
@@ -211,7 +210,7 @@
     ],
     [
       "self_hosted_per_instance",
-      5
+      4
     ],
     [
       "thin_or_unclear_docs",
@@ -246,16 +245,16 @@
       1
     ]
   ],
-  "none_blocker_count": 67,
+  "none_blocker_count": 68,
   "buildability_overall": {
-    "green": 67,
-    "yellow": 30,
+    "green": 69,
+    "yellow": 28,
     "red": 3
   },
   "buildability_by_category": {
     "CRM and Sales": {
-      "green": 8,
-      "yellow": 2,
+      "green": 9,
+      "yellow": 1,
       "red": 0
     },
     "Support and Helpdesk": {
@@ -264,8 +263,8 @@
       "red": 0
     },
     "Communications and Messaging": {
-      "green": 6,
-      "yellow": 4,
+      "green": 7,
+      "yellow": 3,
       "red": 0
     },
     "Marketing/Ads/Email/Social": {
@@ -322,9 +321,9 @@
   "openapi_vs_green": {
     "yes": 20,
     "no": 4,
-    "unknown": 43
+    "unknown": 45
   },
-  "easy_wins_count": 65,
+  "easy_wins_count": 67,
   "needs_outreach_count": 15,
   "not_a_fit_count": 4,
   "easy_wins": [
@@ -372,12 +371,23 @@
       "access": "self_serve_free",
       "openapi": "yes",
       "auth": [
-        "oauth2",
         "api_key",
-        "bearer_token",
-        "basic"
+        "oauth2",
+        "bearer_token"
       ],
       "mcp": "community"
+    },
+    {
+      "id": 5,
+      "name": "Twenty",
+      "category": "CRM and Sales",
+      "access": "self_serve_free",
+      "openapi": "unknown",
+      "auth": [
+        "api_key",
+        "bearer_token"
+      ],
+      "mcp": "none"
     },
     {
       "id": 6,
@@ -408,8 +418,9 @@
       "access": "self_serve_trial",
       "openapi": "unknown",
       "auth": [
+        "api_key",
         "basic",
-        "api_key"
+        "oauth2"
       ],
       "mcp": "community"
     },
@@ -543,6 +554,18 @@
         "api_key"
       ],
       "mcp": "official"
+    },
+    {
+      "id": 25,
+      "name": "Pumble",
+      "category": "Communications and Messaging",
+      "access": "self_serve_free",
+      "openapi": "unknown",
+      "auth": [
+        "api_key",
+        "bearer_token"
+      ],
+      "mcp": "community"
     },
     {
       "id": 26,
@@ -743,8 +766,8 @@
       "access": "self_serve_free",
       "openapi": "unknown",
       "auth": [
-        "bearer_token",
-        "api_key"
+        "api_key",
+        "bearer_token"
       ],
       "mcp": "official"
     },
@@ -1268,7 +1291,7 @@
       "buildability": "green",
       "access_model": "self_serve_trial",
       "already_in_composio": "no",
-      "one_liner": "Cloud help desk software with AI agents, live chat, phone, and ticketing shared inbox.",
+      "one_liner": "Omnichannel helpdesk and live chat platform with ticket management, agent routing, and API v3 automation.",
       "reasoning": "LiveAgent provides a well-documented REST API with Swagger descriptors and self-serve trial access, making it straightforward to build tools using API keys."
     },
     {
@@ -1327,17 +1350,6 @@
       "reasoning": "Vonage provides clear self-serve credentials via its developer dashboard and well-documented API key/secret and JWT mechanisms, making it fully ready to build as a managed integration today."
     },
     {
-      "id": 37,
-      "name": "systeme.io",
-      "category": "Marketing/Ads/Email/Social",
-      "score": 15.0,
-      "buildability": "green",
-      "access_model": "self_serve_free",
-      "already_in_composio": "no",
-      "one_liner": "All-in-one marketing platform for sales funnels, email marketing, online courses, and affiliate management.",
-      "reasoning": "Systeme.io provides a robust public API accessible via self-serve API keys generated directly in the user settings. Since credentials can be self-generated and a comprehensive set of REST actions are documented, it is fully buildable today (green buildability)."
-    },
-    {
       "id": 38,
       "name": "Pinterest",
       "category": "Marketing/Ads/Email/Social",
@@ -1358,6 +1370,17 @@
       "already_in_composio": "no",
       "one_liner": "Google AI platform providing Gemini models and APIs for developers and businesses to build AI agents.",
       "reasoning": "The Gemini platform provides self-serve API keys via Google AI Studio, making it fully buildable today with green status. Developers can easily provision credentials and integrate generative models."
+    },
+    {
+      "id": 5,
+      "name": "Twenty",
+      "category": "CRM and Sales",
+      "score": 14.4,
+      "buildability": "green",
+      "access_model": "self_serve_free",
+      "already_in_composio": "no",
+      "one_liner": "Open-source CRM giving technical teams building blocks for custom workflows.",
+      "reasoning": "Twenty is an open-source CRM that typically requires self-hosted or per-instance deployment URLs and API keys, creating a per-instance configuration requirement for integrations."
     },
     {
       "id": 17,
@@ -1382,6 +1405,28 @@
       "reasoning": "GoHighLevel provides both self-serve Private Integration Tokens (PIT) for direct account access and OAuth 2.0 for multi-tenant integrations. Standard API access is available across subscription plans, making it fully ready to build."
     },
     {
+      "id": 25,
+      "name": "Pumble",
+      "category": "Communications and Messaging",
+      "score": 12.0,
+      "buildability": "green",
+      "access_model": "self_serve_free",
+      "already_in_composio": "no",
+      "one_liner": "Your team communication hub for channels, direct messages, files, and video calls.",
+      "reasoning": "Pumble provides an API addon that allows generating workspace API keys for integrations. Developers can self-serve access via the workspace UI, making it buildable with yellow friction due to requiring the addon installation steps."
+    },
+    {
+      "id": 37,
+      "name": "systeme.io",
+      "category": "Marketing/Ads/Email/Social",
+      "score": 12.0,
+      "buildability": "green",
+      "access_model": "self_serve_free",
+      "already_in_composio": "no",
+      "one_liner": "All-in-one marketing platform for sales funnels, email marketing, online courses, and affiliate management.",
+      "reasoning": "Systeme.io provides a robust public API accessible via self-serve API keys generated directly in the user settings. Since credentials can be self-generated and a comprehensive set of REST actions are documented, it is fully buildable today (green buildability)."
+    },
+    {
       "id": 54,
       "name": "MrScraper",
       "category": "Data/SEO/Scraping",
@@ -1391,28 +1436,6 @@
       "already_in_composio": "no",
       "one_liner": "MrScraper turns websites into clean, structured data with AI-powered scraping, APIs, proxies, and automation.",
       "reasoning": "MrScraper is ready to integrate immediately with API tokens available via self-serve dashboard access, including a free tier. It already maintains an official open-source MCP server on GitHub."
-    },
-    {
-      "id": 97,
-      "name": "higgsfield",
-      "category": "AI/Research/Media-native",
-      "score": 12.0,
-      "buildability": "green",
-      "access_model": "self_serve_free",
-      "already_in_composio": "no",
-      "one_liner": "AI-native creative suite for image and video generation for agents via MCP, REST API, and CLI.",
-      "reasoning": "Higgsfield provides both an official MCP integration and a documented REST API with API key authentication, with self-serve key creation in Higgsfield Console."
-    },
-    {
-      "id": 20,
-      "name": "Gladly",
-      "category": "Support and Helpdesk",
-      "score": 11.4,
-      "buildability": "yellow",
-      "access_model": "self_serve_trial",
-      "already_in_composio": "no",
-      "one_liner": "Agentic commerce and customer service platform built for top retail brands.",
-      "reasoning": "Gladly provides a well-documented REST API and OpenAPI specification with token-based basic auth. However, because API endpoints are hosted at per-organization domains ({organization}.gladly.com) and use organization-specific credentials, building a generic multi-tenant integration requires handling dynamic base URLs."
     }
   ]
 }

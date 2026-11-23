@@ -73,12 +73,14 @@ class TestAuditRequirements(unittest.TestCase):
         self.assertIn("developer.salesforce.com", r1.access_model.evidence_url)
         self.assertNotIn("unified.to", r1.access_model.evidence_url)
         self.assertNotIn("getknit.dev", r1.auth_methods.evidence_url)
+        self.assertNotIn("The #1 AI CRM", r1.category.evidence_quote)
         self.assertEqual(r1.buildability.value, "green")
 
         # 2. Twilio (ID 22)
         r22 = records[22]
         self.assertIn("twilio.com", r22.auth_methods.evidence_url)
         self.assertNotIn("mindcloud.co", r22.auth_methods.evidence_url)
+        self.assertNotIn("mindcloud.co", r22.oauth_flows.evidence_url)
         self.assertIn("basic", r22.auth_methods.value)
 
         # 3. LiveAgent (ID 16)
@@ -92,11 +94,13 @@ class TestAuditRequirements(unittest.TestCase):
         self.assertIn("developers.facebook.com", r32.auth_methods.evidence_url)
         self.assertIn("developers.facebook.com", r32.access_model.evidence_url)
         self.assertNotIn("prismatic.io", r32.auth_methods.evidence_url)
+        self.assertNotIn("unified.to", r32.api_type.evidence_url)
         self.assertEqual(r32.main_blocker.value, "app_review")
 
         # 5. Sherlock (ID 58)
         r58 = records[58]
         self.assertIn("github.com/sherlock-project/sherlock", r58.auth_methods.evidence_url)
+        self.assertNotIn("cloudferro.com", r58.oauth_flows.evidence_url)
         self.assertEqual(r58.buildability.value, "yellow")
         self.assertEqual(r58.main_blocker.value, "cli_or_local_only")
 
@@ -120,14 +124,34 @@ class TestAuditRequirements(unittest.TestCase):
         self.assertEqual(r85.buildability.value, "green")
         self.assertEqual(r85.existing_mcp.value, "official")
         self.assertEqual(r85.main_blocker.value, "none")
+        self.assertEqual(r85.estimated_tool_count.value, 3)
 
         # 9. Plaid (ID 82)
         r82 = records[82]
         self.assertEqual(r82.existing_mcp.value, "official")
         self.assertEqual(r82.buildability.value, "yellow")
         self.assertEqual(r82.main_blocker.value, "app_review")
+        self.assertNotIn("Home | Plaid Docs", r82.category.evidence_quote)
         self.assertIn("developer/sandbox tooling", r82.reasoning)
         self.assertIn("production banking data", r82.reasoning)
+
+    def test_zero_suspicious_third_party_domains(self):
+        """Task 4: Verify zero third-party scrapers/directories remain as primary evidence across all 100 apps."""
+        suspicious_domains = [
+            "unified.to", "getknit.dev", "mindcloud.co", "prismatic.io", "frontal.so",
+            "linkedin.com", "docs.cloudferro.com", "digital-expanse.com", "adstellar.ai",
+            "dev.to", "deepwiki.com", "ncnodes.com", "itechnolabs.ca", "zackproser.com"
+        ]
+        with open(self.root / "data" / "results_final.jsonl", "r", encoding="utf-8") as f:
+            for line in f:
+                item = json.loads(line)
+                aid = item["id"]
+                name = item["name"]
+                for field, data in item.items():
+                    if isinstance(data, dict) and "evidence_url" in data:
+                        url = data.get("evidence_url", "")
+                        for sd in suspicious_domains:
+                            self.assertNotIn(sd, url, f"App {aid} ({name}) has third-party domain {sd} in {field}: {url}")
 
     def test_site_html_integrity(self):
         """Task 2, 3, 8: Verify static HTML table, no fake accuracy, human interventions match LOG.md."""
@@ -153,6 +177,44 @@ class TestAuditRequirements(unittest.TestCase):
         self.assertIn("Confirmed Human-Corrected Errors (Exactly 2)", content)
         self.assertIn("Fathom (ID 93)", content)
         self.assertIn("Xero (ID 87)", content)
+
+    def test_dynamic_gold_accuracy_computation(self):
+        """Task 9: Verify accuracy script computes real percentages when gold rows are filled."""
+        import tempfile
+        import importlib.util
+
+        # Create temporary gold CSV with 2 labeled hold-out apps
+        with tempfile.NamedTemporaryFile("w+", suffix=".csv", delete=False) as tf:
+            tf.write("id,name,category,hint,auth_methods,access_model,existing_mcp,buildability,official_doc_url,notes\n")
+            tf.write("4,Attio,CRM and Sales,attio.com,\"api_key, oauth2\",self_serve_free,community,green,https://developers.attio.com,\n")
+            tf.write("58,Sherlock,Data/SEO/Scraping,github.com,none,self_serve_free,community,yellow,https://github.com/sherlock-project/sherlock,\n")
+            temp_gold_path = tf.name
+
+        try:
+            rep = compute_all_accuracies(temp_gold_path)
+            self.assertEqual(rep["status"], "computed_from_gold")
+            self.assertEqual(rep["labeled_holdout_count"], 2)
+            self.assertIsInstance(rep["progression"]["final"]["hold_out_accuracy"], float)
+            self.assertGreater(rep["progression"]["final"]["hold_out_accuracy"], 0.0)
+
+            # Test that build_site can build dynamically with computed accuracy
+            spec = importlib.util.spec_from_file_location("build_site_mod", self.root / "site" / "build_site.py")
+            build_mod = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(build_mod)
+            build_mod.build_site(gold_path=temp_gold_path)
+
+            with open(self.root / "site" / "index.html", "r", encoding="utf-8") as f:
+                site_content = f.read()
+            self.assertIn("Hold-Out Accuracy Benchmark (Human-Audited Gold Labels)", site_content)
+            self.assertIn(f"{rep['progression']['final']['hold_out_accuracy']}%", site_content)
+        finally:
+            Path(temp_gold_path).unlink(missing_ok=True)
+            # Restore clean pending accuracy and site
+            compute_all_accuracies("data/gold_holdout.csv")
+            spec = importlib.util.spec_from_file_location("build_site_mod", self.root / "site" / "build_site.py")
+            build_mod = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(build_mod)
+            build_mod.build_site("data/gold_holdout.csv")
 
 
 if __name__ == "__main__":
